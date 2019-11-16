@@ -1,0 +1,32 @@
+/***************************
+*********GENERAL************
+***************************/
+body, html {
+  padding : 0;
+  margin : 0;
+  margin-left : 3rem;
+}
+
+html {
+  font-size : 62.5%;
+}
+
+p {
+  font-size : 1.6rem;
+}
+
+.number-of-clicks {
+
+}
+
+header p.pageTitle {
+  text-align: center;
+  font-size : 3rem;
+  margin-top : 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dashboard {
+  width : 20%;
+  background-color : #F2F2BD;
+}
