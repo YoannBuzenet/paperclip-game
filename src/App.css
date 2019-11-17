@@ -37,6 +37,10 @@ header p.pageTitle {
   background-color : #F2F2BD;
 }
 
+/***************************
+****INVESTMENT COMPONENT****
+***************************/
+
 .investment-box {
   padding : 1rem;
   width : 20%;
@@ -48,8 +52,117 @@ header p.pageTitle {
   margin-top: 1rem;
 } 
 
+.small-machines-button {
+  position :relative;
+}
+
+.info-small-machines-button{
+  display:none;
+}
+
+.small-machines-button:hover .info-small-machines-button{
+  display:block;
+  position : absolute;
+  background-color: white;
+  border : 1px solid black;
+  top:-30px;
+  right : -160px;
+  left: 160px;
+}
+
+.invest-marketing-button{
+  position :relative;
+}
+
+.info-invest-marketing-button {
+  display : none;
+}
+
+.invest-marketing-button:hover .info-invest-marketing-button{
+  display:block;
+  position : absolute;
+  background-color: white;
+  border : 1px solid black;
+  top:-30px;
+  right : -160px;
+  left: 160px;
+}
+
+.automatic-machines-button {
+  position : relative;
+}
+
+.info-automatic-machines-button {
+  display : none;
+}
+
+.automatic-machines-button:hover .info-automatic-machines-button{
+  display:block;
+  position : absolute;
+  background-color: white;
+  border : 1px solid black;
+  top:-30px;
+  right : -160px;
+  left: 160px;
+}
+
+.salesman-button {
+  position : relative;
+}
+
+.info-salesman-button {
+  display: none;
+}
+
+.salesman-button:hover .info-salesman-button{
+  display:block;
+  position : absolute;
+  background-color: white;
+  border : 1px solid black;
+  top:-30px;
+  right : -160px;
+  left: 160px;
+}
+
+.rd-button{
+  position : relative;
+}
+
+.info-invest-rd-button{
+  display : none;
+}
+
+.rd-button:hover .info-invest-rd-button{
+  display:block;
+  position : absolute;
+  background-color: white;
+  border : 1px solid black;
+  top:-30px;
+  right : -160px;
+  left: 160px;
+}
+
+.rd-improve-button{
+  position : relative;
+}
+
+.info-invest-rd-improve-button{
+  display : none;
+}
+
+.rd-improve-button:hover .info-invest-rd-improve-button{
+  display:block;
+  position : absolute;
+  background-color: white;
+  border : 1px solid black;
+  top:-30px;
+  right : -160px;
+  left: 160px;
+}
+
 .work-box {
   padding : 1rem;
   width : 20%;
   background-color : #dc5e38;
 }
+
