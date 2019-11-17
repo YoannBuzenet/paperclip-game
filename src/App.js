@@ -18,29 +18,56 @@ class App extends Component{
           soldAtLeastOnePaperclip : false,
           firstMachine : false,
           numberOfSmallMachines : 0,
-          productivity : 1
+          productivity : 1,
+          unitsSold : 1,
+          marketingCost : 5,
+          rdCost : 5,
+          rdState : 0,
+          numberOfSmallAutomaticMachines : 0,
+          smallAutomaticMachineCost : 10,
+          automaticProduction : 0,
+          intervalId : 0
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
   this.handleClickDecrease = this.handleClickDecrease.bind(this);    
   this.buyASmallMachine = this.buyASmallMachine.bind(this);    
+  this.investInMarketing = this.investInMarketing.bind(this);    
+  this.investInRD = this.investInRD.bind(this);    
+  this.buyASmallAutomaticMachine = this.buyASmallAutomaticMachine.bind(this);    
+  this.automaticCounting = this.automaticCounting.bind(this);    
   }
 
-  handleClickIncrease(){
+componentDidMount(){
+    var intervalId = setInterval(this.automaticCounting, 1000);
+    // store intervalId in the state so it can be accessed later:
+    this.setState({intervalId: intervalId});
+}
+
+automaticCounting(){
+  this.setState(state => { return ({
+    count : state.count + state.automaticProduction
+  });
+});
+}
+
+handleClickIncrease(){
     this.setState(state => { return ({
         count : state.count + state.productivity
       });
     });
     console.log(this.state);
-  }
-  handleClickDecrease(){
+}
+handleClickDecrease(){
+    if(this.state.count >= this.state.unitsSold){
     this.setState(state => { return ({
-        count : state.count -1,
-        money : state.money + 0.25,
+        count : state.count - state.unitsSold,
+        money : state.money + (0.25 * state.unitsSold),
         soldAtLeastOnePaperclip : true
+        });
       });
-    });
     //console.log(this.state);
-  }
+    }
+}
 
   buyASmallMachine(){
     console.log(this.state);
@@ -55,6 +82,40 @@ class App extends Component{
     }
   }
 
+  buyASmallAutomaticMachine(){
+    console.log(this.state);
+    if(this.state.money >= this.state.smallAutomaticMachineCost){
+    this.setState(state => { return ({
+      money : state.money - state.smallAutomaticMachineCost,
+      numberOfSmallAutomaticMachines : state.numberOfSmallAutomaticMachines +1,
+      automaticProduction : state.automaticProduction +1
+        });
+      });
+    }
+  }
+
+  investInMarketing(){
+    if(this.state.money >= this.state.marketingCost){
+    this.setState(state => { return ({
+      money : state.money - state.marketingCost,
+      marketingCost : state.marketingCost +5,
+      unitsSold : state.unitsSold +5
+        });
+      });
+    }
+  }  
+
+  investInRD(){
+    if(this.state.money >= this.state.rdCost){
+    this.setState(state => { return ({
+      money : state.money - state.rdCost,
+      rdCost : state.rdCost +5,
+      rdState : state.rdState +1
+        });
+      });
+    }
+  } 
+
   render(){
     return (<div className="App">
     <header>
@@ -68,15 +129,15 @@ class App extends Component{
     </div>
 
     <div>
-      {this.state.soldAtLeastOnePaperclip ? <InvestmentBox buyASmallMachine={this.buyASmallMachine}/> : null}
+      {this.state.soldAtLeastOnePaperclip ? <InvestmentBox buyASmallMachine={this.buyASmallMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} buyASmallAutomaticMachine={this.buyASmallAutomaticMachine} numberOfSmallAutomaticMachines={this.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction}/> : null}
     </div>
     <div>
-      {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines}/> : null}
+      {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines}/> : null}
     </div>
     
     <p>
         <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity}/>
-        {this.state.count > 0 ? <SellButton sell={this.handleClickDecrease}/>:null}
+        {this.state.count > 0 ? <SellButton sell={this.handleClickDecrease} unitsSold={this.state.unitsSold}/>:null}
     </p>
 
     

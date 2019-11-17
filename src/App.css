@@ -43,6 +43,11 @@ header p.pageTitle {
   background-color : #499DCE;
 }
 
+.investment-box button{
+  display: block;
+  margin-top: 1rem;
+} 
+
 .work-box {
   padding : 1rem;
   width : 20%;

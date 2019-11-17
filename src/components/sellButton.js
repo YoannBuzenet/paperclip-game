@@ -6,7 +6,10 @@ class SellButton extends Component{
     }
 
     render(){
-        return <button onClick={this.props.sell} className="sell-button">Sell a paperclip (.25€)</button>;
+    return (
+    <button onClick={this.props.sell} className="sell-button">
+        Sell {this.props.unitsSold > 1 ? this.props.unitsSold : 'a'} {this.props.unitsSold > 1 ? 'paperclips' : 'paperclip'} ({this.props.unitsSold * .25}€)
+    </button>);
     }
 }
 
