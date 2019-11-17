@@ -10,7 +10,7 @@ class InvestmentBox extends Component{
         <h2>INVESTMENT</h2>
         <h3>MACHINES</h3>
         <button onClick={this.props.buyASmallMachine}>Buy a small machine (5€)</button>
-        {this.props.rdState > 0 
+        {this.props.rdState > 1 
     ? <div><button onClick={this.props.buyASmallAutomaticMachine}>Buy a small automatic machine ({this.props.smallAutomaticMachineCost}€)</button></div> 
     : null}
 

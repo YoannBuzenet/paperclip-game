@@ -22,7 +22,7 @@ class App extends Component{
           unitsSold : 1,
           marketingCost : 5,
           rdCost : 5,
-          rdState : 0,
+          rdState : 1,
           numberOfSmallAutomaticMachines : 0,
           smallAutomaticMachineCost : 10,
           automaticProduction : 0,
@@ -109,8 +109,8 @@ handleClickDecrease(){
     if(this.state.money >= this.state.rdCost){
     this.setState(state => { return ({
       money : state.money - state.rdCost,
-      rdCost : state.rdCost +5,
-      rdState : state.rdState +1
+      rdState : state.rdState +1,
+      rdCost : state.rdCost + (10*state.rdState)
         });
       });
     }
