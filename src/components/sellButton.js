@@ -6,7 +6,7 @@ class SellButton extends Component{
     }
 
     render(){
-        return <button onClick={this.props.sell}>Sell a paperclip</button>;
+        return <button onClick={this.props.sell} className="sell-button">Sell a paperclip (.25€)</button>;
     }
 }
 

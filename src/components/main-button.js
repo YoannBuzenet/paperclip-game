@@ -6,7 +6,16 @@ class MainButton extends Component{
     }
 
     render(){
-        return <button onClick={this.props.increase}>Create a paperclip</button>;
+    return (
+    <button onClick={this.props.increase}>
+        {this.props.productivity > 2
+        ? ('Create ' + this.props.productivity + ' paperclips')
+        : 
+        (this.props.firstMachine
+        ? 'Create a paperclip  (Machine Made)' 
+        : 'Create a paperclip  (Handmade)')
+        }
+    </button>);
     }
 }
 

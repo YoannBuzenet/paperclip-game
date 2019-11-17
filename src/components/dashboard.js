@@ -8,7 +8,7 @@ class Dashboard extends Component{
     render(){
         return(
         
-        <p>DASHBOARD</p>
+        <h2>DASHBOARD</h2>
         
         );
     }
