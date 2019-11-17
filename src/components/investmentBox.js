@@ -28,7 +28,7 @@ class InvestmentBox extends Component{
     : null}
 
     {this.props.rdState > 2 ? 
-        <div><h3>SALES</h3><button onClick={this.props.hireASalesman} style={{display:'inline'}} className="salesman-button">Hire a Salesman ({this.props.salesmanCost}€)<div className="info-salesman-button">Increase your sales : 10 units sold per second per salesman.</div></button>
+        <div><h3 className="sales-title">SALES</h3><button onClick={this.props.hireASalesman} style={{display:'inline'}} className="salesman-button">Hire a Salesman ({this.props.salesmanCost}€)<div className="info-salesman-button">Increase your sales : 10 units sold per second per salesman.</div></button>
     {this.props.rdState > 3 ? 
         <button onClick={this.props.buyFiveSales} style={{display:'inline', marginLeft : 5}}>x5</button>
     : null}</div>

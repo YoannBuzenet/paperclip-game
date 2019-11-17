@@ -8,7 +8,7 @@ class SellButton extends Component{
     render(){
     return (
     <button onClick={this.props.sell} className="sell-button">
-        Sell {this.props.unitsSold > 1 ? this.props.unitsSold : 'a'} {this.props.unitsSold > 1 ? 'paperclips' : 'paperclip'} ({this.props.unitsSold * .25}€)
+        Sell <span className="main-button-number">{this.props.unitsSold}</span> paperclips ({this.props.unitsSold * .25}€)
     </button>);
     }
 }

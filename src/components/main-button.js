@@ -7,14 +7,8 @@ class MainButton extends Component{
 
     render(){
     return (
-    <button onClick={this.props.increase}>
-        {this.props.productivity > 2
-        ? ('Create ' + this.props.productivity + ' paperclips')
-        : 
-        (this.props.firstMachine
-        ? 'Create a paperclip  (Machine Made)' 
-        : 'Create a paperclip  (Handmade)')
-        }
+    <button onClick={this.props.increase} className="main-button">
+        Create <span className="main-button-number">{this.props.productivity}</span> paperclips
     </button>);
     }
 }
