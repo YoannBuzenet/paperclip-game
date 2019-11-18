@@ -61,17 +61,22 @@ header p.pageTitle {
   top:-30px;
   right : -160px;
   left: 160px;
+  z-index: 2;
 }
 
-.invest-marketing-button{
+.small-machines-button .info-small-machines-button:hover{
+  display:none;
+}
+
+/* .invest-marketing-button{
   position :relative;
-}
+} */
 
-.info-invest-marketing-button {
+/* .info-invest-marketing-button {
   display : none;
-}
+} */
 
-.invest-marketing-button:hover .info-invest-marketing-button{
+/* .invest-marketing-button:hover .info-invest-marketing-button{
   display:block;
   position : absolute;
   background-color: white;
@@ -79,7 +84,11 @@ header p.pageTitle {
   top:-30px;
   right : -160px;
   left: 160px;
-}
+} */
+
+/* .invest-marketing-button .info-invest-marketing-button:hover{
+  display : none;
+} */
 
 .automatic-machines-button {
   position : relative;
@@ -97,6 +106,10 @@ header p.pageTitle {
   top:-30px;
   right : -160px;
   left: 160px;
+}
+
+.automatic-machines-button .info-automatic-machines-button:hover{
+  display : none;
 }
 
 .sales-title {
@@ -121,6 +134,10 @@ header p.pageTitle {
   left: 160px;
 }
 
+.salesman-button .info-salesman-button:hover{
+  display: none;
+}
+
 .rd-button{
   position : relative;
 }
@@ -137,6 +154,10 @@ header p.pageTitle {
   top:-30px;
   right : -160px;
   left: 160px;
+}
+
+.rd-button .info-invest-rd-button:hover{
+  display : none;
 }
 
 .rd-improve-button{
@@ -157,6 +178,30 @@ header p.pageTitle {
   left: 160px;
 }
 
+.rd-improve-button .info-invest-rd-improve-button:hover{
+  display:none;
+}
+
+.factory-button{
+position : relative;
+}
+.info-buy-factory-button{
+  display: none;
+}
+
+.factory-button:hover .info-buy-factory-button{
+  display:block;
+  position : absolute;
+  background-color: white;
+  border : 1px solid black;
+  top:-5px;
+  right : -100px;
+  left: 150px;
+}
+
+.factory-button .info-buy-factory-button:hover{
+  display: none;
+}
 /***************************
 ****WORK COMPONENT****
 ***************************/

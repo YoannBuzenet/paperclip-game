@@ -13,8 +13,8 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 1000,
-          money : 1000,
+          count : 100000,
+          money : 100000,
           soldAtLeastOnePaperclip : false,
           firstMachine : false,
           numberOfSmallMachines : 0,
@@ -33,7 +33,8 @@ class App extends Component{
           intervalId : 0,
           salesman : 0,
           salesmanCost : 50,
-          salesmanCantsell : false
+          salesmanCantsell : false,
+          numberOfFactory : 0
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
   this.handleClickDecrease = this.handleClickDecrease.bind(this);    

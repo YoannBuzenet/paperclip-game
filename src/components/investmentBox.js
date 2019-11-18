@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from './button';
 
 class InvestmentBox extends Component{
     constructor(props){
@@ -24,7 +25,7 @@ class InvestmentBox extends Component{
     : null}
 
     {this.props.numberOfSmallMachines > 0 
-    ? <div><h3>MARKETING</h3><button onClick={this.props.investInMarketing} className="invest-marketing-button">Invest in Marketing ({this.props.marketingCost}€)<div className="info-invest-marketing-button">Increase your revenue by selling more paperclips ! (10 times the revenue !)</div></button></div> 
+    ? <div><h3>MARKETING</h3><Button onClickProp={this.props.investInMarketing} classNameButton="invest-marketing-button" content="Invest in Marketing" cost={this.props.marketingCost} classNameChild="info-invest-marketing-button" contentChild="Increase your sales ! (10 times the revenue !)" /></div>
     : null}
 
     {this.props.rdState > 2 ? 
@@ -40,6 +41,10 @@ class InvestmentBox extends Component{
         <button onClick={this.props.improveAutomaticMachines} className="rd-improve-button">Improve Automatic Machines ({this.props.automaticProductionCost}€)<div className="info-invest-rd-improve-button">Increase the productivity of all your automatic machines by x1.5</div></button>
         :null}
     </div> 
+    : null}
+
+{this.props.rdState > 4
+    ? <div><h3>EXPANSION</h3><button onClick={this.props.investRD} className="factory-button">Buy a factory ({this.props.rdCost}€)<div className="info-buy-factory-button">Let's get serious.</div></button></div>
     : null}
         </div>
         );
