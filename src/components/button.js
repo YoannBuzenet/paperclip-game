@@ -19,10 +19,8 @@ class Button extends Component{
 
     render(){
     var styleButton = {
-        position :'relative',
-        width:'50px',
-        height:'50px'
-        };
+        backgroundImage: `url(`+this.props.picture+`)`,
+        }; 
 
     return (
         <button
@@ -31,8 +29,7 @@ class Button extends Component{
         onMouseLeave={this.toggleHover}
         onClick={this.props.onClickProp} 
         className={this.props.classNameButton}>
-            {this.props.content} ({this.props.cost}€)
-            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover}/>
+            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost}/>
         </button>);
     }
 }

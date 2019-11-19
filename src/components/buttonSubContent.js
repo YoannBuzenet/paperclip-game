@@ -25,8 +25,8 @@ class ButtonSubContent extends Component{
             position : 'absolute',
             backgroundColor: 'white',
             border : '1px solid black',
-            top: '50%',
-            left: '130%',
+            top: '15%',
+            left: '220%',
             transform: 'translate(-50%, -50%)'}
     }
 
@@ -36,7 +36,7 @@ class ButtonSubContent extends Component{
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
         style={styleButton}>
-                {this.props.contentChild}
+    {this.props.cost}€<br/>{this.props.contentChild}
         </div>
     )}
 }
