@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from './button';
+import ButtonAutomaticData from './button-automatic-data-productivity';
 
 class InvestmentBox extends Component{
     constructor(props){
@@ -14,15 +15,15 @@ class InvestmentBox extends Component{
         <h3>MACHINES</h3>
             <div><Button onClickProp={this.props.buyASmallMachine} picture="./pictures/small-machine.png" classNameButton="small-machines-button menu-button" cost={5} classNameChild="info-small-machines-button" contentChild="Make some more (+ 5 paperclips per click)" />
         {this.props.rdState > 3 ? 
-        <button onClick={this.props.buyFiveSmallMachines} style={{display:'inline', marginLeft : 5}}>x5</button>
+        <Button onClickProp={this.props.buyFiveSmallMachines} picture="./pictures/small-machinex5.png" classNameButton="small-machines5-button menu-button" cost={25} classNameChild="info-small-machinesx5-button" contentChild="Make even more (+ 25 paperclips per click)" />
         : null}</div></div>
 
         {this.props.rdState > 2 
     ? <div>
         <div>
-            <Button onClickProp={this.props.buyASmallAutomaticMachine} picture="./pictures/automatic-machine.png" classNameButton="automatic-machines-button menu-button" cost={this.props.smallAutomaticMachineCost} classNameChild="info-automatic-machines-button" contentChild="Make some more (+ 5 paperclips per click)" />
+            <ButtonAutomaticData onClickProp={this.props.buyASmallAutomaticMachine} picture="./pictures/automatic-machine.png" classNameButton="automatic-machines-button menu-button" cost={this.props.smallAutomaticMachineCost} classNameChild="info-automatic-machines-button" contentChild=" paperclip per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} nbMachinesCreated={1}/>
         {this.props.rdState > 3 ? 
-        <button onClick={this.props.buyFiveAutomaticMachines} style={{display:'inline', marginLeft : 5}}>x5</button>
+        <ButtonAutomaticData onClickProp={this.props.buyFiveAutomaticMachines} picture="./pictures/automatic-machinex5.png" classNameButton="automatic-machines5-button menu-button" cost={50} classNameChild="info-automatic-machinesx5-button" contentChild=" paperclip per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} nbMachinesCreated={5}/>
     : null}
     </div> 
     </div>
@@ -36,7 +37,7 @@ class InvestmentBox extends Component{
         <div><h3 className="sales-title">SALES</h3>
         <div><Button onClickProp={this.props.hireASalesman} picture="./pictures/salesman.png" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost} classNameChild="info-salesman-button" contentChild="Make some more (+10 sales per second)" />
     {this.props.rdState > 3 ? 
-        <button onClick={this.props.buyFiveSales} style={{display:'inline', marginLeft : 5}}>x5</button>
+        <Button onClickProp={this.props.buyFiveSales} picture="./pictures/salesmanx5.png" classNameButton="salesman-button menu-button" cost={250} classNameChild="salesman-machines-button" contentChild="Hire 5 salesman in a row." />
     : null}</div></div>
     : null}
 
@@ -44,7 +45,7 @@ class InvestmentBox extends Component{
     ? <div><h3>Reaserch & Development</h3>
         <div><Button onClickProp={this.props.investRD} picture="./pictures/invest-in-research-and-development.png" classNameButton="rd-button menu-button" cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." />
     {this.props.rdState > 3 ?
-        <button onClick={this.props.improveAutomaticMachines} className="rd-improve-button menu-button">Improve Automatic Machines ({this.props.automaticProductionCost}€)<div className="info-invest-rd-improve-button">Increase the productivity of all your automatic machines by x1.5</div></button>
+    <Button onClickProp={this.props.improveAutomaticMachines} picture="./pictures/improve-automatic-machines.png" classNameButton="rd-improve-button menu-button" cost={this.props.automaticProductionCost} classNameChild="info-invest-rd-improve-button" contentChild="Increase the productivity of all your automatic machines by x1.5" />
         :null}
     </div></div>
     : null}

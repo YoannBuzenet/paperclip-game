@@ -33,6 +33,7 @@ header p.pageTitle {
 
 .menu-button{
   position :relative;
+  margin-right : 5px;
   width: 50px;
   height: 50px;
   background-color : #499DCE;
@@ -67,141 +68,6 @@ header p.pageTitle {
   margin-top: 1rem;
 } 
 
-.small-machines-button {
-  position :relative;
-}
-
-.info-small-machines-button{
-  display:none;
-}
-
-.small-machines-button:hover .info-small-machines-button{
-  display:block;
-  position : absolute;
-  background-color: white;
-  border : 1px solid black;
-  top:-30px;
-  right : -160px;
-  left: 160px;
-  z-index: 2;
-}
-
-.small-machines-button .info-small-machines-button:hover{
-  display:none;
-}
-
-.automatic-machines-button {
-  position : relative;
-}
-
-.info-automatic-machines-button {
-  display : none;
-}
-
-.automatic-machines-button:hover .info-automatic-machines-button{
-  display:block;
-  position : absolute;
-  background-color: white;
-  border : 1px solid black;
-  top:-30px;
-  right : -160px;
-  left: 160px;
-}
-
-.automatic-machines-button .info-automatic-machines-button:hover{
-  display : none;
-}
-
-.sales-title {
-  margin-bottom : -5px;
-}
-
-.salesman-button {
-  position : relative;
-}
-
-.info-salesman-button {
-  display: none;
-}
-
-.salesman-button:hover .info-salesman-button{
-  display:block;
-  position : absolute;
-  background-color: white;
-  border : 1px solid black;
-  top:-30px;
-  right : -160px;
-  left: 160px;
-}
-
-.salesman-button .info-salesman-button:hover{
-  display: none;
-}
-
-.rd-button{
-  position : relative;
-}
-
-.info-invest-rd-button{
-  display : none;
-}
-
-.rd-button:hover .info-invest-rd-button{
-  display:block;
-  position : absolute;
-  background-color: white;
-  border : 1px solid black;
-  top:-30px;
-  right : -160px;
-  left: 160px;
-}
-
-.rd-button .info-invest-rd-button:hover{
-  display : none;
-}
-
-.rd-improve-button{
-  position : relative;
-}
-
-.info-invest-rd-improve-button{
-  display : none;
-}
-
-.rd-improve-button:hover .info-invest-rd-improve-button{
-  display:block;
-  position : absolute;
-  background-color: white;
-  border : 1px solid black;
-  top:-30px;
-  right : -160px;
-  left: 160px;
-}
-
-.rd-improve-button .info-invest-rd-improve-button:hover{
-  display:none;
-}
-
-.factory-button{
-position : relative;
-}
-.info-buy-factory-button{
-  display: none;
-}
-
-.factory-button:hover .info-buy-factory-button{
-  display:block;
-  position : absolute;
-  background-color: white;
-  border : 1px solid black;
-  top:-5px;
-  right : -100px;
-  left: 150px;
-}
-
-.factory-button .info-buy-factory-button:hover{
-  display: none;
-}
 /***************************
 ****WORK COMPONENT****
 ***************************/

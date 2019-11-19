@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ButtonSubContent extends Component{
+class ButtonSubContentAutomaticProductivity extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -21,8 +21,8 @@ class ButtonSubContent extends Component{
     if(this.props.onHover){
         styleButton = {
             display:'block',
-            zIndex : 4,
             width:'80px',
+            zIndex :4,
             position : 'absolute',
             backgroundColor: 'white',
             border : '1px solid black',
@@ -37,9 +37,9 @@ class ButtonSubContent extends Component{
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
         style={styleButton}>
-    {this.props.cost}€<br/>{this.props.contentChild}
+    {this.props.cost}€<br/>+ {this.props.automaticProductivityPerMachine * this.props.nbMachinesCreated}<br />{this.props.contentChild}
         </div>
     )}
 }
 
-export default ButtonSubContent
+export default ButtonSubContentAutomaticProductivity
