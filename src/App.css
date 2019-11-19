@@ -68,28 +68,6 @@ header p.pageTitle {
   display:none;
 }
 
-/* .invest-marketing-button{
-  position :relative;
-} */
-
-/* .info-invest-marketing-button {
-  display : none;
-} */
-
-/* .invest-marketing-button:hover .info-invest-marketing-button{
-  display:block;
-  position : absolute;
-  background-color: white;
-  border : 1px solid black;
-  top:-30px;
-  right : -160px;
-  left: 160px;
-} */
-
-/* .invest-marketing-button .info-invest-marketing-button:hover{
-  display : none;
-} */
-
 .automatic-machines-button {
   position : relative;
 }

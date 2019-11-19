@@ -18,7 +18,11 @@ class Button extends Component{
     }
 
     render(){
-    var styleButton = {position :'relative'};
+    var styleButton = {
+        position :'relative',
+        width:'50px',
+        height:'50px'
+        };
 
     return (
         <button

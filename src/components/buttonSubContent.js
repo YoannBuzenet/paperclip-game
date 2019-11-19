@@ -21,12 +21,13 @@ class ButtonSubContent extends Component{
     if(this.props.onHover){
         styleButton = {
             display:'block',
+            width:'80px',
             position : 'absolute',
             backgroundColor: 'white',
             border : '1px solid black',
-            top:'-30px',
-            right : '-160px',
-            left: '160px'};
+            top: '50%',
+            left: '130%',
+            transform: 'translate(-50%, -50%)'}
     }
 
     return (
