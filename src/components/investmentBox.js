@@ -51,7 +51,8 @@ class InvestmentBox extends Component{
     : null}
 
 {this.props.rdState > 4
-    ? <div><h3>EXPANSION</h3><div><button onClick={this.props.investRD} className="factory-button">Buy a factory ({this.props.rdCost}€)<div className="info-buy-factory-button">Let's get serious.</div></button></div></div>
+    ? <div><h3>EXPANSION</h3><div>
+    <Button onClickProp={this.props.improveAutomaticMachines} picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={this.props.automaticProductionCost} classNameChild="info-buy-factory-button" contentChild="Let's get serious." /></div></div>
     : null}
         </div>
         );
