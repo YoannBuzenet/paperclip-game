@@ -196,6 +196,7 @@ handleClickDecrease(){
   }
 
   render(){
+    const {soldAtLeastOnePaperclip} = this.state
     return (<div className="App">
 
     <div className="main-content">
@@ -206,11 +207,11 @@ handleClickDecrease(){
       <div className="dashboard">
         <Dashboard />
         <NumberOfClicks numberOfClicks={this.state.count}/>
-        {this.state.soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.state.money} /> : null}
+        {soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.state.money} /> : null}
       </div>
 
       <div>
-        {this.state.soldAtLeastOnePaperclip ? <InvestmentBox buyASmallMachine={this.buyASmallMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} buyASmallAutomaticMachine={this.buyASmallAutomaticMachine} numberOfSmallAutomaticMachines={this.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} buyFiveSmallMachines={this.buyFiveSmallMachines} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveAutomaticMachines={this.buyFiveAutomaticMachines} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine}/> : null}
+        {soldAtLeastOnePaperclip ? <InvestmentBox buyASmallMachine={this.buyASmallMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} buyASmallAutomaticMachine={this.buyASmallAutomaticMachine} numberOfSmallAutomaticMachines={this.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} buyFiveSmallMachines={this.buyFiveSmallMachines} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveAutomaticMachines={this.buyFiveAutomaticMachines} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine}/> : null}
       </div>
       <div>
         {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman}/> : null}
