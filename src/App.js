@@ -47,7 +47,7 @@ class App extends Component{
   this.hireASalesman = this.hireASalesman.bind(this);    
   this.buyFiveAutomaticMachines = this.buyFiveAutomaticMachines.bind(this);    
   this.buyFiveSales = this.buyFiveSales.bind(this);    
-  this.improveAutomaticMachines = this.improveAutomaticMachines.bind(this);    
+  this.improveAutomaticMachines = this.improveAutomaticMachines.bind(this);      
   }
 
 componentDidMount(){
@@ -74,10 +74,10 @@ automaticCounting(){
 }
 
 handleClickIncrease(){
-    this.setState(state => { return ({
-        count : state.count + state.productivity
-      });
+  this.setState(state => { return ({
+    count : state.count + state.productivity,
     });
+  });
 }
 
 handleClickDecrease(){
