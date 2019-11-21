@@ -8,7 +8,7 @@ class InvestmentBox extends Component{
     }
 
     render(){
-    return (<div className="investment-box">
+    return (<div className="investment-box interface-div">
         <h2>INVESTMENT</h2>
 
         <div>

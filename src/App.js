@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Dashboard from './components/dashboard';
+import Dashboard from './components/Dashboard';
 import MainButton from './components/main-button';
 import NumberOfClicks from './components/number-of-clicks';
 import SellButton from './components/sellButton';
@@ -78,8 +78,8 @@ handleClickIncrease(){
         count : state.count + state.productivity
       });
     });
-    console.log(this.state);
 }
+
 handleClickDecrease(){
     if(this.state.count >= this.state.unitsSold){
     this.setState(state => { return ({
@@ -88,12 +88,10 @@ handleClickDecrease(){
         soldAtLeastOnePaperclip : true
         });
       });
-    //console.log(this.state);
     }
 }
 
   buyASmallMachine(){
-    console.log(this.state);
     if(this.state.money >= 5){
     this.setState(state => { return ({
       money : state.money - 5,
@@ -118,7 +116,6 @@ handleClickDecrease(){
   }
 
   buyASmallAutomaticMachine(){
-    console.log(this.state);
     if(this.state.money >= this.state.smallAutomaticMachineCost){
     this.setState(state => { return ({
       money : state.money - state.smallAutomaticMachineCost,
@@ -199,28 +196,43 @@ handleClickDecrease(){
     const {soldAtLeastOnePaperclip} = this.state
     return (<div className="App">
 
-    <div className="main-content">
-      <header>
-      <p className="pageTitle">PAPERCLIP MAKER</p>
-      </header>
-      
-      <div className="dashboard">
-        <Dashboard />
-        <NumberOfClicks numberOfClicks={this.state.count}/>
-        {soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.state.money} /> : null}
-      </div>
+    <header>
+    <p className="pageTitle">PAPERCLIP MAKER</p>
+    </header>
 
-      <div>
-        {soldAtLeastOnePaperclip ? <InvestmentBox buyASmallMachine={this.buyASmallMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} buyASmallAutomaticMachine={this.buyASmallAutomaticMachine} numberOfSmallAutomaticMachines={this.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} buyFiveSmallMachines={this.buyFiveSmallMachines} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveAutomaticMachines={this.buyFiveAutomaticMachines} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine}/> : null}
-      </div>
-      <div>
-        {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman}/> : null}
-      </div>
+    <div className="main-content">
+  
+      <div className="left-div">
+        <div>
+          {soldAtLeastOnePaperclip ? <InvestmentBox buyASmallMachine={this.buyASmallMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} buyASmallAutomaticMachine={this.buyASmallAutomaticMachine} numberOfSmallAutomaticMachines={this.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} buyFiveSmallMachines={this.buyFiveSmallMachines} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveAutomaticMachines={this.buyFiveAutomaticMachines} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine}/> : null}
+        </div>
+        <div>
+          {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman}/> : null}
+        </div>
+        <div style={{clear:'both'}}></div>
+      </div>  
       
-      <p className="app-main-buttons">
+      <div className="middle-div">
+        
+        <div className="dashboard interface-div">
+          <Dashboard />
+          <NumberOfClicks numberOfClicks={this.state.count}/>
+          {soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.state.money} /> : null}
+        </div>
+
+        <p className="app-main-buttons">
           <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity}/>
           {this.state.count > 0 ? <SellButton sell={this.handleClickDecrease} unitsSold={this.state.unitsSold}/>:null}
-      </p>
+        </p>
+      </div>
+
+      <div className="right-div">
+        <div className="interface-div" style={{backgroundColor:"red"}}>
+          <h2>AI Stuff</h2>
+          <p>hey</p>
+        </div>  
+      </div>
+      
     </div>
   </div>
   );

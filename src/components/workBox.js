@@ -6,7 +6,7 @@ class WorkBox extends Component{
     }
 
     render(){
-    return (<div className="work-box">
+    return (<div className="work-box interface-div">
         <h2>WORK</h2>
     <h3>Small Machines : {this.props.numberOfSmallMachines}</h3>
     {this.props.numberOfSmallAutomaticMachines > 0 
