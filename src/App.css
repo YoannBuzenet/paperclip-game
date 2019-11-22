@@ -166,17 +166,14 @@ div > h3 {
   color : white;
 }
 
-.main-button-number li {
+.graphInput {
+  transform: scale(1.5);
   color : green;
   text-align: center;
   position : absolute;
   width :100%;
   animation-duration : 1s;
   animation-name : graphicInput;
-}
-
-.graphInput {
-  transform: scale(1.5);
 }
 
 @keyframes graphicInput {

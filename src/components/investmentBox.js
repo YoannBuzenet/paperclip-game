@@ -13,7 +13,7 @@ class InvestmentBox extends Component{
 
         <div>
         <h3>MACHINES</h3>
-            <div><Button onClickProp={this.props.buyASmallMachine} picture="./pictures/small-machine.png" classNameButton="small-machines-button menu-button" cost={5} classNameChild="info-small-machines-button" contentChild="Make some more (+ 5 paperclips per click)" />
+            <div><Button onClickProp={this.props.buyAMechanicalMachine} machineProductivity={5} picture="./pictures/small-machine.png" classNameButton="small-machines-button menu-button" cost={5} classNameChild="info-small-machines-button" contentChild="Make some more (+ 5 paperclips per click)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} stateToIncrement={this.props.numberOfSmallMachines}/>
         {this.props.rdState > 3 ? 
         <Button onClickProp={this.props.buyFiveSmallMachines} picture="./pictures/small-machinex5.png" classNameButton="small-machines5-button menu-button" cost={25} classNameChild="info-small-machinesx5-button" contentChild="Make even more (+ 25 paperclips per click)" />
         : null}</div></div>

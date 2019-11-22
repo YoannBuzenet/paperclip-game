@@ -38,7 +38,7 @@ class App extends Component{
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
   this.handleClickDecrease = this.handleClickDecrease.bind(this);    
-  this.buyASmallMachine = this.buyASmallMachine.bind(this);    
+  this.buyAMechanicalMachine = this.buyAMechanicalMachine.bind(this);    
   this.investInMarketing = this.investInMarketing.bind(this);    
   this.investInRD = this.investInRD.bind(this);    
   this.buyASmallAutomaticMachine = this.buyASmallAutomaticMachine.bind(this);    
@@ -47,7 +47,8 @@ class App extends Component{
   this.hireASalesman = this.hireASalesman.bind(this);    
   this.buyFiveAutomaticMachines = this.buyFiveAutomaticMachines.bind(this);    
   this.buyFiveSales = this.buyFiveSales.bind(this);    
-  this.improveAutomaticMachines = this.improveAutomaticMachines.bind(this);      
+  this.improveAutomaticMachines = this.improveAutomaticMachines.bind(this);  
+  this.createAndRemoveGraphicEffect = this.createAndRemoveGraphicEffect.bind(this);    
   }
 
 componentDidMount(){
@@ -91,15 +92,26 @@ handleClickDecrease(){
     }
 }
 
-  buyASmallMachine(){
-    if(this.state.money >= 5){
-    this.setState(state => { return ({
-      money : state.money - 5,
-      numberOfSmallMachines : state.numberOfSmallMachines +1,
-      firstMachine : true,
-      productivity : state.productivity +5
+  buyAMechanicalMachine(cost, productivity, stateDataToIncrement){
+    if(this.state.money >= cost){
+      
+      var stateObject = function(){
+        let obj={};
+        obj[stateDataToIncrement] = stateDataToIncrement +1
+      }
+      console.log(stateDataToIncrement);
+      console.log(stateObject);
+
+      this.setState(stateObject);
+
+      this.setState(state => { return ({
+        money : state.money - cost,
+        numberOfSmallMachines : state.numberOfSmallMachines +1,
+        firstMachine : true,
+        productivity : state.productivity + productivity
+          });
         });
-      });
+
     }
   }
 
@@ -192,6 +204,16 @@ handleClickDecrease(){
       }
   }
 
+  createAndRemoveGraphicEffect(textToRender, idParent, tagChild, classGraphic){
+    var parent = document.getElementById(idParent);
+    var childCreated = document.createElement(tagChild);
+    childCreated.classList.add(classGraphic);
+    childCreated.innerText = textToRender;
+    parent.appendChild(childCreated);
+
+    setTimeout(()=> (childCreated.remove()), 800)
+}
+
   render(){
     const {soldAtLeastOnePaperclip} = this.state
     return (<div className="App">
@@ -204,7 +226,7 @@ handleClickDecrease(){
   
       <div className="left-div">
         <div>
-          {soldAtLeastOnePaperclip ? <InvestmentBox buyASmallMachine={this.buyASmallMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} buyASmallAutomaticMachine={this.buyASmallAutomaticMachine} numberOfSmallAutomaticMachines={this.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} buyFiveSmallMachines={this.buyFiveSmallMachines} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveAutomaticMachines={this.buyFiveAutomaticMachines} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine}/> : null}
+          {soldAtLeastOnePaperclip ? <InvestmentBox buyAMechanicalMachine={this.buyAMechanicalMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} buyASmallAutomaticMachine={this.buyASmallAutomaticMachine} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} buyFiveSmallMachines={this.buyFiveSmallMachines} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveAutomaticMachines={this.buyFiveAutomaticMachines} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect}/> : null}
         </div>
         <div>
           {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman}/> : null}
@@ -220,8 +242,8 @@ handleClickDecrease(){
           {soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.state.money} /> : null}
         </div>
 
-        <p className="app-main-buttons">
-          <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity}/>
+        <p className="app-main-buttons">{
+          <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/>}
           {this.state.count > 0 ? <SellButton sell={this.handleClickDecrease} unitsSold={this.state.unitsSold}/>:null}
         </p>
       </div>

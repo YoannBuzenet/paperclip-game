@@ -8,6 +8,7 @@ class Button extends Component{
             hover : false
         }
         this.toggleHover = this.toggleHover.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     toggleHover(){
@@ -15,6 +16,10 @@ class Button extends Component{
             hover: !state.hover
             });
         });
+    }
+
+    handleClick(){
+        this.props.onClickProp(this.props.cost, this.props.machineProductivity, this.props.stateToIncrement);
     }
 
     render(){
@@ -27,7 +32,7 @@ class Button extends Component{
         style={styleButton}
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
-        onClick={this.props.onClickProp} 
+        onClick={this.handleClick} 
         className={this.props.classNameButton}>
             <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost}/>
         </button>);
