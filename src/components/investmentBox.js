@@ -13,9 +13,9 @@ class InvestmentBox extends Component{
 
         <div>
         <h3>MACHINES</h3>
-            <div><Button onClickProp={this.props.buyAMachine} machineProductivity={5} picture="./pictures/small-machine.png" classNameButton="small-machines-button menu-button" cost={5} classNameChild="info-small-machines-button" contentChild="Make some more (+ 5 paperclips per click)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} isManual={true} machineQuantity={1} machineType="smallMachine"/>
+            <div><Button onClickProp={this.props.buyAMachine} money={this.props.money} machineProductivity={5} picture="./pictures/small-machine.png" classNameButton="small-machines-button menu-button" cost={5} classNameChild="info-small-machines-button" contentChild="Make some more (+ 5 paperclips per click)" isManual={true} machineQuantity={1} machineType="smallMachine" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} containsAnimation={true} id='small-Machine-Button' textAnimation="+5" animationIdTarget='ul-main-number' animationTypeOfElementCreated='li' animationCSSClass='graphInputOrange'/>
         {this.props.rdState > 3 ? 
-        <Button onClickProp={this.props.buyAMachine} machineProductivity={25} picture="./pictures/small-machinex5.png" classNameButton="small-machines5-button menu-button" cost={25} classNameChild="info-small-machinesx5-button" contentChild="Make even more (+ 25 paperclips per click)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} isManual={true} machineQuantity={5} machineType="smallMachine"/>
+        <Button onClickProp={this.props.buyAMachine} money={this.props.money} machineProductivity={25} picture="./pictures/small-machinex5.png" classNameButton="small-machines5-button menu-button" cost={25} classNameChild="info-small-machinesx5-button" contentChild="Make even more (+ 25 paperclips per click)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} isManual={true} machineQuantity={5} machineType="smallMachine" containsAnimation={true} id='small-Machine-Buttonx5' textAnimation="+25" animationIdTarget='ul-main-number' animationTypeOfElementCreated='li' animationCSSClass='graphInputOrange'/>
         : null}</div></div>
 
         {this.props.rdState > 2 
@@ -30,7 +30,7 @@ class InvestmentBox extends Component{
     : null}
 
     {this.props.numberOfSmallMachines > 0 
-    ? <div><h3>MARKETING</h3><div><Button onClickProp={this.props.investInMarketing} picture="./pictures/invest-in-marketing.png" classNameButton="invest-marketing-button menu-button" cost={this.props.marketingCost} classNameChild="info-invest-marketing-button" contentChild="Increase your sales ! (10 times the revenue)" /></div></div>
+    ? <div><h3>MARKETING</h3><div><Button onClickProp={this.props.investInMarketing} picture="./pictures/invest-in-marketing.png" classNameButton="invest-marketing-button menu-button" cost={this.props.marketingCost} classNameChild="info-invest-marketing-button" contentChild="Increase your sales ! (10 times the revenue)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} money={this.props.money} containsAnimation={true} id='marketing-button' textAnimation="X 10" animationIdTarget='sell-area' animationTypeOfElementCreated='li' animationCSSClass='graphInputBig'/></div></div>
     : null}
 
     {this.props.rdState > 2 ? 

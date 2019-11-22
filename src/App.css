@@ -176,6 +176,27 @@ div > h3 {
   animation-name : graphicInput;
 }
 
+.graphInputOrange {
+  transform: scale(1);
+  color : orange;
+  text-align: center;
+  position : absolute;
+  width :150px;
+  animation-duration : 1s;
+  animation-name : graphicInput;
+}
+
+.graphInputBig {
+  transform: scale(2);
+  color : red;
+  text-align: center;
+  position : absolute;
+  width :150px;
+  animation-duration : 1s;
+  font-weight:bold;
+  animation-name : graphicInput;
+}
+
 @keyframes graphicInput {
   from {
     bottom : 0%;

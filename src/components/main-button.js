@@ -9,7 +9,7 @@ class MainButton extends Component{
         var mainButton = document.getElementById('main-button-id');
 
         mainButton.addEventListener('click', ()=>{
-            this.props.createAndRemoveGraphicEffect(this.props.productivity, 'ul-main-number', 'li', 'graphInput');
+            this.props.createAndRemoveGraphicEffect('+'+this.props.productivity, 'ul-main-number', 'li', 'graphInput');
         });
     }
     
@@ -17,7 +17,7 @@ class MainButton extends Component{
         var mainButton = document.getElementById('main-button-id');
 
         mainButton.removeEventListener('click', ()=>{
-            this.props.createAndRemoveGraphicEffect(this.props.productivity, 'ul-main-number', 'li', 'graphInput');
+            this.props.createAndRemoveGraphicEffect('+'+this.props.productivity, 'ul-main-number', 'li', 'graphInput');
         })
     }
 

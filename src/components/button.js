@@ -11,6 +11,30 @@ class Button extends Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentDidMount(){
+        if(this.props.containsAnimation){
+            var mainButton = document.getElementById(this.props.id);
+
+            mainButton.addEventListener('click', ()=>{
+                if(this.props.money >= this.props.cost){
+                    this.props.createAndRemoveGraphicEffect(this.props.textAnimation, this.props.animationIdTarget, this.props.animationTypeOfElementCreated, this.props.animationCSSClass);
+                }
+            });
+        }
+    }
+    
+    componentWillUnmount(){
+        if(this.props.containsAnimation){
+            var mainButton = document.getElementById(this.props.id);
+
+            mainButton.removeEventListener('click', ()=>{
+                if(this.props.money >= this.props.cost){
+                    this.props.createAndRemoveGraphicEffect(this.props.textAnimation, this.props.animationIdTarget, this.props.animationTypeOfElementCreated, this.props.animationCSSClass);
+                }
+            })
+        }    
+    }
+
     toggleHover(){
         this.setState(state => { return ({
             hover: !state.hover
@@ -32,7 +56,8 @@ class Button extends Component{
         style={styleButton}
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
-        onClick={this.handleClick} 
+        onClick={this.handleClick}
+        id={this.props.id ? this.props.id : null}
         className={this.props.classNameButton}>
             <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost}/>
         </button>);

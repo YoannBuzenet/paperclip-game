@@ -13,8 +13,8 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 100000,
-          money : 100000,
+          count : 1000000,
+          money : 1000000,
           soldAtLeastOnePaperclip : false,
           firstMachine : false,
           numberOfSmallMachines : 0,
@@ -48,53 +48,53 @@ class App extends Component{
   this.createAndRemoveGraphicEffect = this.createAndRemoveGraphicEffect.bind(this);    
   }
 
-componentDidMount(){
-    var intervalId = setInterval(this.automaticCounting, 1000);
-    // store intervalId in the state so it can be accessed later:
-    this.setState({intervalId: intervalId});
-}
+  componentDidMount(){
+      var intervalId = setInterval(this.automaticCounting, 1000);
+      // store intervalId in the state so it can be accessed later:
+      this.setState({intervalId: intervalId});
+  }
 
-automaticCounting(){
-  this.setState(state => { 
-    if(state.count + state.automaticProduction - 10*state.salesman < 0){
-      return ({
-        count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine,
-        salesmanCantsell : true
+  automaticCounting(){
+    this.setState(state => { 
+      if(state.count + state.automaticProduction - 10*state.salesman < 0){
+        return ({
+          count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine,
+          salesmanCantsell : true
+      });
+      }
+      else{
+        return ({
+        count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine- 10*state.salesman,
+        money : state.money + 0.25*10*state.salesman
     });
     }
-    else{
-      return ({
-      count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine- 10*state.salesman,
-      money : state.money + 0.25*10*state.salesman
   });
   }
-});
-}
 
-handleClickIncrease(){
-  this.setState(state => { return ({
-    count : state.count + state.productivity,
-    });
-  });
-}
-
-handleClickDecrease(){
-    if(this.state.count >= this.state.unitsSold){
+  handleClickIncrease(){
     this.setState(state => { return ({
-        count : state.count - state.unitsSold,
-        money : state.money + (0.25 * state.unitsSold),
-        soldAtLeastOnePaperclip : true
-        });
+      count : state.count + state.productivity,
       });
-    }
-}
+    });
+  }
+
+  handleClickDecrease(){
+      if(this.state.count >= this.state.unitsSold){
+      this.setState(state => { return ({
+          count : state.count - state.unitsSold,
+          money : state.money + (0.25 * state.unitsSold),
+          soldAtLeastOnePaperclip : true
+          });
+        });
+      }
+  }
 
   buyAMachine(cost, productivity, isManual, machineType, quantity){
     //Function that allows to buy all kind of machines (automatic, manual)
     if(this.state.money >= cost){
-      console.log("lol1");
+      
       if(isManual){
-        console.log("lol2");
+        
         if(machineType =="smallMachine"){
 
           this.setState(state => { return ({
@@ -108,9 +108,9 @@ handleClickDecrease(){
 
       }
       else{
-        console.log("lol3");
+        
         if(machineType == "smallAutomaticMachine"){
-          console.log("lol4");
+          
           this.setState(state => { return ({
             money : state.money - cost,
             numberOfSmallAutomaticMachines : state.numberOfSmallAutomaticMachines + quantity,
@@ -201,7 +201,7 @@ handleClickDecrease(){
   
       <div className="left-div">
         <div>
-          {soldAtLeastOnePaperclip ? <InvestmentBox buyAMachine={this.buyAMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} buyASmallAutomaticMachine={this.buyASmallAutomaticMachine} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect}/> : null}
+          {soldAtLeastOnePaperclip ? <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/> : null}
         </div>
         <div>
           {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman}/> : null}
@@ -219,7 +219,7 @@ handleClickDecrease(){
 
         <p className="app-main-buttons">{
           <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/>}
-          {this.state.count > 0 ? <SellButton sell={this.handleClickDecrease} unitsSold={this.state.unitsSold}/>:null}
+          {this.state.count > 0 ? <SellButton createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} sell={this.handleClickDecrease} unitsSold={this.state.unitsSold }/>:null}
         </p>
       </div>
 
