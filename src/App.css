@@ -175,6 +175,10 @@ div > h3 {
   animation-name : graphicInput;
 }
 
+.graphInput {
+  transform: scale(1.5);
+}
+
 @keyframes graphicInput {
   from {
     bottom : 0%;
