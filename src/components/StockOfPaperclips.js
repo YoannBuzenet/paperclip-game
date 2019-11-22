@@ -10,8 +10,8 @@ import React, { Component } from 'react';
 //     }
 // }
 
-const NumberOfClicks = ({numberOfClicks}) => {
-    return <p className="number-of-clicks">Number of paperclips : {numberOfClicks}</p>;
+const StockOfPaperclips = ({stockOfPaperclips}) => {
+    return <p className="stockOfPaperclips">Paperclips in stock : <strong>{stockOfPaperclips}</strong></p>;
 }
 
-export default NumberOfClicks
+export default StockOfPaperclips

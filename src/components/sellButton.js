@@ -7,9 +7,14 @@ class SellButton extends Component{
 
     componentDidMount(){
         var sellButton = document.getElementById('sell-button-id');
-
+        
         sellButton.addEventListener('click', ()=>{
-            this.props.createAndRemoveGraphicEffect('+'+this.props.unitsSold * .25+'€', 'sell-area', 'li', 'graphInput');
+            if(this.props.count>=this.props.unitsSold){
+                this.props.createAndRemoveGraphicEffect('+'+this.props.unitsSold * .25+'€', 'sell-area', 'li', 'graphInput');
+            }
+            else{
+                this.props.createAndRemoveGraphicEffect('No Stock !', 'sell-area', 'li', 'redMessage');
+            }    
         });
     }
     
@@ -17,7 +22,8 @@ class SellButton extends Component{
         var sellButton = document.getElementById('sell-button-id');
 
         sellButton.removeEventListener('click', ()=>{
-            this.props.createAndRemoveGraphicEffect('+'+this.props.unitsSold * .25+'€', 'sell-area', 'li', 'graphInput');
+              this.props.createAndRemoveGraphicEffect('+'+this.props.unitsSold * .25+'€', 'sell-area', 'li', 'graphInput');
+              this.props.createAndRemoveGraphicEffect('No Stock !', 'sell-area', 'li', 'graphInput');
         })
     }
 

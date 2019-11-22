@@ -59,7 +59,7 @@ class Button extends Component{
         onClick={this.handleClick}
         id={this.props.id ? this.props.id : null}
         className={this.props.classNameButton}>
-            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost}/>
+            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} name={this.props.name}/>
         </button>);
     }
 }

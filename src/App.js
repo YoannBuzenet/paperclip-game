@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import MainButton from './components/main-button';
-import NumberOfClicks from './components/number-of-clicks';
+import StockOfPaperclips from './components/StockOfPaperclips';
 import SellButton from './components/sellButton';
 import DisplayMoney from './components/displaymoney';
 import InvestmentBox from './components/investmentBox.js';
@@ -13,8 +13,8 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 1000000,
-          money : 1000000,
+          count : 10000,
+          money : 10000,
           soldAtLeastOnePaperclip : false,
           firstMachine : false,
           numberOfSmallMachines : 0,
@@ -24,7 +24,11 @@ class App extends Component{
           marketingState : 2,
           rdCost : 5,
           rdState : 2,
+          listOfCosts : [200, 1000, 3000, 5000, 10000, 20000,50000,100000],
+          marketingListOfCosts : [30, 100, 200, 500, 1000, 3000, 5000, 10000, 20000,50000,100000],
+          rdListofCosts : [30, 100, 200, 500, 1000, 3000, 5000, 10000, 20000,50000,100000],
           numberOfSmallAutomaticMachines : 0,
+          boughtAnAutomaticMachine : false,
           smallAutomaticMachineCost : 10,
           automaticProduction : 0,
           automaticProductionImprovment : 2,
@@ -33,7 +37,9 @@ class App extends Component{
           intervalId : 0,
           salesman : 0,
           salesmanCost : 50,
+          hasHiredaSalesman : false,
           salesmanCantsell : false,
+          hasBoughtAFactory : false,
           numberOfFactory : 0
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
@@ -114,8 +120,17 @@ class App extends Component{
           this.setState(state => { return ({
             money : state.money - cost,
             numberOfSmallAutomaticMachines : state.numberOfSmallAutomaticMachines + quantity,
-            firstMachine : true,
-            automaticProduction : state.automaticProduction + quantity
+            boughtAnAutomaticMachine : true,
+            automaticProduction : state.automaticProduction + quantity*productivity
+              });
+            });
+        }
+        else if(machineType == "factory"){
+          this.setState(state => { return ({
+            money : state.money - cost,
+            numberOfFactory : state.numberOfFactory + 1,
+            hasBoughtAFactory : true,
+            automaticProduction : state.automaticProduction + quantity*productivity
               });
             });
         }
@@ -130,7 +145,7 @@ class App extends Component{
         money : state.money - state.automaticProductionCost,
         productivyPerAutomaticMachine : (state.productivyPerAutomaticMachine *1.5),
         automaticProductionImprovment : state.automaticProductionImprovment +1,
-        automaticProductionCost : (state.automaticProductionImprovment*Math.pow(10, state.automaticProductionImprovment))
+        automaticProductionCost : (state.listOfCosts[state.automaticProductionImprovment-1])
           });
         });
       }
@@ -140,7 +155,7 @@ class App extends Component{
     if(this.state.money >= this.state.marketingCost){
     this.setState(state => { return ({
       money : state.money - state.marketingCost,
-      marketingCost : (state.marketingState*Math.pow(10, state.marketingState)),
+      marketingCost : (state.marketingListOfCosts[state.marketingState-2]),
       marketingState : state.marketingState +1,
       unitsSold : state.unitsSold *10
         });
@@ -153,7 +168,7 @@ class App extends Component{
     this.setState(state => { return ({
       money : state.money - state.rdCost,
       rdState : state.rdState +1,
-      rdCost :  (state.rdState*Math.pow(10, state.rdState))
+      rdCost :  (state.rdListofCosts[state.rdState-1])
         });
       });
     }
@@ -163,6 +178,7 @@ class App extends Component{
     if(this.state.money >= this.state.salesmanCost){
       this.setState(state => { return ({
         money : state.money - state.salesmanCost,
+        hasHiredaSalesman : true,
         salesman : state.salesman +1
           });
         });
@@ -173,6 +189,7 @@ class App extends Component{
     if(this.state.money >= this.state.salesmanCost * 5){
       this.setState(state => { return ({
         money : state.money - state.salesmanCost * 5,
+        hasHiredaSalesman : true,
         salesman : state.salesman +5
           });
         });
@@ -204,7 +221,7 @@ class App extends Component{
           {soldAtLeastOnePaperclip ? <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} numberOfSmallMachines={this.state.numberOfSmallMachines} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdState={this.state.rdState} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/> : null}
         </div>
         <div>
-          {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman}/> : null}
+          {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory}/> : null}
         </div>
         <div style={{clear:'both'}}></div>
       </div>  
@@ -213,13 +230,16 @@ class App extends Component{
         
         <div className="dashboard interface-div">
           <Dashboard />
-          <NumberOfClicks numberOfClicks={this.state.count}/>
+          <StockOfPaperclips stockOfPaperclips={this.state.count}/>
           {soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.state.money} /> : null}
+  {this.state.boughtAnAutomaticMachine && <p>Paperclips produced per second: <strong>{this.state.automaticProduction * this.state.productivyPerAutomaticMachine}</strong></p>}
+  {this.state.hasHiredaSalesman && <p>Paperclips solds every second : <strong>{this.state.salesman * 10}</strong></p>}
         </div>
+        { this.state.hasBoughtAFactory && <div className="activity-dashboard interface-div">ACTIVITY</div>}
 
         <p className="app-main-buttons">{
           <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/>}
-          {this.state.count > 0 ? <SellButton createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} sell={this.handleClickDecrease} unitsSold={this.state.unitsSold }/>:null}
+          {this.state.count > 0 || soldAtLeastOnePaperclip ? <SellButton createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} sell={this.handleClickDecrease} unitsSold={this.state.unitsSold } count={this.state.count}/>:null}
         </p>
       </div>
 

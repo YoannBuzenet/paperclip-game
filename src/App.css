@@ -1,6 +1,10 @@
 /***************************
 *********GENERAL************
 ***************************/
+* {
+  outline: none;
+}
+
 body, html {
   padding : 0;
   margin : 0;
@@ -88,6 +92,14 @@ div > h3 {
 } 
 
 /***************************
+******ACTIVITY DASHBOARD****
+***************************/
+
+.activity-dashboard {
+  background-color : mediumseagreen;
+}
+
+/***************************
 ******GAMING BUTTONS******
 ***************************/
 
@@ -109,6 +121,14 @@ div > h3 {
 
 .menu-button:active{
   background-color: #2d76a1;
+}
+
+.hover-button {
+  padding : .5rem;
+}
+
+.hover-name {
+  font-weight: bold;
 }
 
 /***************************
@@ -194,6 +214,17 @@ div > h3 {
   width :150px;
   animation-duration : 1s;
   font-weight:bold;
+  animation-name : graphicInputBig;
+}
+
+.redMessage {
+  color : red;
+  text-align: center;
+  position : absolute;
+  font-size :3rem;
+  width :150px;
+  animation-duration : 1s;
+  font-weight:bold;
   animation-name : graphicInput;
 }
 
@@ -206,5 +237,19 @@ div > h3 {
   to {
     bottom : 150%;
     opacity: 0;
+  }
+}
+
+@keyframes graphicInputBig {
+  from {
+    bottom : 0%;
+    opacity : 1;
+    font-size : 3rem;
+  }
+
+  to {
+    bottom : 30%;
+    opacity: 0;
+    font-size : 6rem;
   }
 }

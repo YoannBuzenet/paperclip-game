@@ -21,13 +21,13 @@ class ButtonSubContentAutomaticProductivity extends Component{
     if(this.props.onHover){
         styleButton = {
             display:'block',
-            width:'80px',
+            width:'100px',
             zIndex :4,
             position : 'absolute',
             backgroundColor: 'white',
             border : '1px solid black',
             top: '15%',
-            left: '220%',
+            left: '250%',
             transform: 'translate(-50%, -50%)'}
     }
 
@@ -36,7 +36,7 @@ class ButtonSubContentAutomaticProductivity extends Component{
         className={this.props.classNameChild}
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
-        style={styleButton}>
+        style={styleButton}><span className="hover-name">{this.props.name}</span><br />
     {this.props.cost}€<br/>+ {this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild}
         </div>
     )}
