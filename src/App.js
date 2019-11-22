@@ -8,6 +8,7 @@ import SellButton from './components/sellButton';
 import DisplayMoney from './components/displaymoney';
 import InvestmentBox from './components/investmentBox.js';
 import WorkBox from './components/workBox.js';
+import DashboardActivity from './components/DashboardActivity.js';
 
 class App extends Component{
   constructor(props){
@@ -235,7 +236,7 @@ class App extends Component{
   {this.state.boughtAnAutomaticMachine && <p>Paperclips produced per second: <strong>{this.state.automaticProduction * this.state.productivyPerAutomaticMachine}</strong></p>}
   {this.state.hasHiredaSalesman && <p>Paperclips solds every second : <strong>{this.state.salesman * 10}</strong></p>}
         </div>
-        { this.state.hasBoughtAFactory && <div className="activity-dashboard interface-div">ACTIVITY</div>}
+        { this.state.hasBoughtAFactory && <DashboardActivity />}
 
         <p className="app-main-buttons">{
           <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/>}
