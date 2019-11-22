@@ -8,6 +8,7 @@ class ButtonAutomaticData extends Component{
             hover : false
         }
         this.toggleHover = this.toggleHover.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     toggleHover(){
@@ -15,6 +16,10 @@ class ButtonAutomaticData extends Component{
             hover: !state.hover
             });
         });
+    }
+
+    handleClick(){
+        this.props.onClickProp(this.props.cost, this.props.machineProductivity, this.props.isManual, this.props.machineType, this.props.machineQuantity);
     }
 
     render(){
@@ -27,9 +32,9 @@ class ButtonAutomaticData extends Component{
         style={styleButton}
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
-        onClick={this.props.onClickProp} 
+        onClick={this.handleClick} 
         className={this.props.classNameButton}>
-            <ButtonSubContentAutomaticProductivity classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} automaticProductivityPerMachine={this.props.automaticProductivityPerMachine} nbMachinesCreated={this.props.nbMachinesCreated}/>
+            <ButtonSubContentAutomaticProductivity classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} automaticProductivityPerMachine={this.props.automaticProductivityPerMachine} machineQuantity={this.props.machineQuantity}/>
         </button>);
     }
 }

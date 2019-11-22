@@ -13,17 +13,17 @@ class InvestmentBox extends Component{
 
         <div>
         <h3>MACHINES</h3>
-            <div><Button onClickProp={this.props.buyAMechanicalMachine} machineProductivity={5} picture="./pictures/small-machine.png" classNameButton="small-machines-button menu-button" cost={5} classNameChild="info-small-machines-button" contentChild="Make some more (+ 5 paperclips per click)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} stateToIncrement={this.props.numberOfSmallMachines}/>
+            <div><Button onClickProp={this.props.buyAMachine} machineProductivity={5} picture="./pictures/small-machine.png" classNameButton="small-machines-button menu-button" cost={5} classNameChild="info-small-machines-button" contentChild="Make some more (+ 5 paperclips per click)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} isManual={true} machineQuantity={1} machineType="smallMachine"/>
         {this.props.rdState > 3 ? 
-        <Button onClickProp={this.props.buyFiveSmallMachines} picture="./pictures/small-machinex5.png" classNameButton="small-machines5-button menu-button" cost={25} classNameChild="info-small-machinesx5-button" contentChild="Make even more (+ 25 paperclips per click)" />
+        <Button onClickProp={this.props.buyAMachine} machineProductivity={25} picture="./pictures/small-machinex5.png" classNameButton="small-machines5-button menu-button" cost={25} classNameChild="info-small-machinesx5-button" contentChild="Make even more (+ 25 paperclips per click)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} isManual={true} machineQuantity={5} machineType="smallMachine"/>
         : null}</div></div>
 
         {this.props.rdState > 2 
     ? <div>
         <div>
-            <ButtonAutomaticData onClickProp={this.props.buyASmallAutomaticMachine} picture="./pictures/automatic-machine.png" classNameButton="automatic-machines-button menu-button" cost={this.props.smallAutomaticMachineCost} classNameChild="info-automatic-machines-button" contentChild=" paperclip per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} nbMachinesCreated={1}/>
+            <ButtonAutomaticData onClickProp={this.props.buyAMachine} picture="./pictures/automatic-machine.png" classNameButton="automatic-machines-button menu-button" cost={this.props.smallAutomaticMachineCost} classNameChild="info-automatic-machines-button" contentChild=" paperclip per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} isManual={false} machineQuantity={1} machineType="smallAutomaticMachine"/>
         {this.props.rdState > 3 ? 
-        <ButtonAutomaticData onClickProp={this.props.buyFiveAutomaticMachines} picture="./pictures/automatic-machinex5.png" classNameButton="automatic-machines5-button menu-button" cost={50} classNameChild="info-automatic-machinesx5-button" contentChild=" paperclip per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} nbMachinesCreated={5}/>
+        <ButtonAutomaticData onClickProp={this.props.buyAMachine} picture="./pictures/automatic-machinex5.png" classNameButton="automatic-machines5-button menu-button" cost={50} classNameChild="info-automatic-machinesx5-button" contentChild=" paperclip per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} machineQuantity={5} isManual={false} machineType="smallAutomaticMachine"/>
     : null}
     </div> 
     </div>
