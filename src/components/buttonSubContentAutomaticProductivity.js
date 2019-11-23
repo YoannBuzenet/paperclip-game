@@ -37,7 +37,7 @@ class ButtonSubContentAutomaticProductivity extends Component{
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
         style={styleButton}><span className="hover-name">{this.props.name}</span><br />
-    {this.props.cost}€<br/>+ {this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild}
+    {this.props.cost}€<br/>+ {this.props.machineProductivity * this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild}
         </div>
     )}
 }
