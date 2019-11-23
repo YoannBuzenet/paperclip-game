@@ -3,9 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import MainButton from './components/main-button';
-import StockOfPaperclips from './components/StockOfPaperclips';
 import SellButton from './components/sellButton';
-import DisplayMoney from './components/displaymoney';
 import InvestmentBox from './components/investmentBox.js';
 import WorkBox from './components/workBox.js';
 import DashboardActivity from './components/DashboardActivity.js';
@@ -230,12 +228,9 @@ class App extends Component{
       <div className="middle-div">
         
         <div className="dashboard interface-div">
-          <Dashboard />
-          <StockOfPaperclips stockOfPaperclips={this.state.count}/>
-          {soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.state.money} /> : null}
-  {this.state.boughtAnAutomaticMachine && <p>Paperclips produced per second: <strong>{this.state.automaticProduction * this.state.productivyPerAutomaticMachine}</strong></p>}
-  {this.state.hasHiredaSalesman && <p>Paperclips solds every second : <strong>{this.state.salesman * 10}</strong></p>}
+          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman}/>
         </div>
+
         { this.state.hasBoughtAFactory && <DashboardActivity />}
 
         <p className="app-main-buttons">{

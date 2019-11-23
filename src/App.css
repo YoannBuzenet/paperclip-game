@@ -92,11 +92,40 @@ div > h3 {
 } 
 
 /***************************
+******MAIN DASHBOARD******
+***************************/
+.dashboard-datas {
+  display : flex;
+  flex-wrap: wrap;;
+}
+
+.dashboard-datas p {
+  width : 250px;
+}
+
+/***************************
 ******ACTIVITY DASHBOARD****
 ***************************/
 
 .activity-dashboard {
+  padding-bottom : 1rem;
   background-color : mediumseagreen;
+  height : 240px;
+  overflow : hidden;
+}
+
+.activity-content{
+  display : flex;
+  justify-content: space-around;
+}
+
+.activity-kpi {
+
+}
+
+.pie-Chart {
+  height : 180px;
+  width: 180px;
 }
 
 /***************************
