@@ -54,26 +54,26 @@ class DashboardActivity extends Component{
             "color": "hsl(151, 70%, 50%)"
           },
           {
-            "id": "scala",
-            "label": "scala",
+            "id": "PPC Company",
+            "label": "PPC Company",
             "value": state.data[1].value+valueCompetitor1,
             "color": "hsl(56, 70%, 50%)"
           },
           {
-            "id": "hack",
-            "label": "hack",
+            "id": "World Supply Company",
+            "label": "World Supply Company",
             "value": state.data[2].value+valueCompetitor2,
             "color": "hsl(288, 70%, 50%)"
           },
           {
-            "id": "lisp",
-            "label": "lisp",
+            "id": "Metal PPC",
+            "label": "Metal PPC",
             "value": state.data[3].value+valueCompetitor3,
             "color": "hsl(299, 70%, 50%)"
           },
           {
-            "id": "erlang",
-            "label": "erlang",
+            "id": "DM Company",
+            "label": "DM Company",
             "value": state.data[4].value+valueCompetitor4,
             "color": "hsl(165, 70%, 50%)"
           }
