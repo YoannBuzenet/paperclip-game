@@ -13,8 +13,9 @@ class DialogInterface extends Component{
 
 
     componentDidMount(){
-        this.typeWriter("It's quite hard making all those paperclips by hand. Could we find another way ?", 'CoFounder :');
+        this.typeWriter(this.props.text[this.props.lang], 'CoFounder :')
     }
+
 
       typeWriter(txt, author, speed=20) {
         document.getElementById("author-box").innerHTML = author;

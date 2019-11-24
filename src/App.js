@@ -8,6 +8,7 @@ import InvestmentBox from './components/investmentBox.js';
 import WorkBox from './components/workBox.js';
 import DashboardActivity from './components/DashboardActivity.js';
 import DialogInterface from './components/DialogInterface.js';
+import { ENGINE_METHOD_ALL } from 'constants';
 
 class App extends Component{
   constructor(props){
@@ -45,7 +46,12 @@ class App extends Component{
           hasHiredaSalesman : false,
           salesmanCantsell : false,
           hasBoughtAFactory : false,
-          numberOfFactory : 0
+          numberOfFactory : 0,
+          lang : 'en',
+          text:{
+            fr : 'fr babe',
+            en : 'en babe'
+          }
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
   this.handleClickDecrease = this.handleClickDecrease.bind(this);    
@@ -252,9 +258,9 @@ class App extends Component{
           <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency}/>
         </div>
 
-        {this.state.salesLevelOfInvestment > 5 && <DialogInterface/>}
+        {this.state.salesLevelOfInvestment > 5 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text}/>}
 
-        { this.state.hasBoughtAFactory && <DashboardActivity totalPaperclipssold={this.state.totalPaperclipssold}/>}
+        {this.state.hasBoughtAFactory && <DashboardActivity totalPaperclipssold={this.state.totalPaperclipssold} />}
 
         <p className="app-main-buttons">{
           <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/>}
