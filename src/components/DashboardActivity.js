@@ -37,8 +37,9 @@ class DashboardActivity extends Component{
                   "color": "hsl(165, 70%, 50%)"
                 }
               ],
-              marketShare : 0,
-              fill : []
+              formerMarketShare : 0,
+              newMarketShare : 0,
+              fill : [],
         }
       this.compileDataForPieChart = this.compileDataForPieChart.bind(this)  
     }
@@ -78,7 +79,8 @@ class DashboardActivity extends Component{
             "color": "hsl(165, 70%, 50%)"
           }
         ],
-        marketShare :this.props.totalPaperclipssold/((state.data[1].value+valueCompetitor1)+(state.data[2].value+valueCompetitor2) + (state.data[3].value+valueCompetitor3) + (state.data[4].value+valueCompetitor4))
+        formerMarketShare : state.newMarketShare,
+        newMarketShare :this.props.totalPaperclipssold/((state.data[1].value+valueCompetitor1)+(state.data[2].value+valueCompetitor2) + (state.data[3].value+valueCompetitor3) + (state.data[4].value+valueCompetitor4))
           });
         });
 
@@ -88,7 +90,7 @@ class DashboardActivity extends Component{
 
       this.timerCompetitorMarket = setInterval(()=>{
                                     this.compileDataForPieChart(6000,14000,25000,12000)
-                                  },500);
+                                  },1000);
       
     }
 
@@ -103,8 +105,9 @@ class DashboardActivity extends Component{
             <h2>MARKET ACTIVITY</h2>
             <div className="activity-content">
                 <div className="activity-kpi">
-                    <p>National Market Share: {Math.round(this.state.marketShare*100)}%</p>
+                    <p>National Market Share: {Math.round(this.state.newMarketShare*100)}%</p>
                     <p>Number of competitors : 4</p>
+                    <p>Marketshare Growth : {(this.state.newMarketShare > 0 && this.state.formerMarketShare > 0)  ? <span>{Math.round(((this.state.newMarketShare-this.state.formerMarketShare)/this.state.formerMarketShare)*100)} %</span> : <p>Calculating...</p> }</p>
                 </div>
 
                 <div className="pie-Chart">

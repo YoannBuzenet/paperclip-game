@@ -29,19 +29,21 @@ class InvestmentBox extends Component{
     </div>
     : null}
 
-    {this.props.numberOfSmallMachines > 0 
-    ? <div><h3>MARKETING</h3><div><Button onClickProp={this.props.investInSales} name="Call a new customer" picture="./pictures/invest-in-marketing.png" classNameButton="invest-marketing-button menu-button" cost={this.props.salesCost} classNameChild="info-invest-marketing-button" contentChild="Increase your sales ! (5 times the revenue)" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} money={this.props.money} containsAnimation={true} id='sales-button' textAnimation="X 5" animationIdTarget='sell-area' animationTypeOfElementCreated='li' animationCSSClass='graphInputBig'/></div></div>
-    : null}
 
-    {this.props.rdLevelOfInvestment > 2 ? 
-        <div><h3 className="sales-title">SALES</h3>
-        <div><Button onClickProp={this.props.hireASalesman} name="Hire a salesman" picture="./pictures/salesman.png" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost} classNameChild="info-salesman-button" contentChild="Develop your sales (+10 sales per second)" />
-    {this.props.rdLevelOfInvestment > 4 ? 
+    {this.props.numberOfSmallMachines > 0 ?
+        <div>
+            <h3 className="sales-title">SALES</h3>
+    <Button onClickProp={this.props.investInSales} name="Call a new customer" picture="./pictures/euros_symbol.png" classNameButton="invest-marketing-button menu-button" cost={this.props.salesCost} classNameChild="info-invest-marketing-button" contentChild="+5 future sales. Take your phone and call !" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} money={this.props.money} containsAnimation={true} id='sales-button' textAnimation="+ 5" animationIdTarget='sell-area' animationTypeOfElementCreated='li' animationCSSClass='graphInputBig'/>
+        </div>
+    : null}
+    {this.props.rdLevelOfInvestment > 2 ?    
+        <Button onClickProp={this.props.hireASalesman} name="Hire a salesman" picture="./pictures/salesman.png" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost} classNameChild="info-salesman-button" contentChild="Develop your sales (+10 sales per second)" />
+    : null}
+    {this.props.rdLevelOfInvestment > 3 ? 
         <Button onClickProp={this.props.buyFiveSales} picture="./pictures/salesmanx5.png" name="Hire 5 salesmen" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost *5 } classNameChild="salesman-machines-button" contentChild="Hire 5 salesman in a row." />
-    : null}</div></div>
     : null}
 
-    {this.props.salesLevelOfInvestment > 1 
+    {this.props.salesLevelOfInvestment > 8 
     ? <div><h3>Reaserch & Development</h3>
         <div><Button onClickProp={this.props.investRD} name="Invest in R & D" picture="./pictures/invest-in-research-and-development.png" classNameButton="rd-button menu-button" cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." />
     {this.props.rdLevelOfInvestment > 10 ?

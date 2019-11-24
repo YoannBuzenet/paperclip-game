@@ -7,13 +7,14 @@ import SellButton from './components/sellButton';
 import InvestmentBox from './components/investmentBox.js';
 import WorkBox from './components/workBox.js';
 import DashboardActivity from './components/DashboardActivity.js';
+import DialogInterface from './components/DialogInterface.js';
 
 class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 10000,
-          money : 10000,
+          count : 1000000,
+          money : 1000000,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
           salesLevelOfInvestment : 1,
@@ -23,11 +24,10 @@ class App extends Component{
           unitsSold : 1,
           marketingCost : 5,
           rdCost : 5,
-          salesCost : 5,
+          salesCost : 0,
           listOfCosts : [200, 1000, 3000, 5000, 10000, 20000,50000,100000],
           marketingListOfCosts : [15, 300, 2000, 10000, 30000, 50000, 100000, 200000,500000,1000000],
-          rdListofCosts : [30, 500, 1000, 3000, 5000, 10000, 20000,50000,100000],
-          salesListCost : [15, 300, 2000],
+          rdListofCosts : [30, 500, 2000, 5000, 10000, 20000,50000,100000],
           numberOfSmallAutomaticMachines : 0,
           smallAutomaticMachineProductivity : 10,
           boughtAnAutomaticMachine : false,
@@ -176,9 +176,8 @@ class App extends Component{
     if(this.state.money >= this.state.salesCost){
     this.setState(state => { return ({
       money : state.money - state.salesCost,
-      salesCost : (state.salesListCost[state.salesLevelOfInvestment]),
       salesLevelOfInvestment : state.salesLevelOfInvestment +1,
-      unitsSold : state.unitsSold *5
+      unitsSold : state.unitsSold +5
         });
       });
     }
@@ -253,6 +252,8 @@ class App extends Component{
           <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency}/>
         </div>
 
+        {this.state.salesLevelOfInvestment > 5 && <DialogInterface/>}
+
         { this.state.hasBoughtAFactory && <DashboardActivity totalPaperclipssold={this.state.totalPaperclipssold}/>}
 
         <p className="app-main-buttons">{
@@ -262,7 +263,7 @@ class App extends Component{
       </div>
 
       <div className="right-div">
-        <div className="interface-div" style={{backgroundColor:"red"}}>
+        <div className="interface-div ai-stuff" style={{backgroundColor:"red"}}>
           <h2>AI Stuff</h2>
           <p>hey</p>
         </div>  

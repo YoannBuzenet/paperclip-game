@@ -37,7 +37,7 @@ class ButtonSubContent extends Component{
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
         style={styleButton}><span className="hover-name">{this.props.name}</span><br />
-    {this.props.cost}€<br/>{this.props.contentChild}
+    {this.props.cost >0 ? this.props.cost + '€': <strong>Free</strong>}<br/>{this.props.contentChild}
         </div>
     )}
 }

@@ -69,6 +69,10 @@ header p.pageTitle {
   background-color : #F2F2BD;
 }
 
+h2{
+  margin-top : 0;
+  }
+
 div > h3 {
   margin-bottom : 0;
 }
@@ -127,6 +131,29 @@ div > h3 {
   height : 180px;
   width: 180px;
 }
+
+/***************************
+******AI INTERFACE******
+***************************/
+
+.ai-stuff{
+  padding : 1rem;
+}
+
+/***************************
+******DIALOG INTERFACE******
+***************************/
+
+.Dialog-interface {
+  padding : 1rem;
+  background-color: pink;
+}
+
+.author-dialog {
+  margin-top : 0;
+  
+}
+
 
 /***************************
 ******GAMING BUTTONS******
