@@ -14,8 +14,8 @@ class Dashboard extends Component{
             <div className="dashboard-datas">
                 <StockOfPaperclips stockOfPaperclips={this.props.stockOfPaperclips}/>
                 {this.props.soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.props.money} /> : null}
-                {this.props.boughtAnAutomaticMachine && <p>Paperclips produced per second: <strong>{this.props.automaticProduction * this.props.productivyPerAutomaticMachine}</strong></p>}
-                 {this.props.hasHiredaSalesman && <p>Paperclips solds every second : <strong>{this.props.salesman * this.props.salesmanEfficiency}</strong></p>}
+                {this.props.boughtAnAutomaticMachine && <p>Production(/s): <strong>{this.props.automaticProduction * this.props.productivyPerAutomaticMachine}</strong></p>}
+                 {this.props.hasHiredaSalesman && <p>Sales(/s): <strong>{this.props.salesman * this.props.salesmanEfficiency}</strong></p>}
             </div>
         </div>
         );

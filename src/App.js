@@ -14,8 +14,8 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 1000000,
-          money : 1000000,
+          count : 0,
+          money : 0,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
           salesLevelOfInvestment : 1,
@@ -47,11 +47,48 @@ class App extends Component{
           salesmanCantsell : false,
           hasBoughtAFactory : false,
           numberOfFactory : 0,
+          numberOfClicksIncrease : 0,
           lang : 'en',
           text:{
-            fr : 'fr babe',
-            en : 'en babe'
-          }
+              AuthorMessage: {
+              fr : "Associé :",
+              en : 'Co-Founder :'
+                },
+              after10creation: {
+                fr : "Trouvons une machine pour aller plus vite !",
+                en : "Let's buy a machine to go faster !"
+              },
+              after5sales: {
+                fr : "Tout faire à la main...c'est épuisant. Tu penses qu'il y aurait un autre moyen ?",
+                en : "Doing everything by hand...it's too long ! Do you think we could do it another way ?"
+                  },
+              afterFirstAutomaticMachine: {
+                fr: "Ah ! Ca marche bien mieux !",
+                en: "Yeah ! This works much better !"
+                },
+              afterThreeAutomaticMachine: {
+                fr: "Ok, notre production augmente ! Il nous faut des vendeurs.",
+                en: "Our production grows. We need sales."
+                },
+              after5AutomaticMachine: {
+                fr: "Wow. je crois qu'on a trouvé un filon.",
+                en: "Wow. I think we're onto something."
+                },
+              afterLevel3RD: {
+                  fr: "Pas mal. Comment pourrait-on en produire encore plus ?",
+                  en: "Not bad. How could we produce more ?"
+                },  
+              afterLevel4RD: {
+                  fr: "Ok. J'ai une idée pour en produire encore plus. Construisons une usine et je pense qu'on entre dans la cour des grands.",
+                  en: "Ok. I have an idea. Let's build a factory, and I think we'll be playing with real dudes."
+                },  
+              afterFactory: {
+                fr: "On a bien augmenté la production. Voilà les données des concurrents dans la région.",
+                en: "We managed to increase our production. Here are the stats of our main competitors in the area."
+                  }   
+              },
+              textCurrentlyDisplayedInDialogBox :'',
+              indexTextWriter : 0
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
   this.handleClickDecrease = this.handleClickDecrease.bind(this);    
@@ -63,7 +100,10 @@ class App extends Component{
   this.hireASalesman = this.hireASalesman.bind(this);    
   this.buyFiveSales = this.buyFiveSales.bind(this);    
   this.improveAutomaticMachines = this.improveAutomaticMachines.bind(this);  
-  this.createAndRemoveGraphicEffect = this.createAndRemoveGraphicEffect.bind(this);    
+  this.createAndRemoveGraphicEffect = this.createAndRemoveGraphicEffect.bind(this);
+  this.typeWriter = this.typeWriter.bind(this);    
+  this.updateTextBox = this.updateTextBox.bind(this);    
+  this.checkIfTextBoxMustBeUpdated = this.checkIfTextBoxMustBeUpdated.bind(this);
   }
 
   componentDidMount(){
@@ -92,25 +132,28 @@ class App extends Component{
   }
 
   handleClickIncrease(){
-    this.setState(state => { return ({
+    this.updateTextBox();
+    this.setState((state => { return ({
       count : state.count + state.productivity,
+      numberOfClicksIncrease : state.numberOfClicksIncrease +1
       });
-    });
+    }), this.updateTextBox);
   }
 
   handleClickDecrease(){
       if(this.state.count >= this.state.unitsSold){
-      this.setState(state => { return ({
+      this.setState((state => { return ({
           count : state.count - state.unitsSold,
           money : state.money + (0.25 * state.unitsSold),
           soldAtLeastOnePaperclip : true,
           totalPaperclipssold : state.totalPaperclipssold + state.unitsSold
           });
-        });
+        }), this.updateTextBox);
       }
   }
 
   buyAMachine(cost, productivity, isManual, machineType, quantity){
+
     //Function that allows to buy all kind of machines (automatic, manual)
     if(this.state.money >= cost){
       
@@ -132,22 +175,22 @@ class App extends Component{
         
         if(machineType == "smallAutomaticMachine"){
           
-          this.setState(state => { return ({
+          this.setState((state => { return ({
             money : state.money - cost,
             numberOfSmallAutomaticMachines : state.numberOfSmallAutomaticMachines + quantity,
             boughtAnAutomaticMachine : true,
             automaticProduction : state.automaticProduction + quantity*productivity
               });
-            });
+            }), this.updateTextBox);
         }
         else if(machineType == "factory"){
-          this.setState(state => { return ({
+          this.setState((state => { return ({
             money : state.money - cost,
             numberOfFactory : state.numberOfFactory + 1,
             hasBoughtAFactory : true,
             automaticProduction : state.automaticProduction + quantity*productivity
               });
-            });
+            }), this.updateTextBox);
         }
       }
       
@@ -168,57 +211,57 @@ class App extends Component{
 
   investInMarketing(){
     if(this.state.money >= this.state.marketingCost){
-    this.setState(state => { return ({
+    this.setState((state => { return ({
       money : state.money - state.marketingCost,
       marketingCost : (state.marketingListOfCosts[state.marketingLevelOfInvestment-2]),
       marketingLevelOfInvestment : state.marketingLevelOfInvestment +1,
       unitsSold : state.unitsSold *5
         });
-      });
+      }),  this.updateTextBox);
     }
   }  
 
   investInSales(){
     if(this.state.money >= this.state.salesCost){
-    this.setState(state => { return ({
+    this.setState((state => { return ({
       money : state.money - state.salesCost,
       salesLevelOfInvestment : state.salesLevelOfInvestment +1,
       unitsSold : state.unitsSold +5
         });
-      });
+      }), this.updateTextBox);
     }
   }  
 
   investInRD(){
     if(this.state.money >= this.state.rdCost){
-    this.setState(state => { return ({
+    this.setState((state => { return ({
       money : state.money - state.rdCost,
       rdLevelOfInvestment : state.rdLevelOfInvestment +1,
       rdCost :  (state.rdListofCosts[state.rdLevelOfInvestment-1])
         });
-      });
+      }), this.updateTextBox);
     }
   } 
 
   hireASalesman(){
     if(this.state.money >= this.state.salesmanCost){
-      this.setState(state => { return ({
+      this.setState((state => { return ({
         money : state.money - state.salesmanCost,
         hasHiredaSalesman : true,
         salesman : state.salesman +1
           });
-        });
+        }), this.updateTextBox);
       }
   }
 
   buyFiveSales(){
     if(this.state.money >= this.state.salesmanCost * 5){
-      this.setState(state => { return ({
+      this.setState((state => { return ({
         money : state.money - state.salesmanCost * 5,
         hasHiredaSalesman : true,
         salesman : state.salesman +5
           });
-        });
+        }),this.updateTextBox);
       }
   }
 
@@ -230,7 +273,91 @@ class App extends Component{
     parent.appendChild(childCreated);
 
     setTimeout(()=> (childCreated.remove()), 800)
+  }
+
+  updateTextBox(){
+
+    var currentLanguage = this.state.lang;
+
+      if(this.state.numberOfClicksIncrease >= 10 && this.state.salesLevelOfInvestment <= 4){
+        var textToDisplay = this.state.text.after10creation;
+        var author = this.state.text.AuthorMessage;
+      }
+      else if(this.state.salesLevelOfInvestment > 4 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 4){
+        var textToDisplay = this.state.text.after5sales;
+        var author = this.state.text.AuthorMessage;
+      }
+      else if(this.state.numberOfSmallAutomaticMachines >= 1 && this.state.numberOfFactory == 0 && this.state.rdLevelOfInvestment < 4 && this.state.numberOfSmallAutomaticMachines <= 3) {
+        var textToDisplay = this.state.text.afterFirstAutomaticMachine;
+        var author = this.state.text.AuthorMessage;
+      }
+      else if(this.state.numberOfSmallAutomaticMachines >= 4 && this.state.numberOfFactory == 0 && this.state.rdLevelOfInvestment < 4 && this.state.numberOfSmallAutomaticMachines <= 6) {
+        var textToDisplay = this.state.text.afterThreeAutomaticMachine;
+        var author = this.state.text.AuthorMessage;
+      }
+      else if(this.state.numberOfSmallAutomaticMachines > 6 && this.state.numberOfFactory == 0 && this.state.rdLevelOfInvestment >= 2 && this.state.rdLevelOfInvestment < 4) {
+        var textToDisplay = this.state.text.after5AutomaticMachine;
+        var author = this.state.text.AuthorMessage;
+      }
+      else if(this.state.rdLevelOfInvestment == 4 && this.state.numberOfFactory == 0) {
+        var textToDisplay = this.state.text.afterLevel3RD;
+        var author = this.state.text.AuthorMessage;
+      }
+      else if(this.state.rdLevelOfInvestment == 5 && this.state.numberOfFactory == 0) {
+        var textToDisplay = this.state.text.afterLevel4RD;
+        var author = this.state.text.AuthorMessage;
+      }
+      else if(this.state.numberOfSmallAutomaticMachines > 0 && this.state.numberOfFactory > 0) {
+        var textToDisplay = this.state.text.afterFactory;
+        var author = this.state.text.AuthorMessage;
+      }
+        this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
+      }
+
+
+  checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage){
+
+    var textCurrentlyDisplayedInDialogBox = this.state.textCurrentlyDisplayedInDialogBox;
+
+    //Checking if the Dialog Box was mounted
+    if(document.getElementById('author-box')){
+
+      if(textToDisplay != textCurrentlyDisplayedInDialogBox){
+
+        document.getElementById("dialog-text").innerHTML = '';
+
+        this.typeWriter(textToDisplay[currentLanguage], author[currentLanguage]);
+
+        this.setState(state => { return ({
+          textCurrentlyDisplayedInDialogBox : textToDisplay
+          });
+        });
+      }  
+  }
 }
+
+typeWriter(txt, author, speed=20) {
+  // This function update the text in dialog box
+  document.getElementById("author-box").innerHTML = author;
+
+  if (this.state.indexTextWriter < txt.length) {
+    document.getElementById("dialog-text").innerHTML += txt.charAt(this.state.indexTextWriter);
+    this.setState(state => { return ({
+      indexTextWriter : state.indexTextWriter+1
+      });
+    });
+
+    setTimeout(()=>this.typeWriter(txt, author), speed);
+  }
+  //If we printed the hole message, reset the index for next function call.
+  else{
+    this.setState(state => { return ({
+      indexTextWriter : 0
+      });
+    });
+  }
+}
+
 
   render(){
     const {soldAtLeastOnePaperclip} = this.state
@@ -244,7 +371,7 @@ class App extends Component{
   
       <div className="left-div">
         <div>
-          {soldAtLeastOnePaperclip ? <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost}/> : null}
+          {soldAtLeastOnePaperclip ? <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman}/> : null}
         </div>
         <div>
           {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} /> : null}
@@ -258,7 +385,7 @@ class App extends Component{
           <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency}/>
         </div>
 
-        {this.state.salesLevelOfInvestment > 5 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text}/>}
+        {this.state.numberOfClicksIncrease > 10 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text} updateTextBox={this.updateTextBox} />}
 
         {this.state.hasBoughtAFactory && <DashboardActivity totalPaperclipssold={this.state.totalPaperclipssold} />}
 

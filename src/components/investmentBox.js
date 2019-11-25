@@ -36,14 +36,14 @@ class InvestmentBox extends Component{
     <Button onClickProp={this.props.investInSales} name="Call a new customer" picture="./pictures/euros_symbol.png" classNameButton="invest-marketing-button menu-button" cost={this.props.salesCost} classNameChild="info-invest-marketing-button" contentChild="+5 future sales. Take your phone and call !" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} money={this.props.money} containsAnimation={true} id='sales-button' textAnimation="+ 5" animationIdTarget='sell-area' animationTypeOfElementCreated='li' animationCSSClass='graphInputBig'/>
         </div>
     : null}
-    {this.props.rdLevelOfInvestment > 2 ?    
+    {(this.props.rdLevelOfInvestment > 2 && this.props.numberOfSmallAutomaticMachines >= 3)?    
         <Button onClickProp={this.props.hireASalesman} name="Hire a salesman" picture="./pictures/salesman.png" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost} classNameChild="info-salesman-button" contentChild="Develop your sales (+10 sales per second)" />
     : null}
     {this.props.rdLevelOfInvestment > 3 ? 
         <Button onClickProp={this.props.buyFiveSales} picture="./pictures/salesmanx5.png" name="Hire 5 salesmen" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost *5 } classNameChild="salesman-machines-button" contentChild="Hire 5 salesman in a row." />
     : null}
 
-    {this.props.salesLevelOfInvestment > 8 
+    {this.props.salesLevelOfInvestment > 4 
     ? <div><h3>Reaserch & Development</h3>
         <div><Button onClickProp={this.props.investRD} name="Invest in R & D" picture="./pictures/invest-in-research-and-development.png" classNameButton="rd-button menu-button" cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." />
     {this.props.rdLevelOfInvestment > 10 ?

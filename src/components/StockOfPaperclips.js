@@ -11,7 +11,7 @@ import React from 'react';
 // }
 
 const StockOfPaperclips = ({stockOfPaperclips}) => {
-    return <p className="stockOfPaperclips">Paperclips in stock : <strong>{stockOfPaperclips}</strong></p>;
+    return <p className="stockOfPaperclips">Stock : <strong>{stockOfPaperclips}</strong></p>;
 }
 
 export default StockOfPaperclips
