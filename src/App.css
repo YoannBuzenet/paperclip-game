@@ -112,7 +112,7 @@ div > h3 {
 ***************************/
 
 .activity-dashboard {
-  padding-bottom : 1rem;
+  padding : 1rem;
   background-color : mediumseagreen;
   height : 240px;
   overflow : hidden;

@@ -36,7 +36,7 @@ class InvestmentBox extends Component{
     <Button onClickProp={this.props.investInSales} name="Call a new customer" picture="./pictures/euros_symbol.png" classNameButton="invest-marketing-button menu-button" cost={this.props.salesCost} classNameChild="info-invest-marketing-button" contentChild="+5 future sales. Take your phone and call !" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} money={this.props.money} containsAnimation={true} id='sales-button' textAnimation="+ 5" animationIdTarget='sell-area' animationTypeOfElementCreated='li' animationCSSClass='graphInputBig'/>
         </div>
     : null}
-    {(this.props.rdLevelOfInvestment > 2 && this.props.numberOfSmallAutomaticMachines >= 3)?    
+    {(this.props.rdLevelOfInvestment > 2 && this.props.numberOfSmallAutomaticMachines > 3)?    
         <Button onClickProp={this.props.hireASalesman} name="Hire a salesman" picture="./pictures/salesman.png" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost} classNameChild="info-salesman-button" contentChild="Develop your sales (+10 sales per second)" />
     : null}
     {this.props.rdLevelOfInvestment > 3 ? 
@@ -44,7 +44,7 @@ class InvestmentBox extends Component{
     : null}
 
     {this.props.salesLevelOfInvestment > 4 
-    ? <div><h3>Reaserch & Development</h3>
+    ? <div><h3>Resaerch & Development</h3>
         <div><Button onClickProp={this.props.investRD} name="Invest in R & D" picture="./pictures/invest-in-research-and-development.png" classNameButton="rd-button menu-button" cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." />
     {this.props.rdLevelOfInvestment > 10 ?
     <Button onClickProp={this.props.improveAutomaticMachines} name="Improve the automatic machines" picture="./pictures/improve-automatic-machines.png" classNameButton="rd-improve-button menu-button" cost={this.props.automaticProductionCost} classNameChild="info-invest-rd-improve-button" contentChild="Increase the productivity of all your automatic machines by x1.5" />
@@ -54,7 +54,7 @@ class InvestmentBox extends Component{
 
 {this.props.rdLevelOfInvestment > 4
     ? <div><h3>EXPANSION</h3><div>
-    <ButtonAutomaticData onClickProp={this.props.buyAMachine} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={8000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={500} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/></div></div>
+    <ButtonAutomaticData onClickProp={this.props.buyAMachine} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={8000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/></div></div>
     : null}
         </div>
         );

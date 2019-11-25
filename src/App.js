@@ -50,7 +50,7 @@ class App extends Component{
           numberOfClicksIncrease : 0,
           lang : 'en',
           text:{
-              AuthorMessage: {
+              AuthorMessageHuman: {
               fr : "Associé :",
               en : 'Co-Founder :'
                 },
@@ -79,12 +79,12 @@ class App extends Component{
                   en: "Not bad. How could we produce more ?"
                 },  
               afterLevel4RD: {
-                  fr: "Ok. J'ai une idée pour en produire encore plus. Construisons une usine et je pense qu'on entre dans la cour des grands.",
-                  en: "Ok. I have an idea. Let's build a factory, and I think we'll be playing with real dudes."
+                  fr: "La production augmente bien. Je pense qu'on peut investir sérieusement.",
+                  en: "It's big. We should invest more."
                 },  
               afterFactory: {
-                fr: "On a bien augmenté la production. Voilà les données des concurrents dans la région.",
-                en: "We managed to increase our production. Here are the stats of our main competitors in the area."
+                fr: "On entre dans la cour des grands. Voilà les données des concurrents dans la région.",
+                en: "We're in the game now. Here are the stats of our main competitors in the area."
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -199,13 +199,13 @@ class App extends Component{
 
   improveAutomaticMachines(){
     if(this.state.money >= this.state.automaticProductionCost){
-      this.setState(state => { return ({
+      this.setState((state => { return ({
         money : state.money - state.automaticProductionCost,
         productivyPerAutomaticMachine : (state.productivyPerAutomaticMachine *1.5),
         automaticProductionImprovment : state.automaticProductionImprovment +1,
         automaticProductionCost : (state.listOfCosts[state.automaticProductionImprovment-1])
           });
-        });
+        }), this.updateTextBox);
       }
   }
 
@@ -217,7 +217,7 @@ class App extends Component{
       marketingLevelOfInvestment : state.marketingLevelOfInvestment +1,
       unitsSold : state.unitsSold *5
         });
-      }),  this.updateTextBox);
+      }), this.updateTextBox);
     }
   }  
 
@@ -281,35 +281,35 @@ class App extends Component{
 
       if(this.state.numberOfClicksIncrease >= 10 && this.state.salesLevelOfInvestment <= 4){
         var textToDisplay = this.state.text.after10creation;
-        var author = this.state.text.AuthorMessage;
+        var author = this.state.text.AuthorMessageHuman;
       }
       else if(this.state.salesLevelOfInvestment > 4 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 4){
         var textToDisplay = this.state.text.after5sales;
-        var author = this.state.text.AuthorMessage;
+        var author = this.state.text.AuthorMessageHuman;
       }
       else if(this.state.numberOfSmallAutomaticMachines >= 1 && this.state.numberOfFactory == 0 && this.state.rdLevelOfInvestment < 4 && this.state.numberOfSmallAutomaticMachines <= 3) {
         var textToDisplay = this.state.text.afterFirstAutomaticMachine;
-        var author = this.state.text.AuthorMessage;
+        var author = this.state.text.AuthorMessageHuman;
       }
       else if(this.state.numberOfSmallAutomaticMachines >= 4 && this.state.numberOfFactory == 0 && this.state.rdLevelOfInvestment < 4 && this.state.numberOfSmallAutomaticMachines <= 6) {
         var textToDisplay = this.state.text.afterThreeAutomaticMachine;
-        var author = this.state.text.AuthorMessage;
+        var author = this.state.text.AuthorMessageHuman;
       }
       else if(this.state.numberOfSmallAutomaticMachines > 6 && this.state.numberOfFactory == 0 && this.state.rdLevelOfInvestment >= 2 && this.state.rdLevelOfInvestment < 4) {
         var textToDisplay = this.state.text.after5AutomaticMachine;
-        var author = this.state.text.AuthorMessage;
+        var author = this.state.text.AuthorMessageHuman;
       }
       else if(this.state.rdLevelOfInvestment == 4 && this.state.numberOfFactory == 0) {
         var textToDisplay = this.state.text.afterLevel3RD;
-        var author = this.state.text.AuthorMessage;
+        var author = this.state.text.AuthorMessageHuman;
       }
       else if(this.state.rdLevelOfInvestment == 5 && this.state.numberOfFactory == 0) {
         var textToDisplay = this.state.text.afterLevel4RD;
-        var author = this.state.text.AuthorMessage;
+        var author = this.state.text.AuthorMessageHuman;
       }
       else if(this.state.numberOfSmallAutomaticMachines > 0 && this.state.numberOfFactory > 0) {
         var textToDisplay = this.state.text.afterFactory;
-        var author = this.state.text.AuthorMessage;
+        var author = this.state.text.AuthorMessageHuman;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
       }

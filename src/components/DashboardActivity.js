@@ -89,7 +89,7 @@ class DashboardActivity extends Component{
     componentDidMount(){
 
       this.timerCompetitorMarket = setInterval(()=>{
-                                    this.compileDataForPieChart(6000,14000,25000,12000)
+                                    this.compileDataForPieChart(61000,24000,35000,22000)
                                   },1000);
       
     }
