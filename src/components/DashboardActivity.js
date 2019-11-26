@@ -80,7 +80,7 @@ class DashboardActivity extends Component{
           }
         ],
         formerMarketShare : state.newMarketShare,
-        newMarketShare :this.props.totalPaperclipssold/((state.data[1].value+valueCompetitor1)+(state.data[2].value+valueCompetitor2) + (state.data[3].value+valueCompetitor3) + (state.data[4].value+valueCompetitor4))
+        newMarketShare :this.props.totalPaperclipssold/(this.props.totalPaperclipssold + (state.data[1].value+valueCompetitor1)+(state.data[2].value+valueCompetitor2) + (state.data[3].value+valueCompetitor3) + (state.data[4].value+valueCompetitor4))
           });
         });
 

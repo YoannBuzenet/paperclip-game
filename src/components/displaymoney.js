@@ -6,7 +6,10 @@ class DisplayMoney extends Component{
     }
 
     render(){
-        return <p className="display-money">Cash: <strong>{this.props.money} €</strong></p>;
+
+        let money = this.props.checkNumber(this.props.money);
+
+        return <p className="display-money">Cash: <strong>{money} €</strong></p>;
     }
 }
 

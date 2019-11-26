@@ -10,7 +10,10 @@ import React from 'react';
 //     }
 // }
 
-const StockOfPaperclips = ({stockOfPaperclips}) => {
+const StockOfPaperclips = ({stockOfPaperclips, checkNumber}) => {
+
+    stockOfPaperclips = checkNumber(stockOfPaperclips);
+
     return <p className="stockOfPaperclips">Stock : <strong>{stockOfPaperclips}</strong></p>;
 }
 

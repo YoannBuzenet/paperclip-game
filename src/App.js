@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import MainButton from './components/main-button';
@@ -8,14 +7,13 @@ import InvestmentBox from './components/investmentBox.js';
 import WorkBox from './components/workBox.js';
 import DashboardActivity from './components/DashboardActivity.js';
 import DialogInterface from './components/DialogInterface.js';
-import { ENGINE_METHOD_ALL } from 'constants';
 
 class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 0,
-          money : 0,
+          count : 1000000000,
+          money : 1000000000,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
           salesLevelOfInvestment : 1,
