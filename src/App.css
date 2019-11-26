@@ -26,6 +26,10 @@ header p.pageTitle {
   font-family: 'Roboto', sans-serif;
 }
 
+.displayBLock {
+  display: block;
+}
+
 /***************************
 *******GLOBAL LAYOUT*******
 ***************************/
@@ -114,7 +118,6 @@ div > h3 {
 .activity-dashboard {
   padding : 1rem;
   background-color : mediumseagreen;
-  height : 240px;
   overflow : hidden;
 }
 
@@ -124,7 +127,20 @@ div > h3 {
 }
 
 .activity-kpi {
+  display : flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.containsHint {
+}
+
+.hint {
+  display: block;
+  text-align: right;
+  font-style: italic;
+  font-weight : bold;
+  font-size : 1.3rem;
 }
 
 .pie-Chart {

@@ -6,11 +6,6 @@ class DialogInterface extends Component{
         
     }
 
-    componentDidMount(){
-      
-    }
-
-
     render(){
         return(
         <div className="Dialog-interface interface-div">

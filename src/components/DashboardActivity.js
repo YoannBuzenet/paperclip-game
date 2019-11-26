@@ -42,7 +42,7 @@ class DashboardActivity extends Component{
               fill : [],
         }
       this.compileDataForPieChart = this.compileDataForPieChart.bind(this) ;
-      this.launchNewCompetitor = this.launchNewCompetitor.bind(this);
+      
     }
 
     compileDataForPieChart(valueCompetitor1, valueCompetitor2, valueCompetitor3, valueCompetitor4){
@@ -148,7 +148,7 @@ class DashboardActivity extends Component{
             <h2>MARKET ACTIVITY</h2>
             <div className="activity-content">
                 <div className="activity-kpi">
-                    <p>Regional Market Share: {Math.round(this.state.newMarketShare*100)}%</p>
+                    <p className="containsHint" >Regional Market Share: {Math.round(this.state.newMarketShare*100)}%<span className="hint">(based on sales)</span></p>
                     <p>Number of competitors: 4</p>
                     <p>Marketshare Growth: {(this.state.newMarketShare > 0 && this.state.formerMarketShare > 0)  ? <span>{Math.round(((this.state.newMarketShare-this.state.formerMarketShare)/this.state.formerMarketShare)*100)} %</span> : <span>Calculating...</span> }</p>
                 </div>

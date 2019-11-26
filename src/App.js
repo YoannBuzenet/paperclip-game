@@ -320,7 +320,7 @@ class App extends Component{
     //Checking if the Dialog Box was mounted
     if(document.getElementById('author-box')){
 
-      if(textToDisplay != textCurrentlyDisplayedInDialogBox){
+      if(textToDisplay != textCurrentlyDisplayedInDialogBox && this.state.indexTextWriter == 0){
 
         document.getElementById("dialog-text").innerHTML = '';
 
@@ -334,14 +334,13 @@ class App extends Component{
   }
 }
 
-typeWriter(txt, author, speed=20) {
+typeWriter(txt, author, speed=10) {
   // This function update the text in dialog box
   document.getElementById("author-box").innerHTML = author;
-
   if (this.state.indexTextWriter < txt.length) {
     document.getElementById("dialog-text").innerHTML += txt.charAt(this.state.indexTextWriter);
     this.setState(state => { return ({
-      indexTextWriter : state.indexTextWriter+1
+      indexTextWriter : state.indexTextWriter+1,
       });
     });
 

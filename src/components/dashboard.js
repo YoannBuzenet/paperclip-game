@@ -10,17 +10,29 @@ class Dashboard extends Component{
     }
 
     checkNumber(number){
-        if(number <= 1000000){
+        if(number <= Math.pow(10,6)){
             number = new Intl.NumberFormat().format(number);
         }
-        else if(number >= 1000000 && number < 1000000000){
-            number = this.formateNumber(number, 1000000, ' million');
+        else if(number >= Math.pow(10,6) && number < Math.pow(10,9)){
+            number = this.formateNumber(number, Math.pow(10,6), ' million');
         }
-        else if(number >= 1000000000 && number < 1000000000000){
-            number = this.formateNumber(number, 1000000000, ' billion');
+        else if(number >= Math.pow(10,9) && number < Math.pow(10,12)){
+            number = this.formateNumber(number, Math.pow(10,9), ' billion');
         }
-        else if(number >= 1000000000000 && number < 1000000000000000){
-            number = this.formateNumber(number, 1000000000000, ' quadrillion');
+        else if(number >= Math.pow(10,12) && number < Math.pow(10,15)){
+            number = this.formateNumber(number, Math.pow(10,12), ' quadrillion');
+        }
+        else if(number >= Math.pow(10,15) && number < Math.pow(10,18)){
+            number = this.formateNumber(number, Math.pow(10,15), ' quintillion');
+        }
+        else if(number >= Math.pow(10,18) && number < Math.pow(1021)){
+            number = this.formateNumber(number, Math.pow(10,18), ' sextillion');
+        }
+        else if(number >= Math.pow(10,21) && number < Math.pow(10,24)){
+            number = this.formateNumber(number, Math.pow(10,21), ' septillion');
+        }
+        else if(number >= Math.pow(10,24)){
+            number = this.formateNumber(number, Math.pow(10,24), ' zillion');
         }
         return number;
     }
