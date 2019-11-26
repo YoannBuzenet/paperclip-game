@@ -12,8 +12,8 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 1000000000,
-          money : 1000000000,
+          count : 10000000,
+          money : 10000000,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
           salesLevelOfInvestment : 1,

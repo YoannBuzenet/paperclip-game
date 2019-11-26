@@ -11,9 +11,7 @@ class Dashboard extends Component{
 
     checkNumber(number){
         if(number <= 1000000){
-            number = Math.round(number);
             number = new Intl.NumberFormat().format(number);
-            number = number.toString();
         }
         else if(number >= 1000000 && number < 1000000000){
             number = this.formateNumber(number, 1000000, ' million');
@@ -46,14 +44,18 @@ class Dashboard extends Component{
 
 
     render(){
+
+        let automaticProduction = this.checkNumber(this.props.automaticProduction * this.props.productivyPerAutomaticMachine);
+        let automaticSales = this.checkNumber(this.props.salesman * this.props.salesmanEfficiency);
+
         return(<div>
         
         <h2>DASHBOARD</h2>
             <div className="dashboard-datas">
                 <StockOfPaperclips stockOfPaperclips={this.props.stockOfPaperclips} checkNumber={this.checkNumber} />
                 {this.props.soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.props.money} checkNumber={this.checkNumber} /> : null}
-                {this.props.boughtAnAutomaticMachine && <p>Production(/s): <strong>{this.props.automaticProduction * this.props.productivyPerAutomaticMachine}</strong></p>}
-                 {this.props.hasHiredaSalesman && <p>Sales(/s): <strong>{this.props.salesman * this.props.salesmanEfficiency}</strong></p>}
+                {this.props.boughtAnAutomaticMachine && <p>Production(/s): <strong>{automaticProduction}</strong></p>}
+                 {this.props.hasHiredaSalesman && <p>Sales(/s): <strong>{automaticSales}</strong></p>}
             </div>
         </div>
         );

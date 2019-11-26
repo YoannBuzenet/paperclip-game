@@ -13,26 +13,26 @@ class DashboardActivity extends Component{
                   "color": "hsl(151, 70%, 50%)"
                 },
                 {
-                  "id": "scala",
-                  "label": "scala",
+                  "id": "The Berlin Company",
+                  "label": "The Berlin Company",
                   "value": this.props.totalPaperclipssold*4,
                   "color": "hsl(56, 70%, 50%)"
                 },
                 {
-                  "id": "hack",
-                  "label": "hack",
+                  "id": "Paris Paperclips",
+                  "label": "Paris Paperclips",
                   "value": this.props.totalPaperclipssold*5,
                   "color": "hsl(288, 70%, 50%)"
                 },
                 {
-                  "id": "lisp",
-                  "label": "lisp",
+                  "id": "Madrid Paperclips",
+                  "label": "Madrid Paperclips",
                   "value": this.props.totalPaperclipssold*6,
                   "color": "hsl(299, 70%, 50%)"
                 },
                 {
-                  "id": "erlang",
-                  "label": "erlang",
+                  "id": "London Metal",
+                  "label": "London Metal",
                   "value": this.props.totalPaperclipssold*20,
                   "color": "hsl(165, 70%, 50%)"
                 }
@@ -41,7 +41,8 @@ class DashboardActivity extends Component{
               newMarketShare : 0,
               fill : [],
         }
-      this.compileDataForPieChart = this.compileDataForPieChart.bind(this)  
+      this.compileDataForPieChart = this.compileDataForPieChart.bind(this) ;
+      this.launchNewCompetitor = this.launchNewCompetitor.bind(this);
     }
 
     compileDataForPieChart(valueCompetitor1, valueCompetitor2, valueCompetitor3, valueCompetitor4){
@@ -49,32 +50,32 @@ class DashboardActivity extends Component{
       this.setState(state => { return ({
         data : [
           {
-            "id": "Our Company",
-            "label": "Our Company",
+            "id": state.data[0].id,
+            "label": state.data[0].label,
             "value": this.props.totalPaperclipssold,
             "color": "hsl(151, 70%, 50%)"
           },
           {
-            "id": "PPC Company",
-            "label": "PPC Company",
+            "id": state.data[1].id,
+            "label": state.data[1].label,
             "value": state.data[1].value+valueCompetitor1,
             "color": "hsl(56, 70%, 50%)"
           },
           {
-            "id": "World Supply Company",
-            "label": "World Supply Company",
+            "id": state.data[2].id,
+            "label": state.data[2].label,
             "value": state.data[2].value+valueCompetitor2,
             "color": "hsl(288, 70%, 50%)"
           },
           {
-            "id": "Metal PPC",
-            "label": "Metal PPC",
+            "id": state.data[3].id,
+            "label": state.data[3].label,
             "value": state.data[3].value+valueCompetitor3,
             "color": "hsl(299, 70%, 50%)"
           },
           {
-            "id": "DM Company",
-            "label": "DM Company",
+            "id": state.data[4].id,
+            "label": state.data[4].label,
             "value": state.data[4].value+valueCompetitor4,
             "color": "hsl(165, 70%, 50%)"
           }
@@ -83,6 +84,48 @@ class DashboardActivity extends Component{
         newMarketShare :this.props.totalPaperclipssold/(this.props.totalPaperclipssold + (state.data[1].value+valueCompetitor1)+(state.data[2].value+valueCompetitor2) + (state.data[3].value+valueCompetitor3) + (state.data[4].value+valueCompetitor4))
           });
         });
+
+    }
+
+    launchNewCompetitors(name1, name2, name3, name4,stockCompetitor1, stockCompetitor2, stockCompetitor3, stockCompetitor4, growthCompetitor1, growthCompetitor2, growthCompetitor3, growthCompetitor4){
+      clearInterval(this.timerCompetitorMarket);
+
+      this.setState((state => { return ({
+        data : [
+          {
+            "id": state.data[0].id,
+            "label": state.data[0].label,
+            "value": this.props.totalPaperclipssold,
+            "color": "hsl(151, 70%, 50%)"
+          },
+          {
+            "id": name1,
+            "label": name1,
+            "value": stockCompetitor1,
+            "color": "hsl(56, 70%, 50%)"
+          },
+          {
+            "id": name2,
+            "label": name2,
+            "value": stockCompetitor2,
+            "color": "hsl(288, 70%, 50%)"
+          },
+          {
+            "id": name3,
+            "label": name3,
+            "value": stockCompetitor3,
+            "color": "hsl(299, 70%, 50%)"
+          },
+          {
+            "id": name4,
+            "label": name4,
+            "value": stockCompetitor4,
+            "color": "hsl(165, 70%, 50%)"
+          }
+        ]
+      })}), this.timerCompetitorMarket = setInterval(()=>{
+        this.compileDataForPieChart(growthCompetitor1,growthCompetitor2,growthCompetitor3,growthCompetitor4)
+      },1000)); 
 
     }
 
