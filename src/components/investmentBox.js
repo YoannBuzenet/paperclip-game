@@ -8,7 +8,10 @@ class InvestmentBox extends Component{
     }
 
     render(){
-    return (<div className="investment-box interface-div">
+
+        var className = this.props.soldAtLeastOnePaperclip == 0 ? "investment-box interface-div" : "investment-box interface-div visible-left-div"
+
+    return (<div className={className}>
         <h2>INVESTMENT</h2>
 
         <div>
@@ -43,12 +46,16 @@ class InvestmentBox extends Component{
         <Button onClickProp={this.props.buyFiveSales} picture="./pictures/salesmanx5.png" name="Hire 5 salesmen" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost *5 } classNameChild="salesman-machines-button" contentChild="Hire 5 salesman in a row." />
     : null}
 
+    {this.props.numberOfFactory > 1 ?
+    <Button onClickProp={this.props.hireAManager} name="Hire a Manager" picture="./pictures/manager.png" classNameButton="rd-hire-manager menu-button" cost={5000} classNameChild="info-hire-manager" contentChild="Hire a Manager (hires 5 sales every second)" />
+        :null} 
+
     {this.props.salesLevelOfInvestment > 4 
     ? <div><h3>Research & Development</h3>
         <div><Button onClickProp={this.props.investRD} name="Invest in R & D" picture="./pictures/invest-in-research-and-development.png" classNameButton="rd-button menu-button" cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." />
     
-    {this.props.rdLevelOfInvestment > 4 ?
-    <Button onClickProp={this.props.improveAutomaticMachines} name="Install Software" picture="./pictures/software-program.png" classNameButton="rd-install-software menu-button" cost={50000} classNameChild="info-invest-rd-install-software" contentChild="With software, we will be able to manage all this production." />
+    {this.props.numberOfFactory > 4 && this.props.softwareLevelOfInvestment < 1 ?
+    <Button onClickProp={this.props.investInSoftware} name="Install Software" picture="./pictures/software-program.png" classNameButton="rd-install-software menu-button" cost={50000} classNameChild="info-invest-rd-install-software" contentChild="With software, we will be able to manage all this production." />
         :null}  
 
     {this.props.rdLevelOfInvestment > 10 ?
@@ -59,7 +66,7 @@ class InvestmentBox extends Component{
 
 {this.props.rdLevelOfInvestment > 4
     ? <div><h3>EXPANSION</h3><div>
-    <ButtonAutomaticData onClickProp={this.props.buyAMachine} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={8000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/></div></div>
+    <ButtonAutomaticData onClickProp={this.props.buyAMachine} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={this.props.factoryCost} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/></div></div>
     : null}
         </div>
         );

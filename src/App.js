@@ -29,6 +29,7 @@ class App extends Component{
           listOfCosts : [200, 1000, 3000, 5000, 10000, 20000,50000,100000],
           marketingListOfCosts : [15, 300, 2000, 10000, 30000, 50000, 100000, 200000,500000,1000000],
           rdListofCosts : [30, 500, 2000, 5000, 10000, 20000,50000,100000],
+          softwareCost : 50000,
           numberOfSmallAutomaticMachines : 0,
           smallAutomaticMachineProductivity : 10,
           boughtAnAutomaticMachine : false,
@@ -41,11 +42,15 @@ class App extends Component{
           salesman : 0,
           salesmanCost : 10,
           salesmanEfficiency : 10,
+          managerCost : 1000,
+          numberOfManagers : 0,
+          numberofSalesHiredByManagers : 5,
           soldAtLeastOnePaperclip : false,
           firstMachine : false,
           hasHiredaSalesman : false,
           salesmanCantsell : false,
           hasBoughtAFactory : false,
+          factoryCost : 8000,
           numberOfFactory : 0,
           numberOfClicksIncrease : 0,
           lang : 'en',
@@ -96,6 +101,7 @@ class App extends Component{
   this.investInMarketing = this.investInMarketing.bind(this);    
   this.investInSales = this.investInSales.bind(this);    
   this.investInRD = this.investInRD.bind(this);    
+  this.investInSoftware = this.investInSoftware.bind(this);    
   this.automaticCounting = this.automaticCounting.bind(this);    
   this.hireASalesman = this.hireASalesman.bind(this);    
   this.buyFiveSales = this.buyFiveSales.bind(this);    
@@ -104,6 +110,7 @@ class App extends Component{
   this.typeWriter = this.typeWriter.bind(this);    
   this.updateTextBox = this.updateTextBox.bind(this);    
   this.checkIfTextBoxMustBeUpdated = this.checkIfTextBoxMustBeUpdated.bind(this);
+  this.hireAManager = this.hireAManager.bind(this);
   }
 
   componentDidMount(){
@@ -118,6 +125,7 @@ class App extends Component{
         return ({
           count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine,
           salesmanCantsell : true,
+          salesman : state.salesman + state.numberOfManagers * state.numberofSalesHiredByManagers
       });
       }
       else{
@@ -125,7 +133,8 @@ class App extends Component{
         count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine- state.salesmanEfficiency*state.salesman,
         money : state.money + 0.25*10*state.salesman,
         totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman,
-        salesmanCantsell : false
+        salesmanCantsell : false,
+        salesman : state.salesman + state.numberOfManagers * state.numberofSalesHiredByManagers
     });
     }
   });
@@ -188,6 +197,7 @@ class App extends Component{
             money : state.money - cost,
             numberOfFactory : state.numberOfFactory + 1,
             hasBoughtAFactory : true,
+            factoryCost : state.factoryCost *2,
             automaticProduction : state.automaticProduction + quantity*productivity
               });
             }), this.updateTextBox);
@@ -221,13 +231,12 @@ class App extends Component{
     }
   }  
   
-  investInMarketing(){
-    if(this.state.money >= this.state.marketingCost){
+  investInSoftware(){
+    if(this.state.money >= this.state.softwareCost){
     this.setState((state => { return ({
-      money : state.money - state.marketingCost,
-      marketingCost : (state.marketingListOfCosts[state.marketingLevelOfInvestment-2]),
-      marketingLevelOfInvestment : state.marketingLevelOfInvestment +1,
-      unitsSold : state.unitsSold *5
+      money : state.money - state.softwareCost,
+      softwareCost : state.softwareCost,
+      softwareLevelOfInvestment : state.softwareLevelOfInvestment +1,
         });
       }), this.updateTextBox);
     }
@@ -254,6 +263,16 @@ class App extends Component{
       }), this.updateTextBox);
     }
   } 
+
+  hireAManager(){
+    if(this.state.money >= this.state.managerCost){
+      this.setState((state => { return ({
+        money : state.money - state.managerCost,
+        numberOfManagers : state.numberOfManagers +1
+          });
+        }), this.updateTextBox);
+      }
+  }
 
   hireASalesman(){
     if(this.state.money >= this.state.salesmanCost){
@@ -382,10 +401,10 @@ typeWriter(txt, author, speed=10) {
   
       <div className="left-div">
         <div>
-          {soldAtLeastOnePaperclip ? <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman}/> : null}
+          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} />
         </div>
         <div>
-          {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} /> : null}
+          {this.state.firstMachine ? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers}/> : null}
         </div>
         <div style={{clear:'both'}}></div>
       </div>  
@@ -407,7 +426,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          {this.state.softwareLevelOfInvestment > 0 && <Software />}
+          <Software softwareLevelOfInvestment={this.state.softwareLevelOfInvestment}/>
       </div>
       
     </div>

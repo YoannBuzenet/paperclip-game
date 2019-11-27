@@ -8,9 +8,12 @@ class Software extends Component{
     }
 
     render(){
+
+        var className = this.props.softwareLevelOfInvestment > 0 ? "interface-div software-div visible-right-div" :"interface-div software-div";
+
     return (
-    <div className="interface-div ai-stuff" style={{backgroundColor:"red"}}>
-        <h2>AI Stuff</h2>
+    <div className={className} style={{backgroundColor:"red"}}>
+        <h2>Software & Hardware architecture</h2>
         <p>hey</p>
   </div>)
 

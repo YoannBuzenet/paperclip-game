@@ -19,6 +19,8 @@ class WorkBox extends Component{
 
     {this.props.hasBoughtAfactory && <h3>Factories : {this.props.numberOfFactory}</h3>}
 
+    {this.props.numberOfManagers > 0 ? <h3>Managers : {this.props.numberOfManagers}</h3> : null}
+
 
         </div>);
     }
