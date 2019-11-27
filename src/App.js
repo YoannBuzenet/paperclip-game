@@ -13,8 +13,8 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 10000000,
-          money : 10000000,
+          count : 0,
+          money : 0,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
           salesLevelOfInvestment : 1,
@@ -88,8 +88,8 @@ class App extends Component{
                   en: "It's big. We should invest more."
                 },  
               afterFactory: {
-                fr: "On entre dans la cour des grands. Voilà les données des concurrents dans la région.",
-                en: "We're in the game now. Here are the stats of our main competitors in the area."
+                fr: "On entre dans la cour des grands. Voilà les données des concurrents dans la région. Au fait, tu peux maintenant embaucher des managers.",
+                en: "We're in the game now. Here are the stats of our main competitors in the area. Oh, and you can now hire managers."
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -111,6 +111,7 @@ class App extends Component{
   this.updateTextBox = this.updateTextBox.bind(this);    
   this.checkIfTextBoxMustBeUpdated = this.checkIfTextBoxMustBeUpdated.bind(this);
   this.hireAManager = this.hireAManager.bind(this);
+  this.automaticSellPaperclips = this.automaticSellPaperclips.bind(this);
   }
 
   componentDidMount(){
@@ -120,24 +121,43 @@ class App extends Component{
   }
 
   automaticCounting(){
+    this.automaticSellPaperclips();
     this.setState(state => { 
       if((state.count + state.automaticProduction - (state.salesmanEfficiency * state.salesman)) <= 0){
         return ({
           count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine,
-          salesmanCantsell : true,
           salesman : state.salesman + state.numberOfManagers * state.numberofSalesHiredByManagers
       });
       }
       else{
         return ({
-        count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine- state.salesmanEfficiency*state.salesman,
-        money : state.money + 0.25*10*state.salesman,
-        totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman,
-        salesmanCantsell : false,
+        count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine,
         salesman : state.salesman + state.numberOfManagers * state.numberofSalesHiredByManagers
     });
     }
   });
+  }
+
+  automaticSellPaperclips(){
+    // If we can't sell because of the stocks, we update the state
+    this.setState(state => { 
+      if((state.count + state.automaticProduction - (state.salesmanEfficiency * state.salesman)) <= 0){
+        this.setState((state => { return ({
+          salesmanCantsell : true
+        });
+      }), this.updateTextBox);
+      }
+    //If we can sell, we just sell
+      else{
+        this.setState((state => { return ({
+          salesmanCantsell : false,
+          totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman,
+          money : state.money + 0.25*10*state.salesman,
+          count : state.count - state.salesmanEfficiency*state.salesman
+        });
+      }), this.updateTextBox);
+      }
+  })
   }
 
   handleClickIncrease(){
@@ -405,7 +425,7 @@ typeWriter(txt, author, speed=10) {
         </div>
         <div>
           {this.state.firstMachine > 0? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers}/> : null}
-        </div>  
+        </div>
       </div>  
       
       <div className="middle-div">

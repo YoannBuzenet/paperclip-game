@@ -46,7 +46,7 @@ class InvestmentBox extends Component{
         <Button onClickProp={this.props.buyFiveSales} picture="./pictures/salesmanx5.png" name="Hire 5 salesmen" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost *5 } classNameChild="salesman-machines-button" contentChild="Hire 5 salesman in a row." />
     : null}
 
-    {this.props.numberOfFactory > 1 ?
+    {this.props.numberOfFactory > 0 ?
     <Button onClickProp={this.props.hireAManager} name="Hire a Manager" picture="./pictures/manager.png" classNameButton="rd-hire-manager menu-button" cost={5000} classNameChild="info-hire-manager" contentChild="Hire a Manager (hires 5 sales every second)" />
         :null} 
 
