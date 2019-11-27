@@ -7,6 +7,7 @@ import InvestmentBox from './components/investmentBox.js';
 import WorkBox from './components/workBox.js';
 import DashboardActivity from './components/DashboardActivity.js';
 import DialogInterface from './components/DialogInterface.js';
+import Software from './components/Software.js';
 
 class App extends Component{
   constructor(props){
@@ -17,6 +18,7 @@ class App extends Component{
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
           salesLevelOfInvestment : 1,
+          softwareLevelOfInvestment : 0,
           totalPaperclipssold : 0,
           numberOfSmallMachines : 0,
           productivity : 1,
@@ -218,6 +220,18 @@ class App extends Component{
       }), this.updateTextBox);
     }
   }  
+  
+  investInMarketing(){
+    if(this.state.money >= this.state.marketingCost){
+    this.setState((state => { return ({
+      money : state.money - state.marketingCost,
+      marketingCost : (state.marketingListOfCosts[state.marketingLevelOfInvestment-2]),
+      marketingLevelOfInvestment : state.marketingLevelOfInvestment +1,
+      unitsSold : state.unitsSold *5
+        });
+      }), this.updateTextBox);
+    }
+  }  
 
   investInSales(){
     if(this.state.money >= this.state.salesCost){
@@ -393,10 +407,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-        <div className="interface-div ai-stuff" style={{backgroundColor:"red"}}>
-          <h2>AI Stuff</h2>
-          <p>hey</p>
-        </div>  
+          {this.state.softwareLevelOfInvestment > 0 && <Software />}
       </div>
       
     </div>
