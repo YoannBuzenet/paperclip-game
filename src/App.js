@@ -50,7 +50,7 @@ class App extends Component{
           hasHiredaSalesman : false,
           salesmanCantsell : false,
           managerCantHire : false,
-          maximumSalesHirable : 100,
+          maximumSalesHirable : 10,
           maximumSalesReached : false,
           hasBoughtAFactory : false,
           factoryCost : 8000,
@@ -168,7 +168,6 @@ class App extends Component{
   automaticSellPaperclips(){
     // If we can't sell because of the stocks, we update the state
       if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman) <= 0){
-        console.log('peut pas vendre');
         this.setState(({
           salesmanCantsell : true
         }), this.updateTextBox)
@@ -176,7 +175,6 @@ class App extends Component{
     //If we can sell, we just sell
       else{
         this.setState((state => { 
-        console.log('peut vendre');
         return ({
           salesmanCantsell : false,
           totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman,
@@ -345,6 +343,16 @@ class App extends Component{
 
   buyFiveSales(){
     if(this.state.money >= this.state.salesmanCost * 5){
+
+      if(this.state.salesman >= this.state.maximumSalesHirable){
+        console.log(this.state.salesman, this.state.maximumSalesHirable);
+        this.setState((state => { return ({
+          maximumSalesReached : true
+            });
+          }), this.updateTextBox);
+      }
+
+      else{
       this.setState((state => { return ({
         money : state.money - state.salesmanCost * 5,
         hasHiredaSalesman : true,
@@ -352,6 +360,7 @@ class App extends Component{
           });
         }),this.updateTextBox);
       }
+    } 
   }
 
   createAndRemoveGraphicEffect(textToRender, idParent, tagChild, classGraphic){
