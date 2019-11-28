@@ -49,6 +49,9 @@ class App extends Component{
           firstMachine : false,
           hasHiredaSalesman : false,
           salesmanCantsell : false,
+          managerCantHire : false,
+          maximumSalesHirable : 100,
+          maximumSalesReached : false,
           hasBoughtAFactory : false,
           factoryCost : 8000,
           numberOfFactory : 0,
@@ -112,6 +115,8 @@ class App extends Component{
   this.checkIfTextBoxMustBeUpdated = this.checkIfTextBoxMustBeUpdated.bind(this);
   this.hireAManager = this.hireAManager.bind(this);
   this.automaticSellPaperclips = this.automaticSellPaperclips.bind(this);
+  this.automaticProductionPaperclips = this.automaticProductionPaperclips.bind(this);
+  this.automaticHiringSales = this.automaticHiringSales.bind(this);
   }
 
   componentDidMount(){
@@ -121,44 +126,66 @@ class App extends Component{
   }
 
   automaticCounting(){
+    this.automaticProductionPaperclips();
     this.automaticSellPaperclips();
+    this.automaticHiringSales();
+  }
+
+  automaticHiringSales(){
     this.setState(state => { 
-      if((state.count + state.automaticProduction - (state.salesmanEfficiency * state.salesman)) <= 0){
+      //Here we check if we can afford to hire sales. If we can't pay totally, 0 salesman are added (not just a part of them if we can pay a part - maybe there's room for improvment)
+      if(state.money - (state.numberOfManagers * state.numberofSalesHiredByManagers * state.salesmanCost) <= 0){
         return ({
-          count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine,
-          salesman : state.salesman + state.numberOfManagers * state.numberofSalesHiredByManagers
+          managerCantHire : true,
+          maximumSalesReached : false
+      });
+      }
+      //Blocking the number of sales hired here
+      else if(state.salesman >= state.maximumSalesHirable){
+        return ({
+          maximumSalesReached : true,
       });
       }
       else{
         return ({
-        count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine,
-        salesman : state.salesman + state.numberOfManagers * state.numberofSalesHiredByManagers
+        salesman : state.salesman + state.numberOfManagers * state.numberofSalesHiredByManagers,
+        money : state.money - (state.numberOfManagers * state.numberofSalesHiredByManagers * state.salesmanCost),
+        managerCantHire : false,
+        maximumSalesReached : false
     });
     }
   });
   }
 
+  automaticProductionPaperclips(){
+    this.setState((state => { return ({
+      count : state.count + state.automaticProduction * state.productivyPerAutomaticMachine,
+      });
+    }), this.updateTextBox);
+
+  }
+
   automaticSellPaperclips(){
     // If we can't sell because of the stocks, we update the state
-    this.setState(state => { 
-      if((state.count + state.automaticProduction - (state.salesmanEfficiency * state.salesman)) <= 0){
-        this.setState((state => { return ({
+      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman) <= 0){
+        console.log('peut pas vendre');
+        this.setState(({
           salesmanCantsell : true
-        });
-      }), this.updateTextBox);
+        }), this.updateTextBox)
       }
     //If we can sell, we just sell
       else{
-        this.setState((state => { return ({
+        this.setState((state => { 
+        console.log('peut vendre');
+        return ({
           salesmanCantsell : false,
           totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman,
           money : state.money + 0.25*10*state.salesman,
           count : state.count - state.salesmanEfficiency*state.salesman
-        });
-      }), this.updateTextBox);
-      }
-  })
+        })
+      }), this.updateTextBox)
   }
+}
 
   handleClickIncrease(){
     this.updateTextBox();
@@ -296,13 +323,24 @@ class App extends Component{
 
   hireASalesman(){
     if(this.state.money >= this.state.salesmanCost){
-      this.setState((state => { return ({
+
+      if(this.state.salesman >= this.state.maximumSalesHirable){
+        console.log(this.state.salesman, this.state.maximumSalesHirable);
+        this.setState((state => { return ({
+          maximumSalesReached : true
+            });
+          }), this.updateTextBox);
+      }
+
+      else{
+        this.setState((state => { return ({
         money : state.money - state.salesmanCost,
         hasHiredaSalesman : true,
         salesman : state.salesman +1
           });
         }), this.updateTextBox);
       }
+    }
   }
 
   buyFiveSales(){
