@@ -31,6 +31,10 @@ class ButtonSubContent extends Component{
             transform: 'translate(-50%, -50%)'}
     }
 
+    if(this.props.money < this.props.cost){
+        var contentCantBuy = "You can't afford this for now.";
+    }
+
     return (
         <div 
         className={this.props.classNameChild+" hover-button"} 
@@ -38,6 +42,7 @@ class ButtonSubContent extends Component{
         onMouseLeave={this.toggleHover}
         style={styleButton}><span className="hover-name">{this.props.name}</span><br />
     {this.props.cost >0 ? this.props.cost + '€': <strong>Free</strong>}<br/>{this.props.contentChild}
+    {this.props.money < this.props.cost ? <p className="cantAfford">{contentCantBuy}</p> : null}
         </div>
     )}
 }

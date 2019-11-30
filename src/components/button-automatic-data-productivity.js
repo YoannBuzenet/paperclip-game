@@ -27,14 +27,19 @@ class ButtonAutomaticData extends Component{
         backgroundImage: `url(`+this.props.picture+`)`,
         }; 
 
+    var className = this.props.classNameButton
+    if(this.props.money < this.props.cost){
+        className += " disabled";
+    }     
+
     return (
         <button
         style={styleButton}
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
         onClick={this.handleClick} 
-        className={this.props.classNameButton}>
-            <ButtonSubContentAutomaticProductivity classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} automaticProductivityPerMachine={this.props.automaticProductivityPerMachine} machineQuantity={this.props.machineQuantity} name={this.props.name} machineProductivity={this.props.machineProductivity}/>
+        className={className}>
+            <ButtonSubContentAutomaticProductivity classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} automaticProductivityPerMachine={this.props.automaticProductivityPerMachine} machineQuantity={this.props.machineQuantity} name={this.props.name} machineProductivity={this.props.machineProductivity} money={this.props.money}/>
         </button>);
     }
 }

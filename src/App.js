@@ -50,7 +50,7 @@ class App extends Component{
           hasHiredaSalesman : false,
           salesmanCantsell : false,
           managerCantHire : false,
-          maximumSalesHirable : 10,
+          maximumSalesHirable : 50,
           maximumSalesReached : false,
           hasBoughtAFactory : false,
           factoryCost : 8000,
@@ -243,7 +243,8 @@ class App extends Component{
             numberOfFactory : state.numberOfFactory + 1,
             hasBoughtAFactory : true,
             factoryCost : state.factoryCost *2,
-            automaticProduction : state.automaticProduction + quantity*productivity
+            automaticProduction : state.automaticProduction + quantity*productivity,
+            maximumSalesHirable : state.maximumSalesHirable +50
               });
             }), this.updateTextBox);
         }

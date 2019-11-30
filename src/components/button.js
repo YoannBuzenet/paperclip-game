@@ -5,7 +5,7 @@ class Button extends Component{
     constructor(props){
         super(props)
         this.state = {
-            hover : false
+            hover : false,
         }
         this.toggleHover = this.toggleHover.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -51,6 +51,12 @@ class Button extends Component{
         backgroundImage: `url(`+this.props.picture+`)`,
         }; 
 
+
+    var className = this.props.classNameButton
+    if(this.props.money < this.props.cost){
+        className += " disabled";
+    }   
+
     return (
         <button
         style={styleButton}
@@ -58,8 +64,8 @@ class Button extends Component{
         onMouseLeave={this.toggleHover}
         onClick={this.handleClick}
         id={this.props.id ? this.props.id : null}
-        className={this.props.classNameButton}>
-            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} name={this.props.name}/>
+        className={className}>
+            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} name={this.props.name} money={this.props.money}/>
         </button>);
     }
 }

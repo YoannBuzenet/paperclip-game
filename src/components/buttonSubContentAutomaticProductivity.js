@@ -31,6 +31,10 @@ class ButtonSubContentAutomaticProductivity extends Component{
             transform: 'translate(-50%, -50%)'}
     }
 
+    if(this.props.money < this.props.cost){
+        var contentCantBuy = "You can't afford this for now.";
+    }
+
     return (
         <div 
         className={this.props.classNameChild}
@@ -38,6 +42,7 @@ class ButtonSubContentAutomaticProductivity extends Component{
         onMouseLeave={this.toggleHover}
         style={styleButton}><span className="hover-name">{this.props.name}</span><br />
     {this.props.cost}€<br/>+ {this.props.machineProductivity * this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild}
+    {this.props.money < this.props.cost ? <p className="cantAfford">{contentCantBuy}</p> : null}
         </div>
     )}
 }

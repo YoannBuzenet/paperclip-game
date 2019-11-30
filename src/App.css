@@ -200,12 +200,29 @@ div > h3 {
   outline:none;
 }
 
+.disabled{
+  background-color : lightgrey;
+}
+
+.cantAfford{
+  font-size : 1.2rem;
+  font-style: italic;
+}
+
 .menu-button:hover{
   background-color : #70b7e0;
 }
 
 .menu-button:active{
   background-color: #2d76a1;
+}
+
+.disabled:hover {
+  background-color: lightgrey;
+}
+
+.disabled:active{
+  background-color: lightgrey;
 }
 
 .hover-button {
