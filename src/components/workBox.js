@@ -14,7 +14,7 @@ class WorkBox extends Component{
     : null}
 
     {this.props.numberOfSalesman > 0 
-    ? <h3>Salesmen : {this.props.numberOfSalesman}</h3> 
+    ? <h3>Salesmen : {this.props.numberOfSalesman}/{this.props.maximumSalesHirable}</h3> 
     : null}    
 
     {this.props.hasBoughtAfactory && <h3>Factories : {this.props.numberOfFactory}</h3>}
