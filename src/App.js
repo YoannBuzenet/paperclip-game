@@ -20,6 +20,7 @@ class App extends Component{
           salesLevelOfInvestment : 1,
           softwareLevelOfInvestment : 0,
           totalPaperclipssold : 0,
+          officeLevelUpgrade : 0,
           numberOfSmallMachines : 0,
           productivity : 1,
           unitsSold : 1,
@@ -29,7 +30,7 @@ class App extends Component{
           listOfCosts : [200, 1000, 3000, 5000, 10000, 20000,50000,100000],
           marketingListOfCosts : [15, 300, 2000, 10000, 30000, 50000, 100000, 200000,500000,1000000],
           rdListofCosts : [30, 500, 2000, 25000, 100000, 200000,500000,1000000],
-          softwareCost : 50000,
+          softwareCost : 30000,
           numberOfSmallAutomaticMachines : 0,
           smallAutomaticMachineProductivity : 10,
           boughtAnAutomaticMachine : false,
@@ -42,9 +43,9 @@ class App extends Component{
           salesman : 0,
           salesmanCost : 10,
           salesmanEfficiency : 10,
-          managerCost : 5000,
+          managerCost : 1000,
           numberOfManagers : 0,
-          numberofSalesHiredByManagers : 5,
+          numberofSalesHiredByManagers : 1,
           soldAtLeastOnePaperclip : false,
           firstMachine : false,
           hasHiredaSalesman : false,
@@ -96,6 +97,14 @@ class App extends Component{
               afterFactory: {
                 fr: "On entre dans la cour des grands. Voilà les données des concurrents dans la région.",
                 en: "We're in the game now. Here are the stats of our main competitors in the area."
+                  }, 
+              after2offices: {
+                fr: "Les bureaux s'agrandissent. Tu peux maintenant embaucher des managers. Ils se chargeront des vendeurs.",
+                en: "Our offices are getting bigger. You can now hire managers - they'll take care of the sales."
+                  }, 
+              afterRD5: {
+                fr: "Avec un logiciel on s'en sortira mieux.",
+                en: "With a software we'll manage our business better."
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -373,6 +382,7 @@ class App extends Component{
         money : state.money - state.officeCost,
         numberOfOffices : state.numberOfOffices +1,
         officeCost :  state.officeCost*2,
+        officeLevelUpgrade : state.officeLevelUpgrade +1,
         maximumSalesHirable : state.maximumSalesHirable + state.salesMaximumIncreasedByOffices
           });
         }), this.updateTextBox);
@@ -417,12 +427,20 @@ class App extends Component{
         var textToDisplay = this.state.text.afterLevel3RD;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.rdLevelOfInvestment == 5 && this.state.numberOfFactory == 0) {
+      else if(this.state.rdLevelOfInvestment == 5 && this.state.numberOfFactory == 0 && this.state.numberOfOffices < 2) {
         var textToDisplay = this.state.text.afterLevel4RD;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.numberOfSmallAutomaticMachines > 0 && this.state.numberOfFactory > 0) {
+      else if(this.state.numberOfOffices >= 2 && this.state.numberOfFactory == 0) {
+        var textToDisplay = this.state.text.after2offices;
+        var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.numberOfSmallAutomaticMachines > 0 && this.state.numberOfFactory > 0 && this.state.rdLevelOfInvestment <= 5) {
         var textToDisplay = this.state.text.afterFactory;
+        var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.rdLevelOfInvestment >  5 && this.state.rdLevelOfInvestment <= 7) {
+        var textToDisplay = this.state.text.afterRD5;
         var author = this.state.text.AuthorMessageHuman;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
@@ -484,7 +502,7 @@ typeWriter(txt, author, speed=10) {
   
       <div className="left-div">
         <div>
-          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice}/>
+          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost}/>
         </div>
         <div>
           {this.state.firstMachine > 0? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers} maximumSalesHirable={this.state.maximumSalesHirable}/> : null}

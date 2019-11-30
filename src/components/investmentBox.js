@@ -46,8 +46,9 @@ class InvestmentBox extends Component{
         <Button onClickProp={this.props.buyFiveSales} picture="./pictures/salesmanx5.png" name="Hire 5 salesmen" classNameButton="salesman-button menu-button" cost={this.props.salesmanCost *5 } classNameChild="salesman-machines-button" contentChild="Hire 5 salesman in a row." money={this.props.money} maximumSalesHirable={this.props.maximumSalesHirable} salesman={this.props.salesman}/>
     : null}
 
-    
-    {/* <Button onClickProp={this.props.hireAManager} name="Hire a Manager" picture="./pictures/manager.png" classNameButton="rd-hire-manager menu-button" cost={5000} classNameChild="info-hire-manager" contentChild="Hire a Manager (hires 5 sales every second)" money={this.props.money} maximumSalesHirable={this.props.maximumSalesHirable} salesman={this.props.salesman}/> */}
+    {this.props.officeLevelUpgrade > 1 ?
+    <Button onClickProp={this.props.hireAManager} name="Hire a Manager" picture="./pictures/manager.png" classNameButton="rd-hire-manager menu-button" cost={this.props.managerCost} classNameChild="info-hire-manager" contentChild="Hire a Manager (hires 1 sales every second)" money={this.props.money} maximumSalesHirable={this.props.maximumSalesHirable} salesman={this.props.salesman}/> 
+    : null}
 
     {this.props.salesLevelOfInvestment > 4 
     ? <div><h3>Research & Development</h3>
@@ -57,7 +58,7 @@ class InvestmentBox extends Component{
     ? <Button onClickProp={this.props.buyOffice} name="Buy new offices" picture="./pictures/new_office.png" classNameButton="office-button menu-button" cost={this.props.officeCost} classNameChild="info-buy-office-button" contentChild="Hire more sales" money={this.props.money} />
     : null}
 
-    {this.props.numberOfFactory > 2 && this.props.softwareLevelOfInvestment < 1 ?
+    {this.props.rdLevelOfInvestment > 5 && this.props.softwareLevelOfInvestment < 1 ?
     <Button onClickProp={this.props.investInSoftware} name="Install Software" picture="./pictures/software-program.png" classNameButton="rd-install-software menu-button" cost={50000} classNameChild="info-invest-rd-install-software" contentChild="With software, we will be able to manage all this production." money={this.props.money}/>
         :null}  
 
