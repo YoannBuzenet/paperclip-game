@@ -53,8 +53,8 @@ class InvestmentBox extends Component{
     ? <div><h3>Research & Development</h3>
         <div><Button onClickProp={this.props.investRD} name="Invest in Research" picture="./pictures/invest-in-research-and-development.png" classNameButton="rd-button menu-button" cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." money={this.props.money}/>
     
-        {this.props.rdLevelOfInvestment > 0
-    ? <Button onClickProp={this.props.buyOffice} name="Buy new offices" picture="./pictures/new_office.png" classNameButton="office-button menu-button" cost={5000} classNameChild="info-buy-office-button" contentChild="Hire more sales" money={this.props.money} />
+        {this.props.rdLevelOfInvestment > 4
+    ? <Button onClickProp={this.props.buyOffice} name="Buy new offices" picture="./pictures/new_office.png" classNameButton="office-button menu-button" cost={this.props.officeCost} classNameChild="info-buy-office-button" contentChild="Hire more sales" money={this.props.money} />
     : null}
 
     {this.props.numberOfFactory > 2 && this.props.softwareLevelOfInvestment < 1 ?

@@ -28,7 +28,7 @@ class App extends Component{
           salesCost : 0,
           listOfCosts : [200, 1000, 3000, 5000, 10000, 20000,50000,100000],
           marketingListOfCosts : [15, 300, 2000, 10000, 30000, 50000, 100000, 200000,500000,1000000],
-          rdListofCosts : [30, 500, 2000, 5000, 10000, 20000,50000,100000],
+          rdListofCosts : [30, 500, 2000, 25000, 100000, 200000,500000,1000000],
           softwareCost : 50000,
           numberOfSmallAutomaticMachines : 0,
           smallAutomaticMachineProductivity : 10,
@@ -53,6 +53,9 @@ class App extends Component{
           maximumSalesHirable : 50,
           maximumSalesReached : false,
           hasBoughtAFactory : false,
+          numberOfOffices : 0,
+          salesMaximumIncreasedByOffices : 100,
+          officeCost : 1000,
           factoryCost : 8000,
           numberOfFactory : 0,
           numberOfClicksIncrease : 0,
@@ -117,6 +120,7 @@ class App extends Component{
   this.automaticSellPaperclips = this.automaticSellPaperclips.bind(this);
   this.automaticProductionPaperclips = this.automaticProductionPaperclips.bind(this);
   this.automaticHiringSales = this.automaticHiringSales.bind(this);
+  this.buyOffice = this.buyOffice.bind(this);
   }
 
   componentDidMount(){
@@ -243,8 +247,7 @@ class App extends Component{
             numberOfFactory : state.numberOfFactory + 1,
             hasBoughtAFactory : true,
             factoryCost : state.factoryCost *1.5,
-            automaticProduction : state.automaticProduction + quantity*productivity,
-            maximumSalesHirable : state.maximumSalesHirable +50
+            automaticProduction : state.automaticProduction + quantity*productivity
               });
             }), this.updateTextBox);
         }
@@ -364,6 +367,18 @@ class App extends Component{
     } 
   }
 
+  buyOffice(){
+    if(this.state.money >= this.state.officeCost){
+      this.setState((state => { return ({
+        money : state.money - state.officeCost,
+        numberOfOffices : state.numberOfOffices +1,
+        officeCost :  state.officeCost*2,
+        maximumSalesHirable : state.maximumSalesHirable + state.salesMaximumIncreasedByOffices
+          });
+        }), this.updateTextBox);
+      }
+  }
+
   createAndRemoveGraphicEffect(textToRender, idParent, tagChild, classGraphic){
     var parent = document.getElementById(idParent);
     var childCreated = document.createElement(tagChild);
@@ -469,7 +484,7 @@ typeWriter(txt, author, speed=10) {
   
       <div className="left-div">
         <div>
-          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable}/>
+          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice}/>
         </div>
         <div>
           {this.state.firstMachine > 0? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers} maximumSalesHirable={this.state.maximumSalesHirable}/> : null}
