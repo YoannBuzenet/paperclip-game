@@ -14,7 +14,7 @@ class Software extends Component{
     return (
     <div className={className} style={{backgroundColor:"red"}}>
         <h2>Software & Hardware architecture</h2>
-        <p>hey</p>
+        <Button onClickProp={this.props.buytheWebsite} name="Devellop Ecommerce Website" picture="./pictures/website.png" classNameButton="website menu-button" cost={this.props.websitePrice} classNameChild="info-website-button" contentChild="Increase the sales - Sell online ! (+20 000 sales)" money={this.props.money}/>
   </div>)
 
     ;}

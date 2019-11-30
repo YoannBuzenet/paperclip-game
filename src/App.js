@@ -29,8 +29,8 @@ class App extends Component{
           salesCost : 0,
           listOfCosts : [200, 1000, 3000, 5000, 10000, 20000,50000,100000],
           marketingListOfCosts : [15, 300, 2000, 10000, 30000, 50000, 100000, 200000,500000,1000000],
-          rdListofCosts : [30, 500, 2000, 25000, 100000, 200000,500000,1000000],
-          softwareCost : 30000,
+          rdListofCosts : [30, 500, 2000, 15000, 100000, 200000,500000,1000000],
+          softwareCost : 20000,
           numberOfSmallAutomaticMachines : 0,
           smallAutomaticMachineProductivity : 10,
           boughtAnAutomaticMachine : false,
@@ -60,6 +60,9 @@ class App extends Component{
           factoryCost : 8000,
           numberOfFactory : 0,
           numberOfClicksIncrease : 0,
+          websiteIsOnline : false,
+          websitePrice : 20000,
+          websiteSellingPower : 20000,
           lang : 'en',
           text:{
               AuthorMessageHuman: {
@@ -130,6 +133,7 @@ class App extends Component{
   this.automaticProductionPaperclips = this.automaticProductionPaperclips.bind(this);
   this.automaticHiringSales = this.automaticHiringSales.bind(this);
   this.buyOffice = this.buyOffice.bind(this);
+  this.buytheWebsite = this.buytheWebsite.bind(this);
   }
 
   componentDidMount(){
@@ -255,7 +259,7 @@ class App extends Component{
             money : state.money - cost,
             numberOfFactory : state.numberOfFactory + 1,
             hasBoughtAFactory : true,
-            factoryCost : state.factoryCost *1.5,
+            factoryCost : state.factoryCost *4,
             automaticProduction : state.automaticProduction + quantity*productivity
               });
             }), this.updateTextBox);
@@ -377,6 +381,19 @@ class App extends Component{
   }
 
   buyOffice(){
+    if(this.state.money >= this.state.officeCost){
+      this.setState((state => { return ({
+        money : state.money - state.officeCost,
+        numberOfOffices : state.numberOfOffices +1,
+        officeCost :  state.officeCost*2,
+        officeLevelUpgrade : state.officeLevelUpgrade +1,
+        maximumSalesHirable : state.maximumSalesHirable + state.salesMaximumIncreasedByOffices
+          });
+        }), this.updateTextBox);
+      }
+  }
+
+  buytheWebsite(){
     if(this.state.money >= this.state.officeCost){
       this.setState((state => { return ({
         money : state.money - state.officeCost,
@@ -526,7 +543,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software softwareLevelOfInvestment={this.state.softwareLevelOfInvestment}/>
+          <Software money={this.state.money} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.state.buytheWebsite}/>
       </div>
       
     </div>
