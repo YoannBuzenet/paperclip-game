@@ -53,7 +53,7 @@ class Button extends Component{
 
 
     var className = this.props.classNameButton
-    if(this.props.money < this.props.cost){
+    if(this.props.money < this.props.cost || this.props.salesman >= this.props.maximumSalesHirable){
         className += " disabled";
     }   
 
@@ -65,7 +65,7 @@ class Button extends Component{
         onClick={this.handleClick}
         id={this.props.id ? this.props.id : null}
         className={className}>
-            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} name={this.props.name} money={this.props.money}/>
+            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} name={this.props.name} money={this.props.money} salesman={this.props.salesman} maximumSalesHirable={this.props.maximumSalesHirable}/>
         </button>);
     }
 }

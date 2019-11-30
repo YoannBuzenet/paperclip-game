@@ -34,6 +34,9 @@ class ButtonSubContent extends Component{
     if(this.props.money < this.props.cost){
         var contentCantBuy = "You can't afford this for now.";
     }
+    else if(this.props.salesman >= this.props.maximumSalesHirable){
+        var contentCantBuy = "Maximum sales reached.";
+    }
 
     return (
         <div 
@@ -42,7 +45,7 @@ class ButtonSubContent extends Component{
         onMouseLeave={this.toggleHover}
         style={styleButton}><span className="hover-name">{this.props.name}</span><br />
     {this.props.cost >0 ? this.props.cost + '€': <strong>Free</strong>}<br/>{this.props.contentChild}
-    {this.props.money < this.props.cost ? <p className="cantAfford">{contentCantBuy}</p> : null}
+    {(this.props.money < this.props.cost || this.props.salesman >= this.props.maximumSalesHirable)? <p className="cantAfford">{contentCantBuy}</p> : null}
         </div>
     )}
 }
