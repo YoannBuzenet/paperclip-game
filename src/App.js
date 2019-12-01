@@ -15,6 +15,7 @@ class App extends Component{
       this.state = {
           count : 0,
           money : 0,
+          paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
           salesLevelOfInvestment : 1,
@@ -62,7 +63,10 @@ class App extends Component{
           numberOfClicksIncrease : 0,
           websiteIsOnline : false,
           websitePrice : 20000,
-          websiteSellingPower : 20000,
+          websiteSellingPower : 0,
+          computationalPowerPerSecond : 0,
+          totalComputationalPowerAccumulated : 0,
+          computationalCost : 0,
           lang : 'en',
           text:{
               AuthorMessageHuman: {
@@ -184,7 +188,7 @@ class App extends Component{
 
   automaticSellPaperclips(){
     // If we can't sell because of the stocks, we update the state
-      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman) <= 0){
+      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman + this.state.websiteSellingPower) <= 0){
         this.setState(({
           salesmanCantsell : true
         }), this.updateTextBox)
@@ -194,9 +198,9 @@ class App extends Component{
         this.setState((state => { 
         return ({
           salesmanCantsell : false,
-          totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman,
-          money : state.money + 0.25*10*state.salesman,
-          count : state.count - state.salesmanEfficiency*state.salesman
+          totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman + state.websiteSellingPower,
+          money : state.money + state.paperclipPrice * state.salesmanEfficiency *state.salesman + state.paperclipPrice * state.websiteSellingPower,
+          count : state.count - (state.salesmanEfficiency * state.salesman + state.websiteSellingPower)
         })
       }), this.updateTextBox)
   }
@@ -326,6 +330,17 @@ class App extends Component{
     }
   } 
 
+  investInComputationnalPower(){
+    if(this.state.money >= this.state.rdCost){
+    this.setState((state => { return ({
+      money : state.money - state.rdCost,
+      rdLevelOfInvestment : state.rdLevelOfInvestment +1,
+      rdCost :  (state.rdListofCosts[state.rdLevelOfInvestment-1])
+        });
+      }), this.updateTextBox);
+    }
+  } 
+
   hireAManager(){
     if(this.state.money >= this.state.managerCost){
       this.setState((state => { return ({
@@ -394,13 +409,10 @@ class App extends Component{
   }
 
   buytheWebsite(){
-    if(this.state.money >= this.state.officeCost){
+    if(this.state.money >= this.state.websitePrice){
       this.setState((state => { return ({
-        money : state.money - state.officeCost,
-        numberOfOffices : state.numberOfOffices +1,
-        officeCost :  state.officeCost*2,
-        officeLevelUpgrade : state.officeLevelUpgrade +1,
-        maximumSalesHirable : state.maximumSalesHirable + state.salesMaximumIncreasedByOffices
+        money : state.money - state.websitePrice,
+        websiteSellingPower : 20000
           });
         }), this.updateTextBox);
       }
@@ -529,7 +541,7 @@ typeWriter(txt, author, speed=10) {
       <div className="middle-div">
         
         <div className="dashboard interface-div">
-          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency}/>
+          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency} websiteSellingPower={this.state.websiteSellingPower}/>
         </div>
 
         {this.state.numberOfClicksIncrease > 10 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text} updateTextBox={this.updateTextBox} />}
@@ -543,7 +555,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software money={this.state.money} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.state.buytheWebsite}/>
+          <Software money={this.state.money} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite}/>
       </div>
       
     </div>
