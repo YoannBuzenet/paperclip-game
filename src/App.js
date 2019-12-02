@@ -50,6 +50,7 @@ class App extends Component{
           managerCost : 1000,
           numberOfManagers : 0,
           numberofSalesHiredByManagers : 1,
+          maximumManagersInGame : 100,
           soldAtLeastOnePaperclip : false,
           firstMachine : false,
           hasHiredaSalesman : false,
@@ -431,13 +432,15 @@ class App extends Component{
   }
 
   hireAManager(){
-    if(this.state.money >= this.state.managerCost){
-      this.setState((state => { return ({
-        money : state.money - state.managerCost,
-        numberOfManagers : state.numberOfManagers +1
-          });
-        }), this.updateTextBox);
-      }
+    if(this.state.maximumManagersInGame >= this.state.numberOfManagers){
+      if(this.state.money >= this.state.managerCost){
+        this.setState((state => { return ({
+          money : state.money - state.managerCost,
+          numberOfManagers : state.numberOfManagers +1
+            });
+          }), this.updateTextBox);
+        }
+    }  
   }
 
   hireASalesman(){
