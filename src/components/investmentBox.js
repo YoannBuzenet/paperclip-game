@@ -11,11 +11,20 @@ class InvestmentBox extends Component{
 
         var className = this.props.soldAtLeastOnePaperclip == 0 ? "investment-box interface-div" : "investment-box interface-div visible-left-div"
         
+        // R&D button disabling
         if(this.props.rdLevelOfInvestment > 5){
             var classNameRDButton = "rd-button menu-button doNOTdisplay";
         }
         else{
             var classNameRDButton = "rd-button menu-button";
+        }
+
+        //Automatic Machine button disabling
+        if(this.props.numberOfSmallAutomaticMachines >= this.props.maximumSmallAutomaticMachine){
+            var classNameAutomaticMachine = "automatic-machines-button menu-button disabled";
+        }
+        else{
+            classNameAutomaticMachine = "automatic-machines-button menu-button";
         }
         
 
@@ -32,9 +41,9 @@ class InvestmentBox extends Component{
         {this.props.rdLevelOfInvestment > 2 
     ? <div>
         <div>
-            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} picture="./pictures/automatic-machine.png" name="Automatic Machine" classNameButton="automatic-machines-button menu-button" cost={this.props.smallAutomaticMachineCost} classNameChild="info-automatic-machines-button" contentChild=" paperclips per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} isManual={false} machineQuantity={1} machineType="smallAutomaticMachine" machineProductivity={this.props.smallAutomaticMachineProductivity}/>
+            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} picture="./pictures/automatic-machine.png" name="Automatic Machine" classNameButton={classNameAutomaticMachine} cost={this.props.smallAutomaticMachineCost} classNameChild="info-automatic-machines-button" contentChild=" paperclips per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} isManual={false} machineQuantity={1} machineType="smallAutomaticMachine" machineProductivity={this.props.smallAutomaticMachineProductivity} numberOfSmallAutomaticMachines={this.props.numberOfSmallAutomaticMachines} maximumSmallAutomaticMachine={this.props.maximumSmallAutomaticMachine}/>
         {this.props.rdLevelOfInvestment > 3 ? 
-        <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} picture="./pictures/automatic-machinex5.png" name="5 Automatic Machine" classNameButton="automatic-machines5-button menu-button" cost={50} classNameChild="info-automatic-machinesx5-button" contentChild=" paperclips per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} machineQuantity={5} isManual={false} machineType="smallAutomaticMachine" machineProductivity={this.props.smallAutomaticMachineProductivity}/>
+        <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} picture="./pictures/automatic-machinex5.png" name="5 Automatic Machine" classNameButton={classNameAutomaticMachine} cost={50} classNameChild="info-automatic-machinesx5-button" contentChild=" paperclips per second)" automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} machineQuantity={5} isManual={false} machineType="smallAutomaticMachine" machineProductivity={this.props.smallAutomaticMachineProductivity} numberOfSmallAutomaticMachines={this.props.numberOfSmallAutomaticMachines} maximumSmallAutomaticMachine={this.props.maximumSmallAutomaticMachine}/>
     : null}
     </div> 
     </div>

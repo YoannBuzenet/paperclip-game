@@ -34,6 +34,9 @@ class ButtonSubContentAutomaticProductivity extends Component{
     if(this.props.money < this.props.cost){
         var contentCantBuy = "You can't afford this for now.";
     }
+    else if(this.props.numberOfSmallAutomaticMachines >= this.props.maximumSmallAutomaticMachine){
+        var contentCantBuy = "Maximum Machine reached.";
+    }
 
     return (
         <div 
@@ -42,7 +45,7 @@ class ButtonSubContentAutomaticProductivity extends Component{
         onMouseLeave={this.toggleHover}
         style={styleButton}><span className="hover-name">{this.props.name}</span><br />
     {this.props.cost}€<br/>+ {this.props.machineProductivity * this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild}
-    {this.props.money < this.props.cost ? <p className="cantAfford">{contentCantBuy}</p> : null}
+    {(this.props.money < this.props.cost || this.props.numberOfSmallAutomaticMachines >= this.props.maximumSmallAutomaticMachine) ? <p className="cantAfford">{contentCantBuy}</p> : null}
         </div>
     )}
 }
