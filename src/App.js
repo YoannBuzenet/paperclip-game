@@ -13,13 +13,14 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 0,
-          money : 0,
+          count : 1000000,
+          money : 1000000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
           salesLevelOfInvestment : 1,
           softwareLevelOfInvestment : 0,
+          AIlevelOfInvestment : 0,
           totalPaperclipssold : 0,
           officeLevelUpgrade : 0,
           numberOfSmallMachines : 0,
@@ -66,7 +67,11 @@ class App extends Component{
           websiteSellingPower : 0,
           computationalPowerPerSecond : 0,
           totalComputationalPowerAccumulated : 0,
-          computationalCost : 0,
+          computerComputationalCost : 0,
+          AIComputationalresearchCost : 0,
+          deeplearningCost : 30000,
+          weakAICost : 30000,
+          newAICost : 1000,
           lang : 'en',
           text:{
               AuthorMessageHuman: {
@@ -105,6 +110,10 @@ class App extends Component{
                 fr: "On entre dans la cour des grands. Voilà les données des concurrents dans la région.",
                 en: "We're in the game now. Here are the stats of our main competitors in the area."
                   }, 
+              after1office: {
+                fr: "On a plus de place avec ces nouveaux bureaux. Tu peux embaucher de nouveaux vendeurs.",
+                en: "We have more room with those new offices. You can hire new sales."
+                  }, 
               after2offices: {
                 fr: "Les bureaux s'agrandissent. Tu peux maintenant embaucher des managers. Ils se chargeront des vendeurs.",
                 en: "Our offices are getting bigger. You can now hire managers - they'll take care of the sales."
@@ -138,6 +147,7 @@ class App extends Component{
   this.automaticHiringSales = this.automaticHiringSales.bind(this);
   this.buyOffice = this.buyOffice.bind(this);
   this.buytheWebsite = this.buytheWebsite.bind(this);
+  this.investInAI = this.investInAI.bind(this);
   }
 
   componentDidMount(){
@@ -341,6 +351,16 @@ class App extends Component{
     }
   } 
 
+  investInAI(cost, productivity, isManual, machineType, quantity){
+
+    if(this.state.money >= cost){
+
+
+
+    }  
+
+  }
+
   hireAManager(){
     if(this.state.money >= this.state.managerCost){
       this.setState((state => { return ({
@@ -412,7 +432,8 @@ class App extends Component{
     if(this.state.money >= this.state.websitePrice){
       this.setState((state => { return ({
         money : state.money - state.websitePrice,
-        websiteSellingPower : 20000
+        websiteSellingPower : 20000,
+        websiteIsOnline : true
           });
         }), this.updateTextBox);
       }
@@ -456,8 +477,12 @@ class App extends Component{
         var textToDisplay = this.state.text.afterLevel3RD;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.rdLevelOfInvestment == 5 && this.state.numberOfFactory == 0 && this.state.numberOfOffices < 2) {
+      else if(this.state.rdLevelOfInvestment == 5 && this.state.numberOfFactory == 0 && this.state.numberOfOffices < 1) {
         var textToDisplay = this.state.text.afterLevel4RD;
+        var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.numberOfOffices == 1 && this.state.numberOfFactory == 0) {
+        var textToDisplay = this.state.text.after1office;
         var author = this.state.text.AuthorMessageHuman;
       }
       else if(this.state.numberOfOffices >= 2 && this.state.numberOfFactory == 0) {
@@ -555,7 +580,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software money={this.state.money} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite}/>
+          <Software money={this.state.money} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost}/>
       </div>
       
     </div>
