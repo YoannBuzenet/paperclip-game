@@ -50,19 +50,16 @@ class InvestmentBox extends Component{
     <Button onClickProp={this.props.hireAManager} name="Hire a Manager" picture="./pictures/manager.png" classNameButton="rd-hire-manager menu-button" cost={this.props.managerCost} classNameChild="info-hire-manager" contentChild="Hire a Manager (hires 1 sales every second)" money={this.props.money} maximumSalesHirable={this.props.maximumSalesHirable} salesman={this.props.salesman}/> 
     : null}
 
-    {this.props.salesLevelOfInvestment > 4 
-    ? <div><h3>Research & Development</h3>
+    {this.props.salesLevelOfInvestment > 4 &&
+     <div><h3>Research & Development</h3>
         <div><Button onClickProp={this.props.investRD} name="Invest in Research" picture="./pictures/invest-in-research-and-development.png" classNameButton="rd-button menu-button" cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." money={this.props.money}/>
+        {this.props.rdLevelOfInvestment > 4 && <Button onClickProp={this.props.buyOffice} name="Buy new offices" picture="./pictures/new_office.png" classNameButton="office-button menu-button" cost={this.props.officeCost} classNameChild="info-buy-office-button" contentChild="Hire more sales" money={this.props.money} />}
     
-        {this.props.rdLevelOfInvestment > 4
-    ? <Button onClickProp={this.props.buyOffice} name="Buy new offices" picture="./pictures/new_office.png" classNameButton="office-button menu-button" cost={this.props.officeCost} classNameChild="info-buy-office-button" contentChild="Hire more sales" money={this.props.money} />
-    : null}
 
     {this.props.rdLevelOfInvestment > 5 && this.props.softwareLevelOfInvestment < 1 ?
     <Button onClickProp={this.props.investInSoftware} name="Install Software" picture="./pictures/software-program.png" classNameButton="rd-install-software menu-button" cost={30000} classNameChild="info-invest-rd-install-software" contentChild="With software, we will be able to manage all this production." money={this.props.money}/>
         :null}  
-    </div></div>
-    : null}
+    </div></div>}
 
 {this.props.rdLevelOfInvestment > 4
     ? <div><h3>EXPANSION</h3><div>
