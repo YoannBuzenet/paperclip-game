@@ -65,13 +65,21 @@ class App extends Component{
           websiteIsOnline : false,
           websitePrice : 20000,
           websiteSellingPower : 0,
-          computationalPowerPerSecond : 0,
+          computationalPowerPerSecond : 1,
           totalComputationalPowerAccumulated : 0,
           computerComputationalCost : 0,
           AIComputationalresearchCost : 0,
           deeplearningCost : 30000,
           weakAICost : 30000,
           newAICost : 1000,
+          increaseProductionCost : 2000,
+          cloudConnectionCost : 2000,
+          quantumComputerCost : 15000,
+          deeplearningHasBeenBought : false,
+          weakAiIsActivated : false,
+          newAiIsActivated : false,
+          cloudConnectionEstablished : false,
+          quantumComputerHasBeenBought : false,
           lang : 'en',
           text:{
               AuthorMessageHuman: {
@@ -355,7 +363,54 @@ class App extends Component{
 
     if(this.state.money >= cost){
 
+      if(machineType =="deep-learning"){
 
+        this.setState(state => { return ({
+          money : state.money - cost,
+          deeplearningHasBeenBought : true
+            });
+          });
+      } 
+
+      else if(machineType =="weak-ai"){
+        this.setState(state => { return ({
+          money : state.money - cost,
+          weakAiIsActivated : true,
+            });
+          });
+      } 
+
+      else if(machineType =="new-ai"){
+        this.setState(state => { return ({
+          money : state.money - cost,
+          newAiIsActivated : true,
+            });
+          });
+      } 
+
+      else if(machineType =="increase-production"){
+        this.setState(state => { return ({
+          money : state.money - cost,
+          computationalPowerPerSecond : state.computationalPowerPerSecond +1
+            });
+          });
+      } 
+
+      else if(machineType =="cloud-connection"){
+        this.setState(state => { return ({
+          money : state.money - cost,
+          cloudConnectionEstablished : true
+            });
+          });
+      } 
+
+      else if(machineType =="quantum-computer"){
+        this.setState(state => { return ({
+          money : state.money - cost,
+          quantumComputerHasBeenBought : true
+            });
+          });
+      } 
 
     }  
 
@@ -580,7 +635,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software money={this.state.money} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI}/>
+          <Software money={this.state.money} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost}/>
       </div>
       
     </div>
