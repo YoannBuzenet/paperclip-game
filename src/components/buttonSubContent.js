@@ -31,6 +31,7 @@ class ButtonSubContent extends Component{
             transform: 'translate(-50%, -50%)'}
     }
 
+    //Adding explication to blocked button
     if(this.props.money < this.props.cost){
         var contentCantBuy = "You can't afford this for now.";
     }
@@ -38,13 +39,17 @@ class ButtonSubContent extends Component{
         var contentCantBuy = "Maximum sales reached.";
     }
 
+    //Displaying the right currency (euros or computationnal power)
+    var currency;
+    currency = this.props.currency ?  " Power" : "€";
+
     return (
         <div 
         className={this.props.classNameChild+" hover-button"} 
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
         style={styleButton}><span className="hover-name">{this.props.name}</span><br />
-    {this.props.cost >0 ? this.props.cost + '€': <strong>Free</strong>}<br/>{this.props.contentChild}
+    {this.props.cost >0 ? this.props.cost + currency : <strong>Free</strong>}<br/>{this.props.contentChild}
     {(this.props.money < this.props.cost || this.props.salesman >= this.props.maximumSalesHirable)? <p className="cantAfford">{contentCantBuy}</p> : null}
         </div>
     )}

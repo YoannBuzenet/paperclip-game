@@ -76,11 +76,13 @@ class App extends Component{
           increaseProductionCost : 2000,
           cloudConnectionCost : 2000,
           quantumComputerCost : 15000,
+          softwareMarketplacePrice : 20,
           deeplearningHasBeenBought : false,
           weakAiIsActivated : false,
           newAiIsActivated : false,
           cloudConnectionEstablished : false,
           quantumComputerHasBeenBought : false,
+          hasBoughtSoftwareSelling : false,
           lang : 'en',
           text:{
               AuthorMessageHuman: {
@@ -286,7 +288,7 @@ class App extends Component{
                 });
               }), this.updateTextBox);
           }
-                      
+        }              
         
         else if(machineType == "factory"){
           this.setState((state => { return ({
@@ -301,14 +303,14 @@ class App extends Component{
       }
       
     }
-  }
+  
   }
 
   improveAutomaticMachines(){
     if(this.state.money >= this.state.automaticProductionCost){
       this.setState((state => { return ({
         money : state.money - state.automaticProductionCost,
-        productivyPerAutomaticMachine : (state.productivyPerAutomaticMachine *1.5),
+        productivyPerAutomaticMachine : (state.productivyPerAutomaticMachine *2),
         automaticProductionImprovment : state.automaticProductionImprovment +1,
         automaticProductionCost : (state.listOfCosts[state.automaticProductionImprovment-1])
           });
@@ -421,6 +423,14 @@ class App extends Component{
         this.setState(state => { return ({
           money : state.money - cost,
           quantumComputerHasBeenBought : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
             });
           });
       } 
@@ -656,7 +666,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software money={this.state.money} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost}/>
+          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice}/>
       </div>
       
     </div>
