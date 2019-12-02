@@ -32,6 +32,7 @@ class App extends Component{
           listOfCosts : [200, 1000, 3000, 5000, 10000, 20000,50000,100000],
           marketingListOfCosts : [15, 300, 2000, 10000, 30000, 50000, 100000, 200000,500000,1000000],
           rdListofCosts : [30, 500, 2000, 15000, 100000, 200000,500000,1000000],
+          automaticProductionListofCosts : [20, 50, 200],
           softwareCost : 20000,
           numberOfSmallAutomaticMachines : 0,
           smallAutomaticMachineProductivity : 10,
@@ -73,7 +74,7 @@ class App extends Component{
           deeplearningCost : 30000,
           weakAICost : 30000,
           newAICost : 1000,
-          increaseProductionCost : 2000,
+          increaseProductionCost : [20, 100, 500],
           cloudConnectionCost : 2000,
           quantumComputerCost : 15000,
           softwareMarketplacePrice : 20,
@@ -312,7 +313,7 @@ class App extends Component{
         money : state.money - state.automaticProductionCost,
         productivyPerAutomaticMachine : (state.productivyPerAutomaticMachine *2),
         automaticProductionImprovment : state.automaticProductionImprovment +1,
-        automaticProductionCost : (state.listOfCosts[state.automaticProductionImprovment-1])
+        automaticProductionCost : (state.automaticProductionListofCosts[state.automaticProductionImprovment-1])
           });
         }), this.updateTextBox);
       }
@@ -363,17 +364,6 @@ class App extends Component{
     }
   } 
 
-  investInComputationnalPower(){
-    if(this.state.money >= this.state.rdCost){
-    this.setState((state => { return ({
-      money : state.money - state.rdCost,
-      rdLevelOfInvestment : state.rdLevelOfInvestment +1,
-      rdCost :  (state.rdListofCosts[state.rdLevelOfInvestment-1])
-        });
-      }), this.updateTextBox);
-    }
-  } 
-
   investInAI(cost, productivity, isManual, machineType, quantity){
 
     if(this.state.money >= cost){
@@ -406,7 +396,8 @@ class App extends Component{
       else if(machineType =="increase-production"){
         this.setState(state => { return ({
           money : state.money - cost,
-          computationalPowerPerSecond : state.computationalPowerPerSecond +1
+          computationalPowerPerSecond : state.computationalPowerPerSecond +1,
+          increaseProductionCost : state.increaseProductionCost[state.computationalPowerPerSecond]
             });
           });
       } 
@@ -666,7 +657,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice}/>
+          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice} weakAiIsActivated={this.state.weakAiIsActivated} newAiIsActivated={this.state.newAiIsActivated} quantumComputerHasBeenBought={this.state.quantumComputerHasBeenBought} cloudConnectionEstablished={this.state.cloudConnectionEstablished}/>
       </div>
       
     </div>
