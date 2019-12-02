@@ -32,7 +32,8 @@ class Button extends Component{
                     this.props.createAndRemoveGraphicEffect(this.props.textAnimation, this.props.animationIdTarget, this.props.animationTypeOfElementCreated, this.props.animationCSSClass);
                 }
             })
-        }    
+        }
+        
     }
 
     toggleHover(){
@@ -52,7 +53,7 @@ class Button extends Component{
         }; 
 
 
-    var className = this.props.classNameButton
+    var className = this.props.classNameButton;
     if(this.props.money < this.props.cost || this.props.salesman >= this.props.maximumSalesHirable){
         className += " disabled";
     }   

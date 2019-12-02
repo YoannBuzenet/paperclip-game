@@ -10,6 +10,14 @@ class InvestmentBox extends Component{
     render(){
 
         var className = this.props.soldAtLeastOnePaperclip == 0 ? "investment-box interface-div" : "investment-box interface-div visible-left-div"
+        
+        if(this.props.rdLevelOfInvestment > 5){
+            var classNameRDButton = "rd-button menu-button doNOTdisplay";
+        }
+        else{
+            var classNameRDButton = "rd-button menu-button";
+        }
+        
 
     return (<div className={className}>
         <h2>INVESTMENT</h2>
@@ -52,7 +60,7 @@ class InvestmentBox extends Component{
 
     {this.props.salesLevelOfInvestment > 4 &&
      <div><h3>Research & Development</h3>
-        <div><Button onClickProp={this.props.investRD} name="Invest in Research" picture="./pictures/invest-in-research-and-development.png" classNameButton="rd-button menu-button" cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." money={this.props.money}/>
+        <div><Button onClickProp={this.props.investRD} name="Invest in Research" picture="./pictures/invest-in-research-and-development.png" classNameButton={classNameRDButton} cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." money={this.props.money}/>
         {this.props.rdLevelOfInvestment > 4 && <Button onClickProp={this.props.buyOffice} name="Buy new offices" picture="./pictures/new_office.png" classNameButton="office-button menu-button" cost={this.props.officeCost} classNameChild="info-buy-office-button" contentChild="Hire more sales" money={this.props.money} />}
     
 

@@ -26,6 +26,10 @@ header p.pageTitle {
   font-family: 'Roboto', sans-serif;
 }
 
+.doNOTdisplay{
+  display : none;
+}
+
 /***************************
 *******GLOBAL LAYOUT*******
 ***************************/
@@ -104,6 +108,8 @@ div > h3 {
   margin-top: 1rem;
 } 
 
+
+
 /***************************
 ******MAIN DASHBOARD******
 ***************************/
@@ -124,6 +130,8 @@ div > h3 {
   padding : 1rem;
   background-color : mediumseagreen;
   overflow : hidden;
+  animation-duration: .2s;
+  animation-name: divAppears;
 }
 
 .activity-content{
@@ -180,6 +188,8 @@ div > h3 {
 .Dialog-interface {
   padding : 1rem;
   background-color: pink;
+  animation-duration: .2s;
+  animation-name: divAppears;
 }
 
 .author-dialog {
@@ -202,6 +212,8 @@ div > h3 {
   background-position :50%,50%;
   border-radius :15%;
   outline:none;
+  animation-duration: .2s;
+  animation-name: buttonAppears;
 }
 
 .disabled{
@@ -244,6 +256,8 @@ div > h3 {
 .work-box {
   padding : 1rem;
   background-color : #dc5e38;
+  animation-duration: .2s;
+  animation-name: divAppears;
 }
 
 /***************************
@@ -357,5 +371,29 @@ div > h3 {
     bottom : 30%;
     opacity: 0;
     font-size : 6rem;
+  }
+}
+
+@keyframes buttonAppears {
+  from {
+    background-color: white;
+    opacity : 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes divAppears {
+  from {
+    background-color: white;
+    height : 0;
+    opacity : 0;
+  }
+
+  to {
+    height : 100%;
+    opacity: 1;
   }
 }

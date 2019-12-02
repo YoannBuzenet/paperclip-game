@@ -120,7 +120,7 @@ class App extends Component{
                   }, 
               after1office: {
                 fr: "On a plus de place avec ces nouveaux bureaux. Tu peux embaucher de nouveaux vendeurs.",
-                en: "We have more room with those new offices. You can hire new sales."
+                en: "We have more space with these new offices. You can hire new sales."
                   }, 
               after2offices: {
                 fr: "Les bureaux s'agrandissent. Tu peux maintenant embaucher des managers. Ils se chargeront des vendeurs.",
@@ -129,6 +129,14 @@ class App extends Component{
               afterRD5: {
                 fr: "Avec un logiciel on s'en sortira mieux.",
                 en: "With a software we'll manage our business better."
+                  }   ,
+              websiteIsGoingToBeBought: {
+                fr: "La technologie, c'est la clef ! On va augmenter nos ventes avec notre nouveau site Internet.",
+                en: "Technology is the key to scale. With our website we'll sell even more."
+                  },
+              websiteHasbeenBought: {
+                fr: "Voilà !! Là on vend !! Pour rattraper nos concurrents il nous faut un logiciel encore plus puissant. Au fait, j'ai embauché des chercheurs pour avancer.",
+                en: "There we go !! To get up to our competitors, we need an even better software. By the way, I've hired scientists to help."
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -548,8 +556,16 @@ class App extends Component{
         var textToDisplay = this.state.text.afterFactory;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.rdLevelOfInvestment >  5 && this.state.rdLevelOfInvestment <= 7) {
+      else if(this.state.rdLevelOfInvestment >  5 && this.state.rdLevelOfInvestment <= 7 && this.state.softwareLevelOfInvestment == 0) {
         var textToDisplay = this.state.text.afterRD5;
+        var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && !this.state.websiteIsOnline) {
+        var textToDisplay = this.state.text.websiteIsGoingToBeBought;
+        var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.websiteIsOnline) {
+        var textToDisplay = this.state.text.websiteHasbeenBought;
         var author = this.state.text.AuthorMessageHuman;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
