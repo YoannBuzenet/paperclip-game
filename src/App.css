@@ -168,6 +168,10 @@ div > h3 {
   transition-duration: 2s, 2s;
 }
 
+.software-div button {
+  margin-top : 1rem;
+}
+
 
 /***************************
 ******DIALOG INTERFACE******
