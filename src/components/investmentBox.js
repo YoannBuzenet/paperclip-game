@@ -9,8 +9,9 @@ class InvestmentBox extends Component{
 
     render(){
 
+        //Determining the first div class
         var className = this.props.soldAtLeastOnePaperclip == 0 ? "investment-box interface-div" : "investment-box interface-div visible-left-div"
-        
+      
         // R&D button disabling
         if(this.props.rdLevelOfInvestment > 5){
             var classNameRDButton = "rd-button menu-button doNOTdisplay";
@@ -28,7 +29,8 @@ class InvestmentBox extends Component{
         }
         
 
-    return (<div className={className}>
+    return (
+    <div>{!this.props.cloudConnectionEstablished && <div className={className}> 
         <h2>INVESTMENT</h2>
 
         <div>
@@ -82,6 +84,11 @@ class InvestmentBox extends Component{
     ? <div><h3>EXPANSION</h3><div>
     <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={this.props.factoryCost} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/></div></div>
     : null}
+        </div>}
+
+        {this.props.cloudConnectionEstablished && <div className={className}>
+            AHAH
+            </div>}
         </div>
         );
     }
