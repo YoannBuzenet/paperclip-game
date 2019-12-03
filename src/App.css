@@ -30,6 +30,14 @@ header p.pageTitle {
   display : none;
 }
 
+.central {
+  transform: translate(-50%, -50%);
+}
+
+.fadein {
+  animation: 0.5s fadeIn;
+}
+
 /***************************
 *******GLOBAL LAYOUT*******
 ***************************/
@@ -79,6 +87,18 @@ h2{
 
 div > h3 {
   margin-bottom : 0;
+}
+
+.blinking {
+  animation: 0.2s blinking infinite;
+}
+
+.blinking-slowly {
+  animation: 0.5s blinking infinite;
+}
+
+.blinking-very-slowly {
+  animation: 0.75s blinking infinite;
 }
 
 /***************************
@@ -396,4 +416,15 @@ div > h3 {
     height : 100%;
     opacity: 1;
   }
+}
+
+@keyframes blinking {
+  0% { opacity : 1 }
+  50% { opacity : 0 }
+  100% { opacity : 1 }
+}
+
+@keyframes fadeIn {
+  0% {opacity : 0}
+  100% {opacity : 1}
 }

@@ -278,28 +278,93 @@ automaticProduceComputationalOperations(){
   }
 
   triggerApocalypse(){
-    this.createAnAbsoluteElement('div','black', 'absolute', '0%', '0%', '40%', '40%', '5');
-    this.createAnAbsoluteElement('div','black', 'absolute', '50%', '70%', '0%', '0%', '5');
-    let mainParagraph = this.createAnAbsoluteElement('p', '', 'absolute', '50%', '50%', '50%', '50%', '6');
-    mainParagraph.innerHTML = "Connecting";
-    mainParagraph.style.color = "white";
+    let div1 = this.createAnAbsoluteElement('div','black', 'absolute', '0%', '60%', '30%', '0%', '6', 'blinking');
+    let div2 = this.createAnAbsoluteElement('div','black', 'absolute', '0%', '0%', '40%', '40%', '5', 'blinking-slowly');
+    let div3 = this.createAnAbsoluteElement('div','black', 'absolute', '50%', '70%', '0%', '0%', '5', 'blinking');
+    let div4 = this.createAnAbsoluteElement('div','black', 'absolute', '60%', '0%', '0%', '30%', '5', 'blinking-very-slowly');
+  
+    let mainParagraph4 = this.createAnAbsoluteElement('p', '', 'absolute', '60%', '80%', '40%', '20%', '6', 'apocalypse', 'Connecting...', 'white', '1.6rem');
+    let mainParagraph5 = this.createAnAbsoluteElement('p', '', 'absolute', '50%', '50%', '50%', '50%', '6', 'apocalypse', 'Connecting....', 'white', '1.6rem');
+    let mainParagraph8 = this.createAnAbsoluteElement('p', '', 'absolute', '70%', '', '', '30%', '6', 'central', 'Connecting...', 'white', '8rem');
+
+
+    setTimeout(()=>{
+      let mainParagraph = this.createAnAbsoluteElement('p', '', 'absolute', '50%', '50%', '50%', '50%', '6', 'apocalypse', 'Connecting', 'white', '1.6rem');
+      let mainParagraph3 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '20%', '90%', '60%', '6', 'apocalypse', 'Connecting..', 'white', '8rem');
+      let div5 = this.createAnAbsoluteElement('div','black', 'absolute', '80%', '15%', '15%', '80%', '5', 'blinking-very-slowly');
+      
+      setTimeout(()=>{
+        mainParagraph.remove();
+        mainParagraph3.remove();
+        div5.remove();
+      }, 500)
+    }, 500)
+
+    setTimeout(()=>{
+      let mainParagraph2 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '80%', '80%', '10%', '6', 'apocalypse', 'Connecting.', 'white', '1.6rem');
+      let div7 = this.createAnAbsoluteElement('div','black', 'absolute', '80%', '20%', '15%', '75%', '5', 'blinking-very-slowly');
+      setTimeout(()=>{
+        mainParagraph2.remove();
+        div7.remove();
+      }, 1000)
+    }, 1000)
+
+    setTimeout(()=>{
+      let mainParagraph6 = this.createAnAbsoluteElement('p', '', 'absolute', '30%', '', '', '50%', '6', 'central', 'Connecting', 'white', '10rem');
+      let div6 = this.createAnAbsoluteElement('div','black', 'absolute', '20%', '15%', '75%', '80%', '5', 'blinking-very-slowly');
+      setTimeout(()=>{
+        mainParagraph6.remove();
+        div6.remove();
+      }, 2000)
+    }, 1000)
+
+    setTimeout(()=>{
+      let mainParagraph7 = this.createAnAbsoluteElement('p', '', 'absolute', '40%', '', '', '30%', '6', 'central', 'Connecting...', 'white', '25rem');
+      setTimeout(()=>{
+        mainParagraph7.remove();
+      }, 2500)
+    }, 2000)
+
+    setTimeout(()=>{
+      let mainParagraph8 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '', '', '25%', '7', 'fadein', 'Connected', 'white', '20rem');
+      let bigDiv = this.createAnAbsoluteElement('div','black', 'absolute', '0%', '0%', '0%', '0%', '6', 'undefined');
+      setTimeout(()=>{
+        mainParagraph8.remove();
+        bigDiv.remove();
+      }, 1000)
+    }, 3000)
+
+
+    setTimeout(()=>{
+      div1.remove();
+      div2.remove();
+      div3.remove();
+      div4.remove();
+      mainParagraph5.remove();
+      mainParagraph8.remove();
+      mainParagraph4.remove();
+    },3000)
 
   }
 
-  createAnAbsoluteElement(htmlElement, color, position, top, right, bottom, left, zIndex){
+  createAnAbsoluteElement(htmlElement, color, position, top, right, bottom, left, zIndex, classCSS, innerHTML, textColor, fontSize){
 
-    var blackDiv1 = document.createElement(htmlElement);
-    blackDiv1.style.backgroundColor = color;
-    blackDiv1.style.position = position;
-    blackDiv1.style.top = top;
-    blackDiv1.style.bottom = bottom;
-    blackDiv1.style.right = right;
-    blackDiv1.style.left = left;
-    blackDiv1.style.zIndex = zIndex;
+    var absoluteElement = document.createElement(htmlElement);
+    absoluteElement.style.backgroundColor = color;
+    absoluteElement.style.position = position;
+    absoluteElement.style.top = top;
+    absoluteElement.style.bottom = bottom;
+    absoluteElement.style.right = right;
+    absoluteElement.style.left = left;
+    absoluteElement.style.zIndex = zIndex;
+    absoluteElement.classList.add(classCSS);
+    absoluteElement.innerHTML = innerHTML;
+    absoluteElement.style.color = textColor;
+    absoluteElement.style.fontSize = fontSize;
     var body = document.getElementById('body');
-    body.appendChild(blackDiv1);
+    body.appendChild(absoluteElement);
 
-    return blackDiv1;
+    return absoluteElement;
   }
 
   buyAMachine(cost, productivity, isManual, machineType, quantity){
