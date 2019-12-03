@@ -172,6 +172,8 @@ class App extends Component{
   this.buytheWebsite = this.buytheWebsite.bind(this);
   this.investInAI = this.investInAI.bind(this);
   this.automaticProduceComputationalOperations = this.automaticProduceComputationalOperations.bind(this);
+  this.triggerApocalypse = this.triggerApocalypse.bind(this);
+  this.createADiv = this.createADiv.bind(this);
   }
 
   componentDidMount(){
@@ -255,6 +257,7 @@ automaticProduceComputationalOperations(){
 
   handleClickIncrease(){
     this.updateTextBox();
+    this.triggerApocalypse();
     this.setState((state => { return ({
       count : state.count + state.productivity,
       numberOfClicksIncrease : state.numberOfClicksIncrease +1
@@ -272,6 +275,29 @@ automaticProduceComputationalOperations(){
           });
         }), this.updateTextBox);
       }
+  }
+
+  triggerApocalypse(){
+    this.createADiv('black', 'absolute', '0%', '0%', '40%', '40%', '5');
+    this.createADiv('black', 'absolute', '50%', '70%', '0%', '0%', '5');
+
+    
+  }
+
+  createADiv(color, position, top, right, bottom, left, zIndex){
+
+    var blackDiv1 = document.createElement('div');
+    blackDiv1.style.backgroundColor = color;
+    blackDiv1.style.position = position;
+    blackDiv1.style.top = top;
+    blackDiv1.style.bottom = bottom;
+    blackDiv1.style.right = right;
+    blackDiv1.style.left = left;
+    blackDiv1.style.zIndex = zIndex;
+    var body = document.getElementById('body');
+    body.appendChild(blackDiv1);
+
+    return blackDiv1;
   }
 
   buyAMachine(cost, productivity, isManual, machineType, quantity){
