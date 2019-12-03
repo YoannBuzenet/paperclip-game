@@ -173,7 +173,7 @@ class App extends Component{
   this.investInAI = this.investInAI.bind(this);
   this.automaticProduceComputationalOperations = this.automaticProduceComputationalOperations.bind(this);
   this.triggerApocalypse = this.triggerApocalypse.bind(this);
-  this.createADiv = this.createADiv.bind(this);
+  this.createAnAbsoluteElement = this.createAnAbsoluteElement.bind(this);
   }
 
   componentDidMount(){
@@ -278,15 +278,17 @@ automaticProduceComputationalOperations(){
   }
 
   triggerApocalypse(){
-    this.createADiv('black', 'absolute', '0%', '0%', '40%', '40%', '5');
-    this.createADiv('black', 'absolute', '50%', '70%', '0%', '0%', '5');
+    this.createAnAbsoluteElement('div','black', 'absolute', '0%', '0%', '40%', '40%', '5');
+    this.createAnAbsoluteElement('div','black', 'absolute', '50%', '70%', '0%', '0%', '5');
+    let mainParagraph = this.createAnAbsoluteElement('p', '', 'absolute', '50%', '50%', '50%', '50%', '6');
+    mainParagraph.innerHTML = "Connecting";
+    mainParagraph.style.color = "white";
 
-    
   }
 
-  createADiv(color, position, top, right, bottom, left, zIndex){
+  createAnAbsoluteElement(htmlElement, color, position, top, right, bottom, left, zIndex){
 
-    var blackDiv1 = document.createElement('div');
+    var blackDiv1 = document.createElement(htmlElement);
     blackDiv1.style.backgroundColor = color;
     blackDiv1.style.position = position;
     blackDiv1.style.top = top;
