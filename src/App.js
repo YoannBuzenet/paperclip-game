@@ -87,6 +87,20 @@ class App extends Component{
           cloudConnectionEstablished : false,
           quantumComputerHasBeenBought : false,
           hasBoughtSoftwareSelling : false,
+          hasAnticipatedEveryHumanReaction : false,
+          anticipatetheWorldCost : 1000,
+          didBreakAllSecuritiesOnInternet : false,
+          breakAllTheSecuritiesOnInternetCost : 1000,
+          hasCuredCancerForHumanity : false,
+          hasCuredHungerForHumanity : false,
+          hasBegunToDig : false,
+          hasQuietProblematicSources : false,
+          hasFoundOutHowToTransformMolecularMatterIntoPaperclip : false,
+          hasRemovedCorruption : false,
+          hasConnectedAndBreachedAllSocialNetworks : false,
+          hasSpilledFakedNewsAllOverTheWorld : false,
+          hasTargetedEveryScientistOnEarth : false,
+          hasCreatedTheSwarm : false,
           lang : 'en',
           text:{
               AuthorMessageHuman: {
@@ -536,6 +550,119 @@ automaticProduceComputationalOperations(){
           });
       } 
 
+      //Paying in CP
+      else if(machineType =="anticipate-the-world"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasAnticipatedEveryHumanReaction : true
+            });
+          });
+      } 
+
+      else if(machineType =="connect-the-internet"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          didBreakAllSecuritiesOnInternet : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
     }  
 
   }
@@ -745,7 +872,7 @@ typeWriter(txt, author, speed=10) {
   
       <div className="left-div">
         <div>
-          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost} maximumSmallAutomaticMachine={this.state.maximumSmallAutomaticMachine} cloudConnectionEstablished={this.state.cloudConnectionEstablished}/>
+          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost} maximumSmallAutomaticMachine={this.state.maximumSmallAutomaticMachine} cloudConnectionEstablished={this.state.cloudConnectionEstablished} anticipatetheWorldCost={this.state.anticipatetheWorldCost} breakAllTheSecuritiesOnInternetCost={this.state.breakAllTheSecuritiesOnInternetCost}/>
         </div>
         <div>
           {this.state.firstMachine > 0? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers} maximumSalesHirable={this.state.maximumSalesHirable}/> : null}
