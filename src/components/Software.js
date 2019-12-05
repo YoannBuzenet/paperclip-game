@@ -125,7 +125,7 @@ class Software extends Component{
         if(this.props.cloudConnectionEstablished){
             var classNameCloudConnectionButton = "cloud-connection menu-button doNOTdisplay";
         }
-        else if(this.props.newAiIsActivated && this.props.weakAiIsActivated && !this.props.cloudConnectionEstablished){
+        else if(this.props.newAiIsActivated && this.props.weakAiIsActivated && !this.props.cloudConnectionEstablished && this.props.hasBoughtCompetitors){
             var classNameCloudConnectionButton = "cloud-connection menu-button";
         }
         else{
@@ -175,7 +175,7 @@ class Software extends Component{
         <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonOldWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers. (+1 Computational power)" money={this.props.money} machineType="increase-production-old-way"/>
         {/* <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonNewWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers. (+1 Computational power)" money={this.props.money} machineType="increase-production-with-tech" currency="computational"/> */}
         <Button onClickProp={this.props.investInAI} name="Grow the data center" picture="./pictures/datacenter.png" classNameButton={classNameGrowDataCenterNutton} cost={this.props.dataCenterCost} classNameChild="info-data-center-button" contentChild="Increase the power of our computers. (+10 Computational power)" money={this.props.money} machineType="grow-the-data-center"/>
-        <Button onClickProp={this.props.investInAI} name="Connect to the Cloud" picture="./pictures/cloud.png" classNameButton={classNameCloudConnectionButton} cost={this.props.newAICost} classNameChild="info-cloud-connection-button" contentChild="Give more knowledge to the computer" money={this.props.money} machineType="cloud-connection" currency='computational'/>
+        <Button onClickProp={this.props.investInAI} name="Connect AI to the Cloud" picture="./pictures/cloud.png" classNameButton={classNameCloudConnectionButton} cost={this.props.newAICost} classNameChild="info-cloud-connection-button" contentChild="Give more knowledge to the computer" money={this.props.money} machineType="cloud-connection" currency='computational'/>
         </div>
 
         {(this.props.weakAiIsActivated && !this.props.quantumComputerHasBeenBought)? <h3>LABORATORY</h3> : null}

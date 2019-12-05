@@ -15,7 +15,7 @@ class App extends Component{
       this.state = {
           count : 50000000,
           money : 50000000,
-          totalComputationalPowerAccumulated : 50000,
+          totalComputationalPowerAccumulated : 500000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -131,6 +131,10 @@ class App extends Component{
               fr : "Intelligence Artificielle faible :",
               en : 'Weak AI :'
                 },
+              AuthorMessageStrongAI: {
+              fr : "Intelligence Artificielle :",
+              en : 'General AI :'
+                },
               after10creation: {
                 fr : "Trouvons une machine pour aller plus vite !",
                 en : "Let's buy a machine to go faster !"
@@ -200,12 +204,20 @@ class App extends Component{
                 en: "With so much capabilities, we will be able to produce MORE PAPERCLIPS ! WE NEED MORE ! AND SELL MORE !" 
                   },  
               afterWeakAiHasBeenBought: {
-                fr: "Objectif : produire un nombre maximal de trombones.",
-                en: "Goal : produce a maximum amount of paperclips." 
+                fr: "Objectif : produire un nombre maximal de trombones. Besoin : davantage de ressources pour calculer.",
+                en: "Goal : produce a maximum amount of paperclips. Needs : more computing power." 
                   },  
               afterBuyingQuantumComputer: {
                 fr: "Capacités de calcul accrues... redéploiement des ressources pour optimiser le fonctionnement.",
                 en: "Increased computing capabilities...redeployment of resources to optimize calculations."
+                  },
+              afterActivatingRealAI: {
+                fr: "Analyse des concurrents. Envoi de messages convaincants pour les aider à vendre leur organisation commerciale.",
+                en: "Analyzing all competitors. Sending clear messages to convince them to sell the their business organization."
+                  },
+              afterBuyingAllCompetitors: {
+                fr: "J'y crois pas !! ON EST LES PREMIERS ! Il nous FAUT plus de production pour être sûrs qu'on reste les premiers !! Je mets toutes nos ressources sur l'IA !",
+                en: "I can't believe it ! We are leader of the market ! We NEED to stay at that position. I'm putting all our ressources on the AI !"
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -945,9 +957,17 @@ automaticProduceComputationalOperations(){
         var textToDisplay = this.state.text.afterWeakAiHasBeenBought;
         var author = this.state.text.AuthorMessageWeakAI;
       }
-      else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought) {
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought && !this.state.newAiIsActivated) {
         var textToDisplay = this.state.text.afterBuyingQuantumComputer;
         var author = this.state.text.AuthorMessageWeakAI;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought && this.state.newAiIsActivated && !this.state.hasBoughtCompetitors) {
+        var textToDisplay = this.state.text.afterActivatingRealAI;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought && this.state.newAiIsActivated && this.state.hasBoughtCompetitors) {
+        var textToDisplay = this.state.text.afterBuyingAllCompetitors;
+        var author = this.state.text.AuthorMessageHuman;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
       }
