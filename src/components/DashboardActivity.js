@@ -40,8 +40,10 @@ class DashboardActivity extends Component{
               formerMarketShare : 0,
               newMarketShare : 0,
               fill : [],
+              numberOfCompetitor : 4
         }
       this.compileDataForPieChart = this.compileDataForPieChart.bind(this) ;
+      this.killTheMarket = this.killTheMarket.bind(this) ;
       
     }
 
@@ -87,7 +89,7 @@ class DashboardActivity extends Component{
 
     }
 
-    launchNewCompetitors(name1, name2, name3, name4,stockCompetitor1, stockCompetitor2, stockCompetitor3, stockCompetitor4, growthCompetitor1, growthCompetitor2, growthCompetitor3, growthCompetitor4){
+    killTheMarket(){
       clearInterval(this.timerCompetitorMarket);
 
       this.setState((state => { return ({
@@ -97,35 +99,11 @@ class DashboardActivity extends Component{
             "label": state.data[0].label,
             "value": this.props.totalPaperclipssold,
             "color": "hsl(151, 70%, 50%)"
-          },
-          {
-            "id": name1,
-            "label": name1,
-            "value": stockCompetitor1,
-            "color": "hsl(56, 70%, 50%)"
-          },
-          {
-            "id": name2,
-            "label": name2,
-            "value": stockCompetitor2,
-            "color": "hsl(288, 70%, 50%)"
-          },
-          {
-            "id": name3,
-            "label": name3,
-            "value": stockCompetitor3,
-            "color": "hsl(299, 70%, 50%)"
-          },
-          {
-            "id": name4,
-            "label": name4,
-            "value": stockCompetitor4,
-            "color": "hsl(165, 70%, 50%)"
           }
-        ]
-      })}), this.timerCompetitorMarket = setInterval(()=>{
-        this.compileDataForPieChart(growthCompetitor1,growthCompetitor2,growthCompetitor3,growthCompetitor4)
-      },1000)); 
+        ],
+        newMarketShare : 1,
+        numberOfCompetitor : 0
+      })})); 
 
     }
 
@@ -143,13 +121,14 @@ class DashboardActivity extends Component{
 
     render(){
 
+
         return (
         <div className="activity-dashboard interface-div">
             <h2>MARKET ACTIVITY</h2>
             <div className="activity-content">
                 <div className="activity-kpi">
                     <p className="containsHint" >Regional Market Share: {Math.round(this.state.newMarketShare*100)}%<span className="hint">(based on sales)</span></p>
-                    <p>Number of competitors: 4</p>
+                  <p>Number of competitors: {this.state.numberOfCompetitor}</p>
                     <p>Marketshare Growth: {(this.state.newMarketShare > 0 && this.state.formerMarketShare > 0)  ? <span>{Math.round(((this.state.newMarketShare-this.state.formerMarketShare)/this.state.formerMarketShare)*100)} %</span> : <span>Calculating...</span> }</p>
                 </div>
 

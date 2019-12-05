@@ -13,8 +13,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 1000000,
-          money : 1000000,
+          count : 5000000000,
+          money : 10000000000,
+          totalComputationalPowerAccumulated : 100000000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -32,7 +33,7 @@ class App extends Component{
           listOfCosts : [200, 1000, 3000, 5000, 10000, 20000,50000,100000],
           marketingListOfCosts : [15, 300, 2000, 10000, 30000, 50000, 100000, 200000,500000,1000000],
           rdListofCosts : [30, 500, 2000, 15000, 100000, 200000,500000,1000000],
-          automaticProductionListofCosts : [20, 50, 200],
+          automaticProductionListofCosts : [20, 150, 2000],
           softwareCost : 20000,
           softwareBonusSales : 0,
           numberOfSmallAutomaticMachines : 0,
@@ -70,14 +71,13 @@ class App extends Component{
           websitePrice : 20000,
           websiteSellingPower : 0,
           computationalPowerPerSecond : 1,
-          totalComputationalPowerAccumulated : 0,
           computerComputationalCost : 0,
           AIComputationalresearchCost : 0,
           deeplearningCost : 200000,
-          weakAICost : 30000,
+          weakAICost : 3000,
           newAICost : 100000,
           increaseProductionCost : 200000,
-          increaseProductionListCost : [200000, 500000, 200, 500],
+          increaseProductionListCost : [200000, 500000, 1000000, 200, 500],
           increaseProductionLevel : 1,
           cloudConnectionCost : 2000,
           quantumComputerCost : 15000,
@@ -85,6 +85,8 @@ class App extends Component{
           deeplearningHasBeenBought : false,
           weakAiIsActivated : false,
           newAiIsActivated : false,
+          buyingCompetitorsCost : 1000000,
+          hasBoughtCompetitors : false,
           cloudConnectionEstablished : false,
           quantumComputerHasBeenBought : false,
           hasBoughtSoftwareSelling : false,
@@ -522,7 +524,7 @@ automaticProduceComputationalOperations(){
       //Paying in MONEY
       else if(machineType =="dig"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          money : state.money - cost,
           hasBegunToDig : true
             });
           });
@@ -531,8 +533,20 @@ automaticProduceComputationalOperations(){
       //Paying in MONEY
       else if(machineType =="multiple-rockets"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          money : state.money - cost,
           hasQuietProblematicSources : true
+            });
+          });
+      } 
+
+      //Paying in MONEY
+      else if(machineType =="buy-competitors"){
+        this.refs.dashboardActivity.killTheMarket();
+        this.setState(state => { return ({
+          money : state.money - cost,
+          hasBoughtCompetitors : true,
+          websiteSellingPower : state.websiteSellingPower + 100000,
+          count : state.count + 500000
             });
           });
       } 
@@ -706,7 +720,8 @@ automaticProduceComputationalOperations(){
       else if(machineType =="software-selling"){
         this.setState(state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
-          hasBoughtSoftwareSelling : true
+          hasBoughtSoftwareSelling : true,
+          websiteSellingPower : state.websiteSellingPower + 30000
             });
           });
       } 
@@ -938,7 +953,7 @@ typeWriter(txt, author, speed=10) {
 
         {this.state.numberOfClicksIncrease > 10 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text} updateTextBox={this.updateTextBox} />}
 
-        {this.state.hasBoughtAFactory && <DashboardActivity totalPaperclipssold={this.state.totalPaperclipssold} />}
+        {this.state.hasBoughtAFactory && <DashboardActivity totalPaperclipssold={this.state.totalPaperclipssold} hasBoughtCompetitors={this.state.hasBoughtCompetitors} ref="dashboardActivity"/>}
 
         <p className="app-main-buttons">{
           <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/>}
@@ -947,7 +962,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice} weakAiIsActivated={this.state.weakAiIsActivated} newAiIsActivated={this.state.newAiIsActivated} quantumComputerHasBeenBought={this.state.quantumComputerHasBeenBought} cloudConnectionEstablished={this.state.cloudConnectionEstablished} totalComputationalPowerAccumulated={this.state.totalComputationalPowerAccumulated} computationalPowerPerSecond={this.state.computationalPowerPerSecond} hasBoughtSoftwareSelling={this.state.hasBoughtSoftwareSelling} increaseProductionLevel={this.state.increaseProductionLevel}/>
+          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice} weakAiIsActivated={this.state.weakAiIsActivated} newAiIsActivated={this.state.newAiIsActivated} quantumComputerHasBeenBought={this.state.quantumComputerHasBeenBought} cloudConnectionEstablished={this.state.cloudConnectionEstablished} totalComputationalPowerAccumulated={this.state.totalComputationalPowerAccumulated} computationalPowerPerSecond={this.state.computationalPowerPerSecond} hasBoughtSoftwareSelling={this.state.hasBoughtSoftwareSelling} increaseProductionLevel={this.state.increaseProductionLevel} buyingCompetitorsCost={this.state.buyingCompetitorsCost} hasBoughtCompetitors={this.state.hasBoughtCompetitors} automaticProductionImprovment={this.state.automaticProductionImprovment}/>
       </div>
       
     </div>
