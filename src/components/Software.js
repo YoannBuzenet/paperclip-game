@@ -19,6 +19,14 @@ class Software extends Component{
             var classNameWebsiteButton = "website menu-button";
         }
 
+        // Connect to Every Marketplace
+        if(this.props.deeplearningHasBeenBought && !this.props.hasBoughtSoftwareSelling){
+            var classNameConnectMarketplaceButton = "software menu-button";
+        }
+        else{
+            var classNameConnectMarketplaceButton = "software menu-button doNOTdisplay";
+        }
+
         //Deep learning disabling
         if(this.props.deeplearningHasBeenBought){
             var classNameDeepLearningButton = "deep-learning menu-button doNOTdisplay";
@@ -108,7 +116,7 @@ class Software extends Component{
         <h2>Software & Hardware architecture</h2>
         <Button onClickProp={this.props.buytheWebsite} name="Devellop Ecommerce Website" picture="./pictures/website.png" classNameButton={classNameWebsiteButton} cost={this.props.websitePrice} classNameChild="info-website-button" contentChild="Increase the sales - Sell online ! (+20 000 sales)" money={this.props.money}/>
         <Button onClickProp={this.props.investInAI} name="Implement Deep Learning in Software" picture="./pictures/deepLearning.png" classNameButton={classNameDeepLearningButton} cost={this.props.deeplearningCost} classNameChild="info-deep-learning-button" contentChild="Increase the power of the software." money={this.props.money} machineType="deep-learning"/>
-        <Button onClickProp={this.props.investInAI} name="Connect to every marketplace on the web" picture="./pictures/software.png" classNameButton="software menu-button" cost={this.props.softwareMarketplacePrice} classNameChild="info-software-button" contentChild="Create all the connections." money={this.props.money} machineType="software-selling" currency='computational'/>
+        <Button onClickProp={this.props.investInAI} name="Connect to every marketplace on the web" picture="./pictures/software.png" classNameButton={classNameConnectMarketplaceButton} cost={this.props.softwareMarketplacePrice} classNameChild="info-software-button" contentChild="Create all the connections." money={this.props.money} machineType="software-selling" currency='computational'/>
         
         {this.props.deeplearningHasBeenBought ?
         <Button onClickProp={this.props.improveAutomaticMachines} name="Improve the automatic machines" picture="./pictures/improve-automatic-machines.png" classNameButton={classNameImproveAutomaticMachinesButton} cost={this.props.automaticProductionCost} classNameChild="info-invest-rd-improve-button" contentChild="Increase the productivity of all your automatic machines by x1.5" money={this.props.money} currency="computational"/>
