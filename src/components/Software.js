@@ -20,7 +20,7 @@ class Software extends Component{
         }
 
         // Connect to Every Marketplace
-        if(this.props.deeplearningHasBeenBought && !this.props.hasBoughtSoftwareSelling){
+        if(this.props.deepLearningHasBeenBought && !this.props.hasBoughtSoftwareSelling){
             var classNameConnectMarketplaceButton = "software menu-button";
         }
         else{
@@ -28,10 +28,10 @@ class Software extends Component{
         }
 
         //Deep learning disabling
-        if(this.props.deeplearningHasBeenBought){
+        if(this.props.deepLearningHasBeenBought){
             var classNameDeepLearningButton = "deep-learning menu-button doNOTdisplay";
         }
-        else if(this.props.websiteIsOnline && !this.props.deeplearningHasBeenBought){
+        else if(this.props.websiteIsOnline && !this.props.deepLearningHasBeenBought){
             var classNameDeepLearningButton = "deep-learning menu-button";
         }
         else{
@@ -42,7 +42,7 @@ class Software extends Component{
         if(this.props.weakAiIsActivated){
             var classNameWeakAIButton = "weak-ai menu-button doNOTdisplay";
         }
-        else if(this.props.increaseProductionLevel >=4 && this.props.deeplearningHasBeenBought && !this.props.weakAiIsActivated){
+        else if(this.props.increaseProductionLevel >=4 && this.props.deepLearningHasBeenBought && !this.props.weakAiIsActivated){
             var classNameWeakAIButton = "weak-ai menu-button";
         }
         else{
@@ -72,7 +72,7 @@ class Software extends Component{
         }
 
         //Improve Automatic Machines disabling
-        if(this.props.deeplearningHasBeenBought && this.props.automaticProductionImprovment <= 4){
+        if(this.props.deepLearningHasBeenBought && this.props.automaticProductionImprovment <= 4){
             var classNameImproveAutomaticMachinesButton = "rd-improve-button menu-button";
         }
         else if(this.props.automaticProductionImprovment >= 4){
@@ -83,7 +83,7 @@ class Software extends Component{
         }
 
         //Increase Computational Power Old Way disabling
-        if(this.props.deeplearningHasBeenBought && this.props.increaseProductionLevel <= 3){
+        if(this.props.deepLearningHasBeenBought && this.props.increaseProductionLevel <= 3){
             var classNameIncreaseProductionButtonOldWay = "increase-production menu-button";
         }
         else{
@@ -91,7 +91,7 @@ class Software extends Component{
         }
 
         //Increase Computational Power New Way disabling
-        if(this.props.deeplearningHasBeenBought && this.props.increaseProductionLevel > 3 && this.props.increaseProductionLevel <=5){
+        if(this.props.deepLearningHasBeenBought && this.props.increaseProductionLevel > 3 && this.props.increaseProductionLevel <=5){
             var classNameIncreaseProductionButtonNewWay = "increase-production menu-button";
         }
         else if(this.props.increaseProductionLevel >=5){
@@ -101,11 +101,19 @@ class Software extends Component{
             var classNameIncreaseProductionButtonNewWay = "increase-production menu-button doNOTdisplay";
         }
 
+        //Automatic Selling Software disabling
+        if(this.props.deepLearningHasBeenBought && !this.props.hasBoughtAutomatedSellingSoftware){
+            var classNameAutomatedSellingSoftwareButton = "automatic-selling-software menu-button";
+        }
+        else{
+            var classNameAutomatedSellingSoftwareButton = "automatic-selling-software menu-button doNOTdisplay";
+        }
+
         //Data center disabling
-        if(this.props.increaseProductionLevel > 1 && this.props.dataCenterLevelOfInvestment <=2){
+        if(this.props.increaseProductionLevel > 2 && this.props.dataCenterLevelOfInvestment <=2){
             var classNameGrowDataCenterNutton = "buy-data-center menu-button";
         }
-        else if(this.props.dataCenterLevelOfInvestment >=2){
+        else if(this.props.dataCenterLevelOfInvestment >= 2){
             var classNameGrowDataCenterNutton = "buy-data-center menu-button doNOTdisplay";
         }
         else{
@@ -128,7 +136,7 @@ class Software extends Component{
         if(this.props.quantumComputerHasBeenBought){
             var classNameQuantumComputerButton = "quantum-computer menu-button doNOTdisplay";
         }
-        else if(this.props.deeplearningHasBeenBought && this.props.weakAiIsActivated && !this.props.quantumComputerHasBeenBought){
+        else if(this.props.deepLearningHasBeenBought && this.props.weakAiIsActivated && !this.props.quantumComputerHasBeenBought){
             var classNameQuantumComputerButton = "quantum-computer menu-button";
         }
         else{
@@ -142,7 +150,7 @@ class Software extends Component{
     return (
     <div className={className} style={{backgroundColor:"red"}}>
 
-        {this.props.deeplearningHasBeenBought && 
+        {this.props.deepLearningHasBeenBought && 
         <div>
             <h2>Computational power : {this.props.computationalPowerPerSecond}</h2>
             <h2>Memory : {this.props.totalComputationalPowerAccumulated}</h2>
@@ -154,18 +162,19 @@ class Software extends Component{
         <Button onClickProp={this.props.investInAI} name="Implement Deep Learning in Software" picture="./pictures/deepLearning.png" classNameButton={classNameDeepLearningButton} cost={this.props.deeplearningCost} classNameChild="info-deep-learning-button" contentChild="Increase the power of the software." money={this.props.money} machineType="deep-learning"/>
         <Button onClickProp={this.props.investInAI} name="Connect to every marketplace on the web" picture="./pictures/software.png" classNameButton={classNameConnectMarketplaceButton} cost={this.props.softwareMarketplacePrice} classNameChild="info-software-button" contentChild="Create all the connections. (+30 000 sales)" money={this.props.money} machineType="software-selling" currency='computational'/>
         
-        {this.props.deeplearningHasBeenBought ?
+        {this.props.deepLearningHasBeenBought ?
         <Button onClickProp={this.props.improveAutomaticMachines} name="Improve the automatic machines" picture="./pictures/improve-automatic-machines.png" classNameButton={classNameImproveAutomaticMachinesButton} cost={this.props.automaticProductionCost} classNameChild="info-invest-rd-improve-button" contentChild="Increase the productivity of all your automatic machines by x2" money={this.props.money} currency="computational"/>
         :null}
 
-        {this.props.deeplearningHasBeenBought ? <h3>DATA CENTER</h3> : null}
+        {this.props.deepLearningHasBeenBought ? <h3>DATA CENTER</h3> : null}
         <div>
         <Button onClickProp={this.props.investInAI} name="Develop Weak Artificial Intelligence" picture="./pictures/narrow_ai.png" classNameButton={classNameWeakAIButton} cost={this.props.weakAICost} classNameChild="info-weak-ai-button" contentChild="Help software make better choices." money={this.props.money} machineType="weak-ai" currency='computational'/>
+        <Button onClickProp={this.props.investInAI} name="Develop an Automated Selling Software" picture="./pictures/automaticSellingSoftware.png" classNameButton={classNameAutomatedSellingSoftwareButton} cost={this.props.automatedSellingSoftwarePrice} classNameChild="info-automatic-selling-software-button" contentChild="Setup automatically every sales. (+40 000 sales)" money={this.props.money} machineType="automatic-selling-software" currency='computational'/>
         <Button onClickProp={this.props.investInAI} name="Buy all our competitors" picture="./pictures/buycompetitor.png" classNameButton={classNameBuyCompetitorsButton} cost={this.props.buyingCompetitorsCost} classNameChild="info-buy-competitors-button" contentChild="They are ours now." money={this.props.money} machineType="buy-competitors"/>
         <Button onClickProp={this.props.investInAI} name="Develop General Artificial Intelligence" picture="./pictures/new_ai.png" classNameButton={classNameNewAIButton} cost={this.props.newAICost} classNameChild="info-new-ai-button" contentChild="Give software more autonomy on how to make a better business." money={this.props.money} machineType="new-ai" currency='computational'/>
-        <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonOldWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers." money={this.props.money} machineType="increase-production-old-way"/>
-        <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonNewWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers." money={this.props.money} machineType="increase-production-with-tech" currency="computational"/>
-        <Button onClickProp={this.props.investInAI} name="Grow the data center" picture="./pictures/datacenter.png" classNameButton={classNameGrowDataCenterNutton} cost={this.props.dataCenterCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers." money={this.props.money} machineType="grow-the-data-center"/>
+        <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonOldWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers. (+1 Computational power)" money={this.props.money} machineType="increase-production-old-way"/>
+        <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonNewWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers. (+1 Computational power)" money={this.props.money} machineType="increase-production-with-tech" currency="computational"/>
+        <Button onClickProp={this.props.investInAI} name="Grow the data center" picture="./pictures/datacenter.png" classNameButton={classNameGrowDataCenterNutton} cost={this.props.dataCenterCost} classNameChild="info-data-center-button" contentChild="Increase the power of our computers. (+10 Computational power)" money={this.props.money} machineType="grow-the-data-center"/>
         <Button onClickProp={this.props.investInAI} name="Connect to the Cloud" picture="./pictures/cloud.png" classNameButton={classNameCloudConnectionButton} cost={this.props.newAICost} classNameChild="info-cloud-connection-button" contentChild="Give more knowledge to the computer" money={this.props.money} machineType="cloud-connection" currency='computational'/>
         </div>
 
