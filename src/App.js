@@ -13,9 +13,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 500000000,
-          money : 500000000,
-          totalComputationalPowerAccumulated : 0,
+          count : 50000000,
+          money : 50000000,
+          totalComputationalPowerAccumulated : 50000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -196,8 +196,8 @@ class App extends Component{
                 en: "The developers told me they were onto something. We may have very powerful algorithms very soon." 
                   },  
               after5datacenters: {
-                fr: "Je crois qu'on est les premiers à créer quelque chose d'aussi puissant. Rien ne va nous arrêter !!",
-                en: "I think we are the first to create something that powerful. With this, there's no way our competitors will stop us !!" 
+                fr: "Avec une telle puissance de calcul, on va développer des outils incroyables ! Il NOUS FAUT plus de production !!",
+                en: "With so much capabilities, we will be able to produce MORE PAPERCLIPS ! WE NEED MORE ! AND SELL MORE !" 
                   },  
               afterWeakAiHasBeenBought: {
                 fr: "Objectif : produire un nombre maximal de trombones.",
@@ -585,7 +585,8 @@ automaticProduceComputationalOperations(){
           money : state.money - cost,
           hasBoughtCompetitors : true,
           websiteSellingPower : state.websiteSellingPower + 100000,
-          count : state.count + 500000
+          count : state.count + 500000,
+          automaticProduction : state.automaticProduction + 50000
             });
           }), this.updateTextBox);
       } 
@@ -932,7 +933,7 @@ automaticProduceComputationalOperations(){
         var textToDisplay = this.state.text.after2increaseComputationalPower;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=4) {
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=4 && !this.state.weakAiIsActivated) {
         var textToDisplay = this.state.text.after2datacenters;
         var author = this.state.text.AuthorMessageHuman;
       }

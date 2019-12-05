@@ -42,7 +42,7 @@ class Software extends Component{
         if(this.props.weakAiIsActivated){
             var classNameWeakAIButton = "weak-ai menu-button doNOTdisplay";
         }
-        else if(this.props.dataCenterLevelOfInvestment >=5 && this.props.deepLearningHasBeenBought && !this.props.weakAiIsActivated){
+        else if(this.props.dataCenterLevelOfInvestment >=3 && this.props.deepLearningHasBeenBought && !this.props.weakAiIsActivated){
             var classNameWeakAIButton = "weak-ai menu-button";
         }
         else{
@@ -53,7 +53,7 @@ class Software extends Component{
         if(this.props.hasBoughtCompetitors){
             var classNameBuyCompetitorsButton = "bought-competitors menu-button doNOTdisplay";
         }
-        else if(this.props.weakAiIsActivated && !this.props.hasBoughtCompetitors){
+        else if(this.props.newAiIsActivated && !this.props.hasBoughtCompetitors){
             var classNameBuyCompetitorsButton = "bought-competitors menu-button";
         }
         else{
@@ -72,10 +72,10 @@ class Software extends Component{
         }
 
         //Improve Automatic Machines disabling
-        if(this.props.deepLearningHasBeenBought && this.props.automaticProductionImprovment <= 4){
+        if(this.props.deepLearningHasBeenBought && this.props.automaticProductionImprovment <= 3){
             var classNameImproveAutomaticMachinesButton = "rd-improve-button menu-button";
         }
-        else if(this.props.automaticProductionImprovment >= 4){
+        else if(this.props.automaticProductionImprovment >= 3){
             var classNameImproveAutomaticMachinesButton = "rd-improve-button menu-button doNOTdisplay";
         }
         else{
@@ -178,7 +178,7 @@ class Software extends Component{
         <Button onClickProp={this.props.investInAI} name="Connect to the Cloud" picture="./pictures/cloud.png" classNameButton={classNameCloudConnectionButton} cost={this.props.newAICost} classNameChild="info-cloud-connection-button" contentChild="Give more knowledge to the computer" money={this.props.money} machineType="cloud-connection" currency='computational'/>
         </div>
 
-        {this.props.weakAiIsActivated ? <h3>LABORATORY</h3> : null}
+        {(this.props.weakAiIsActivated && !this.props.quantumComputerHasBeenBought)? <h3>LABORATORY</h3> : null}
         <Button onClickProp={this.props.investInAI} name="Master Quantum Computer" picture="./pictures/quantum_computer.png" classNameButton={classNameQuantumComputerButton} cost={this.props.quantumComputerCost} classNameChild="info-quantum-computer-button" contentChild="This breakthrough computer is going to change our way to work. (+1000 Memory)" money={this.props.money} machineType="quantum-computer" currency='computational'/>
   </div>)
 
