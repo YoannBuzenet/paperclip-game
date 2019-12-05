@@ -34,9 +34,10 @@ class App extends Component{
           rdListofCosts : [30, 500, 2000, 15000, 100000, 200000,500000,1000000],
           automaticProductionListofCosts : [20, 50, 200],
           softwareCost : 20000,
+          softwareBonusSales : 0,
           numberOfSmallAutomaticMachines : 0,
           smallAutomaticMachineProductivity : 10,
-          maximumSmallAutomaticMachine : 700,
+          maximumSmallAutomaticMachine : 150,
           boughtAnAutomaticMachine : false,
           smallAutomaticMachineCost : 10,
           automaticProduction : 0,
@@ -72,15 +73,15 @@ class App extends Component{
           totalComputationalPowerAccumulated : 0,
           computerComputationalCost : 0,
           AIComputationalresearchCost : 0,
-          deeplearningCost : 30000,
+          deeplearningCost : 200000,
           weakAICost : 30000,
-          newAICost : 1000,
-          increaseProductionCost : 20,
-          increaseProductionListCost : [20, 100, 500],
-          increaseProductionLevel : 0,
+          newAICost : 100000,
+          increaseProductionCost : 200000,
+          increaseProductionListCost : [200000, 500000, 200, 500],
+          increaseProductionLevel : 1,
           cloudConnectionCost : 2000,
           quantumComputerCost : 15000,
-          softwareMarketplacePrice : 20,
+          softwareMarketplacePrice : 100,
           deeplearningHasBeenBought : false,
           weakAiIsActivated : false,
           newAiIsActivated : false,
@@ -160,16 +161,20 @@ class App extends Component{
                 en: "Our offices are getting bigger. You can now hire managers - they'll take care of the sales."
                   }, 
               afterRD5: {
-                fr: "Avec un logiciel on s'en sortira mieux.",
-                en: "With a software we'll manage our business better."
+                fr: "J'ai rencontré pas mal de gens qui utilisent un logiciel. Je pense qu'avec un bon logiciel on s'en sortira mieux.",
+                en: "I met a lot of people who used a software to manage production. I think we should get one."
                   }   ,
               websiteIsGoingToBeBought: {
                 fr: "La technologie, c'est la clef ! On va augmenter nos ventes avec notre nouveau site Internet.",
                 en: "Technology is the key to scale. With our website we'll sell even more."
                   },
               websiteHasbeenBought: {
-                fr: "Voilà !! Là on vend !! Pour rattraper nos concurrents il nous faut un logiciel encore plus puissant. Au fait, j'ai embauché des chercheurs pour avancer.",
-                en: "There we go !! To get up to our competitors, we need an even better software. By the way, I've hired scientists to help."
+                fr: "Voilà !! Là on vend !! Pour rattraper nos concurrents il nous faudrait un logiciel encore plus puissant. Travaillons là-dessus.",
+                en: "There we go !! To get up to our competitors, we would need an even better software. Let's work on that."
+                  },  
+              deepLearningHasbeenBought: {
+                fr: "Les algorithmes ont montré de nouvelles manières d'organiser nos usines. Il semble qu'on puisse vendre bien plus efficacement.",
+                en: "The algorithms showed that we could re-organize our factories to produce even more. There may be other ways of selling we didn't see."
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -253,7 +258,7 @@ class App extends Component{
 
   automaticSellPaperclips(){
     // If we can't sell because of the stocks, we update the state
-      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman + this.state.websiteSellingPower) <= 0){
+      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman + this.state.websiteSellingPower + this.state.softwareBonusSales) <= 0){
         this.setState(({
           salesmanCantsell : true
         }), this.updateTextBox)
@@ -263,8 +268,8 @@ class App extends Component{
         this.setState((state => { 
         return ({
           salesmanCantsell : false,
-          totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman + state.websiteSellingPower,
-          money : state.money + state.paperclipPrice * state.salesmanEfficiency *state.salesman + state.paperclipPrice * state.websiteSellingPower,
+          totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman + state.websiteSellingPower + state.softwareBonusSales,
+          money : state.money + state.paperclipPrice * state.salesmanEfficiency *state.salesman + state.paperclipPrice * (state.websiteSellingPower +state.softwareBonusSales),
           count : state.count - (state.salesmanEfficiency * state.salesman + state.websiteSellingPower)
         })
       }), this.updateTextBox)
@@ -472,6 +477,7 @@ automaticProduceComputationalOperations(){
       money : state.money - state.softwareCost,
       softwareCost : state.softwareCost,
       softwareLevelOfInvestment : state.softwareLevelOfInvestment +1,
+      softwareBonusSales : state.softwareBonusSales + 2000,
         });
       }), this.updateTextBox);
     }
@@ -513,56 +519,6 @@ automaticProduceComputationalOperations(){
           });
       } 
 
-      else if(machineType =="weak-ai"){
-        this.setState(state => { return ({
-          money : state.money - cost,
-          weakAiIsActivated : true,
-            });
-          });
-      } 
-
-      else if(machineType =="new-ai"){
-        this.setState(state => { return ({
-          money : state.money - cost,
-          newAiIsActivated : true,
-            });
-          });
-      } 
-
-      else if(machineType =="increase-production"){
-        this.setState(state => { return ({
-          money : state.money - cost,
-          computationalPowerPerSecond : state.computationalPowerPerSecond +1,
-          increaseProductionCost : state.increaseProductionCost[state.increaseProductionLevel]
-            });
-          });
-      } 
-
-      else if(machineType =="cloud-connection"){
-        //this.triggerApocalypse();
-        this.setState(state => { return ({
-          money : state.money - cost,
-          cloudConnectionEstablished : true
-            });
-          });
-      } 
-
-      else if(machineType =="quantum-computer"){
-        this.setState(state => { return ({
-          money : state.money - cost,
-          quantumComputerHasBeenBought : true
-            });
-          });
-      } 
-
-      else if(machineType =="software-selling"){
-        this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
-          hasBoughtSoftwareSelling : true
-            });
-          });
-      } 
-
       //Paying in MONEY
       else if(machineType =="dig"){
         this.setState(state => { return ({
@@ -570,58 +526,8 @@ automaticProduceComputationalOperations(){
           hasBegunToDig : true
             });
           });
-      } 
-
-    } 
-
-    // Methods payable in computational power
-
-    if(typeOfCost =='computational' && this.state.computerComputationalCost >= cost){
-      //Paying in CP
-      if(machineType =="anticipate-the-world"){
-        this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
-          hasAnticipatedEveryHumanReaction : true
-            });
-          });
-      } 
-
-      //Paying in CP
-      else if(machineType =="connect-the-internet"){
-        this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
-          didBreakAllSecuritiesOnInternet : true
-            });
-          });
-      } 
-
-      //Paying in CP
-      else if(machineType =="cure-cancer"){
-        this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
-          hasCuredCancerForHumanity : true
-            });
-          });
-      } 
-
-      //Paying in CP
-      else if(machineType =="cure-hunger"){
-        this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
-          hasCuredHungerForHumanity : true
-            });
-          });
-      } 
-
-      //Paying in CP
-      else if(machineType =="drone"){
-        this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
-          hasBoughtSoftwareSelling : true
-            });
-          });
-      } 
-
+      }
+      
       //Paying in MONEY
       else if(machineType =="multiple-rockets"){
         this.setState(state => { return ({
@@ -631,10 +537,70 @@ automaticProduceComputationalOperations(){
           });
       } 
 
+      else if(machineType =="increase-production-old-way"){
+        this.setState(state => { return ({
+          money : state.money - cost,
+          computationalPowerPerSecond : state.computationalPowerPerSecond +1,
+          increaseProductionLevel : state.increaseProductionLevel +1,
+          increaseProductionCost : state.increaseProductionListCost[state.increaseProductionLevel]
+            });
+          });
+      }
+
+    } 
+
+    // Methods payable in computational power
+
+    if(typeOfCost =='computational' && this.state.totalComputationalPowerAccumulated >= cost){
+      //Paying in CP
+      if(machineType =="anticipate-the-world"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          hasAnticipatedEveryHumanReaction : true
+            });
+          });
+      } 
+
+      //Paying in CP
+      else if(machineType =="connect-the-internet"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          didBreakAllSecuritiesOnInternet : true
+            });
+          });
+      } 
+
+      //Paying in CP
+      else if(machineType =="cure-cancer"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          hasCuredCancerForHumanity : true
+            });
+          });
+      } 
+
+      //Paying in CP
+      else if(machineType =="cure-hunger"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          hasCuredHungerForHumanity : true
+            });
+          });
+      } 
+
+      //Paying in CP
+      else if(machineType =="drone"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          hasBoughtSoftwareSelling : true
+            });
+          });
+      } 
+
       //Paying in CP
       else if(machineType =="molecular-matter"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasFoundOutHowToTransformMolecularMatterIntoPaperclip : true
             });
           });
@@ -643,7 +609,7 @@ automaticProduceComputationalOperations(){
       //Paying in CP
       else if(machineType =="removeCorruption"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasRemovedCorruption : true
             });
           });
@@ -652,7 +618,7 @@ automaticProduceComputationalOperations(){
       //Paying in CP
       else if(machineType =="single-rocket"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasBoughtSoftwareSelling : true
             });
           });
@@ -661,7 +627,7 @@ automaticProduceComputationalOperations(){
       //Paying in CP
       else if(machineType =="breach-social-networks"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasConnectedAndBreachedAllSocialNetworks : true
             });
           });
@@ -670,7 +636,7 @@ automaticProduceComputationalOperations(){
       //Paying in CP
       else if(machineType =="spill-fake-news"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasSpilledFakedNewsAllOverTheWorld : true
             });
           });
@@ -679,7 +645,7 @@ automaticProduceComputationalOperations(){
       //Paying in CP
       else if(machineType =="target-scientists"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasTargetedEveryScientistOnEarth : true
             });
           });
@@ -688,8 +654,59 @@ automaticProduceComputationalOperations(){
       //Paying in CP
       else if(machineType =="swarm-of-drones"){
         this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasCreatedTheSwarm : true
+            });
+          });
+      }
+      
+      else if(machineType =="weak-ai"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          weakAiIsActivated : true,
+            });
+          });
+      } 
+
+      else if(machineType =="new-ai"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          newAiIsActivated : true,
+            });
+          });
+      } 
+
+      else if(machineType =="increase-production-with-tech"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          computationalPowerPerSecond : state.computationalPowerPerSecond +1,
+          increaseProductionLevel : state.increaseProductionLevel +1,
+          increaseProductionCost : state.increaseProductionListCost[state.increaseProductionLevel]
+            });
+          });
+      }
+      
+      else if(machineType =="cloud-connection"){
+        //this.triggerApocalypse();
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          cloudConnectionEstablished : true
+            });
+          });
+      } 
+
+      else if(machineType =="quantum-computer"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          quantumComputerHasBeenBought : true
+            });
+          });
+      } 
+
+      else if(machineType =="software-selling"){
+        this.setState(state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          hasBoughtSoftwareSelling : true
             });
           });
       } 
@@ -714,7 +731,6 @@ automaticProduceComputationalOperations(){
     if(this.state.money >= this.state.salesmanCost){
 
       if(this.state.salesman >= this.state.maximumSalesHirable){
-        console.log(this.state.salesman, this.state.maximumSalesHirable);
         this.setState((state => { return ({
           maximumSalesReached : true
             });
@@ -840,8 +856,12 @@ automaticProduceComputationalOperations(){
         var textToDisplay = this.state.text.websiteIsGoingToBeBought;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.softwareLevelOfInvestment > 0 && this.state.websiteIsOnline) {
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.websiteIsOnline && !this.state.deepLearningHasbeenBought) {
         var textToDisplay = this.state.text.websiteHasbeenBought;
+        var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.websiteIsOnline && this.state.deepLearningHasbeenBought) {
+        var textToDisplay = this.state.text.deepLearningHasbeenBought;
         var author = this.state.text.AuthorMessageHuman;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
@@ -903,7 +923,7 @@ typeWriter(txt, author, speed=10) {
   
       <div className="left-div">
         <div>
-          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost} maximumSmallAutomaticMachine={this.state.maximumSmallAutomaticMachine} cloudConnectionEstablished={this.state.cloudConnectionEstablished} anticipatetheWorldCost={this.state.anticipatetheWorldCost} breakAllTheSecuritiesOnInternetCost={this.state.breakAllTheSecuritiesOnInternetCost} cureCancerCost={this.state.cureCancerCost} cureHungerCost={this.state.cureHungerCost} digCost={this.state.digCost} droneCost={this.state.droneCost} multipleRocketsCost={this.state.multipleRocketsCost} molecularMatterCost={this.state.molecularMatterCost} removeCorruptionCost={this.state.removeCorruptionCost} rocketCost={this.state.rocketCost} breachSocialMediaCost={this.state.breachSocialMediaCost} spillFakeNewsCost={this.state.spillFakeNewsCost} targetingEveryScientistCost={this.state.targetingEveryScientistCost} swarmCost={this.state.swarmCost}/>
+          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost} maximumSmallAutomaticMachine={this.state.maximumSmallAutomaticMachine} cloudConnectionEstablished={this.state.cloudConnectionEstablished} anticipatetheWorldCost={this.state.anticipatetheWorldCost} breakAllTheSecuritiesOnInternetCost={this.state.breakAllTheSecuritiesOnInternetCost} cureCancerCost={this.state.cureCancerCost} cureHungerCost={this.state.cureHungerCost} digCost={this.state.digCost} droneCost={this.state.droneCost} multipleRocketsCost={this.state.multipleRocketsCost} molecularMatterCost={this.state.molecularMatterCost} removeCorruptionCost={this.state.removeCorruptionCost} rocketCost={this.state.rocketCost} breachSocialMediaCost={this.state.breachSocialMediaCost} spillFakeNewsCost={this.state.spillFakeNewsCost} targetingEveryScientistCost={this.state.targetingEveryScientistCost} swarmCost={this.state.swarmCost} softwareCost={this.state.softwareCost}/>
         </div>
         <div>
           {this.state.firstMachine > 0? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers} maximumSalesHirable={this.state.maximumSalesHirable}/> : null}
@@ -913,7 +933,7 @@ typeWriter(txt, author, speed=10) {
       <div className="middle-div">
         
         <div className="dashboard interface-div">
-          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency} websiteSellingPower={this.state.websiteSellingPower}/>
+          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency} websiteSellingPower={this.state.websiteSellingPower} softwareBonusSales={this.state.softwareBonusSales}/>
         </div>
 
         {this.state.numberOfClicksIncrease > 10 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text} updateTextBox={this.updateTextBox} />}
@@ -927,7 +947,7 @@ typeWriter(txt, author, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice} weakAiIsActivated={this.state.weakAiIsActivated} newAiIsActivated={this.state.newAiIsActivated} quantumComputerHasBeenBought={this.state.quantumComputerHasBeenBought} cloudConnectionEstablished={this.state.cloudConnectionEstablished} totalComputationalPowerAccumulated={this.state.totalComputationalPowerAccumulated} computationalPowerPerSecond={this.state.computationalPowerPerSecond} hasBoughtSoftwareSelling={this.state.hasBoughtSoftwareSelling}/>
+          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deeplearningHasBeenBought={this.state.deeplearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice} weakAiIsActivated={this.state.weakAiIsActivated} newAiIsActivated={this.state.newAiIsActivated} quantumComputerHasBeenBought={this.state.quantumComputerHasBeenBought} cloudConnectionEstablished={this.state.cloudConnectionEstablished} totalComputationalPowerAccumulated={this.state.totalComputationalPowerAccumulated} computationalPowerPerSecond={this.state.computationalPowerPerSecond} hasBoughtSoftwareSelling={this.state.hasBoughtSoftwareSelling} increaseProductionLevel={this.state.increaseProductionLevel}/>
       </div>
       
     </div>

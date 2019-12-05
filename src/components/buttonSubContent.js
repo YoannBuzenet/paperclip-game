@@ -41,7 +41,7 @@ class ButtonSubContent extends Component{
 
     //Displaying the right currency (euros or computationnal power)
     var currency;
-    currency = this.props.currency ?  " Power" : "€";
+    currency = this.props.currency ?  " Memory" : "€";
 
     return (
         <div 
