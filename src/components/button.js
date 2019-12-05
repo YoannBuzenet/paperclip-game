@@ -44,7 +44,7 @@ class Button extends Component{
     }
 
     handleClick(){
-        this.props.onClickProp(this.props.cost, this.props.machineProductivity, this.props.isManual, this.props.machineType, this.props.machineQuantity);
+        this.props.onClickProp(this.props.cost, this.props.machineProductivity, this.props.isManual, this.props.machineType, this.props.machineQuantity, this.props.currency);
     }
 
     render(){

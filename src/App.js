@@ -41,7 +41,7 @@ class App extends Component{
           smallAutomaticMachineCost : 10,
           automaticProduction : 0,
           automaticProductionImprovment : 2,
-          automaticProductionCost :200,
+          automaticProductionCost :20,
           productivyPerAutomaticMachine : 1,
           intervalId : 0,
           salesman : 0,
@@ -441,11 +441,11 @@ automaticProduceComputationalOperations(){
     }
   
   }
-
+  //Paying in CP
   improveAutomaticMachines(){
-    if(this.state.money >= this.state.automaticProductionCost){
+    if(this.state.totalComputationalPowerAccumulated >= this.state.automaticProductionCost){
       this.setState((state => { return ({
-        money : state.money - state.automaticProductionCost,
+        totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - state.automaticProductionCost,
         productivyPerAutomaticMachine : (state.productivyPerAutomaticMachine *2),
         automaticProductionImprovment : state.automaticProductionImprovment +1,
         automaticProductionCost : (state.automaticProductionListofCosts[state.automaticProductionImprovment-1])
@@ -499,10 +499,11 @@ automaticProduceComputationalOperations(){
     }
   } 
 
-  investInAI(cost, productivity, isManual, machineType, quantity){
+  investInAI(cost, productivity, isManual, machineType, quantity, typeOfCost){
 
-    if(this.state.money >= cost){
+    // Methods payable in real money
 
+    if(typeOfCost === undefined  && this.state.money >= cost){
       if(machineType =="deep-learning"){
 
         this.setState(state => { return ({
@@ -562,8 +563,22 @@ automaticProduceComputationalOperations(){
           });
       } 
 
+      //Paying in MONEY
+      else if(machineType =="dig"){
+        this.setState(state => { return ({
+          computerComputationalCost : state.computerComputationalCost - cost,
+          hasBegunToDig : true
+            });
+          });
+      } 
+
+    } 
+
+    // Methods payable in computational power
+
+    if(typeOfCost =='computational' && this.state.computerComputationalCost >= cost){
       //Paying in CP
-      else if(machineType =="anticipate-the-world"){
+      if(machineType =="anticipate-the-world"){
         this.setState(state => { return ({
           computerComputationalCost : state.computerComputationalCost - cost,
           hasAnticipatedEveryHumanReaction : true
@@ -594,15 +609,6 @@ automaticProduceComputationalOperations(){
         this.setState(state => { return ({
           computerComputationalCost : state.computerComputationalCost - cost,
           hasCuredHungerForHumanity : true
-            });
-          });
-      } 
-
-      //Paying in MONEY
-      else if(machineType =="dig"){
-        this.setState(state => { return ({
-          computerComputationalCost : state.computerComputationalCost - cost,
-          hasBegunToDig : true
             });
           });
       } 
@@ -688,7 +694,7 @@ automaticProduceComputationalOperations(){
           });
       } 
 
-    }  
+    }
 
   }
 
