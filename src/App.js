@@ -13,8 +13,8 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 50000,
-          money : 50000,
+          count : 500000000,
+          money : 500000000,
           totalComputationalPowerAccumulated : 0,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
@@ -35,7 +35,7 @@ class App extends Component{
           marketingListOfCosts : [15, 300, 2000, 10000, 30000, 50000, 100000, 200000,500000,1000000],
           rdListofCosts : [30, 500, 2000, 15000, 100000, 200000,500000,1000000],
           automaticProductionListofCosts : [20, 150, 2000],
-          dataCenterListCost : [200000,500000,1000000],
+          dataCenterListCost : [200000,300000,500000,750000,1000000],
           dataCenterCost : 200000,
           softwareCost : 20000,
           softwareBonusSales : 0,
@@ -80,7 +80,7 @@ class App extends Component{
           weakAICost : 3000,
           newAICost : 100000,
           increaseProductionCost : 200000,
-          increaseProductionListCost : [200000, 300000, 800000, 200, 500],
+          increaseProductionListCost : [200000, 300000, 500000],
           increaseProductionLevel : 1,
           cloudConnectionCost : 2000,
           quantumComputerCost : 15000,
@@ -184,8 +184,12 @@ class App extends Component{
                 en: "The algorithms showed that we could re-organize our factories to produce even more. Also, there may be other ways of selling we didn't see."  
                   },  
               after2increaseComputationalPower: {
-                fr: "Message",
-                en: "Message"
+                fr: "Les machines calculent de plus en vite. Avec cette puissance, nous pourrions devenir le premier mondial.",
+                en: "Our machines gain in efficiency. With this, we could become the real leader of the market." 
+                  },  
+              after2datacenters: {
+                fr: "Vindiou la grosse canaille.",
+                en: "Biloute."
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -903,12 +907,16 @@ automaticProduceComputationalOperations(){
         var textToDisplay = this.state.text.websiteHasbeenBought;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.softwareLevelOfInvestment > 0 && this.state.websiteIsOnline && this.state.deepLearningHasBeenBought) {
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.websiteIsOnline && this.state.deepLearningHasBeenBought && this.state.increaseProductionLevel < 3) {
         var textToDisplay = this.state.text.deepLearningHasBeenBought;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=2 && this.state.deepLearningHasBeenBought) {
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=1) {
         var textToDisplay = this.state.text.after2increaseComputationalPower;
+        var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=2) {
+        var textToDisplay = this.state.text.after2datacenters;
         var author = this.state.text.AuthorMessageHuman;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  

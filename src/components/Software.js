@@ -83,7 +83,7 @@ class Software extends Component{
         }
 
         //Increase Computational Power Old Way disabling
-        if(this.props.deepLearningHasBeenBought && this.props.increaseProductionLevel <= 3){
+        if(this.props.deepLearningHasBeenBought && this.props.increaseProductionLevel <= 2){
             var classNameIncreaseProductionButtonOldWay = "increase-production menu-button";
         }
         else{
@@ -110,10 +110,10 @@ class Software extends Component{
         }
 
         //Data center disabling
-        if(this.props.increaseProductionLevel > 2 && this.props.dataCenterLevelOfInvestment <=2){
+        if(this.props.increaseProductionLevel > 2 && this.props.dataCenterLevelOfInvestment <=4){
             var classNameGrowDataCenterNutton = "buy-data-center menu-button";
         }
-        else if(this.props.dataCenterLevelOfInvestment >= 2){
+        else if(this.props.dataCenterLevelOfInvestment >= 4){
             var classNameGrowDataCenterNutton = "buy-data-center menu-button doNOTdisplay";
         }
         else{
@@ -173,7 +173,7 @@ class Software extends Component{
         <Button onClickProp={this.props.investInAI} name="Buy all our competitors" picture="./pictures/buycompetitor.png" classNameButton={classNameBuyCompetitorsButton} cost={this.props.buyingCompetitorsCost} classNameChild="info-buy-competitors-button" contentChild="They are ours now." money={this.props.money} machineType="buy-competitors"/>
         <Button onClickProp={this.props.investInAI} name="Develop General Artificial Intelligence" picture="./pictures/new_ai.png" classNameButton={classNameNewAIButton} cost={this.props.newAICost} classNameChild="info-new-ai-button" contentChild="Give software more autonomy on how to make a better business." money={this.props.money} machineType="new-ai" currency='computational'/>
         <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonOldWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers. (+1 Computational power)" money={this.props.money} machineType="increase-production-old-way"/>
-        <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonNewWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers. (+1 Computational power)" money={this.props.money} machineType="increase-production-with-tech" currency="computational"/>
+        {/* <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonNewWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers. (+1 Computational power)" money={this.props.money} machineType="increase-production-with-tech" currency="computational"/> */}
         <Button onClickProp={this.props.investInAI} name="Grow the data center" picture="./pictures/datacenter.png" classNameButton={classNameGrowDataCenterNutton} cost={this.props.dataCenterCost} classNameChild="info-data-center-button" contentChild="Increase the power of our computers. (+10 Computational power)" money={this.props.money} machineType="grow-the-data-center"/>
         <Button onClickProp={this.props.investInAI} name="Connect to the Cloud" picture="./pictures/cloud.png" classNameButton={classNameCloudConnectionButton} cost={this.props.newAICost} classNameChild="info-cloud-connection-button" contentChild="Give more knowledge to the computer" money={this.props.money} machineType="cloud-connection" currency='computational'/>
         </div>
