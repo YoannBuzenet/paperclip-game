@@ -42,7 +42,7 @@ class Software extends Component{
         if(this.props.weakAiIsActivated){
             var classNameWeakAIButton = "weak-ai menu-button doNOTdisplay";
         }
-        else if(this.props.increaseProductionLevel >=4 && this.props.deepLearningHasBeenBought && !this.props.weakAiIsActivated){
+        else if(this.props.dataCenterLevelOfInvestment >=5 && this.props.deepLearningHasBeenBought && !this.props.weakAiIsActivated){
             var classNameWeakAIButton = "weak-ai menu-button";
         }
         else{
@@ -168,7 +168,7 @@ class Software extends Component{
 
         {this.props.deepLearningHasBeenBought ? <h3>DATA CENTER</h3> : null}
         <div>
-        <Button onClickProp={this.props.investInAI} name="Develop Weak Artificial Intelligence" picture="./pictures/narrow_ai.png" classNameButton={classNameWeakAIButton} cost={this.props.weakAICost} classNameChild="info-weak-ai-button" contentChild="Help software make better choices." money={this.props.money} machineType="weak-ai" currency='computational'/>
+        <Button onClickProp={this.props.investInAI} name="Develop Weak Artificial Intelligence" picture="./pictures/narrow_ai.png" classNameButton={classNameWeakAIButton} cost={this.props.weakAICost} classNameChild="info-weak-ai-button" contentChild="Centralize all algorithms in one." money={this.props.money} machineType="weak-ai" currency='computational'/>
         <Button onClickProp={this.props.investInAI} name="Develop an Automated Selling Software" picture="./pictures/automaticSellingSoftware.png" classNameButton={classNameAutomatedSellingSoftwareButton} cost={this.props.automatedSellingSoftwarePrice} classNameChild="info-automatic-selling-software-button" contentChild="Setup automatically every sales. (+40 000 sales)" money={this.props.money} machineType="automatic-selling-software" currency='computational'/>
         <Button onClickProp={this.props.investInAI} name="Buy all our competitors" picture="./pictures/buycompetitor.png" classNameButton={classNameBuyCompetitorsButton} cost={this.props.buyingCompetitorsCost} classNameChild="info-buy-competitors-button" contentChild="They are ours now." money={this.props.money} machineType="buy-competitors"/>
         <Button onClickProp={this.props.investInAI} name="Develop General Artificial Intelligence" picture="./pictures/new_ai.png" classNameButton={classNameNewAIButton} cost={this.props.newAICost} classNameChild="info-new-ai-button" contentChild="Give software more autonomy on how to make a better business." money={this.props.money} machineType="new-ai" currency='computational'/>
@@ -179,7 +179,7 @@ class Software extends Component{
         </div>
 
         {this.props.weakAiIsActivated ? <h3>LABORATORY</h3> : null}
-        <Button onClickProp={this.props.investInAI} name="Master Quantum Computer" picture="./pictures/quantum_computer.png" classNameButton={classNameQuantumComputerButton} cost={this.props.quantumComputerCost} classNameChild="info-quantum-computer-button" contentChild="This breakthrough computer is going to change our way to work." money={this.props.money} machineType="quantum-computer" currency='computational'/>
+        <Button onClickProp={this.props.investInAI} name="Master Quantum Computer" picture="./pictures/quantum_computer.png" classNameButton={classNameQuantumComputerButton} cost={this.props.quantumComputerCost} classNameChild="info-quantum-computer-button" contentChild="This breakthrough computer is going to change our way to work. (+1000 Memory)" money={this.props.money} machineType="quantum-computer" currency='computational'/>
   </div>)
 
     ;}

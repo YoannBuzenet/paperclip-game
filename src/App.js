@@ -83,12 +83,12 @@ class App extends Component{
           increaseProductionListCost : [200000, 300000, 500000],
           increaseProductionLevel : 1,
           cloudConnectionCost : 2000,
-          quantumComputerCost : 15000,
+          quantumComputerCost : 5000,
           softwareMarketplacePrice : 100,
           deepLearningHasBeenBought : false,
           weakAiIsActivated : false,
           newAiIsActivated : false,
-          buyingCompetitorsCost : 1000000,
+          buyingCompetitorsCost : 10000000,
           hasBoughtCompetitors : false,
           cloudConnectionEstablished : false,
           quantumComputerHasBeenBought : false,
@@ -126,6 +126,10 @@ class App extends Component{
               AuthorMessageHuman: {
               fr : "Associé :",
               en : 'Co-Founder :'
+                },
+              AuthorMessageWeakAI: {
+              fr : "Intelligence Artificielle faible :",
+              en : 'Weak AI :'
                 },
               after10creation: {
                 fr : "Trouvons une machine pour aller plus vite !",
@@ -188,8 +192,20 @@ class App extends Component{
                 en: "Our machines gain in efficiency. With this, we could become the real leader of the market." 
                   },  
               after2datacenters: {
-                fr: "Vindiou la grosse canaille.",
-                en: "Biloute."
+                fr: "Les chercheurs m'ont annoncé une belle découverte. On devrait pouvoir obtenir de meilleurs algorithmes très bientôt.",
+                en: "The developers told me they were onto something. We may have very powerful algorithms very soon." 
+                  },  
+              after5datacenters: {
+                fr: "Je crois qu'on est les premiers à créer quelque chose d'aussi puissant. Rien ne va nous arrêter !!",
+                en: "I think we are the first to create something that powerful. With this, there's no way our competitors will stop us !!" 
+                  },  
+              afterWeakAiHasBeenBought: {
+                fr: "Objectif : produire un nombre maximal de trombones.",
+                en: "Goal : produce a maximum amount of paperclips." 
+                  },  
+              afterBuyingQuantumComputer: {
+                fr: "Capacités de calcul accrues... redéploiement des ressources pour optimiser le fonctionnement.",
+                en: "Increased computing capabilities...redeployment of resources to optimize calculations."
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -744,7 +760,8 @@ automaticProduceComputationalOperations(){
       else if(machineType =="quantum-computer"){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
-          quantumComputerHasBeenBought : true
+          quantumComputerHasBeenBought : true,
+          computationalPowerPerSecond : state.computationalPowerPerSecond +1000
             });
           }), this.updateTextBox);
       } 
@@ -915,9 +932,21 @@ automaticProduceComputationalOperations(){
         var textToDisplay = this.state.text.after2increaseComputationalPower;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=2) {
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=4) {
         var textToDisplay = this.state.text.after2datacenters;
         var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=5 && !this.state.quantumComputerHasBeenBought && !this.state.weakAiIsActivated) {
+        var textToDisplay = this.state.text.after5datacenters;
+        var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.weakAiIsActivated && !this.state.quantumComputerHasBeenBought) {
+        var textToDisplay = this.state.text.afterWeakAiHasBeenBought;
+        var author = this.state.text.AuthorMessageWeakAI;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought) {
+        var textToDisplay = this.state.text.afterBuyingQuantumComputer;
+        var author = this.state.text.AuthorMessageWeakAI;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
       }
@@ -947,6 +976,11 @@ automaticProduceComputationalOperations(){
 typeWriter(txt, author, speed=10) {
   // This function update the text in dialog box
   document.getElementById("author-box").innerHTML = author;
+
+  // if author, change the div class to make the text appear machine
+  let divToUpdateClass = document.getElementById("author-box");
+  //HERE
+  //
   if (this.state.indexTextWriter < txt.length) {
     document.getElementById("dialog-text").innerHTML += txt.charAt(this.state.indexTextWriter);
     this.setState(state => { return ({
