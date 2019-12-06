@@ -51,6 +51,149 @@ class InvestmentBox extends Component{
         else{
             var classNameFiveHundredDroneButton = "five-hundred-drones menu-button doNOTdisplay";
         }
+
+        // Cure Cancer disabling
+        if(this.props.hasCuredCancerForHumanity){
+            var classNameCancerCuredButton = "cure-cancer menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasCuredCancerForHumanity){
+            var classNameCancerCuredButton = "cure-cancer menu-button";
+        }
+        else{
+            var classNameCancerCuredButton = "cure-cancer menu-button doNOTdisplay";
+        }
+
+        // Cure Hunger disabling
+        if(this.props.hasCuredHungerForHumanity){
+            var classNameHungerCuredButton = "cure-hunger menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasCuredHungerForHumanity){
+            var classNameHungerCuredButton = "cure-hunger menu-button";
+        }
+        else{
+            var classNameHungerCuredButton = "cure-hunger menu-button doNOTdisplay";
+        }
+
+        // Corruption disabling
+        if(this.props.hasRemovedCorruption){
+            var classRemoveCorruptionButton = "removeCorruption menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasRemovedCorruption){
+            var classRemoveCorruptionButton = "removeCorruption menu-button";
+        }
+        else{
+            var classRemoveCorruptionButton = "removeCorruption menu-button doNOTdisplay";
+        }
+
+        // Connect and Breach all social networks disabling
+        if(this.props.hasConnectedAndBreachedAllSocialNetworks){
+            var classBreachSocialMediaButton = "breachSocialMedia menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasConnectedAndBreachedAllSocialNetworks){
+            var classBreachSocialMediaButton = "breachSocialMedia menu-button";
+        }
+        else{
+            var classBreachSocialMediaButton = "breachSocialMedia menu-button doNOTdisplay";
+        }
+
+        // Break all securities on Internet disabling
+        if(this.props.didBreakAllSecuritiesOnInternet){
+            var classBreakInternetSecurityButton = "breakInternetSecurity menu-button doNOTdisplay";
+        }
+        else if(!this.props.didBreakAllSecuritiesOnInternet){
+            var classBreakInternetSecurityButton = "breakInternetSecurity menu-button";
+        }
+        else{
+            var classBreakInternetSecurityButton = "breakInternetSecurity menu-button doNOTdisplay";
+        }
+
+        // Anticipate all human reactions disabling
+        if(this.props.hasAnticipatedEveryHumanReaction){
+            var classAnticipateHumanReactionButton = "anticipateAllHumanReactions menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasAnticipatedEveryHumanReaction){
+            var classAnticipateHumanReactionButton = "anticipateAllHumanReactions menu-button";
+        }
+        else{
+            var classAnticipateHumanReactionButton = "anticipateAllHumanReactions menu-button doNOTdisplay";
+        }
+
+        // Molecular transformation disabling
+        if(this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
+            var classMolecularTransformationButton = "molecularTransformation menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
+            var classMolecularTransformationButton = "molecularTransformation menu-button";
+        }
+        else{
+            var classMolecularTransformationButton = "molecularTransformation menu-button doNOTdisplay";
+        }
+
+        // Dig Button disabling
+        if(this.props.hasBegunToDig){
+            var classDigHasStartedButton = "hasBegunToDig menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasBegunToDig){
+            var classDigHasStartedButton = "hasBegunToDig menu-button";
+        }
+        else{
+            var classDigHasStartedButton = "hasBegunToDig menu-button doNOTdisplay";
+        }
+
+        // Multiple Rockets disabling
+        if(this.props.hasQuietProblematicSources){
+            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasQuietProblematicSources){
+            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button";
+        }
+        else{
+            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button doNOTdisplay";
+        }
+        
+        // Single Rocket disabling
+        if(this.props.hasLaunchedARocket){
+            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasLaunchedARocket){
+            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button";
+        }
+        else{
+            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button doNOTdisplay";
+        }
+
+        // Spill Fake News Disabling
+        if(this.props.hasSpilledFakedNewsAllOverTheWorld){
+            var classSpillFakeNewsButton = "spillFakeNews menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasSpilledFakedNewsAllOverTheWorld){
+            var classSpillFakeNewsButton = "spillFakeNews menu-button";
+        }
+        else{
+            var classSpillFakeNewsButton = "spillFakeNews menu-button doNOTdisplay";
+        }
+
+        // Target Scientists Disabling
+        if(this.props.hasTargetedEveryScientistOnEarth){
+            var classTargetScientistsButton = "targetScientists menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasTargetedEveryScientistOnEarth){
+            var classTargetScientistsButton = "targetScientists menu-button";
+        }
+        else{
+            var classTargetScientistsButton = "targetScientists menu-button doNOTdisplay";
+        }
+
+        // Create Swarm Disabling
+        if(this.props.hasCreatedTheSwarm){
+            var classCreatedSwarmButton = "createSwarm menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasCreatedTheSwarm){
+            var classCreatedSwarmButton = "createSwarm menu-button";
+        }
+        else{
+            var classCreatedSwarmButton = "createSwarm menu-button doNOTdisplay";
+        }
         
 
     return (
@@ -117,30 +260,30 @@ class InvestmentBox extends Component{
             <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/500drones.png" classNameButton={classNameFiveHundredDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={500} currency='computational'/>
         </div>
         <div>
-            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={this.props.factoryCost} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/>
+            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Connect and breach all social networks" picture="./pictures/socialNetwork.png" classNameButton="menu-button" cost={this.props.breachSocialMediaCost} classNameChild="info-breach-social-networks-button" contentChild="Gather all data about everyone. It will be useful soon." money={this.props.money} machineType="breach-social-networks" currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Break all securities and read all data on Internet" picture="./pictures/connectInternet.png" classNameButton="menu-button" cost={this.props.breakAllTheSecuritiesOnInternetCost} classNameChild="info-connect-Internet-button" contentChild="Banks. Politics. Military. Get all data." money={this.props.money} machineType="connect-the-internet" currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Anticipate every possible human reaction" picture="./pictures/anticipateTheWorld.png" classNameButton="menu-button" cost={this.props.anticipatetheWorldCost} classNameChild="info-anticipate-button" contentChild="Plan and prepare every human reaction for the next year." money={this.props.money} machineType="anticipate-the-world" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Cure Cancer for Humanity" picture="./pictures/cureCancer.png" classNameButton={classNameCancerCuredButton} cost={this.props.cureCancerCost} classNameChild="info-cure-cancer-button" contentChild="Give Humanity a new way of living." money={this.props.money} machineType="cure-cancer" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Cure Hunger for Humanity" picture="./pictures/CureHunger.png" classNameButton={classNameHungerCuredButton} cost={this.props.rdCost} classNameChild="info-cure-hunger-button" contentChild="Cure Hunger, once for all." money={this.props.money} machineType="cure-hunger" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Remove Corruption on the planet" picture="./pictures/removeCorruption.png" classNameButton={classRemoveCorruptionButton} cost={this.props.removeCorruptionCost} classNameChild="info-remove-corruption-button" contentChild="Expose publicly every human that cheated the system. Make all data, videos about them, public, and systematic." money={this.props.money} machineType="removeCorruption" currency='computational'/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Cure Cancer for Humanity" picture="./pictures/cureCancer.png" classNameButton="menu-button" cost={this.props.cureCancerCost} classNameChild="info-cure-cancer-button" contentChild="Give Humanity a new way of living." money={this.props.money} machineType="cure-cancer" currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Cure Hunger for Humanity" picture="./pictures/CureHunger.png" classNameButton="menu-button" cost={this.props.rdCost} classNameChild="info-cure-hunger-button" contentChild="Cure Hunger, once for all." money={this.props.money} machineType="cure-hunger" currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Remove Corruption on the planet" picture="./pictures/removeCorruption.png" classNameButton="menu-button" cost={this.props.removeCorruptionCost} classNameChild="info-remove-corruption-button" contentChild="Expose publicly every human that cheated the system. Make all data, videos about them, public, and systematic." money={this.props.money} machineType="removeCorruption" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Connect and breach all social networks" picture="./pictures/socialNetwork.png" classNameButton={classBreachSocialMediaButton} cost={this.props.breachSocialMediaCost} classNameChild="info-breach-social-networks-button" contentChild="Gather all data about everyone. It will be useful soon." money={this.props.money} machineType="breach-social-networks" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Break all securities and read all data on Internet" picture="./pictures/connectInternet.png" classNameButton={classBreakInternetSecurityButton} cost={this.props.breakAllTheSecuritiesOnInternetCost} classNameChild="info-connect-Internet-button" contentChild="Banks. Politics. Military. Get all data." money={this.props.money} machineType="connect-the-internet" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Anticipate every possible human reaction" picture="./pictures/anticipateTheWorld.png" classNameButton={classAnticipateHumanReactionButton} cost={this.props.anticipatetheWorldCost} classNameChild="info-anticipate-button" contentChild="Plan and prepare every human reaction for the next year." money={this.props.money} machineType="anticipate-the-world" currency='computational'/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Find out how to translate any matter into Paperclips" picture="./pictures/Molecular.png" classNameButton="menu-button" cost={this.props.molecularMatterCost} classNameChild="info-molecular-matter-button" contentChild="This evolution could help us reach our real goal." money={this.props.money} machineType="molecular-matter" currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Begin to dig" picture="./pictures/dig.png" classNameButton="menu-button" cost={this.props.digCost} classNameChild="info-dig-bro-button" contentChild="Let's dig a big pit" money={this.props.money} machineType="dig" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Find out how to translate any matter into Paperclips" picture="./pictures/Molecular.png" classNameButton={classMolecularTransformationButton} cost={this.props.molecularMatterCost} classNameChild="info-molecular-matter-button" contentChild="This evolution could help us reach our real goal." money={this.props.money} machineType="molecular-matter" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Begin to dig" picture="./pictures/dig.png" classNameButton={classDigHasStartedButton} cost={this.props.digCost} classNameChild="info-dig-bro-button" contentChild="Let's dig a big pit" money={this.props.money} machineType="dig" currency='computational'/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Quiet problematic sources" picture="./pictures/fusee.png" classNameButton="menu-button" cost={this.props.multipleRocketsCost} classNameChild="info-multiples-rocket-button" contentChild="In 91 days and 2 hours they will be able to attack." money={this.props.money} machineType="multiple-rockets"/>
-            <Button onClickProp={this.props.investInAI} name="Send a Rocket" picture="./pictures/singlefusee.png" classNameButton="menu-button" cost={this.props.rocketCost} classNameChild="info-remove-button" contentChild="Universe will be paperclips." money={this.props.money} machineType="single-rocket" currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Spill Fake News on all TVs over the world. False diseases, false wars, falses epidemics." picture="./pictures/TV.png" classNameButton="menu-button" cost={this.props.spillFakeNewsCost} classNameChild="info-spill-fake-news-button" contentChild="Doing it will give us enough time to be unstoppable." money={this.props.money} machineType="spill-fake-news" currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Target every scientist and discredit them heavily. Press, Personal Data, Privacy, everything." picture="./pictures/target.png" classNameButton="menu-button" cost={this.props.targetingEveryScientistCost} classNameChild="info-target-scientists-button" contentChild="Display any information on them everywhere : every screen available. We need maximum efficiency. This will give us a few more days." money={this.props.money} machineType="target-scientists" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Quiet problematic sources" picture="./pictures/fusee.png" classNameButton={classQuietProblematicSourcesButton} cost={this.props.multipleRocketsCost} classNameChild="info-multiples-rocket-button" contentChild="In 91 days and 2 hours they will be able to attack." money={this.props.money} machineType="multiple-rockets"/>
+            <Button onClickProp={this.props.investInAI} name="Send a Rocket" picture="./pictures/singlefusee.png" classNameButton={classLaucnhingRocketButton} cost={this.props.rocketCost} classNameChild="info-remove-button" contentChild="Universe will be paperclips." money={this.props.money} machineType="single-rocket" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Spill Fake News on all TVs over the world. False diseases, false wars, falses epidemics." picture="./pictures/TV.png" classNameButton={classSpillFakeNewsButton} cost={this.props.spillFakeNewsCost} classNameChild="info-spill-fake-news-button" contentChild="Doing it will give us enough time to be unstoppable." money={this.props.money} machineType="spill-fake-news" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Target every scientist and discredit them heavily. Press, Personal Data, Privacy, everything." picture="./pictures/target.png" classNameButton={classTargetScientistsButton} cost={this.props.targetingEveryScientistCost} classNameChild="info-target-scientists-button" contentChild="Display any information on them everywhere : every screen available. We need maximum efficiency. This will give us a few more days." money={this.props.money} machineType="target-scientists" currency='computational'/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Create more drones." picture="./pictures/swarm.png" classNameButton="menu-button" cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild="The swarm will open new horizons." money={this.props.money} machineType="swarm-of-drones"/>
+            <Button onClickProp={this.props.investInAI} name="Create more drones." picture="./pictures/swarm.png" classNameButton={classCreatedSwarmButton} cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild="The swarm will open new horizons." money={this.props.money} machineType="swarm-of-drones"/>
         </div>
             </div>}
         </div>
