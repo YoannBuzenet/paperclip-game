@@ -28,6 +28,17 @@ class InvestmentBox extends Component{
             classNameAutomaticMachine = "automatic-machines-button menu-button";
         }
 
+         // Find News Ways to Make Paperclip disabling
+         if(this.props.hasFoundNewsWaysToMakePaperclips){
+            var classFindNewsWaysOfMakingPaperclipsDroneButton = "findNewsWaysOfMakingPaperclips menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasFoundNewsWaysToMakePaperclips){
+            var classFindNewsWaysOfMakingPaperclipsDroneButton = "findNewsWaysOfMakingPaperclips menu-button";
+        }
+        else{
+            var classFindNewsWaysOfMakingPaperclipsDroneButton = "findNewsWaysOfMakingPaperclips menu-button doNOTdisplay";
+        }
+
         // One Drone Button disabling
         if(this.props.cloudConnectionEstablished){
             var classNameOneDroneButton = "one-drone menu-button";
@@ -266,15 +277,16 @@ class InvestmentBox extends Component{
 
         {this.props.cloudConnectionEstablished && <div className={className}>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/drone.png" classNameButton={classNameOneDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="This drone will ship our paperclips to customers. (+1000 sales per second)" money={this.props.money} machineType="drone" machineQuantity={1} currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/50drones.png" classNameButton={classNameFiftyDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={50} currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/500drones.png" classNameButton={classNameFiveHundredDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={500} currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Find News Ways to make paperclips." picture="./pictures/findNewsWaysOfMakingPaperclips.png" classNameButton={classFindNewsWaysOfMakingPaperclipsDroneButton} cost={this.props.findNewsWayxToMakePaperclipCost} classNameChild="info-findNewsWays-button" contentChild="Goal : Produce the maximum amount of paperclips." money={this.props.money} machineType="find-news-ways-of-making-paperclips" machineQuantity={1} currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/drone.png" classNameButton={classNameOneDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="This drone will ship our paperclips to customers. (+1000 sales per second)" money={this.props.money} machineType="drone" machineQuantity={1} currency='paperclips'/>
+            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/50drones.png" classNameButton={classNameFiftyDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={50} currency='paperclips'/>
+            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/500drones.png" classNameButton={classNameFiveHundredDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={500} currency='paperclips'/>
         </div>
         <div>
              <Button onClickProp={this.props.investInAI} name="Improve Drone" picture="./pictures/improveDrones.png" classNameButton={classNameImproveDroneButton} cost={this.props.ImprovedroneCost} classNameChild="info-improve-drone-button" contentChild="Increase Computational Power of the drones." money={this.props.money} machineType="improve-drone" currency='computational'/>
         </div>
         <div>
-            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/>
+            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} currency='paperclips'/>
         </div>
         <div>
             <Button onClickProp={this.props.investInAI} name="Cure Cancer for Humanity" picture="./pictures/cureCancer.png" classNameButton={classNameCancerCuredButton} cost={this.props.cureCancerCost} classNameChild="info-cure-cancer-button" contentChild="Give Humanity a new way of living." money={this.props.money} machineType="cure-cancer" currency='computational'/>

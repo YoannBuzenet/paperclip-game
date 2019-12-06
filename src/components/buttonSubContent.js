@@ -41,7 +41,16 @@ class ButtonSubContent extends Component{
 
     //Displaying the right currency (euros or computationnal power)
     var currency;
-    currency = this.props.currency ?  " Memory" : "€";
+    if(this.props.currency===undefined){
+        currency ="€";
+    }
+    else if(this.props.currency == 'computational'){
+        currency =" Memory";
+    }
+    else if(this.props.currency == 'paperclips'){
+        currency =" Paperclips";
+    }
+    
 
     return (
         <div 

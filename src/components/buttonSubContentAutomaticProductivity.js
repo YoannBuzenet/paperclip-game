@@ -38,13 +38,24 @@ class ButtonSubContentAutomaticProductivity extends Component{
         var contentCantBuy = "Maximum Machine reached.";
     }
 
+    var currency;
+    if(this.props.currency===undefined){
+        currency ="€";
+    }
+    else if(this.props.currency == 'computational'){
+        currency =" Memory";
+    }
+    else if(this.props.currency == 'paperclips'){
+        currency =" Paperclips";
+    }
+
     return (
         <div 
         className={this.props.classNameChild}
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
         style={styleButton}><span className="hover-name">{this.props.name}</span><br />
-    {this.props.cost}€<br/>+ {this.props.machineProductivity * this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild}
+    {this.props.cost >0 ? this.props.cost + currency : <strong>Free</strong>}<br/>+ {this.props.machineProductivity * this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild}
     {(this.props.money < this.props.cost || this.props.numberOfSmallAutomaticMachines >= this.props.maximumSmallAutomaticMachine) ? <p className="cantAfford">{contentCantBuy}</p> : null}
         </div>
     )}
