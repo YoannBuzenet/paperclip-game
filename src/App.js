@@ -15,7 +15,7 @@ class App extends Component{
       this.state = {
           count : 50000000,
           money : 50000000,
-          totalComputationalPowerAccumulated : 500000,
+          totalComputationalPowerAccumulated : 50000000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -23,6 +23,7 @@ class App extends Component{
           softwareLevelOfInvestment : 0,
           AIlevelOfInvestment : 0,
           dataCenterLevelOfInvestment : 0,
+          droneLevelOfInvestment : 0,
           totalPaperclipssold : 0,
           officeLevelUpgrade : 0,
           numberOfSmallMachines : 0,
@@ -36,6 +37,8 @@ class App extends Component{
           rdListofCosts : [30, 500, 2000, 15000, 100000, 200000,500000,1000000],
           automaticProductionListofCosts : [20, 150, 2000],
           dataCenterListCost : [200000,300000,500000,750000,1000000],
+          droneAmeliorationListofCosts : [1000000, 1500000],
+          ImprovedroneCost : 1000000,
           dataCenterCost : 200000,
           softwareCost : 20000,
           softwareBonusSales : 0,
@@ -104,6 +107,8 @@ class App extends Component{
           hasBegunToDig : false,
           digCost : 1000,
           droneCost : 1000,
+          numberOfDrone : 0,
+          droneSalesEfficiency : 1000,
           hasQuietProblematicSources : false,
           multipleRocketsCost : 5000,
           hasFoundOutHowToTransformMolecularMatterIntoPaperclip : false,
@@ -304,7 +309,7 @@ class App extends Component{
 
   automaticSellPaperclips(){
     // If we can't sell because of the stocks, we update the state
-      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman + this.state.websiteSellingPower + this.state.softwareBonusSales) <= 0){
+      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman + this.state.websiteSellingPower + this.state.softwareBonusSales + this.state.numberOfDrone * this.state.droneSalesEfficiency) <= 0){
         this.setState(({
           salesmanCantsell : true
         }), this.updateTextBox)
@@ -315,8 +320,8 @@ class App extends Component{
         return ({
           salesmanCantsell : false,
           totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman + state.websiteSellingPower + state.softwareBonusSales,
-          money : state.money + state.paperclipPrice * state.salesmanEfficiency *state.salesman + state.paperclipPrice * (state.websiteSellingPower +state.softwareBonusSales),
-          count : state.count - (state.salesmanEfficiency * state.salesman + state.websiteSellingPower)
+          money : state.money + state.paperclipPrice * state.salesmanEfficiency *state.salesman + state.paperclipPrice * (state.websiteSellingPower +state.softwareBonusSales) + state.paperclipPrice *(state.numberOfDrone * state.droneSalesEfficiency),
+          count : state.count - (state.salesmanEfficiency * state.salesman + state.websiteSellingPower + state.numberOfDrone * state.droneSalesEfficiency)
         })
       }), this.updateTextBox)
   }
@@ -640,6 +645,16 @@ automaticProduceComputationalOperations(){
       } 
 
       //Paying in CP
+      else if(machineType =="improve-drone"){
+        this.setState((state => { return ({
+          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          droneLevelOfInvestment : state.droneLevelOfInvestment +1,
+          ImprovedroneCost : state.droneAmeliorationListofCosts[state.droneLevelOfInvestment]
+            });
+          }), this.updateTextBox);
+      } 
+
+      //Paying in CP
       else if(machineType =="cure-cancer"){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
@@ -661,7 +676,8 @@ automaticProduceComputationalOperations(){
       else if(machineType =="drone"){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
-          hasBoughtSoftwareSelling : true
+          hasBoughtSoftwareSelling : true,
+          numberOfDrone : state.numberOfDrone +1
             });
           }), this.updateTextBox);
       } 
@@ -1036,17 +1052,17 @@ typeWriter(txt, author, speed=10) {
   
       <div className="left-div">
         <div>
-          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost} maximumSmallAutomaticMachine={this.state.maximumSmallAutomaticMachine} cloudConnectionEstablished={this.state.cloudConnectionEstablished} anticipatetheWorldCost={this.state.anticipatetheWorldCost} breakAllTheSecuritiesOnInternetCost={this.state.breakAllTheSecuritiesOnInternetCost} cureCancerCost={this.state.cureCancerCost} cureHungerCost={this.state.cureHungerCost} digCost={this.state.digCost} droneCost={this.state.droneCost} multipleRocketsCost={this.state.multipleRocketsCost} molecularMatterCost={this.state.molecularMatterCost} removeCorruptionCost={this.state.removeCorruptionCost} rocketCost={this.state.rocketCost} breachSocialMediaCost={this.state.breachSocialMediaCost} spillFakeNewsCost={this.state.spillFakeNewsCost} targetingEveryScientistCost={this.state.targetingEveryScientistCost} swarmCost={this.state.swarmCost} softwareCost={this.state.softwareCost} cloudConnectionEstablished={this.state.cloudConnectionEstablished} canCreate50drones={this.state.canCreate50drones} canCreate500drones={this.state.canCreate500drones} hasCuredCancerForHumanity={this.state.hasCuredCancerForHumanity} hasCuredHungerForHumanity={this.state.hasCuredHungerForHumanity} hasRemovedCorruption={this.state.hasRemovedCorruption} hasConnectedAndBreachedAllSocialNetworks={this.state.hasConnectedAndBreachedAllSocialNetworks} didBreakAllSecuritiesOnInternet={this.state.didBreakAllSecuritiesOnInternet} hasAnticipatedEveryHumanReaction={this.state.hasAnticipatedEveryHumanReaction} hasFoundOutHowToTransformMolecularMatterIntoPaperclip={this.state.hasFoundOutHowToTransformMolecularMatterIntoPaperclip} hasBegunToDig={this.state.hasBegunToDig} hasQuietProblematicSources={this.state.hasQuietProblematicSources} hasLaunchedARocket={this.state.hasLaunchedARocket} hasSpilledFakedNewsAllOverTheWorld={this.state.hasSpilledFakedNewsAllOverTheWorld} hasTargetedEveryScientistOnEarth={this.state.hasTargetedEveryScientistOnEarth} hasCreatedTheSwarm={this.state.hasCreatedTheSwarm}/>
+          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost} maximumSmallAutomaticMachine={this.state.maximumSmallAutomaticMachine} cloudConnectionEstablished={this.state.cloudConnectionEstablished} anticipatetheWorldCost={this.state.anticipatetheWorldCost} breakAllTheSecuritiesOnInternetCost={this.state.breakAllTheSecuritiesOnInternetCost} cureCancerCost={this.state.cureCancerCost} cureHungerCost={this.state.cureHungerCost} digCost={this.state.digCost} droneCost={this.state.droneCost} multipleRocketsCost={this.state.multipleRocketsCost} molecularMatterCost={this.state.molecularMatterCost} removeCorruptionCost={this.state.removeCorruptionCost} rocketCost={this.state.rocketCost} breachSocialMediaCost={this.state.breachSocialMediaCost} spillFakeNewsCost={this.state.spillFakeNewsCost} targetingEveryScientistCost={this.state.targetingEveryScientistCost} swarmCost={this.state.swarmCost} softwareCost={this.state.softwareCost} cloudConnectionEstablished={this.state.cloudConnectionEstablished} canCreate50drones={this.state.canCreate50drones} canCreate500drones={this.state.canCreate500drones} hasCuredCancerForHumanity={this.state.hasCuredCancerForHumanity} hasCuredHungerForHumanity={this.state.hasCuredHungerForHumanity} hasRemovedCorruption={this.state.hasRemovedCorruption} hasConnectedAndBreachedAllSocialNetworks={this.state.hasConnectedAndBreachedAllSocialNetworks} didBreakAllSecuritiesOnInternet={this.state.didBreakAllSecuritiesOnInternet} hasAnticipatedEveryHumanReaction={this.state.hasAnticipatedEveryHumanReaction} hasFoundOutHowToTransformMolecularMatterIntoPaperclip={this.state.hasFoundOutHowToTransformMolecularMatterIntoPaperclip} hasBegunToDig={this.state.hasBegunToDig} hasQuietProblematicSources={this.state.hasQuietProblematicSources} hasLaunchedARocket={this.state.hasLaunchedARocket} hasSpilledFakedNewsAllOverTheWorld={this.state.hasSpilledFakedNewsAllOverTheWorld} hasTargetedEveryScientistOnEarth={this.state.hasTargetedEveryScientistOnEarth} hasCreatedTheSwarm={this.state.hasCreatedTheSwarm} investInAI={this.investInAI} droneLevelOfInvestment={this.state.droneLevelOfInvestment} droneAmeliorationListofCosts={this.state.droneAmeliorationListofCosts} ImprovedroneCost={this.state.ImprovedroneCost}/>
         </div>
         <div>
-          {this.state.firstMachine > 0? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers} maximumSalesHirable={this.state.maximumSalesHirable}/> : null}
+          {this.state.firstMachine > 0? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers} maximumSalesHirable={this.state.maximumSalesHirable} numberOfDrone={this.state.numberOfDrone}/> : null}
         </div>
       </div>  
       
       <div className="middle-div">
         
         <div className="dashboard interface-div">
-          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency} websiteSellingPower={this.state.websiteSellingPower} softwareBonusSales={this.state.softwareBonusSales}/>
+          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency} websiteSellingPower={this.state.websiteSellingPower} softwareBonusSales={this.state.softwareBonusSales} numberOfdrones={this.state.numberOfDrone} droneSalesEfficiency={this.state.droneSalesEfficiency}/>
         </div>
 
         {this.state.numberOfClicksIncrease > 10 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text} updateTextBox={this.updateTextBox} />}

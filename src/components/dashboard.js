@@ -58,7 +58,7 @@ class Dashboard extends Component{
     render(){
 
         let automaticProduction = this.checkNumber(this.props.automaticProduction * this.props.productivyPerAutomaticMachine);
-        let automaticSales = this.checkNumber(this.props.salesman * this.props.salesmanEfficiency + this.props.websiteSellingPower + this.props.softwareBonusSales);
+        let automaticSales = this.checkNumber(this.props.salesman * this.props.salesmanEfficiency + this.props.websiteSellingPower + this.props.softwareBonusSales + this.props.numberOfdrones * this.props.droneSalesEfficiency);
 
         return(<div>
         

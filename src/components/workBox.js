@@ -21,6 +21,8 @@ class WorkBox extends Component{
 
     {this.props.numberOfManagers > 0 ? <h3>Managers : {this.props.numberOfManagers}</h3> : null}
 
+    {this.props.numberOfDrone > 0 ? <h3>Drones : {this.props.numberOfDrone}</h3> : null}
+
 
         </div>);
     }
