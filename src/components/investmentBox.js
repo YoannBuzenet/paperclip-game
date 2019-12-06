@@ -27,6 +27,30 @@ class InvestmentBox extends Component{
         else{
             classNameAutomaticMachine = "automatic-machines-button menu-button";
         }
+
+        // One Drone Button disabling
+        if(this.props.cloudConnectionEstablished){
+            var classNameOneDroneButton = "one-drone menu-button";
+        }
+        else{
+            var classNameOneDroneButton = "one-drone menu-button doNOTdisplay";
+        }
+
+        // Fifty Drones Button disabling
+        if(this.props.deepLearningHasBeenBought && this.props.weakAiIsActivated && this.props.canCreate50drones){
+            var classNameFiftyDroneButton = "fifty-drone menu-button";
+        }
+        else{
+            var classNameFiftyDroneButton = "fifty-drone menu-button doNOTdisplay";
+        }
+
+        // 500 Drones Button disabling
+        if(this.props.deepLearningHasBeenBought && this.props.weakAiIsActivated && this.props.canCreate500drones){
+            var classNameFiveHundredDroneButton = "five-hundred-drones menu-button";
+        }
+        else{
+            var classNameFiveHundredDroneButton = "five-hundred-drones menu-button doNOTdisplay";
+        }
         
 
     return (
@@ -87,23 +111,37 @@ class InvestmentBox extends Component{
         </div>}
 
         {this.props.cloudConnectionEstablished && <div className={className}>
-        <Button onClickProp={this.props.investRD} name="Anticipate every possible human reaction" picture="./pictures/anticipateTheWorld.png" classNameButton="menu-button" cost={this.props.anticipatetheWorldCost} classNameChild="info-anticipate-button" contentChild="Plan and prepare every human reaction for the next year." money={this.props.money} machineType="anticipate-the-world" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Break all securities and read all data on Internet" picture="./pictures/connectInternet.png" classNameButton="menu-button" cost={this.props.breakAllTheSecuritiesOnInternetCost} classNameChild="info-connect-Internet-button" contentChild="Banks. Politics. Military. Get all data." money={this.props.money} machineType="connect-the-internet" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Cure Cancer for Humanity" picture="./pictures/cureCancer.png" classNameButton="menu-button" cost={this.props.cureCancerCost} classNameChild="info-cure-cancer-button" contentChild="Give Humanity a new way of living." money={this.props.money} machineType="cure-cancer" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Cure Hunger for Humanity" picture="./pictures/CureHunger.png" classNameButton="menu-button" cost={this.props.rdCost} classNameChild="info-cure-hunger-button" contentChild="Cure Hunger, once for all." money={this.props.money} machineType="cure-hunger" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Begin to dig" picture="./pictures/dig.png" classNameButton="menu-button" cost={this.props.digCost} classNameChild="info-dig-bro-button" contentChild="Let's dig a big pit" money={this.props.money} machineType="dig" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Create a Drone" picture="./pictures/drone.png" classNameButton="menu-button" cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="This drone is going to do all kinds of works." money={this.props.money} machineType="drone" machineQuantity={1} currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Create a Drone" picture="./pictures/50drones.png" classNameButton="menu-button" cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={50} currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Create a Drone" picture="./pictures/500drones.png" classNameButton="menu-button" cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={500} currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Quiet problematic sources" picture="./pictures/fusee.png" classNameButton="menu-button" cost={this.props.multipleRocketsCost} classNameChild="info-multiples-rocket-button" contentChild="In 91 days and 2 hours they will be able to attack." money={this.props.money} machineType="multiple-rockets"/>
-        <Button onClickProp={this.props.investRD} name="Find out how to translate any matter into Paperclips" picture="./pictures/Molecular.png" classNameButton="menu-button" cost={this.props.molecularMatterCost} classNameChild="info-molecular-matter-button" contentChild="This evolution could help us reach our real goal." money={this.props.money} machineType="molecular-matter" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Remove Corruption on the planet" picture="./pictures/removeCorruption.png" classNameButton="menu-button" cost={this.props.removeCorruptionCost} classNameChild="info-remove-corruption-button" contentChild="Expose publicly every human that cheated the system. Make all data, videos about them, public, and systematic." money={this.props.money} machineType="removeCorruption" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Send a Rocket" picture="./pictures/singlefusee.png" classNameButton="menu-button" cost={this.props.rocketCost} classNameChild="info-remove-button" contentChild="Universe will be paperclips." money={this.props.money} machineType="single-rocket" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Connect and breach all social networks" picture="./pictures/socialNetwork.png" classNameButton="menu-button" cost={this.props.breachSocialMediaCost} classNameChild="info-breach-social-networks-button" contentChild="Gather all data about everyone. It will be useful soon." money={this.props.money} machineType="breach-social-networks" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Spill Fake News on all TVs over the world. False diseases, false wars, falses epidemics." picture="./pictures/TV.png" classNameButton="menu-button" cost={this.props.spillFakeNewsCost} classNameChild="info-spill-fake-news-button" contentChild="Doing it will give us enough time to be unstoppable." money={this.props.money} machineType="spill-fake-news" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Target every scientist and discredit them heavily. Press, Personal Data, Privacy, everything." picture="./pictures/target.png" classNameButton="menu-button" cost={this.props.targetingEveryScientistCost} classNameChild="info-target-scientists-button" contentChild="Display any information on them everywhere : every screen available. We need maximum efficiency. This will give us a few more days." money={this.props.money} machineType="target-scientists" currency='computational'/>
-        <Button onClickProp={this.props.investRD} name="Create more drones." picture="./pictures/swarm.png" classNameButton="menu-button" cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild="The swarm will open new horizons." money={this.props.money} machineType="swarm-of-drones"/>
-      
+        <div>
+            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/drone.png" classNameButton={classNameOneDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="This drone will collect matter to create more paperclips." money={this.props.money} machineType="drone" machineQuantity={1} currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/50drones.png" classNameButton={classNameFiftyDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={50} currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/500drones.png" classNameButton={classNameFiveHundredDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="More drones." money={this.props.money} machineType="drone" machineQuantity={500} currency='computational'/>
+        </div>
+        <div>
+            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={this.props.factoryCost} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/>
+        </div>
+        <div>
+            <Button onClickProp={this.props.investInAI} name="Connect and breach all social networks" picture="./pictures/socialNetwork.png" classNameButton="menu-button" cost={this.props.breachSocialMediaCost} classNameChild="info-breach-social-networks-button" contentChild="Gather all data about everyone. It will be useful soon." money={this.props.money} machineType="breach-social-networks" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Break all securities and read all data on Internet" picture="./pictures/connectInternet.png" classNameButton="menu-button" cost={this.props.breakAllTheSecuritiesOnInternetCost} classNameChild="info-connect-Internet-button" contentChild="Banks. Politics. Military. Get all data." money={this.props.money} machineType="connect-the-internet" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Anticipate every possible human reaction" picture="./pictures/anticipateTheWorld.png" classNameButton="menu-button" cost={this.props.anticipatetheWorldCost} classNameChild="info-anticipate-button" contentChild="Plan and prepare every human reaction for the next year." money={this.props.money} machineType="anticipate-the-world" currency='computational'/>
+        </div>
+        <div>
+            <Button onClickProp={this.props.investInAI} name="Cure Cancer for Humanity" picture="./pictures/cureCancer.png" classNameButton="menu-button" cost={this.props.cureCancerCost} classNameChild="info-cure-cancer-button" contentChild="Give Humanity a new way of living." money={this.props.money} machineType="cure-cancer" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Cure Hunger for Humanity" picture="./pictures/CureHunger.png" classNameButton="menu-button" cost={this.props.rdCost} classNameChild="info-cure-hunger-button" contentChild="Cure Hunger, once for all." money={this.props.money} machineType="cure-hunger" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Remove Corruption on the planet" picture="./pictures/removeCorruption.png" classNameButton="menu-button" cost={this.props.removeCorruptionCost} classNameChild="info-remove-corruption-button" contentChild="Expose publicly every human that cheated the system. Make all data, videos about them, public, and systematic." money={this.props.money} machineType="removeCorruption" currency='computational'/>
+        </div>
+        <div>
+            <Button onClickProp={this.props.investInAI} name="Find out how to translate any matter into Paperclips" picture="./pictures/Molecular.png" classNameButton="menu-button" cost={this.props.molecularMatterCost} classNameChild="info-molecular-matter-button" contentChild="This evolution could help us reach our real goal." money={this.props.money} machineType="molecular-matter" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Begin to dig" picture="./pictures/dig.png" classNameButton="menu-button" cost={this.props.digCost} classNameChild="info-dig-bro-button" contentChild="Let's dig a big pit" money={this.props.money} machineType="dig" currency='computational'/>
+        </div>
+        <div>
+            <Button onClickProp={this.props.investInAI} name="Quiet problematic sources" picture="./pictures/fusee.png" classNameButton="menu-button" cost={this.props.multipleRocketsCost} classNameChild="info-multiples-rocket-button" contentChild="In 91 days and 2 hours they will be able to attack." money={this.props.money} machineType="multiple-rockets"/>
+            <Button onClickProp={this.props.investInAI} name="Send a Rocket" picture="./pictures/singlefusee.png" classNameButton="menu-button" cost={this.props.rocketCost} classNameChild="info-remove-button" contentChild="Universe will be paperclips." money={this.props.money} machineType="single-rocket" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Spill Fake News on all TVs over the world. False diseases, false wars, falses epidemics." picture="./pictures/TV.png" classNameButton="menu-button" cost={this.props.spillFakeNewsCost} classNameChild="info-spill-fake-news-button" contentChild="Doing it will give us enough time to be unstoppable." money={this.props.money} machineType="spill-fake-news" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Target every scientist and discredit them heavily. Press, Personal Data, Privacy, everything." picture="./pictures/target.png" classNameButton="menu-button" cost={this.props.targetingEveryScientistCost} classNameChild="info-target-scientists-button" contentChild="Display any information on them everywhere : every screen available. We need maximum efficiency. This will give us a few more days." money={this.props.money} machineType="target-scientists" currency='computational'/>
+        </div>
+        <div>
+            <Button onClickProp={this.props.investInAI} name="Create more drones." picture="./pictures/swarm.png" classNameButton="menu-button" cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild="The swarm will open new horizons." money={this.props.money} machineType="swarm-of-drones"/>
+        </div>
             </div>}
         </div>
         );
