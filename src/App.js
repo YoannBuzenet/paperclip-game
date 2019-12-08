@@ -130,6 +130,8 @@ class App extends Component{
           automatedSellingSoftwarePrice : 150,
           swarmCost : 5000,
           hasFoundNewsWaysToMakePaperclips : false,
+          madeEnoughDrone : false,
+          madeEnoughFactories : false,
           findNewsWayxToMakePaperclipCost : 2000,
           lang : 'en',
           text:{
@@ -450,10 +452,10 @@ automaticProduceComputationalOperations(){
     return absoluteElement;
   }
 
-  buyAMachine(cost, productivity, isManual, machineType, quantity){
+  buyAMachine(cost, productivity, isManual, machineType, quantity=1){
 
     //Function that allows to buy all kind of machines (automatic, manual)
-    if(this.state.money >= cost){
+    if(this.state.money >= cost *quantity){
       
       if(isManual){
         
@@ -485,14 +487,28 @@ automaticProduceComputationalOperations(){
         }              
         
         else if(machineType == "factory"){
-          this.setState((state => { return ({
-            money : state.money - cost,
-            numberOfFactory : state.numberOfFactory + 1,
-            hasBoughtAFactory : true,
-            factoryCost : state.factoryCost *4,
-            automaticProduction : state.automaticProduction + quantity*productivity
-              });
-            }), this.updateTextBox);
+          if(this.state.numberOfFactory >= 20){
+              this.setState((state => { return ({
+                money : state.money - cost,
+                numberOfFactory : state.numberOfFactory + quantity,
+                hasBoughtAFactory : true,
+                factoryCost : state.factoryCost *4,
+                automaticProduction : state.automaticProduction + quantity*productivity,
+                madeEnoughFactories : true
+                  });
+                }), this.updateTextBox);
+
+          }
+          else{
+            this.setState((state => { return ({
+              money : state.money - cost,
+              numberOfFactory : state.numberOfFactory + quantity,
+              hasBoughtAFactory : true,
+              factoryCost : state.factoryCost *4,
+              automaticProduction : state.automaticProduction + quantity*productivity
+                });
+              }), this.updateTextBox);
+        }  
         }
       }
       
@@ -558,11 +574,11 @@ automaticProduceComputationalOperations(){
     }
   } 
 
-  investInAI(cost, productivity, isManual, machineType, quantity, typeOfCost){
+  investInAI(cost, productivity, isManual, machineType, quantity=1, typeOfCost){
 
     // Methods payable in real money
 
-    if(typeOfCost === undefined  && this.state.money >= cost){
+    if(typeOfCost === undefined  && this.state.money >= cost * quantity){
       if(machineType =="deep-learning"){
         this.setState((state => { return ({
           money : state.money - cost,
@@ -570,15 +586,6 @@ automaticProduceComputationalOperations(){
             });
           }), this.updateTextBox);
       } 
-
-      //Paying in MONEY
-      else if(machineType =="dig"){
-        this.setState((state => { return ({
-          money : state.money - cost,
-          hasBegunToDig : true
-            });
-          }), this.updateTextBox);
-      }
       
       //Paying in MONEY
       else if(machineType =="multiple-rockets"){
@@ -627,7 +634,7 @@ automaticProduceComputationalOperations(){
 
     // Methods payable in computational power
 
-    if(typeOfCost =='computational' && this.state.totalComputationalPowerAccumulated >= cost){
+    if(typeOfCost =='computational' && this.state.totalComputationalPowerAccumulated >= cost * quantity){
       //Paying in CP
       if(machineType =="anticipate-the-world"){
         this.setState((state => { return ({
@@ -644,6 +651,15 @@ automaticProduceComputationalOperations(){
             });
           }), this.updateTextBox);
       } 
+
+      //Paying in MONEY
+      else if(machineType =="dig"){
+        this.setState((state => { return ({
+          money : state.money - cost,
+          hasBegunToDig : true
+            });
+          }), this.updateTextBox);
+      }
 
       //Paying in CP
       else if(machineType =="connect-the-internet"){
@@ -740,7 +756,8 @@ automaticProduceComputationalOperations(){
       else if(machineType =="swarm-of-drones"){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
-          hasCreatedTheSwarm : true
+          hasCreatedTheSwarm : true,
+          numberOfDrone : state.numberOfDrone + 1000000
             });
           }), this.updateTextBox);
       }
@@ -809,16 +826,27 @@ automaticProduceComputationalOperations(){
 
     }
 
-    if(typeOfCost =='paperclips' && this.state.totalComputationalPowerAccumulated >= cost){
+    if(typeOfCost =='paperclips' && this.state.totalComputationalPowerAccumulated >= cost * quantity){
 
       //Paying in Paperclips
       if(machineType =="drone"){
+        if(this.state.numberOfDrone >= 20){
+          this.setState((state => { return ({
+            totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+            hasBoughtSoftwareSelling : true,
+            numberOfDrone : state.numberOfDrone +quantity,
+            madeEnoughDrone : true
+              });
+            }), this.updateTextBox);
+        }
+        else(
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasBoughtSoftwareSelling : true,
           numberOfDrone : state.numberOfDrone +1
             });
-          }), this.updateTextBox);
+          }), this.updateTextBox)
+        )  
       } 
 
     }
@@ -1066,7 +1094,7 @@ typeWriter(txt, author, speed=10) {
   
       <div className="left-div">
         <div>
-          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost} maximumSmallAutomaticMachine={this.state.maximumSmallAutomaticMachine} cloudConnectionEstablished={this.state.cloudConnectionEstablished} anticipatetheWorldCost={this.state.anticipatetheWorldCost} breakAllTheSecuritiesOnInternetCost={this.state.breakAllTheSecuritiesOnInternetCost} cureCancerCost={this.state.cureCancerCost} cureHungerCost={this.state.cureHungerCost} digCost={this.state.digCost} droneCost={this.state.droneCost} multipleRocketsCost={this.state.multipleRocketsCost} molecularMatterCost={this.state.molecularMatterCost} removeCorruptionCost={this.state.removeCorruptionCost} rocketCost={this.state.rocketCost} breachSocialMediaCost={this.state.breachSocialMediaCost} spillFakeNewsCost={this.state.spillFakeNewsCost} targetingEveryScientistCost={this.state.targetingEveryScientistCost} swarmCost={this.state.swarmCost} softwareCost={this.state.softwareCost} cloudConnectionEstablished={this.state.cloudConnectionEstablished} canCreate50drones={this.state.canCreate50drones} canCreate500drones={this.state.canCreate500drones} hasCuredCancerForHumanity={this.state.hasCuredCancerForHumanity} hasCuredHungerForHumanity={this.state.hasCuredHungerForHumanity} hasRemovedCorruption={this.state.hasRemovedCorruption} hasConnectedAndBreachedAllSocialNetworks={this.state.hasConnectedAndBreachedAllSocialNetworks} didBreakAllSecuritiesOnInternet={this.state.didBreakAllSecuritiesOnInternet} hasAnticipatedEveryHumanReaction={this.state.hasAnticipatedEveryHumanReaction} hasFoundOutHowToTransformMolecularMatterIntoPaperclip={this.state.hasFoundOutHowToTransformMolecularMatterIntoPaperclip} hasBegunToDig={this.state.hasBegunToDig} hasQuietProblematicSources={this.state.hasQuietProblematicSources} hasLaunchedARocket={this.state.hasLaunchedARocket} hasSpilledFakedNewsAllOverTheWorld={this.state.hasSpilledFakedNewsAllOverTheWorld} hasTargetedEveryScientistOnEarth={this.state.hasTargetedEveryScientistOnEarth} hasCreatedTheSwarm={this.state.hasCreatedTheSwarm} investInAI={this.investInAI} droneLevelOfInvestment={this.state.droneLevelOfInvestment} droneAmeliorationListofCosts={this.state.droneAmeliorationListofCosts} ImprovedroneCost={this.state.ImprovedroneCost} hasFoundNewsWaysToMakePaperclips={this.state.hasFoundNewsWaysToMakePaperclips} findNewsWayxToMakePaperclipCost={this.state.findNewsWayxToMakePaperclipCost}/>
+          <InvestmentBox buyAMachine={this.buyAMachine} money={this.state.money} soldAtLeastOnePaperclip = {this.state.soldAtLeastOnePaperclip} firstMachine = {this.state.firstMachine} numberOfSmallMachines={this.state.numberOfSmallMachines} investInSales = {this.investInSales} investInMarketing={this.investInMarketing} marketingCost={this.state.marketingCost} investRD={this.investInRD} rdCost={this.state.rdCost} rdLevelOfInvestment={this.state.rdLevelOfInvestment} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} smallAutomaticMachineProductivity={this.state.smallAutomaticMachineProductivity} smallAutomaticMachineCost={this.state.smallAutomaticMachineCost} automaticProduction={this.automaticProduction} hireASalesman={this.hireASalesman} salesmanCost ={this.state.salesmanCost} buyFiveSales={this.buyFiveSales} improveAutomaticMachines={this.improveAutomaticMachines} automaticProductionImprovment={this.state.automaticProductionImprovment} automaticProductionCost={this.state.automaticProductionCost} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} salesLevelOfInvestment={this.state.salesLevelOfInvestment} salesCost={this.state.salesCost} numberOfClicksIncrease={this.state.numberOfClicksIncrease} salesman={this.state.salesman} numberOfFactory={this.state.numberOfFactory} hireAManager={this.hireAManager} factoryCost={this.state.factoryCost} investInSoftware={this.investInSoftware} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} maximumSalesHirable={this.state.maximumSalesHirable} officeCost={this.state.officeCost} buyOffice={this.buyOffice} officeLevelUpgrade={this.state.officeLevelUpgrade} managerCost={this.state.managerCost} maximumSmallAutomaticMachine={this.state.maximumSmallAutomaticMachine} cloudConnectionEstablished={this.state.cloudConnectionEstablished} anticipatetheWorldCost={this.state.anticipatetheWorldCost} breakAllTheSecuritiesOnInternetCost={this.state.breakAllTheSecuritiesOnInternetCost} cureCancerCost={this.state.cureCancerCost} cureHungerCost={this.state.cureHungerCost} digCost={this.state.digCost} droneCost={this.state.droneCost} multipleRocketsCost={this.state.multipleRocketsCost} molecularMatterCost={this.state.molecularMatterCost} removeCorruptionCost={this.state.removeCorruptionCost} rocketCost={this.state.rocketCost} breachSocialMediaCost={this.state.breachSocialMediaCost} spillFakeNewsCost={this.state.spillFakeNewsCost} targetingEveryScientistCost={this.state.targetingEveryScientistCost} swarmCost={this.state.swarmCost} softwareCost={this.state.softwareCost} cloudConnectionEstablished={this.state.cloudConnectionEstablished} canCreate50drones={this.state.canCreate50drones} canCreate500drones={this.state.canCreate500drones} hasCuredCancerForHumanity={this.state.hasCuredCancerForHumanity} hasCuredHungerForHumanity={this.state.hasCuredHungerForHumanity} hasRemovedCorruption={this.state.hasRemovedCorruption} hasConnectedAndBreachedAllSocialNetworks={this.state.hasConnectedAndBreachedAllSocialNetworks} didBreakAllSecuritiesOnInternet={this.state.didBreakAllSecuritiesOnInternet} hasAnticipatedEveryHumanReaction={this.state.hasAnticipatedEveryHumanReaction} hasFoundOutHowToTransformMolecularMatterIntoPaperclip={this.state.hasFoundOutHowToTransformMolecularMatterIntoPaperclip} hasBegunToDig={this.state.hasBegunToDig} hasQuietProblematicSources={this.state.hasQuietProblematicSources} hasLaunchedARocket={this.state.hasLaunchedARocket} hasSpilledFakedNewsAllOverTheWorld={this.state.hasSpilledFakedNewsAllOverTheWorld} hasTargetedEveryScientistOnEarth={this.state.hasTargetedEveryScientistOnEarth} hasCreatedTheSwarm={this.state.hasCreatedTheSwarm} investInAI={this.investInAI} droneLevelOfInvestment={this.state.droneLevelOfInvestment} droneAmeliorationListofCosts={this.state.droneAmeliorationListofCosts} ImprovedroneCost={this.state.ImprovedroneCost} hasFoundNewsWaysToMakePaperclips={this.state.hasFoundNewsWaysToMakePaperclips} findNewsWayxToMakePaperclipCost={this.state.findNewsWayxToMakePaperclipCost} madeEnoughDrone={this.state.madeEnoughDrone} madeEnoughFactories={this.state.madeEnoughFactories} hasCuredCancerForHumanity={this.state.hasCuredCancerForHumanity} hasCuredHungerForHumanity={this.state.hasCuredHungerForHumanity} hasRemovedCorruption={this.state.hasRemovedCorruption} hasAnticipatedEveryHumanReaction={this.state.hasAnticipatedEveryHumanReaction} hasFoundOutHowToTransformMolecularMatterIntoPaperclip={this.state.hasFoundOutHowToTransformMolecularMatterIntoPaperclip} hasBegunToDig={this.state.hasBegunToDig}/>
         </div>
         <div>
           {this.state.firstMachine > 0? <WorkBox numberOfSmallMachines={this.state.numberOfSmallMachines} numberOfSmallAutomaticMachines={this.state.numberOfSmallAutomaticMachines} numberOfSalesman={this.state.salesman} hasBoughtAfactory={this.state.hasBoughtAFactory} numberOfFactory={this.state.numberOfFactory} numberOfManagers={this.state.numberOfManagers} maximumSalesHirable={this.state.maximumSalesHirable} numberOfDrone={this.state.numberOfDrone}/> : null}

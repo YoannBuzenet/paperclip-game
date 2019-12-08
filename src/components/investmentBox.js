@@ -40,7 +40,7 @@ class InvestmentBox extends Component{
         }
 
         // One Drone Button disabling
-        if(this.props.cloudConnectionEstablished){
+        if(this.props.cloudConnectionEstablished && this.props.hasFoundNewsWaysToMakePaperclips){
             var classNameOneDroneButton = "one-drone menu-button";
         }
         else{
@@ -48,7 +48,7 @@ class InvestmentBox extends Component{
         }
 
         // Fifty Drones Button disabling
-        if(this.props.deepLearningHasBeenBought && this.props.weakAiIsActivated && this.props.canCreate50drones){
+        if(this.props.droneLevelOfInvestment > 0){
             var classNameFiftyDroneButton = "fifty-drone menu-button";
         }
         else{
@@ -56,7 +56,7 @@ class InvestmentBox extends Component{
         }
 
         // 500 Drones Button disabling
-        if(this.props.deepLearningHasBeenBought && this.props.weakAiIsActivated && this.props.canCreate500drones){
+        if(this.props.droneLevelOfInvestment > 1 && this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
             var classNameFiveHundredDroneButton = "five-hundred-drones menu-button";
         }
         else{
@@ -67,18 +67,45 @@ class InvestmentBox extends Component{
         if(this.props.droneLevelOfInvestment >2){
             var classNameImproveDroneButton = "improveDrone menu-button doNOTdisplay";
         }
-        else if(this.props.droneLevelOfInvestment <= 2){
+        else if(this.props.droneLevelOfInvestment < 1 && this.props.madeEnoughDrone){
+            var classNameImproveDroneButton = "improveDrone menu-button";
+        }
+        else if(this.props.droneLevelOfInvestment <= 2 && this.props.madeEnoughDrone && this.props.madeEnoughFactories){
             var classNameImproveDroneButton = "improveDrone menu-button";
         }
         else{
             var classNameImproveDroneButton = "improveDrone menu-button doNOTdisplay";
         }
 
+        // Factory disabling
+        if(this.props.hasFoundNewsWaysToMakePaperclips){
+            var classNameFactoryButton = "factory menu-button";
+        }
+        else{
+            var classNameFactoryButton = "factory menu-button doNOTdisplay";
+        }
+
+        // 50 Factory disabling
+        if(this.props.hasFoundNewsWaysToMakePaperclips && this.props.droneLevelOfInvestment > 0){
+            var className50FactoryButton = "factory menu-button";
+        }
+        else{
+            var className50FactoryButton = "factory menu-button doNOTdisplay";
+        }
+
+        // 500 Factory disabling
+        if(this.props.hasFoundNewsWaysToMakePaperclips && this.props.droneLevelOfInvestment > 1 && this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
+            var className500FactoryButton = "factory menu-button";
+        }
+        else{
+            var className500FactoryButton = "factory menu-button doNOTdisplay";
+        }
+
         // Cure Cancer disabling
         if(this.props.hasCuredCancerForHumanity){
             var classNameCancerCuredButton = "cure-cancer menu-button doNOTdisplay";
         }
-        else if(!this.props.hasCuredCancerForHumanity){
+        else if(!this.props.hasCuredCancerForHumanity && this.props.droneLevelOfInvestment >= 2){
             var classNameCancerCuredButton = "cure-cancer menu-button";
         }
         else{
@@ -89,7 +116,7 @@ class InvestmentBox extends Component{
         if(this.props.hasCuredHungerForHumanity){
             var classNameHungerCuredButton = "cure-hunger menu-button doNOTdisplay";
         }
-        else if(!this.props.hasCuredHungerForHumanity){
+        else if(!this.props.hasCuredHungerForHumanity && this.props.droneLevelOfInvestment >=2){
             var classNameHungerCuredButton = "cure-hunger menu-button";
         }
         else{
@@ -100,7 +127,7 @@ class InvestmentBox extends Component{
         if(this.props.hasRemovedCorruption){
             var classRemoveCorruptionButton = "removeCorruption menu-button doNOTdisplay";
         }
-        else if(!this.props.hasRemovedCorruption){
+        else if(!this.props.hasRemovedCorruption && this.props.droneLevelOfInvestment >=2){
             var classRemoveCorruptionButton = "removeCorruption menu-button";
         }
         else{
@@ -111,7 +138,7 @@ class InvestmentBox extends Component{
         if(this.props.hasConnectedAndBreachedAllSocialNetworks){
             var classBreachSocialMediaButton = "breachSocialMedia menu-button doNOTdisplay";
         }
-        else if(!this.props.hasConnectedAndBreachedAllSocialNetworks){
+        else if(!this.props.hasConnectedAndBreachedAllSocialNetworks && this.props.hasCuredHungerForHumanity && this.props.hasCuredCancerForHumanity && this.props.hasRemovedCorruption){
             var classBreachSocialMediaButton = "breachSocialMedia menu-button";
         }
         else{
@@ -122,7 +149,7 @@ class InvestmentBox extends Component{
         if(this.props.didBreakAllSecuritiesOnInternet){
             var classBreakInternetSecurityButton = "breakInternetSecurity menu-button doNOTdisplay";
         }
-        else if(!this.props.didBreakAllSecuritiesOnInternet){
+        else if(!this.props.didBreakAllSecuritiesOnInternet && this.props.hasCuredHungerForHumanity && this.props.hasCuredCancerForHumanity && this.props.hasRemovedCorruption){
             var classBreakInternetSecurityButton = "breakInternetSecurity menu-button";
         }
         else{
@@ -133,7 +160,7 @@ class InvestmentBox extends Component{
         if(this.props.hasAnticipatedEveryHumanReaction){
             var classAnticipateHumanReactionButton = "anticipateAllHumanReactions menu-button doNOTdisplay";
         }
-        else if(!this.props.hasAnticipatedEveryHumanReaction){
+        else if(!this.props.hasAnticipatedEveryHumanReaction && this.props.hasCuredHungerForHumanity && this.props.hasCuredCancerForHumanity && this.props.hasRemovedCorruption && this.props.didBreakAllSecuritiesOnInternet && this.props.hasConnectedAndBreachedAllSocialNetworks){
             var classAnticipateHumanReactionButton = "anticipateAllHumanReactions menu-button";
         }
         else{
@@ -144,7 +171,7 @@ class InvestmentBox extends Component{
         if(this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
             var classMolecularTransformationButton = "molecularTransformation menu-button doNOTdisplay";
         }
-        else if(!this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
+        else if(!this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip && this.props.hasAnticipatedEveryHumanReaction){
             var classMolecularTransformationButton = "molecularTransformation menu-button";
         }
         else{
@@ -155,40 +182,18 @@ class InvestmentBox extends Component{
         if(this.props.hasBegunToDig){
             var classDigHasStartedButton = "hasBegunToDig menu-button doNOTdisplay";
         }
-        else if(!this.props.hasBegunToDig){
+        else if(!this.props.hasBegunToDig && this.props.hasAnticipatedEveryHumanReaction && this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
             var classDigHasStartedButton = "hasBegunToDig menu-button";
         }
         else{
             var classDigHasStartedButton = "hasBegunToDig menu-button doNOTdisplay";
         }
 
-        // Multiple Rockets disabling
-        if(this.props.hasQuietProblematicSources){
-            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button doNOTdisplay";
-        }
-        else if(!this.props.hasQuietProblematicSources){
-            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button";
-        }
-        else{
-            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button doNOTdisplay";
-        }
-        
-        // Single Rocket disabling
-        if(this.props.hasLaunchedARocket){
-            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button doNOTdisplay";
-        }
-        else if(!this.props.hasLaunchedARocket){
-            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button";
-        }
-        else{
-            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button doNOTdisplay";
-        }
-
         // Spill Fake News Disabling
         if(this.props.hasSpilledFakedNewsAllOverTheWorld){
             var classSpillFakeNewsButton = "spillFakeNews menu-button doNOTdisplay";
         }
-        else if(!this.props.hasSpilledFakedNewsAllOverTheWorld){
+        else if(!this.props.hasSpilledFakedNewsAllOverTheWorld && this.props.hasAnticipatedEveryHumanReaction && this.props.hasBegunToDig){
             var classSpillFakeNewsButton = "spillFakeNews menu-button";
         }
         else{
@@ -199,22 +204,44 @@ class InvestmentBox extends Component{
         if(this.props.hasTargetedEveryScientistOnEarth){
             var classTargetScientistsButton = "targetScientists menu-button doNOTdisplay";
         }
-        else if(!this.props.hasTargetedEveryScientistOnEarth){
+        else if(!this.props.hasTargetedEveryScientistOnEarth && this.props.hasSpilledFakedNewsAllOverTheWorld){
             var classTargetScientistsButton = "targetScientists menu-button";
         }
         else{
             var classTargetScientistsButton = "targetScientists menu-button doNOTdisplay";
         }
 
+        // Multiple Rockets disabling
+        if(this.props.hasQuietProblematicSources){
+            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasQuietProblematicSources && this.props.hasTargetedEveryScientistOnEarth){
+            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button";
+        }
+        else{
+            var classQuietProblematicSourcesButton = "quieteProblematicSources menu-button doNOTdisplay";
+        }
+
         // Create Swarm Disabling
         if(this.props.hasCreatedTheSwarm){
             var classCreatedSwarmButton = "createSwarm menu-button doNOTdisplay";
         }
-        else if(!this.props.hasCreatedTheSwarm){
+        else if(!this.props.hasCreatedTheSwarm && this.props.hasQuietProblematicSources){
             var classCreatedSwarmButton = "createSwarm menu-button";
         }
         else{
             var classCreatedSwarmButton = "createSwarm menu-button doNOTdisplay";
+        }
+
+        // Single Rocket disabling
+        if(this.props.hasLaunchedARocket){
+            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button doNOTdisplay";
+        }
+        else if(!this.props.hasLaunchedARocket && this.props.hasCreatedTheSwarm){
+            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button";
+        }
+        else{
+            var classLaucnhingRocketButton = "hasLaunchedARocket menu-button doNOTdisplay";
         }
         
 
@@ -276,6 +303,7 @@ class InvestmentBox extends Component{
         </div>}
 
         {this.props.cloudConnectionEstablished && <div className={className}>
+            <h2>EXECUTION</h2>
         <div>
             <Button onClickProp={this.props.investInAI} name="Find News Ways to make paperclips." picture="./pictures/findNewsWaysOfMakingPaperclips.png" classNameButton={classFindNewsWaysOfMakingPaperclipsDroneButton} cost={this.props.findNewsWayxToMakePaperclipCost} classNameChild="info-findNewsWays-button" contentChild="Goal : Produce the maximum amount of paperclips." money={this.props.money} machineType="find-news-ways-of-making-paperclips" machineQuantity={1} currency='computational'/>
             <Button onClickProp={this.props.investInAI} name="Create a Drone" picture="./pictures/drone.png" classNameButton={classNameOneDroneButton} cost={this.props.droneCost} classNameChild="info-drone-button" contentChild="This drone will ship our paperclips to customers. (+1000 sales per second)" money={this.props.money} machineType="drone" machineQuantity={1} currency='paperclips'/>
@@ -286,7 +314,9 @@ class InvestmentBox extends Component{
              <Button onClickProp={this.props.investInAI} name="Improve Drone" picture="./pictures/improveDrones.png" classNameButton={classNameImproveDroneButton} cost={this.props.ImprovedroneCost} classNameChild="info-improve-drone-button" contentChild="Increase Computational Power of the drones." money={this.props.money} machineType="improve-drone" currency='computational'/>
         </div>
         <div>
-            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} currency='paperclips'/>
+            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton={classNameFactoryButton} cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} currency='paperclips'/>
+            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/50factory.png" classNameButton={className50FactoryButton} cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={50} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} currency='paperclips'/>
+            <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/500factory.png" classNameButton={className500FactoryButton} cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={500} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} currency='paperclips'/>
         </div>
         <div>
             <Button onClickProp={this.props.investInAI} name="Cure Cancer for Humanity" picture="./pictures/cureCancer.png" classNameButton={classNameCancerCuredButton} cost={this.props.cureCancerCost} classNameChild="info-cure-cancer-button" contentChild="Give Humanity a new way of living." money={this.props.money} machineType="cure-cancer" currency='computational'/>
@@ -309,7 +339,7 @@ class InvestmentBox extends Component{
             <Button onClickProp={this.props.investInAI} name="Target every scientist and discredit them heavily. Press, Personal Data, Privacy, everything." picture="./pictures/target.png" classNameButton={classTargetScientistsButton} cost={this.props.targetingEveryScientistCost} classNameChild="info-target-scientists-button" contentChild="Display any information on them everywhere : every screen available. We need maximum efficiency. This will give us a few more days." money={this.props.money} machineType="target-scientists" currency='computational'/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Create more drones." picture="./pictures/swarm.png" classNameButton={classCreatedSwarmButton} cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild="The swarm will open new horizons." money={this.props.money} machineType="swarm-of-drones"/>
+            <Button onClickProp={this.props.investInAI} name="Create more drones." picture="./pictures/swarm.png" classNameButton={classCreatedSwarmButton} cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild="The swarm will open new horizons." money={this.props.money} machineType="swarm-of-drones" currency='computational'/>
         </div>
             </div>}
         </div>
