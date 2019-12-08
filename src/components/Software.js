@@ -143,6 +143,17 @@ class Software extends Component{
             var classNameQuantumComputerButton = "quantum-computer menu-button doNOTdisplay";
         }
 
+        // Terraform Island disabling
+        if(this.props.terraformingIslandIntoServers){
+            var classNameTerraformingIslandButton = "terraformingIsland menu-button doNOTdisplay";
+        }
+        else if(!this.props.terraformingIslandIntoServers && this.props.droneLevelOfInvestment >=2){
+            var classNameTerraformingIslandButton = "terraformingIsland menu-button";
+        }
+        else{
+            var classNameTerraformingIslandButton = "terraformingIsland menu-button doNOTdisplay";
+        }
+
 
 
 
@@ -175,6 +186,7 @@ class Software extends Component{
         <Button onClickProp={this.props.investInAI} name="Increase Computational Power" picture="./pictures/increaseProduction.png" classNameButton={classNameIncreaseProductionButtonOldWay} cost={this.props.increaseProductionCost} classNameChild="info-increase-production-button" contentChild="Increase the power of our computers. (+1 Computational power)" money={this.props.money} machineType="increase-production-old-way"/>
         <Button onClickProp={this.props.investInAI} name="Grow the data center" picture="./pictures/datacenter.png" classNameButton={classNameGrowDataCenterNutton} cost={this.props.dataCenterCost} classNameChild="info-data-center-button" contentChild="Increase the power of our computers. (+10 Computational power)" money={this.props.money} machineType="grow-the-data-center"/>
         <Button onClickProp={this.props.investInAI} name="Connect AI to the Cloud" picture="./pictures/cloud.png" classNameButton={classNameCloudConnectionButton} cost={this.props.newAICost} classNameChild="info-cloud-connection-button" contentChild="Give more knowledge to the computer" money={this.props.money} machineType="cloud-connection" currency='computational'/>
+        <Button onClickProp={this.props.investInAI} name="Terraform islands into Data Centers" picture="./pictures/terraformIslandIntoDataCenter.png" classNameButton={classNameTerraformingIslandButton} cost={this.props.terraformingIslandIntoServersCost} classNameChild="info-terraforming-button" contentChild="Get Enough Computational Power." money={this.props.money} machineType="terraformIsland"/>
         </div>
 
         {(this.props.weakAiIsActivated && !this.props.quantumComputerHasBeenBought)? <h3>LABORATORY</h3> : null}

@@ -105,7 +105,7 @@ class InvestmentBox extends Component{
         if(this.props.hasCuredCancerForHumanity){
             var classNameCancerCuredButton = "cure-cancer menu-button doNOTdisplay";
         }
-        else if(!this.props.hasCuredCancerForHumanity && this.props.droneLevelOfInvestment >= 2){
+        else if(!this.props.hasCuredCancerForHumanity && this.props.droneLevelOfInvestment >= 2 && this.props.terraformingIslandIntoServers){
             var classNameCancerCuredButton = "cure-cancer menu-button";
         }
         else{
@@ -116,7 +116,7 @@ class InvestmentBox extends Component{
         if(this.props.hasCuredHungerForHumanity){
             var classNameHungerCuredButton = "cure-hunger menu-button doNOTdisplay";
         }
-        else if(!this.props.hasCuredHungerForHumanity && this.props.droneLevelOfInvestment >=2){
+        else if(!this.props.hasCuredHungerForHumanity && this.props.droneLevelOfInvestment >=2 && this.props.terraformingIslandIntoServers){
             var classNameHungerCuredButton = "cure-hunger menu-button";
         }
         else{
@@ -127,7 +127,7 @@ class InvestmentBox extends Component{
         if(this.props.hasRemovedCorruption){
             var classRemoveCorruptionButton = "removeCorruption menu-button doNOTdisplay";
         }
-        else if(!this.props.hasRemovedCorruption && this.props.droneLevelOfInvestment >=2){
+        else if(!this.props.hasRemovedCorruption && this.props.droneLevelOfInvestment >=2 && this.props.terraformingIslandIntoServers){
             var classRemoveCorruptionButton = "removeCorruption menu-button";
         }
         else{
