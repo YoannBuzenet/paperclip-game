@@ -17,11 +17,11 @@ class WorkBox extends Component{
     ? <h3>Salesmen : {this.props.numberOfSalesman}/{this.props.maximumSalesHirable}</h3> 
     : null}    
 
-    {this.props.hasBoughtAfactory && <h3>Factories : {this.props.numberOfFactory}</h3>}
+    {this.props.hasBoughtAfactory && <h3>Factories : {this.props.checkNumber(this.props.numberOfFactory)}</h3>}
 
-    {this.props.numberOfManagers > 0 ? <h3>Managers : {this.props.numberOfManagers}</h3> : null}
+    {this.props.numberOfManagers > 0 ? <h3>Managers : {this.props.checkNumber(this.props.numberOfManagers)}</h3> : null}
 
-    {this.props.numberOfDrone > 0 ? <h3>Drones : {this.props.numberOfDrone}</h3> : null}
+    {this.props.numberOfDrone > 0 ? <h3>Drones : {this.props.checkNumber(this.props.numberOfDrone)}</h3> : null}
 
 
         </div>);

@@ -203,6 +203,14 @@ class InvestmentBox extends Component{
             var weightEarth = "weightEarth doNOTdisplay";
         }
 
+        // Improve Factory Disabling
+        if(!this.props.factoryCanProduceDrones && this.props.hasBegunToDig){
+            var classNameImproveFactoryButton = "ImproveFactory menu-button";
+        }
+        else{
+            var classNameImproveFactoryButton = "ImproveFactory menu-button doNOTdisplay";
+        }
+
         // Spill Fake News Disabling
         if(this.props.hasSpilledFakedNewsAllOverTheWorld){
             var classSpillFakeNewsButton = "spillFakeNews menu-button doNOTdisplay";
@@ -321,7 +329,7 @@ class InvestmentBox extends Component{
 
             <div className={weightEarth}>
                 <p>Earth to Harvest : {this.props.checkNumber(this.props.weightOfTheEarth)} kg</p>
-                <p>Drones currently digging : {this.props.numberOfDrone}</p>
+                <p>Drones currently digging : {this.props.checkNumber(this.props.numberOfDrone)}</p>
             </div>
 
         <div>
@@ -332,6 +340,7 @@ class InvestmentBox extends Component{
         </div>
         <div>
              <Button onClickProp={this.props.investInAI} name="Improve Drone" picture="./pictures/improveDrones.png" classNameButton={classNameImproveDroneButton} cost={this.props.ImprovedroneCost} classNameChild="info-improve-drone-button" contentChild="Increase Computational Power of the drones." money={this.props.money} machineType="improve-drone" currency='computational'/>
+             <Button onClickProp={this.props.investInAI} name="Improve Factories" picture="./pictures/droneFactory.png" classNameButton={classNameImproveFactoryButton} cost={this.props.improveFactoryToCreateDroneCost} classNameChild="info-improve-factory-button" contentChild="Factories can now produce paperclips AND drones." money={this.props.money} machineType="improve-factory" currency='computational'/>
         </div>
         <div>
             <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton={classNameFactoryButton} cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} currency='paperclips'/>
