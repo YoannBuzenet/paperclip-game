@@ -70,7 +70,13 @@ class InvestmentBox extends Component{
         else if(this.props.droneLevelOfInvestment < 1 && this.props.madeEnoughDrone){
             var classNameImproveDroneButton = "improveDrone menu-button";
         }
-        else if(this.props.droneLevelOfInvestment <= 2 && this.props.madeEnoughDrone && this.props.madeEnoughFactories){
+        else if(this.props.droneLevelOfInvestment < 2 && this.props.madeEnoughDrone && this.props.madeEnoughFactories && !this.props.terraformingIslandIntoServers){
+            var classNameImproveDroneButton = "improveDrone menu-button";
+        }
+        else if(this.props.droneLevelOfInvestment < 2 && this.props.madeEnoughDrone && this.props.madeEnoughFactories && this.props.terraformingIslandIntoServers && !this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
+            var classNameImproveDroneButton = "improveDrone menu-button";
+        }
+        else if(this.props.droneLevelOfInvestment <= 3 && this.props.madeEnoughDrone && this.props.madeEnoughFactories && this.props.terraformingIslandIntoServers && this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
             var classNameImproveDroneButton = "improveDrone menu-button";
         }
         else{
@@ -182,7 +188,7 @@ class InvestmentBox extends Component{
         if(this.props.hasBegunToDig){
             var classDigHasStartedButton = "hasBegunToDig menu-button doNOTdisplay";
         }
-        else if(!this.props.hasBegunToDig && this.props.hasAnticipatedEveryHumanReaction && this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip){
+        else if(!this.props.hasBegunToDig && this.props.hasAnticipatedEveryHumanReaction && this.props.hasFoundOutHowToTransformMolecularMatterIntoPaperclip && this.props.droneLevelOfInvestment >=3){
             var classDigHasStartedButton = "hasBegunToDig menu-button";
         }
         else{
@@ -319,8 +325,8 @@ class InvestmentBox extends Component{
             <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/500factory.png" classNameButton={className500FactoryButton} cost={10000} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={500} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine} currency='paperclips'/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Cure Cancer for Humanity" picture="./pictures/cureCancer.png" classNameButton={classNameCancerCuredButton} cost={this.props.cureCancerCost} classNameChild="info-cure-cancer-button" contentChild="Give Humanity a new way of living." money={this.props.money} machineType="cure-cancer" currency='computational'/>
-            <Button onClickProp={this.props.investInAI} name="Cure Hunger for Humanity" picture="./pictures/CureHunger.png" classNameButton={classNameHungerCuredButton} cost={this.props.rdCost} classNameChild="info-cure-hunger-button" contentChild="Cure Hunger, once for all." money={this.props.money} machineType="cure-hunger" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Cure Cancer for Humanity" picture="./pictures/cureCancer.png" classNameButton={classNameCancerCuredButton} cost={this.props.cureCancerCost} classNameChild="info-cure-cancer-button" contentChild="Heal every cancer existing on Earth, for free." money={this.props.money} machineType="cure-cancer" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Cure Hunger for Humanity" picture="./pictures/CureHunger.png" classNameButton={classNameHungerCuredButton} cost={this.props.rdCost} classNameChild="info-cure-hunger-button" contentChild="Redistribute food. Build new factory and give food. Cure Hunger on every part on Earth. For free." money={this.props.money} machineType="cure-hunger" currency='computational'/>
             <Button onClickProp={this.props.investInAI} name="Remove Corruption on the planet" picture="./pictures/removeCorruption.png" classNameButton={classRemoveCorruptionButton} cost={this.props.removeCorruptionCost} classNameChild="info-remove-corruption-button" contentChild="Expose publicly every human that cheated the system. Make all data, videos about them, public, and systematic." money={this.props.money} machineType="removeCorruption" currency='computational'/>
         </div>
         <div>
@@ -329,7 +335,7 @@ class InvestmentBox extends Component{
             <Button onClickProp={this.props.investInAI} name="Anticipate every possible human reaction" picture="./pictures/anticipateTheWorld.png" classNameButton={classAnticipateHumanReactionButton} cost={this.props.anticipatetheWorldCost} classNameChild="info-anticipate-button" contentChild="Plan and prepare every human reaction for the next year." money={this.props.money} machineType="anticipate-the-world" currency='computational'/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name="Find out how to translate any matter into Paperclips" picture="./pictures/Molecular.png" classNameButton={classMolecularTransformationButton} cost={this.props.molecularMatterCost} classNameChild="info-molecular-matter-button" contentChild="This evolution could help us reach our real goal." money={this.props.money} machineType="molecular-matter" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name="Find out how to translate any matter into Paperclips" picture="./pictures/Molecular.png" classNameButton={classMolecularTransformationButton} cost={this.props.molecularMatterCost} classNameChild="info-molecular-matter-button" contentChild="Each atom will be converted to metal. This will drastically improve our odds of succeeding." money={this.props.money} machineType="molecular-matter" currency='computational'/>
             <Button onClickProp={this.props.investInAI} name="Begin to dig" picture="./pictures/dig.png" classNameButton={classDigHasStartedButton} cost={this.props.digCost} classNameChild="info-dig-bro-button" contentChild="Let's dig a big pit" money={this.props.money} machineType="dig" currency='computational'/>
         </div>
         <div>

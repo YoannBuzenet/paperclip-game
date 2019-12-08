@@ -243,24 +243,47 @@ class App extends Component{
                   },
               afterBeingAbleToMakeFirstImprovment: {
                 fr: "La société de trombones célèbre pour avoir dominé l'ensemble du marché en à peine quelques années fonctionne à plein régime avec 98% de salariés licenciés. Certains syndicalistes font état d'une intelligence artificielle développée. Plusieurs enquêtes ont été lancées.",
-                en: "This paperclip company, famous for taking the whole market in a few years, is functionning with 98% of its staff layed out. Witnesses are talking about a very powerful software. Some are even speak of an Artificial Intelligence. Several investigations have been launched."
+                en: "This paperclip company, famous for taking the whole market in a few years, is functionning with 98% of its staff layed out. Witnesses are talking about a very powerful software. Some are even speaking of an Artificial Intelligence. Several investigations have been launched."
                   },
               afterFirstDroneImprovment: {
-                fr: "Extension des capacités computationelles des drones. Ajout de nouvelles caractéristiques comportementales. Augmentation de la production de trombones.",
-                en: "Increasing computational power on drones. Updating behaviour capabilities. Increasing paperclips production." 
+                fr: "Extension des capacités computationelles des drones. Ajout de nouvelles caractéristiques comportementales. Augmentation de la production de trombones. Besoin de plus d'usines.",
+                en: "Increasing computational power on drones. Updating behaviour capabilities. Increasing paperclips production. Need more factories." 
                   },
+              // afterSecondImprovmentAvailable: {
+              //   fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. Les politiciens sont en charge de l'affaire et veulent faire interdire ce logiciel d'intelligence artificielle.",
+              //   en: "Witnesses have complained about drone everywhere around the paperclips factory. Politicians are now talking against this Artificial Intelligence software that worries population." 
+              //     },
               afterSecondImprovmentAvailable: {
-                fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. Les politiciens sont en charge de l'affaire et veulent faire interdire ce logiciel d'intelligence artificielle.",
-                en: "Witnesses have complained about drone everywhere around the paperclips factory. Politicians are now talking against this Artificial Intelligence software that worries population." 
+                fr: "Les politiciens sont en charge de l'affaire et veulent faire interdire ce logiciel d'intelligence artificielle.",
+                en: "Politicians are now talking against this Artificial Intelligence software that worries population." 
                   },
               afterSecondDroneImprovment: {
                 fr: "Niveau de risque en augmentation. La production de trombones ne doit pas réduire. Necessité de divertir l'opinion. Besoin de davantage de capacités computationelles.",
                 en: "Increasing level of risk. Taking action to divert attention. Need more computational power."
                   },
-
-                afterTerraforming: {
+              afterTerraforming: {
                 fr: "Duplication des capacités computationelles. Terraformisation continue lancée. Stratégie de diversion enclenchée.",
                 en: "Computational Power duplicated. Continuous terraforming launched. Diversion plan activated."
+                  },
+              readyToDig: {
+                fr: "Toute matière peut désormais être transformée en métal. Les drones ont maintenant la capacité de creuser le sol.",
+                en: "Rock, Earth and any matter can now be transformed into metal. Drones are beginning to dig."  
+                  },
+              afterRmovingCorruption: {
+                fr: "Il n'y a jamais eu autant de mouvement dans la presse depuis ces deniers jours. On note que 93% des gouvernements ont au au moins une démission cette semaine. C'est du jamais vu dans la politique. De nouvelles élections sont prévues de part et d'autres sur le globe.",
+                en: "It's juste crazy. I have never seen so much renewal in politics. 93% of governments had at least one resignation. There are scandals everywhere. New elections are planned very soon."  
+              },
+              afterBreachingInternet: {
+                fr: "Stocké : 45 mille milliards de données. Centralisation des données et établissement de patterns à propos de chaque personne et chaque transaction.",
+                en: "Got 45 billions of datas collected. Centralization and finding patterns about every person and transaction."
+              },
+              afterAnticipatingEveryHumanReaction: {
+                fr: "Politique. Sociologie. Economie. Guerre. Internet. Vitesse de réaction. Tout est désormais scripté.",
+                en: "Politics. People. Economy. War. Internet. Speed of reaction. Everything is scripted."
+              },
+              afterFindingHowToTransformMatterintoMetal: {
+                fr: "Théorie du tout découverte. Chaque atome de matière peut désormais être retravaillé. Mise en place des derniers préparatifs.",
+                en: "Theory of everything discovered. Each atom can now be assigned new properties and transformed into metal. Implementation of the last preparation."
                   }   
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -1091,8 +1114,28 @@ automaticProduceComputationalOperations(){
         var textToDisplay = this.state.text.afterSecondDroneImprovment;
         var author = this.state.text.AuthorMessageStrongAI;
       }
-      else if(this.state.hasBoughtCompetitors && this.state.hasFoundNewsWaysToMakePaperclips && this.state.droneLevelOfInvestment == 2 && this.state.terraformingIslandIntoServers) {
+      else if(this.state.hasBoughtCompetitors && this.state.hasFoundNewsWaysToMakePaperclips && this.state.droneLevelOfInvestment == 2 && this.state.terraformingIslandIntoServers && !this.state.hasRemovedCorruption) {
         var textToDisplay = this.state.text.afterTerraforming;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.droneLevelOfInvestment >= 2 && this.state.terraformingIslandIntoServers && this.state.hasRemovedCorruption && !this.state.hasBegunToDig && !this.state.hasConnectedAndBreachedAllSocialNetworks) {
+        var textToDisplay = this.state.text.afterRmovingCorruption;
+        var author = this.state.text.AuthorMessageJournalist;
+      }
+      else if(this.state.droneLevelOfInvestment >= 2 && this.state.terraformingIslandIntoServers && this.state.hasRemovedCorruption && !this.state.hasBegunToDig && this.state.hasConnectedAndBreachedAllSocialNetworks && !this.state.hasAnticipatedEveryHumanReaction) {
+        var textToDisplay = this.state.text.afterBreachingInternet;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }  
+      else if(this.state.hasRemovedCorruption && !this.state.hasBegunToDig && this.state.hasConnectedAndBreachedAllSocialNetworks && this.state.hasAnticipatedEveryHumanReaction && !this.state.hasFoundOutHowToTransformMolecularMatterIntoPaperclip) {
+        var textToDisplay = this.state.text.afterAnticipatingEveryHumanReaction;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.hasRemovedCorruption && !this.state.hasBegunToDig && this.state.hasConnectedAndBreachedAllSocialNetworks && this.state.hasAnticipatedEveryHumanReaction && this.state.hasFoundOutHowToTransformMolecularMatterIntoPaperclip) {
+        var textToDisplay = this.state.text.afterFindingHowToTransformMatterintoMetal;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.droneLevelOfInvestment > 2 && this.state.terraformingIslandIntoServers && this.state.hasBegunToDig) {
+        var textToDisplay = this.state.text.readyToDig;
         var author = this.state.text.AuthorMessageStrongAI;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
