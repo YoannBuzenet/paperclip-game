@@ -336,7 +336,7 @@ class App extends Component{
     this.automaticProductionPaperclips();
     this.automaticSellPaperclips();
     this.automaticHiringSales();
-     if(this.state.deepLearningHasBeenBought){
+    if(this.state.deepLearningHasBeenBought){
       this.automaticProduceComputationalOperations();
     }
     if(this.state.hasBegunToDig){
@@ -423,7 +423,7 @@ automaticDiggingDrone(){
 
 automaticProducingFactoriesByDrone(){
   this.setState((state => { return ({
-    numberOfFactory : state.numberOfFactory + Math.ceil((state.numberOfdrones/1000))
+    numberOfFactory : state.numberOfFactory + Math.ceil(state.numberOfDrone/1000)
     });
   }), this.updateTextBox);
 }
@@ -480,9 +480,6 @@ automaticProduceDrones(){
     }
     else if(number >= Math.pow(10,24)){
         number = this.formateNumber(number, Math.pow(10,24), ' zillion');
-    }
-    else{
-      number="bite";
     }
     return number;
 }
