@@ -154,6 +154,17 @@ class Software extends Component{
             var classNameTerraformingIslandButton = "terraformingIsland menu-button doNOTdisplay";
         }
 
+        // H3 Data center disabling
+        if(this.props.terraformingIslandIntoServers){
+            var classh3datacenter = "doNOTdisplay";
+        }
+        else if(this.props.deepLearningHasBeenBought && this.props.dataCenterLevelOfInvestment <=4 || !this.props.weakAiIsActivated){
+            var classh3datacenter = "";
+        }
+        else{
+            var classh3datacenter = "doNOTdisplay";
+        }
+
 
 
 
@@ -177,7 +188,7 @@ class Software extends Component{
         <Button onClickProp={this.props.improveAutomaticMachines} name="Improve the automatic machines" picture="./pictures/improve-automatic-machines.png" classNameButton={classNameImproveAutomaticMachinesButton} cost={this.props.automaticProductionCost} classNameChild="info-invest-rd-improve-button" contentChild="Increase the productivity of all your automatic machines by x2" money={this.props.money} currency="computational"/>
         :null}
 
-        {this.props.deepLearningHasBeenBought ? <h3>DATA CENTER</h3> : null}
+        <h3 className={classh3datacenter}>DATA CENTER</h3>
         <div>
         <Button onClickProp={this.props.investInAI} name="Develop Weak Artificial Intelligence" picture="./pictures/narrow_ai.png" classNameButton={classNameWeakAIButton} cost={this.props.weakAICost} classNameChild="info-weak-ai-button" contentChild="Centralize all algorithms in one." money={this.props.money} machineType="weak-ai" currency='computational'/>
         <Button onClickProp={this.props.investInAI} name="Develop an Automated Selling Software" picture="./pictures/automaticSellingSoftware.png" classNameButton={classNameAutomatedSellingSoftwareButton} cost={this.props.automatedSellingSoftwarePrice} classNameChild="info-automatic-selling-software-button" contentChild="Setup automatically every sales. (+40 000 sales)" money={this.props.money} machineType="automatic-selling-software" currency='computational'/>

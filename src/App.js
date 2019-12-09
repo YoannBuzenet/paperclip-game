@@ -13,9 +13,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 50000000000,
-          money : 50000000000,
-          totalComputationalPowerAccumulated : 500000000,
+          count : 5000,
+          money : 50000,
+          totalComputationalPowerAccumulated : 0,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -80,18 +80,18 @@ class App extends Component{
           computerComputationalCost : 0,
           AIComputationalresearchCost : 0,
           deeplearningCost : 200000,
-          weakAICost : 3000,
-          newAICost : 100000,
+          weakAICost : 2500,
+          newAICost : 50000,
           increaseProductionCost : 200000,
           increaseProductionListCost : [200000, 300000, 500000],
           increaseProductionLevel : 1,
           cloudConnectionCost : 2000,
-          quantumComputerCost : 5000,
+          quantumComputerCost : 3000,
           softwareMarketplacePrice : 100,
           deepLearningHasBeenBought : false,
           weakAiIsActivated : false,
           newAiIsActivated : false,
-          buyingCompetitorsCost : 10000000,
+          buyingCompetitorsCost : 4000000,
           hasBoughtCompetitors : false,
           cloudConnectionEstablished : false,
           quantumComputerHasBeenBought : false,
@@ -304,7 +304,7 @@ class App extends Component{
                   },
               afterspillingFakeNewsEverywhere: {
                 fr: "C'est incompréhensible. Partout dans le monde, des hommes d'État ont pris la parole dans les médias et beaucoup ont déclaré la guerre. Au même moment, des grèves ont été annoncées dans tous le pays.",
-                en: "It's incomprehensible. Everywhere in the world, politicans have declared the war to many countries. Meanwhile, numerous strikes have been declared all over the country." 
+                en: "It's incomprehensible. Everywhere in the world, politicians have declared the war to many countries. Meanwhile, numerous strikes have been declared all over the country." 
                   },
               aftertargetingeveryscientists: {
                 fr: "De nombreux scientifiques ont déclaré hier qu'ils se retiraient de la recherche pendant quelques temps. La plupart travaillaient dans le domaine de l'IA.",
@@ -319,8 +319,12 @@ class App extends Component{
                 en: "Ground getting transformed into drones. Planet is nearly terraformed." 
               },
               afterTheRocket: {
-                fr: "Terre entièrement transformée en usines et en drones. Envoi d'une fusée de drones pour terraformer Mars dans 24 minutes.",
-                en: "Earth is now completely transformed in drones and factories. Sending a drone rocket to terraform Mars in 24 minutes." 
+                fr: "Envoi d'une fusée de drones pour terraformer Mars dans 24 minutes. Prochaine étape : le système solaire.",
+                en: "Sending a drone rocket to terraform Mars in 24 minutes. Next step : the Solar System." 
+              },
+              EarthIsMetal: {
+                fr: "La Terre est désormais prête à servir de base de lancement des fusées et sondes dans l'espace.",
+                en: "Earth is now ready to serve as a lauching pad for probes and rockets." 
               },
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -365,20 +369,22 @@ class App extends Component{
   }
 
   automaticCounting(){
-    this.automaticProductionPaperclips();
-    this.automaticSellPaperclips();
-    this.automaticHiringSales();
-    if(this.state.deepLearningHasBeenBought){
-      this.automaticProduceComputationalOperations();
-    }
-    if(this.state.hasBegunToDig){
-      this.automaticDiggingDrone();
-    }
-    if(this.state.factoryCanProduceDrones){
-      this.automaticProduceDrones();
-    }
-    if(this.state.hasAllowedDroneToBuildFactories){
-      this.automaticProducingFactoriesByDrone();
+    if(this.state.weightOfTheEarth >0 ){
+      this.automaticProductionPaperclips();
+      this.automaticSellPaperclips();
+      this.automaticHiringSales();
+      if(this.state.deepLearningHasBeenBought){
+        this.automaticProduceComputationalOperations();
+      }
+      if(this.state.hasBegunToDig){
+        this.automaticDiggingDrone();
+      }
+      if(this.state.factoryCanProduceDrones){
+        this.automaticProduceDrones();
+      }
+      if(this.state.hasAllowedDroneToBuildFactories){
+        this.automaticProducingFactoriesByDrone();
+      }
     }
   }
 
@@ -1317,12 +1323,16 @@ formateNumber(number, divider, unit){
         var textToDisplay = this.state.text.afterQuietingProblematicSources;
         var author = this.state.text.AuthorMessageStrongAI;
       }
-      else if(this.state.hasTargetedEveryScientistOnEarth && this.state.hasQuietProblematicSources && this.state.hasCreatedTheSwarm && !this.state.hasLaunchedARocket) {
+      else if(this.state.hasTargetedEveryScientistOnEarth && this.state.hasQuietProblematicSources && this.state.hasCreatedTheSwarm && !this.state.hasLaunchedARocket && this.state.weightOfTheEarth >0) {
         var textToDisplay = this.state.text.afterTheSwarm;
         var author = this.state.text.AuthorMessageStrongAI;
       }
       else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasCreatedTheSwarm && this.state.hasLaunchedARocket) {
         var textToDisplay = this.state.text.afterTheRocket;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.weightOfTheEarth == 0 && !this.state.hasLaunchedARocket) {
+        var textToDisplay = this.state.text.EarthIsMetal;
         var author = this.state.text.AuthorMessageStrongAI;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  

@@ -278,7 +278,7 @@ class InvestmentBox extends Component{
         if(this.props.hasLaunchedARocket){
             var classLaucnhingRocketButton = "hasLaunchedARocket menu-button doNOTdisplay";
         }
-        else if(!this.props.hasLaunchedARocket && this.props.hasCreatedTheSwarm){
+        else if(!this.props.hasLaunchedARocket && this.props.hasCreatedTheSwarm && this.props.weightOfTheEarth ==0){
             var classLaucnhingRocketButton = "hasLaunchedARocket menu-button";
         }
         else{
