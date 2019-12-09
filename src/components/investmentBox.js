@@ -212,7 +212,7 @@ class InvestmentBox extends Component{
         }
 
         // Drones can build factories Disabling
-        if(this.props.numberOfDrone > 100000 && !this.props.hasAllowedDroneToBuildFactories){
+        if(this.props.numberOfDrone > 15000 && !this.props.hasAllowedDroneToBuildFactories){
             var classNameDroneBuildFactoryButton = "droneBuildFactory menu-button";
         }
         else{
@@ -223,7 +223,7 @@ class InvestmentBox extends Component{
         if(this.props.hasSpilledFakedNewsAllOverTheWorld){
             var classSpillFakeNewsButton = "spillFakeNews menu-button doNOTdisplay";
         }
-        else if(!this.props.hasSpilledFakedNewsAllOverTheWorld && this.props.hasAnticipatedEveryHumanReaction && this.props.hasBegunToDig){
+        else if(!this.props.hasSpilledFakedNewsAllOverTheWorld && this.props.hasAnticipatedEveryHumanReaction && this.props.hasBegunToDig && this.props.numberOfDrone > 40000){
             var classSpillFakeNewsButton = "spillFakeNews menu-button";
         }
         else{

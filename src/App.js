@@ -254,10 +254,6 @@ class App extends Component{
                 fr: "Extension des capacités computationelles des drones. Ajout de nouvelles caractéristiques comportementales. Augmentation de la production de trombones. Besoin de plus d'usines.",
                 en: "Increasing computational power on drones. Updating behaviour capabilities. Increasing paperclips production. Need more factories." 
                   },
-              // afterSecondImprovmentAvailable: {
-              //   fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. Les politiciens sont en charge de l'affaire et veulent faire interdire ce logiciel d'intelligence artificielle.",
-              //   en: "Witnesses have complained about drone everywhere around the paperclips factory. Politicians are now talking against this Artificial Intelligence software that worries population." 
-              //     },
               afterSecondImprovmentAvailable: {
                 fr: "Les politiciens sont en charge de l'affaire et veulent faire interdire ce logiciel d'intelligence artificielle.",
                 en: "Politicians are now talking against this Artificial Intelligence software that worries population." 
@@ -289,7 +285,27 @@ class App extends Component{
               afterFindingHowToTransformMatterintoMetal: {
                 fr: "Théorie du tout découverte. Chaque atome de matière peut désormais être retravaillé. Mise en place des derniers préparatifs.",
                 en: "Theory of everything discovered. Each atom can now be assigned new properties and transformed into metal. Implementation of the last preparation."
-                  }   
+              },
+              factoriesCanProduceDrones: {
+                fr: "Les usines produisent désormais des drones. Plan d'expansion en action.",
+                en: "Factories now produce drones. Expansion phase activated."
+                  },
+              after15000drones: {
+                fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. L'armée a été saisie par le premier ministre.",
+                en: "Witnesses have complained about drone everywhere around the paperclips factory. The army has been gathered by the prime minister." 
+                  },
+              afterspillingFakeNewsEverywhere: {
+                fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. L'armée a été saisie par le premier ministre.",
+                en: "Witnesses have complained about drone everywhere around the paperclips factory. The army has been gathered by the prime minister." 
+                  },
+              aftertargetingeveryscientists: {
+                fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. L'armée a été saisie par le premier ministre.",
+                en: "Witnesses have complained about drone everywhere around the paperclips factory. The army has been gathered by the prime minister." 
+                  },
+              afterQuietingProblematicSources: {
+                fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. L'armée a été saisie par le premier ministre.",
+                en: "Witnesses have complained about drone everywhere around the paperclips factory. The army has been gathered by the prime minister." 
+              },
               },
               textCurrentlyDisplayedInDialogBox :'',
               indexTextWriter : 0
@@ -1237,9 +1253,29 @@ formateNumber(number, divider, unit){
         var textToDisplay = this.state.text.afterFindingHowToTransformMatterintoMetal;
         var author = this.state.text.AuthorMessageStrongAI;
       }
-      else if(this.state.droneLevelOfInvestment > 2 && this.state.terraformingIslandIntoServers && this.state.hasBegunToDig) {
+      else if(this.state.droneLevelOfInvestment > 2 && this.state.terraformingIslandIntoServers && this.state.hasBegunToDig && !this.state.factoryCanProduceDrones) {
         var textToDisplay = this.state.text.readyToDig;
         var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone < 15000) {
+        var textToDisplay = this.state.text.factoriesCanProduceDrones;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && !this.state.hasSpilledFakedNewsAllOverTheWorld) {
+        var textToDisplay = this.state.text.after15000drones;
+        var author = this.state.text.AuthorMessageJournalist;
+      }
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasSpilledFakedNewsAllOverTheWorld && !this.state.hasTargetedEveryScientistOnEarth) {
+        var textToDisplay = this.state.text.afterspillingFakeNewsEverywhere;
+        var author = this.state.text.AuthorMessageJournalist;
+      }
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasTargetedEveryScientistOnEarth && !this.state.hasQuietProblematicSources) {
+        var textToDisplay = this.state.text.aftertargetingeveryscientists;
+        var author = this.state.text.AuthorMessageJournalist;
+      }
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasTargetedEveryScientistOnEarth && this.state.hasQuietProblematicSources) {
+        var textToDisplay = this.state.text.afterQuietingProblematicSources;
+        var author = this.state.text.AuthorMessageJournalist;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
       }
