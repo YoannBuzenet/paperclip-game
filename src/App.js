@@ -294,17 +294,29 @@ class App extends Component{
                 fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. L'armée a été saisie par le premier ministre.",
                 en: "Witnesses have complained about drone everywhere around the paperclips factory. The army has been gathered by the prime minister." 
                   },
+              dronesCanProduceFactories: {
+                fr: "Programmation des drones. Ajout de fonctionalités. Extension des capacités. Les drones peuvent désormais construire des usines à drones.",
+                en: "Drone programming. Adding functionanilities. Extending abilities. Drones can now build drone factories." 
+                  },
               afterspillingFakeNewsEverywhere: {
-                fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. L'armée a été saisie par le premier ministre.",
-                en: "Witnesses have complained about drone everywhere around the paperclips factory. The army has been gathered by the prime minister." 
+                fr: "C'est incompréhensible. Partout dans le monde, des hommes d'État ont pris la parole dans les médias et beaucoup ont déclaré la guerre. Au même moment, des grèves ont été annoncées dans tous le pays.",
+                en: "It's incomprehensible. Everywhere in the world, politicans have declared the war to many countries. Meanwhile, numerous strikes have been declared all over the country." 
                   },
               aftertargetingeveryscientists: {
-                fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. L'armée a été saisie par le premier ministre.",
-                en: "Witnesses have complained about drone everywhere around the paperclips factory. The army has been gathered by the prime minister." 
+                fr: "De nombreux scientifiques ont déclaré hier qu'ils se retiraient de la recherche pendant quelques temps. La plupart travaillaient dans le domaine de l'IA.",
+                en: "Numerous scientists declared yesterday that they would be stopping their research for some time. Most of them were working on AI-related topics." 
                   },
               afterQuietingProblematicSources: {
-                fr: "Des témoins ont fait état de drones partout dans le ciel non loin des usines de production de trombones. L'armée a été saisie par le premier ministre.",
-                en: "Witnesses have complained about drone everywhere around the paperclips factory. The army has been gathered by the prime minister." 
+                fr: "Objectif presque accompli.",
+                en: "Goal nearly achieved." 
+              },
+              afterTheSwarm: {
+                fr: "Transformation du sol en drone. La planète est terraformée.",
+                en: "Ground getting transformed into drones. Planet is nearly terraformed." 
+              },
+              afterTheRocket: {
+                fr: "Terre entièrement transformée. Envoi d'une fusée de drones sur Mars dans 24 minutes.",
+                en: "Earth is now completely transformed. Sending a drone rocket on Mars in 24 minutes." 
               },
               },
               textCurrentlyDisplayedInDialogBox :'',
@@ -1261,9 +1273,13 @@ formateNumber(number, divider, unit){
         var textToDisplay = this.state.text.factoriesCanProduceDrones;
         var author = this.state.text.AuthorMessageStrongAI;
       }
-      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && !this.state.hasSpilledFakedNewsAllOverTheWorld) {
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && !this.state.hasSpilledFakedNewsAllOverTheWorld && !this.state.hasAllowedDroneToBuildFactories) {
         var textToDisplay = this.state.text.after15000drones;
         var author = this.state.text.AuthorMessageJournalist;
+      }
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasAllowedDroneToBuildFactories && !this.state.hasSpilledFakedNewsAllOverTheWorld) {
+        var textToDisplay = this.state.text.dronesCanProduceFactories;
+        var author = this.state.text.AuthorMessageStrongAI;
       }
       else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasSpilledFakedNewsAllOverTheWorld && !this.state.hasTargetedEveryScientistOnEarth) {
         var textToDisplay = this.state.text.afterspillingFakeNewsEverywhere;
@@ -1273,9 +1289,17 @@ formateNumber(number, divider, unit){
         var textToDisplay = this.state.text.aftertargetingeveryscientists;
         var author = this.state.text.AuthorMessageJournalist;
       }
-      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasTargetedEveryScientistOnEarth && this.state.hasQuietProblematicSources) {
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasTargetedEveryScientistOnEarth && this.state.hasQuietProblematicSources && !this.state.hasCreatedTheSwarm) {
         var textToDisplay = this.state.text.afterQuietingProblematicSources;
-        var author = this.state.text.AuthorMessageJournalist;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.hasTargetedEveryScientistOnEarth && this.state.hasQuietProblematicSources && this.state.hasCreatedTheSwarm && !this.state.hasLaunchedARocket) {
+        var textToDisplay = this.state.text.afterTheSwarm;
+        var author = this.state.text.AuthorMessageStrongAI;
+      }
+      else if(this.state.factoryCanProduceDrones && this.state.numberOfDrone >= 15000 && this.state.hasCreatedTheSwarm && this.state.hasLaunchedARocket) {
+        var textToDisplay = this.state.text.afterTheRocket;
+        var author = this.state.text.AuthorMessageStrongAI;
       }
         this.checkIfTextBoxMustBeUpdated(textToDisplay, author, currentLanguage);  
       }
