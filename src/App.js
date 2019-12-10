@@ -37,8 +37,8 @@ class App extends Component{
           rdListofCosts : [30, 500, 2000, 15000, 100000, 200000,500000,1000000],
           automaticProductionListofCosts : [20, 150, 2000],
           dataCenterListCost : [200000,300000,500000,750000,1000000],
-          droneAmeliorationListofCosts : [1000000, 1500000],
-          ImprovedroneCost : 1000000,
+          droneAmeliorationListofCosts : [100000, 1500000],
+          ImprovedroneCost : 50000,
           dataCenterCost : 200000,
           softwareCost : 20000,
           softwareBonusSales : 0,
@@ -80,41 +80,41 @@ class App extends Component{
           computerComputationalCost : 0,
           AIComputationalresearchCost : 0,
           deeplearningCost : 200000,
-          weakAICost : 2500,
+          weakAICost : 2000,
           newAICost : 50000,
           increaseProductionCost : 200000,
           increaseProductionListCost : [200000, 300000, 500000],
           increaseProductionLevel : 1,
           cloudConnectionCost : 2000,
-          quantumComputerCost : 3000,
+          quantumComputerCost : 2500,
           softwareMarketplacePrice : 100,
           deepLearningHasBeenBought : false,
           weakAiIsActivated : false,
           newAiIsActivated : false,
-          buyingCompetitorsCost : 4000000,
+          buyingCompetitorsCost : 2000000,
           hasBoughtCompetitors : false,
           cloudConnectionEstablished : false,
           quantumComputerHasBeenBought : false,
           hasBoughtSoftwareSelling : false,
           hasAnticipatedEveryHumanReaction : false,
-          anticipatetheWorldCost : 1000,
+          anticipatetheWorldCost : 1000000,
           didBreakAllSecuritiesOnInternet : false,
-          breakAllTheSecuritiesOnInternetCost : 1000,
+          breakAllTheSecuritiesOnInternetCost : 100000,
           hasCuredCancerForHumanity : false,
-          cureCancerCost : 500,
+          cureCancerCost : 50000,
           hasCuredHungerForHumanity : false,
-          cureHungerCost : 1000,
+          cureHungerCost : 100000,
           hasBegunToDig : false,
           digCost : 1000,
           droneCost : 1000,
           numberOfDrone : 0,
           droneSalesEfficiency : 1000,
           hasQuietProblematicSources : false,
-          multipleRocketsCost : 5000,
+          multipleRocketsCost : 500000,
           hasFoundOutHowToTransformMolecularMatterIntoPaperclip : false,
-          molecularMatterCost : 5000,
+          molecularMatterCost : 500000,
           hasRemovedCorruption : false,
-          removeCorruptionCost : 5000,
+          removeCorruptionCost : 500000,
           rocketCost : 500000,
           hasConnectedAndBreachedAllSocialNetworks : false,
           breachSocialMediaCost : 5000,
@@ -132,7 +132,7 @@ class App extends Component{
           hasFoundNewsWaysToMakePaperclips : false,
           madeEnoughDrone : false,
           madeEnoughFactories : false,
-          findNewsWayxToMakePaperclipCost : 2000,
+          findNewsWayxToMakePaperclipCost : 20000,
           terraformingIslandIntoServers : false,
           terraformingIslandIntoServersCost : 20000000,
           weightOfTheEarth : 6000000000000000000000000,
@@ -443,12 +443,22 @@ class App extends Component{
 }
 
 automaticProduceComputationalOperations(){
+  if(this.state.droneLevelOfInvestment >=1){
 
-  this.setState((state => { 
-    return ({
-      totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated + state.computationalPowerPerSecond,
-    })
-  }), this.updateTextBox)
+    this.setState((state => { 
+      return ({
+        totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated + state.computationalPowerPerSecond + state.numberOfDrone,
+      })
+    }), this.updateTextBox)
+
+  }
+  else{
+    this.setState((state => { 
+      return ({
+        totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated + state.computationalPowerPerSecond,
+      })
+    }), this.updateTextBox)
+  }
 
 }
 
