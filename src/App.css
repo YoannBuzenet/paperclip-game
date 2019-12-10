@@ -52,31 +52,27 @@ header p.pageTitle {
 *******GLOBAL LAYOUT*******
 ***************************/
 .main-content {
-  position : relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   width: 100%;
   margin : 0 auto;
   height : 100vh;
 }
 
 .left-div {
-  position : absolute;
-  top : 0%;
+
   width : 25%;
-  left : 3%;
+
 }
 
 .middle-div {
-  position : absolute;
-  top : 0%;
-  left : 30%;
+  
   width : 40%;
 }
 
 .right-div {
-  position: absolute;
-  top : 0%;
-  right : 7%;
-  left : 71.5%;
+  
   width : 25%;
 }
 

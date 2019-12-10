@@ -1403,7 +1403,7 @@ formateNumber(number, divider, unit){
 }
 
 typeWriter(txt, author, currentLanguage, speed=10) {
-  console.log(txt, author)
+
   // This function update the text in dialog box
   document.getElementById("author-box").innerHTML = author[currentLanguage];
 
@@ -1424,9 +1424,6 @@ typeWriter(txt, author, currentLanguage, speed=10) {
   }
   else if(author == this.state.text.AuthorMessageEmployee){
     divToUpdate.classList.add = "Dialog-interface interface-div author-Employee";
-  }
-  else{
-    console.log('bite')
   }
   
   
