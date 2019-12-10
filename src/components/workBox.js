@@ -8,22 +8,23 @@ class WorkBox extends Component{
     render(){
     return (<div className="work-box interface-div">
         <h2>WORK</h2>
-    <h3>Small Machines : {this.props.numberOfSmallMachines}</h3>
-    {this.props.numberOfSmallAutomaticMachines > 0 
-    ? <h3>Automatic Machines : {this.props.numberOfSmallAutomaticMachines}</h3> 
-    : null}
+    <div>
+        <p className="data-title">Small Machines <span className="data">{this.props.numberOfSmallMachines}</span></p>
+        {this.props.numberOfSmallAutomaticMachines > 0 
+        ? <p className="data-title">Automatic Machines <span className="data">{this.props.numberOfSmallAutomaticMachines}</span></p> 
+        : null}
 
-    {this.props.numberOfSalesman > 0 
-    ? <h3>Salesmen : {this.props.numberOfSalesman}/{this.props.maximumSalesHirable}</h3> 
-    : null}    
+        {this.props.numberOfSalesman > 0 
+        ? <p className="data-title">Salesmen <span className="data">{this.props.numberOfSalesman}/{this.props.maximumSalesHirable}</span></p> 
+        : null}    
 
-    {this.props.hasBoughtAfactory && <h3>Factories : {this.props.checkNumber(this.props.numberOfFactory)}</h3>}
+        {this.props.hasBoughtAfactory && <p className="data-title">Factories <span className="data">{this.props.checkNumber(this.props.numberOfFactory)}</span></p>}
 
-    {this.props.numberOfManagers > 0 ? <h3>Managers : {this.props.checkNumber(this.props.numberOfManagers)}</h3> : null}
+        {this.props.numberOfManagers > 0 ? <p className="data-title">Managers <span className="data">{this.props.checkNumber(this.props.numberOfManagers)}</span></p> : null}
 
-    {this.props.numberOfDrone > 0 ? <h3>Drones : {this.props.checkNumber(this.props.numberOfDrone)}</h3> : null}
+        {this.props.numberOfDrone > 0 ? <p className="data-title">Drones <span className="data">{this.props.checkNumber(this.props.numberOfDrone)}</span></p> : null}
 
-
+    </div>
         </div>);
     }
 }

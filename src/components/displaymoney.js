@@ -9,7 +9,7 @@ class DisplayMoney extends Component{
 
         let money = this.props.checkNumber(this.props.money);
 
-        return <p className="display-money data-title">Cash: <span className="data">{money} €</span></p>;
+        return <p className="display-money data-title">Cash <span className="data">{money} €</span></p>;
     }
 }
 

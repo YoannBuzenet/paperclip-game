@@ -23,6 +23,10 @@ h2,h3 {
   font-family: 'Open Sans', sans-serif;
 }
 
+h2 {
+  font-size : 2rem;
+}
+
 header p.pageTitle {
   text-align: center;
   font-size : 3rem;
@@ -305,11 +309,21 @@ div > h3 {
 ***************************/
 
 .work-box {
+  flex-wrap: wrap;
   padding : 1rem;
   background-color : #E5E9EC;
   animation-duration: .2s;
   animation-name: divAppears;
   box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
+}
+
+.work-box > div {
+  display : flex;
+  flex-wrap: wrap;
+}
+
+.work-box p {
+  width : 200px;
 }
 
 /***************************
