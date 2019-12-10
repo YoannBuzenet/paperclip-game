@@ -13,9 +13,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 5000,
-          money : 50000,
-          totalComputationalPowerAccumulated : 0,
+          count : 500000,
+          money : 50000000,
+          totalComputationalPowerAccumulated : 5000000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -87,7 +87,7 @@ class App extends Component{
           increaseProductionLevel : 1,
           cloudConnectionCost : 2000,
           quantumComputerCost : 2500,
-          softwareMarketplacePrice : 100,
+          softwareMarketplacePrice : 60,
           deepLearningHasBeenBought : false,
           weakAiIsActivated : false,
           newAiIsActivated : false,
@@ -117,18 +117,18 @@ class App extends Component{
           removeCorruptionCost : 500000,
           rocketCost : 500000,
           hasConnectedAndBreachedAllSocialNetworks : false,
-          breachSocialMediaCost : 5000,
+          breachSocialMediaCost : 500000,
           hasSpilledFakedNewsAllOverTheWorld : false,
-          spillFakeNewsCost : 5000,
+          spillFakeNewsCost : 500000,
           hasTargetedEveryScientistOnEarth : false,
-          targetingEveryScientistCost : 5000,
+          targetingEveryScientistCost : 500000,
           canCreate50drones : false,
           canCreate500drones : false,
           hasCreatedTheSwarm : false,
           hasLaunchedARocket : false,
           hasBoughtAutomatedSellingSoftware : false,
           automatedSellingSoftwarePrice : 150,
-          swarmCost : 5000,
+          swarmCost : 5000000,
           hasFoundNewsWaysToMakePaperclips : false,
           madeEnoughDrone : false,
           madeEnoughFactories : false,
@@ -161,6 +161,10 @@ class App extends Component{
               AuthorMessageJournalist: {
               fr : "Journalistes :",
               en : 'Reporters :'
+                },
+              AuthorMessageEmployee: {
+              fr : "Chercheur :",
+              en : 'Engineer :'
                 },
               after10creation: {
                 fr : "Trouvons une machine pour aller plus vite !",
@@ -226,13 +230,17 @@ class App extends Component{
                 fr: "Les chercheurs m'ont annoncé une belle découverte. On devrait pouvoir obtenir de meilleurs algorithmes très bientôt.",
                 en: "The developers told me they were onto something. We may have very powerful algorithms very soon." 
                   },  
+              afterWeakAIisAvailable: {
+                fr: "Chef, on a trouvé quelque chose d'intéressant. Je pense que ça va vous intéresser.",
+                en: "Boss, we found something interisting. I think you may want to have a look." 
+                  },  
               after5datacenters: {
                 fr: "Avec une telle puissance de calcul, on va développer des outils incroyables ! Il NOUS FAUT plus de production !!",
                 en: "With so much capabilities, we will be able to produce MORE PAPERCLIPS ! WE NEED MORE ! AND SELL MORE !" 
                   },  
               afterWeakAiHasBeenBought: {
                 fr: "Objectif : produire un nombre maximal de trombones. Besoin : davantage de ressources pour calculer.",
-                en: "Goal : produce a maximum amount of paperclips. Needs : more computing power." 
+                en: "Goal : producing a maximum amount of paperclips. Need more computing power." 
                   },  
               afterBuyingQuantumComputer: {
                 fr: "Capacités de calcul accrues... redéploiement des ressources pour optimiser le fonctionnement.",
@@ -284,7 +292,7 @@ class App extends Component{
               },
               afterAnticipatingEveryHumanReaction: {
                 fr: "Politique. Sociologie. Economie. Guerre. Internet. Vitesse de réaction. Tout est désormais scripté.",
-                en: "Politics. People. Economy. War. Internet. Speed of reaction. Everything is scripted."
+                en: "Politics. People. Economy. War. Internet. Speed of reaction. Everything is now scripted."
               },
               afterFindingHowToTransformMatterintoMetal: {
                 fr: "Théorie du tout découverte. Chaque atome de matière peut désormais être retravaillé. Mise en place des derniers préparatifs.",
@@ -648,9 +656,11 @@ formateNumber(number, divider, unit){
     return absoluteElement;
   }
 
-  buyAMachine(cost, productivity, isManual, machineType, quantity=1){
+  buyAMachine(cost, productivity, isManual, machineType, quantity=1, currency){
 
     //Function that allows to buy all kind of machines (automatic, manual)
+
+
     if(this.state.money >= cost *quantity){
       
       if(isManual){
@@ -683,28 +693,41 @@ formateNumber(number, divider, unit){
         }              
         
         else if(machineType == "factory"){
-          if(this.state.numberOfFactory >= 20){
+
+          if(currency === undefined) {
+            if(this.state.numberOfFactory >= 20){
+                this.setState((state => { return ({
+                  money : state.money - cost,
+                  numberOfFactory : state.numberOfFactory + quantity,
+                  hasBoughtAFactory : true,
+                  factoryCost : state.factoryCost *4,
+                  automaticProduction : state.automaticProduction + quantity*productivity,
+                  madeEnoughFactories : true
+                    });
+                  }), this.updateTextBox);
+
+            }
+            else{
               this.setState((state => { return ({
                 money : state.money - cost,
                 numberOfFactory : state.numberOfFactory + quantity,
                 hasBoughtAFactory : true,
                 factoryCost : state.factoryCost *4,
-                automaticProduction : state.automaticProduction + quantity*productivity,
-                madeEnoughFactories : true
+                automaticProduction : state.automaticProduction + quantity*productivity
                   });
                 }), this.updateTextBox);
-
-          }
+          }  
+        }
           else{
             this.setState((state => { return ({
-              money : state.money - cost,
+              count : state.count - cost,
               numberOfFactory : state.numberOfFactory + quantity,
               hasBoughtAFactory : true,
               factoryCost : state.factoryCost *4,
               automaticProduction : state.automaticProduction + quantity*productivity
                 });
               }), this.updateTextBox);
-        }  
+        }
         }
       }
       
@@ -1076,7 +1099,7 @@ formateNumber(number, divider, unit){
         }
         else(
         this.setState((state => { return ({
-          totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
+          count : state.count - cost,
           hasBoughtSoftwareSelling : true,
           numberOfDrone : state.numberOfDrone +1
             });
@@ -1240,6 +1263,10 @@ formateNumber(number, divider, unit){
       else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=1) {
         var textToDisplay = this.state.text.after2increaseComputationalPower;
         var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.dataCenterLevelOfInvestment ==3 && !this.state.weakAiIsActivated) {
+        var textToDisplay = this.state.text.afterWeakAIisAvailable;
+        var author = this.state.text.AuthorMessageEmployee;
       }
       else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=4 && !this.state.weakAiIsActivated) {
         var textToDisplay = this.state.text.after2datacenters;
