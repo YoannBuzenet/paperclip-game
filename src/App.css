@@ -123,15 +123,15 @@ div > h3 {
 @media only screen and (max-width: 959px){
  
   .left-div {
-    width : 50%;
+    width : 40%;
   }
   
   .middle-div {
-    width : 50%;
+    width : 40%;
   }
   
   .right-div {
-    width : 100%;
+    width : 80%;
   }
   
   }
@@ -140,17 +140,17 @@ div > h3 {
  
   .left-div {
     order : 2;
-    width : 100%;
+    width : 90%;
   }
   
   .middle-div {
     order :1;
-    width : 100%;
+    width : 90%;
   }
   
   .right-div {
     order : 3;
-    width : 100%;
+    width : 90%;
   }
   
    
