@@ -144,6 +144,8 @@ class App extends Component{
           increaseFactoryCost : 20000,
           droneDiggingEfficiency : 100,
           factoryDroneProductivity : 1,
+          weakAIEfficiency : 0,
+          WeakAIbonusSales : 0,
           lang : 'en',
           text:{
               AuthorMessageHuman: {
@@ -432,7 +434,7 @@ class App extends Component{
 
   automaticSellPaperclips(){
     // If we can't sell because of the stocks, we update the state
-      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman + this.state.websiteSellingPower + this.state.softwareBonusSales + this.state.numberOfDrone * this.state.droneSalesEfficiency) <= 0){
+      if(this.state.count - (this.state.salesmanEfficiency * this.state.salesman + this.state.websiteSellingPower + this.state.softwareBonusSales + this.state.numberOfDrone * this.state.droneSalesEfficiency + this.state.WeakAIbonusSales) <= 0){
         this.setState(({
           salesmanCantsell : true
         }), this.updateTextBox)
@@ -442,9 +444,9 @@ class App extends Component{
         this.setState((state => { 
         return ({
           salesmanCantsell : false,
-          totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman + state.websiteSellingPower + state.softwareBonusSales,
-          money : state.money + state.paperclipPrice * state.salesmanEfficiency *state.salesman + state.paperclipPrice * (state.websiteSellingPower +state.softwareBonusSales) + state.paperclipPrice *(state.numberOfDrone * state.droneSalesEfficiency),
-          count : state.count - (state.salesmanEfficiency * state.salesman + state.websiteSellingPower + state.numberOfDrone * state.droneSalesEfficiency)
+          totalPaperclipssold : state.totalPaperclipssold + state.salesmanEfficiency *state.salesman + state.websiteSellingPower + state.softwareBonusSales + state.WeakAIbonusSales,
+          money : state.money + state.paperclipPrice * state.salesmanEfficiency *state.salesman + state.paperclipPrice * (state.websiteSellingPower +state.softwareBonusSales + state.WeakAIbonusSales) + state.paperclipPrice *(state.numberOfDrone * state.droneSalesEfficiency),
+          count : state.count - (state.salesmanEfficiency * state.salesman + state.websiteSellingPower + state.numberOfDrone * state.droneSalesEfficiency + state.WeakAIbonusSales)
         })
       }), this.updateTextBox)
   }
@@ -1024,6 +1026,9 @@ formateNumber(number, divider, unit){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           weakAiIsActivated : true,
+          weakAIEfficiency : 1,
+          automaticProduction : state.automaticProduction *2,
+          WeakAIbonusSales : state.salesmanEfficiency *state.salesman + state.websiteSellingPower + state.softwareBonusSales
             });
           }), this.updateTextBox);
       } 
@@ -1446,7 +1451,7 @@ typeWriter(txt, author, speed=10) {
       <div className="middle-div">
         
         <div className="dashboard interface-div">
-          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency} websiteSellingPower={this.state.websiteSellingPower} softwareBonusSales={this.state.softwareBonusSales} numberOfdrones={this.state.numberOfDrone} droneSalesEfficiency={this.state.droneSalesEfficiency} checkNumber={this.checkNumber} formateNumber={this.formateNumber}/>
+          <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency} websiteSellingPower={this.state.websiteSellingPower} softwareBonusSales={this.state.softwareBonusSales} numberOfdrones={this.state.numberOfDrone} droneSalesEfficiency={this.state.droneSalesEfficiency} checkNumber={this.checkNumber} formateNumber={this.formateNumber} WeakAIbonusSales={this.state.WeakAIbonusSales}/>
         </div>
 
         {this.state.numberOfClicksIncrease > 10 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text} updateTextBox={this.updateTextBox} />}
