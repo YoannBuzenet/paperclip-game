@@ -16,6 +16,11 @@ html {
 
 p {
   font-size : 1.6rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h2,h3 {
+  font-family: 'Open Sans', sans-serif;
 }
 
 header p.pageTitle {
@@ -71,14 +76,14 @@ header p.pageTitle {
 }
 
 .interface-div{
-  border-radius : 10px;
+  border-radius : 5px;
   margin-top: 1rem;
   padding-left : 1rem;
 }
 
 .dashboard {
   padding : 1rem;
-  background-color : #F2F2BD;
+  background-color : #E5E9EC;
 }
 
 h2{
@@ -86,7 +91,7 @@ h2{
   }
 
 div > h3 {
-  margin-bottom : 0;
+  margin-bottom : -5px;
 }
 
 .blinking {
@@ -101,15 +106,33 @@ div > h3 {
   animation: 0.75s blinking infinite;
 }
 
+.data-title{
+  font-weight: bolder;
+  color : #7B7B7C;
+  font-size : 1.2rem;
+  text-transform : uppercase;
+  font-family: 'Lato', sans-serif;
+}
+
+.data {
+  color : black;
+  font-size : 2rem;
+  margin-top : -3px;
+  display : block;
+  text-transform: lowercase;
+  font-family: 'Roboto', sans-serif;
+}
+
 /***************************
 ****INVESTMENT GLOBAL BOX****
 ***************************/
 
 .investment-box {
   padding : 1rem;
-  background-color : #499DCE;
+  background-color : #E5E9EC;
   opacity : 0;
   margin-right : 50%;
+  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
 }
 
 .visible-left-div {
@@ -133,9 +156,13 @@ div > h3 {
 /***************************
 ******MAIN DASHBOARD******
 ***************************/
+
+.dashboard{
+  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
+}
 .dashboard-datas {
   display : flex;
-  flex-wrap: wrap;;
+  flex-wrap: wrap;
 }
 
 .dashboard-datas p {
@@ -148,7 +175,8 @@ div > h3 {
 
 .activity-dashboard {
   padding : 1rem;
-  background-color : mediumseagreen;
+  background-color : #E5E9EC;
+  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
   overflow : hidden;
   animation-duration: .2s;
   animation-name: divAppears;
@@ -186,10 +214,12 @@ div > h3 {
   padding : 1rem;
   opacity : 0;
   margin-left : 50%;
+  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
 
 }
 
 .visible-right-div{
+  background-color : #E5E9EC;
   opacity : 1;
   margin-left : 0%;
   transition-property: opacity, margin-left;
@@ -207,9 +237,10 @@ div > h3 {
 
 .Dialog-interface {
   padding : 1rem;
-  background-color: pink;
+  background-color: #E5E9EC;
   animation-duration: .2s;
   animation-name: divAppears;
+  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
 }
 
 .author-dialog {
@@ -227,7 +258,7 @@ div > h3 {
   margin-right : 5px;
   width: 50px;
   height: 50px;
-  background-color : #499DCE;
+  background-color : #EBEEF0;
   background-repeat:no-repeat;
   background-position :50%,50%;
   border-radius :15%;
@@ -275,9 +306,10 @@ div > h3 {
 
 .work-box {
   padding : 1rem;
-  background-color : #dc5e38;
+  background-color : #E5E9EC;
   animation-duration: .2s;
   animation-name: divAppears;
+  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
 }
 
 /***************************

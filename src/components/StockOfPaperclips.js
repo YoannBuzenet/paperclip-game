@@ -14,7 +14,7 @@ const StockOfPaperclips = ({stockOfPaperclips, checkNumber}) => {
 
     stockOfPaperclips = checkNumber(stockOfPaperclips);
 
-    return <p className="stockOfPaperclips">Stock : <strong>{stockOfPaperclips}</strong></p>;
+    return <p className="stockOfPaperclips data-title">Stock <span className="data">{stockOfPaperclips}</span></p>;
 }
 
 export default StockOfPaperclips

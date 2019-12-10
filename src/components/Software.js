@@ -170,7 +170,7 @@ class Software extends Component{
 
 
     return (
-    <div className={className} style={{backgroundColor:"red"}}>
+    <div className={className}>
 
         {this.props.deepLearningHasBeenBought && 
         <div>
