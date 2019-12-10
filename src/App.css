@@ -28,7 +28,8 @@ h2 {
 }
 
 header p.pageTitle {
-  text-align: center;
+  text-align: left;
+  padding-left : 2rem;
   font-size : 3rem;
   margin-top : 1rem;
   margin-bottom : 0;
@@ -189,6 +190,7 @@ div > h3 {
 .activity-content{
   display : flex;
   justify-content: space-around;
+  padding-bottom : 3rem;
 }
 
 .activity-kpi {

@@ -1403,13 +1403,30 @@ formateNumber(number, divider, unit){
 }
 
 typeWriter(txt, author, speed=10) {
+  console.log(txt, author)
   // This function update the text in dialog box
   document.getElementById("author-box").innerHTML = author;
 
-  // if author, change the div class to make the text appear machine
+  // Change the Class according to the Author
   let divToUpdateClass = document.getElementById("author-box");
-  //HERE
-  //
+
+  if(author == this.state.text.AuthorMessageHuman){
+    divToUpdateClass.classList.add = "author-human";
+  }
+  else if(author == this.state.text.AuthorMessageStrongAI){
+    divToUpdateClass.classList.add = "author-NewAI";
+  }
+  else if(author == this.state.text.AuthorMessageWeakAI){
+    divToUpdateClass.classList.add = "author-WeakAI";
+  }
+  else if(author == this.state.text.AuthorMessageJournalist){
+    divToUpdateClass.classList.add = "author-Journalist";
+  }
+  else if(author == this.state.text.AuthorMessageEmployee){
+    divToUpdateClass.classList.add = "author-Employee";
+  }
+  
+  
   if (this.state.indexTextWriter < txt.length) {
     document.getElementById("dialog-text").innerHTML += txt.charAt(this.state.indexTextWriter);
     this.setState(state => { return ({
@@ -1434,7 +1451,7 @@ typeWriter(txt, author, speed=10) {
     return (<div className="App">
 
     <header>
-    <p className="pageTitle">Paperclip Maker</p>
+    <p className="pageTitle">The Paperclip Game</p>
     </header>
 
     <div className="main-content">
