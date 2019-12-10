@@ -1392,7 +1392,7 @@ formateNumber(number, divider, unit){
 
         document.getElementById("dialog-text").innerHTML = '';
 
-        this.typeWriter(textToDisplay[currentLanguage], author[currentLanguage]);
+        this.typeWriter(textToDisplay, author, currentLanguage);
 
         this.setState(state => { return ({
           textCurrentlyDisplayedInDialogBox : textToDisplay
@@ -1402,39 +1402,42 @@ formateNumber(number, divider, unit){
   }
 }
 
-typeWriter(txt, author, speed=10) {
+typeWriter(txt, author, currentLanguage, speed=10) {
   console.log(txt, author)
   // This function update the text in dialog box
-  document.getElementById("author-box").innerHTML = author;
+  document.getElementById("author-box").innerHTML = author[currentLanguage];
 
-  // Change the Class according to the Author
-  let divToUpdateClass = document.getElementById("author-box");
+  // Change the Class according to the Author - getting the node of the parent Div
+  let divToUpdate = document.getElementById("author-box").parentNode;
 
   if(author == this.state.text.AuthorMessageHuman){
-    divToUpdateClass.classList.add = "author-human";
+    divToUpdate.className = "Dialog-interface interface-div author-human";
   }
   else if(author == this.state.text.AuthorMessageStrongAI){
-    divToUpdateClass.classList.add = "author-NewAI";
+    divToUpdate.classList.add = "Dialog-interface interface-div author-NewAI";
   }
   else if(author == this.state.text.AuthorMessageWeakAI){
-    divToUpdateClass.classList.add = "author-WeakAI";
+    divToUpdate.classList.add = "Dialog-interface interface-div author-WeakAI";
   }
   else if(author == this.state.text.AuthorMessageJournalist){
-    divToUpdateClass.classList.add = "author-Journalist";
+    divToUpdate.classList.add = "Dialog-interface interface-div author-Journalist";
   }
   else if(author == this.state.text.AuthorMessageEmployee){
-    divToUpdateClass.classList.add = "author-Employee";
+    divToUpdate.classList.add = "Dialog-interface interface-div author-Employee";
+  }
+  else{
+    console.log('bite')
   }
   
   
-  if (this.state.indexTextWriter < txt.length) {
-    document.getElementById("dialog-text").innerHTML += txt.charAt(this.state.indexTextWriter);
+  if (this.state.indexTextWriter < txt[currentLanguage].length) {
+    document.getElementById("dialog-text").innerHTML += txt[currentLanguage].charAt(this.state.indexTextWriter);
     this.setState(state => { return ({
       indexTextWriter : state.indexTextWriter+1,
       });
     });
 
-    setTimeout(()=>this.typeWriter(txt, author), speed);
+    setTimeout(()=>this.typeWriter(txt, author, currentLanguage, speed));
   }
   //If we printed the hole message, reset the index for next function call.
   else{
