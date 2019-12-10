@@ -1434,7 +1434,7 @@ typeWriter(txt, author, speed=10) {
     return (<div className="App">
 
     <header>
-    <p className="pageTitle">PAPERCLIP MAKER</p>
+    <p className="pageTitle">Paperclip Maker</p>
     </header>
 
     <div className="main-content">

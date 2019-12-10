@@ -347,8 +347,8 @@ class InvestmentBox extends Component{
             <h2>EXECUTION</h2>
 
             <div className={weightEarth}>
-                <p>Earth to Harvest : {this.props.checkNumber(this.props.weightOfTheEarth)} kg</p>
-                <p>Drones currently digging : {this.props.checkNumber(this.props.numberOfDrone)}</p>
+                <p className="data-title">Earth to Harvest : <span className="data">{this.props.checkNumber(this.props.weightOfTheEarth)} kg</span></p>
+                <p className="data-title">Drones currently digging : <span className="data">{this.props.checkNumber(this.props.numberOfDrone)}</span></p>
             </div>
 
         <div>
