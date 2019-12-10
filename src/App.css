@@ -61,18 +61,14 @@ header p.pageTitle {
 }
 
 .left-div {
-
   width : 25%;
-
 }
 
 .middle-div {
-  
   width : 40%;
 }
 
 .right-div {
-  
   width : 25%;
 }
 
@@ -123,6 +119,42 @@ div > h3 {
   text-transform: lowercase;
   font-family: 'Roboto', sans-serif;
 }
+
+@media only screen and (max-width: 959px){
+ 
+  .left-div {
+    width : 50%;
+  }
+  
+  .middle-div {
+    width : 50%;
+  }
+  
+  .right-div {
+    width : 100%;
+  }
+  
+  }
+
+@media only screen and (max-width: 700px){
+ 
+  .left-div {
+    order : 2;
+    width : 100%;
+  }
+  
+  .middle-div {
+    order :1;
+    width : 100%;
+  }
+  
+  .right-div {
+    order : 3;
+    width : 100%;
+  }
+  
+   
+  }
 
 /***************************
 ****INVESTMENT GLOBAL BOX****
