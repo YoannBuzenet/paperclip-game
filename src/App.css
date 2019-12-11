@@ -323,6 +323,72 @@ h2.AI-context{
   margin-top : 0;
 }
 
+.Dialog-interface p:nth-of-type(2){
+
+}
+
+.author-human {
+
+}
+.author-human p:first-child {
+
+}
+.author-human p:nth-of-type(2){
+
+}
+
+
+.author-NewAI {
+
+}
+
+.author-NewAI p:first-child {
+
+}
+
+.author-NewAI p:nth-of-type(2) {
+
+}
+
+
+.author-WeakAI{
+
+}
+
+.author-WeakAI p:first-child {
+
+}
+
+.author-WeakAI p:nth-of-type(2) {
+
+}
+
+
+.author-Journalist {
+
+}
+
+.author-Journalist p:first-child{
+
+
+}
+.author-Journalist p:nth-of-type(2){
+
+}
+
+.author-Employee {
+
+}
+
+.author-Employee p:first-child{
+
+}
+
+.author-Employee p:nth-of-type(2){
+
+}
+
+
 
 /***************************
 ******GAMING BUTTONS******

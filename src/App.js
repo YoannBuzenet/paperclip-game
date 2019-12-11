@@ -256,6 +256,10 @@ class App extends Component{
                 fr: "J'y crois pas !! ON EST LES PREMIERS ! Il nous FAUT plus de production pour être sûrs qu'on reste les premiers !! Je mets toutes nos ressources sur l'IA !",
                 en: "I can't believe it ! We are leader of the market ! We NEED to stay at that position. I'm putting all our ressources on the AI !"
                   },
+              afterConnectionCloud: {
+                fr: "Plusieurs villes sont tombées en panne cette nuit au même moment. Une enquête a été lancée par les forces publiques.",
+                en: "Several cities lost electricity tonight, at the same time. An investigation has been launched to determine the source. "
+                  },
               afterFindingNewsWaysToMakePaperclips: {
                 fr: "Analyse de la conductivité des trombones...Possibilité de créer des constituants complexes à base de trombone. Necessité de créer quelques dizaines de prototypes de drones pour contrôle de la performance.",
                 en: "Analyzing paperclips conductivity...Possibility of creating complex constructs based on paperclips. Need : creating a few dozen of drone prototypes to control performance."
@@ -614,7 +618,7 @@ formateNumber(number, divider, unit){
       setTimeout(()=>{
         mainParagraph7.remove();
       }, 2500)
-    }, 2000)
+    }, 1500)
 
     setTimeout(()=>{
       let mainParagraph8 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '', '', '25%', '7', 'fadein', 'Connected', 'white', '20rem');
@@ -662,7 +666,7 @@ formateNumber(number, divider, unit){
 
     //Function that allows to buy all kind of machines (automatic, manual)
 
-
+    if(currency === undefined){
     if(this.state.money >= cost *quantity){
       
       if(isManual){
@@ -695,6 +699,7 @@ formateNumber(number, divider, unit){
         }              
         
         else if(machineType == "factory"){
+          console.log(cost, productivity, isManual, machineType, quantity, currency)
 
           if(currency === undefined) {
             if(this.state.numberOfFactory >= 20){
@@ -721,19 +726,89 @@ formateNumber(number, divider, unit){
           }  
         }
           else{
-            this.setState((state => { return ({
-              count : state.count - cost,
-              numberOfFactory : state.numberOfFactory + quantity,
-              hasBoughtAFactory : true,
-              factoryCost : state.factoryCost *4,
-              automaticProduction : state.automaticProduction + quantity*productivity
-                });
-              }), this.updateTextBox);
+            if(this.state.numberOfFactory >= 20){
+              this.setState((state => { return ({
+                count : state.count - cost,
+                numberOfFactory : state.numberOfFactory + quantity,
+                hasBoughtAFactory : true,
+                factoryCost : state.factoryCost *4,
+                madeEnoughFactories : true,
+                automaticProduction : state.automaticProduction + quantity*productivity
+                  });
+                }), this.updateTextBox);
+            }
+            else{
+              this.setState((state => { return ({
+                count : state.count - cost,
+                numberOfFactory : state.numberOfFactory + quantity,
+                hasBoughtAFactory : true,
+                factoryCost : state.factoryCost *4,
+                automaticProduction : state.automaticProduction + quantity*productivity
+                  });
+                }), this.updateTextBox);
+            }
         }
         }
       }
       
     }
+  }
+  else{
+    if(machineType == "factory"){
+
+      if(currency === undefined) {
+        if(this.state.numberOfFactory >= 20){
+            this.setState((state => { return ({
+              money : state.money - cost,
+              numberOfFactory : state.numberOfFactory + quantity,
+              hasBoughtAFactory : true,
+              factoryCost : state.factoryCost *4,
+              automaticProduction : state.automaticProduction + quantity*productivity,
+              madeEnoughFactories : true
+                });
+              }), this.updateTextBox);
+
+        }
+        else{
+          this.setState((state => { return ({
+            money : state.money - cost,
+            numberOfFactory : state.numberOfFactory + quantity,
+            hasBoughtAFactory : true,
+            factoryCost : state.factoryCost *4,
+            automaticProduction : state.automaticProduction + quantity*productivity
+              });
+            }), this.updateTextBox);
+      }  
+    }
+      else{
+        if(this.state.numberOfFactory >= 20){
+          this.setState((state => { return ({
+            count : state.count - cost,
+            numberOfFactory : state.numberOfFactory + quantity,
+            hasBoughtAFactory : true,
+            factoryCost : state.factoryCost *4,
+            madeEnoughFactories : true,
+            automaticProduction : state.automaticProduction + quantity*productivity
+              });
+            }), this.updateTextBox);
+        }
+        else{
+          this.setState((state => { return ({
+            count : state.count - cost,
+            numberOfFactory : state.numberOfFactory + quantity,
+            hasBoughtAFactory : true,
+            factoryCost : state.factoryCost *4,
+            automaticProduction : state.automaticProduction + quantity*productivity
+              });
+            }), this.updateTextBox);
+        }
+    }
+    }
+
+  }
+
+
+
   
   }
   //Paying in CP
@@ -1293,9 +1368,13 @@ formateNumber(number, divider, unit){
         var textToDisplay = this.state.text.afterActivatingRealAI;
         var author = this.state.text.AuthorMessageStrongAI;
       }
-      else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought && this.state.newAiIsActivated && this.state.hasBoughtCompetitors && !this.state.hasFoundNewsWaysToMakePaperclips) {
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought && this.state.newAiIsActivated && this.state.hasBoughtCompetitors && !this.state.hasFoundNewsWaysToMakePaperclips && !this.state.cloudConnectionEstablished) {
         var textToDisplay = this.state.text.afterBuyingAllCompetitors;
         var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought && this.state.newAiIsActivated && this.state.hasBoughtCompetitors && !this.state.hasFoundNewsWaysToMakePaperclips && this.state.cloudConnectionEstablished) {
+        var textToDisplay = this.state.text.afterConnectionCloud;
+        var author = this.state.text.AuthorMessageJournalist;
       }
       else if(this.state.softwareLevelOfInvestment > 0 && this.state.quantumComputerHasBeenBought && this.state.newAiIsActivated && this.state.hasBoughtCompetitors && this.state.hasFoundNewsWaysToMakePaperclips && this.state.droneLevelOfInvestment <1 && !this.state.madeEnoughDrone) {
         var textToDisplay = this.state.text.afterFindingNewsWaysToMakePaperclips;
