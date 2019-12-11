@@ -11,7 +11,7 @@ body, html {
 }
 
 body {
-  background-color:hsla(210, 32%, 93%, 1);
+  background-color:hsla(210, 32%, 98%, 1);
 }
 
 html {
@@ -139,7 +139,7 @@ div > h3 {
   }
   
   .right-div {
-    width : 80%;
+    width : 86.5%;
   }
   
   }
@@ -172,7 +172,7 @@ div > h3 {
   opacity : 0;
   margin-right : 50%;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
-  background-color: hsl(135,90%,85%);
+  background-color: white;
 }
 
 .investment-box h2{
@@ -195,6 +195,12 @@ div > h3 {
   margin-top: 1rem;
 } 
 
+/***************************
+*AI SPECIFIC MODIFICATIONS**
+***************************/
+h2.AI-context{
+  background-color: hsla(5, 100%, 65%, 1);
+}
 
 
 /***************************
@@ -210,7 +216,7 @@ div > h3 {
 }
 
 .dashboard h2 {
-  background-color: hsl(210,78%,97%);
+  background-color: hsl(210,78%,90%);
 }
 
 .dashboard-datas {
@@ -238,14 +244,13 @@ div > h3 {
 }
 
 .activity-dashboard h2 {
-  background-color: hsl(210,78%,97%);
+  background-color: hsl(210,78%,90%);
 }
 
 .activity-content{
   display : flex;
   justify-content: space-around;
-  padding-bottom : 3rem;
-  padding-top:3rem;
+  padding : 3rem 2rem 3rem 2rem;
 }
 
 .activity-kpi {
@@ -268,7 +273,7 @@ div > h3 {
 }
 
 /***************************
-******AI INTERFACE******
+******SOFTWARE INTERFACE******
 ***************************/
 
 .software-div{
@@ -278,7 +283,7 @@ div > h3 {
 
 }
 .software-div h2 {
-  background-color: hsl(135,78%,57%);
+  background-color: hsla(5, 100%, 65%, 1);
 }
 
 .visible-right-div{
@@ -328,13 +333,16 @@ div > h3 {
   margin-right : 5px;
   width: 50px;
   height: 50px;
-  background-color : #EBEEF0;
   background-repeat:no-repeat;
   background-position :50%,50%;
   border-radius :15%;
   outline:none;
   animation-duration: .2s;
   animation-name: buttonAppears;
+}
+
+.investment-button {
+  
 }
 
 .disabled{
@@ -347,11 +355,11 @@ div > h3 {
 }
 
 .menu-button:hover{
-  background-color : #70b7e0;
+  background-color : #a8a8a8;
 }
 
 .menu-button:active{
-  background-color: #2d76a1;
+  background-color: #616161;
 }
 
 .disabled:hover {
@@ -379,7 +387,7 @@ div > h3 {
    animation-duration: .2s;
   animation-name: divAppears;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
-  background-color: hsl(135,90%,95%);
+  background-color: white;
 }
 
 .work-box h2 {
