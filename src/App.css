@@ -333,7 +333,7 @@ h2.AI-context{
 }
 
 .author-human {
-
+  border-top : 3px solid hsl(210,78%,90%);
 }
 .author-human p:first-child {
 
@@ -344,7 +344,7 @@ h2.AI-context{
 
 
 .author-NewAI {
-
+  border-top : 3px solid black;
 }
 
 .author-NewAI p:first-child {
@@ -352,12 +352,12 @@ h2.AI-context{
 }
 
 .author-NewAI p:nth-of-type(2) {
-
+  
 }
 
 
 .author-WeakAI{
-
+  border-top : 3px solid hsla(5, 100%, 65%, 1);
 }
 
 .author-WeakAI p:first-child {
@@ -370,7 +370,7 @@ h2.AI-context{
 
 
 .author-Journalist {
-
+  border-top : 3px solid hsla(58, 100%, 42%, 1);
 }
 
 .author-Journalist p:first-child{
@@ -382,7 +382,7 @@ h2.AI-context{
 }
 
 .author-Employee {
-
+  border-top : 3px solid hsla(121, 100%, 42%, 1);
 }
 
 .author-Employee p:first-child{

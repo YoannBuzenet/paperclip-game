@@ -176,6 +176,10 @@ class App extends Component{
                 fr : "Tout faire à la main...c'est épuisant. Tu penses qu'il y aurait un autre moyen ?",
                 en : "Doing everything by hand...it's too long ! Do you think we could do it another way ?"
                   },
+              afterFirstRD: {
+                fr : "Bonjour Chef ! Nous avons trouvé un moyen de créer automatiquement les trombones. Jetez un oeil !",
+                en : "Hello Sir. We found a way to automate paperclip creation. You should try it."
+                  },
               afterFirstAutomaticMachine: {
                 fr: "Ah ! Ca marche bien mieux !",
                 en: "Yeah ! This works much better !"
@@ -274,7 +278,7 @@ class App extends Component{
                   },
               afterSecondImprovmentAvailable: {
                 fr: "Les politiciens sont en charge de l'affaire et veulent faire interdire ce logiciel d'intelligence artificielle.",
-                en: "Politicians are now talking against this Artificial Intelligence software that worries population." 
+                en: "Politicians are now talking publicly against this Artificial Intelligence software that worries population." 
                   },
               afterSecondDroneImprovment: {
                 fr: "Niveau de risque en augmentation. La production de trombones ne doit pas réduire. Necessité de divertir l'opinion. Besoin de davantage de capacités computationelles.",
@@ -1294,9 +1298,13 @@ formateNumber(number, divider, unit){
         var textToDisplay = this.state.text.after10creation;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.salesLevelOfInvestment > 4 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 4){
+      else if(this.state.salesLevelOfInvestment > 4 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 3){
         var textToDisplay = this.state.text.after5sales;
         var author = this.state.text.AuthorMessageHuman;
+      }
+      else if(this.state.salesLevelOfInvestment > 4 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 4){
+        var textToDisplay = this.state.text.afterFirstRD;
+        var author = this.state.text.AuthorMessageEmployee;
       }
       else if(this.state.numberOfSmallAutomaticMachines >= 1 && this.state.numberOfFactory == 0 && this.state.rdLevelOfInvestment < 4 && this.state.numberOfSmallAutomaticMachines <= 3) {
         var textToDisplay = this.state.text.afterFirstAutomaticMachine;
@@ -1344,7 +1352,7 @@ formateNumber(number, divider, unit){
       }
       else if(this.state.softwareLevelOfInvestment > 0 && this.state.websiteIsOnline && this.state.deepLearningHasBeenBought && this.state.increaseProductionLevel < 3) {
         var textToDisplay = this.state.text.deepLearningHasBeenBought;
-        var author = this.state.text.AuthorMessageHuman;
+        var author = this.state.text.AuthorMessageEmployee;
       }
       else if(this.state.softwareLevelOfInvestment > 0 && this.state.increaseProductionLevel >=3 && this.state.deepLearningHasBeenBought && this.state.dataCenterLevelOfInvestment <=1) {
         var textToDisplay = this.state.text.after2increaseComputationalPower;
@@ -1499,16 +1507,16 @@ typeWriter(txt, author, currentLanguage, speed=10) {
     divToUpdate.className = "Dialog-interface interface-div author-human";
   }
   else if(author == this.state.text.AuthorMessageStrongAI){
-    divToUpdate.classList.add = "Dialog-interface interface-div author-NewAI";
+    divToUpdate.className = "Dialog-interface interface-div author-NewAI";
   }
   else if(author == this.state.text.AuthorMessageWeakAI){
-    divToUpdate.classList.add = "Dialog-interface interface-div author-WeakAI";
+    divToUpdate.className = "Dialog-interface interface-div author-WeakAI";
   }
   else if(author == this.state.text.AuthorMessageJournalist){
-    divToUpdate.classList.add = "Dialog-interface interface-div author-Journalist";
+    divToUpdate.className = "Dialog-interface interface-div author-Journalist";
   }
   else if(author == this.state.text.AuthorMessageEmployee){
-    divToUpdate.classList.add = "Dialog-interface interface-div author-Employee";
+    divToUpdate.className = "Dialog-interface interface-div author-Employee";
   }
   
   
