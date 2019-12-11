@@ -10,6 +10,10 @@ body, html {
   margin : 0;
 }
 
+body {
+  background-color:hsla(210, 32%, 93%, 1);
+}
+
 html {
   font-size : 62.5%;
 }
@@ -24,7 +28,12 @@ h2,h3 {
 }
 
 h2 {
+  background-color: hsl(210,38%,97%);
+  padding : 1rem;
+  border-top-left-radius : 5px;
+  border-top-right-radius : 5px;
   font-size : 2rem;
+  margin-bottom : 0;
 }
 
 header p.pageTitle {
@@ -75,12 +84,7 @@ header p.pageTitle {
 .interface-div{
   border-radius : 5px;
   margin-top: 1rem;
-  padding-left : 1rem;
-}
-
-.dashboard {
-  padding : 1rem;
-  background-color : #E5E9EC;
+  background-color: rgb(255, 255, 255);
 }
 
 h2{
@@ -101,6 +105,11 @@ div > h3 {
 
 .blinking-very-slowly {
   animation: 0.75s blinking infinite;
+}
+
+.padding-div{
+  padding : 1rem;
+  padding-top : 0;
 }
 
 .data-title{
@@ -161,8 +170,6 @@ div > h3 {
 ***************************/
 
 .investment-box {
-  padding : 1rem;
-  background-color : #E5E9EC;
   opacity : 0;
   margin-right : 50%;
   box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
@@ -175,7 +182,7 @@ div > h3 {
   transition-duration: 2s, 2s;
 }
 
-.investment-box > div >div{
+.investment-box > div >div >div{
   display: flex;
   justify-content: start;
 }
@@ -193,9 +200,16 @@ div > h3 {
 .dashboard{
   box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
 }
+
+.dashboard > div {
+  border-radius : 5px;
+}
+
 .dashboard-datas {
   display : flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 1rem;
 }
 
 .dashboard-datas p {
@@ -207,7 +221,6 @@ div > h3 {
 ***************************/
 
 .activity-dashboard {
-  padding : 1rem;
   background-color : #E5E9EC;
   box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
   overflow : hidden;
@@ -245,7 +258,6 @@ div > h3 {
 ***************************/
 
 .software-div{
-  padding : 1rem;
   opacity : 0;
   margin-left : 50%;
   box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
@@ -264,6 +276,12 @@ div > h3 {
   margin-top : 1rem;
 }
 
+.data-software {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 
 /***************************
 ******DIALOG INTERFACE******
@@ -271,7 +289,6 @@ div > h3 {
 
 .Dialog-interface {
   padding : 1rem;
-  background-color: #E5E9EC;
   animation-duration: .2s;
   animation-name: divAppears;
   box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
@@ -340,9 +357,7 @@ div > h3 {
 
 .work-box {
   flex-wrap: wrap;
-  padding : 1rem;
-  background-color : #E5E9EC;
-  animation-duration: .2s;
+   animation-duration: .2s;
   animation-name: divAppears;
   box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
 }
@@ -489,7 +504,6 @@ div > h3 {
   }
 
   to {
-    height : 100%;
     opacity: 1;
   }
 }

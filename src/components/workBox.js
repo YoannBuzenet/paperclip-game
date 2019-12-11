@@ -8,7 +8,7 @@ class WorkBox extends Component{
     render(){
     return (<div className="work-box interface-div">
         <h2>WORK</h2>
-    <div>
+    <div className="padding-div">
         <p className="data-title">Small Machines <span className="data">{this.props.numberOfSmallMachines}</span></p>
         {this.props.numberOfSmallAutomaticMachines > 0 
         ? <p className="data-title">Automatic Machines <span className="data">{this.props.numberOfSmallAutomaticMachines}</span></p> 

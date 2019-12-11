@@ -171,15 +171,19 @@ class Software extends Component{
 
     return (
     <div className={className}>
+        
 
         {this.props.deepLearningHasBeenBought && 
-        <div>
-            <h2>Computational power : {this.props.computationalPowerPerSecond}</h2>
-            <h2>Memory : {this.props.totalComputationalPowerAccumulated}</h2>
-
+        <div >
+            <h2>Power & Memory</h2>
+            <div className="data-software">
+                <p className="data-title">Computational power <span className="data">{this.props.computationalPowerPerSecond}</span></p>
+                <p className="data-title">Memory <span className="data">{this.props.totalComputationalPowerAccumulated}</span></p>
+            </div>
         </div>}
 
         <h2>Software & Hardware architecture</h2>
+        <div className="padding-div">
         <Button onClickProp={this.props.buytheWebsite} name="Devellop Ecommerce Website" picture="./pictures/website.png" classNameButton={classNameWebsiteButton} cost={this.props.websitePrice} classNameChild="info-website-button" contentChild="Increase the sales - Sell online ! (+20 000 sales)" money={this.props.money}/>
         <Button onClickProp={this.props.investInAI} name="Implement Deep Learning in Software" picture="./pictures/deepLearning.png" classNameButton={classNameDeepLearningButton} cost={this.props.deeplearningCost} classNameChild="info-deep-learning-button" contentChild="Increase the power of the software." money={this.props.money} machineType="deep-learning"/>
         <Button onClickProp={this.props.investInAI} name="Connect to every marketplace on the web" picture="./pictures/software.png" classNameButton={classNameConnectMarketplaceButton} cost={this.props.softwareMarketplacePrice} classNameChild="info-software-button" contentChild="Create all the connections. (+30 000 sales)" money={this.props.money} machineType="software-selling" currency='computational'/>
@@ -202,6 +206,7 @@ class Software extends Component{
 
         {(this.props.weakAiIsActivated && !this.props.quantumComputerHasBeenBought)? <h3>LABORATORY</h3> : null}
         <Button onClickProp={this.props.investInAI} name="Master Quantum Computer" picture="./pictures/quantum_computer.png" classNameButton={classNameQuantumComputerButton} cost={this.props.quantumComputerCost} classNameChild="info-quantum-computer-button" contentChild="This breakthrough computer is going to change our way to work. (+1000 Memory)" money={this.props.money} machineType="quantum-computer" currency='computational'/>
+  </div>
   </div>)
 
     ;}

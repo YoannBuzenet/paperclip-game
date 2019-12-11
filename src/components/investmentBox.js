@@ -289,6 +289,7 @@ class InvestmentBox extends Component{
     return (
     <div>{!this.props.cloudConnectionEstablished && <div className={className}> 
         <h2>INVESTMENT</h2>
+        <div className="padding-div">
 
         <div>
         <h3>MACHINES</h3>
@@ -341,10 +342,13 @@ class InvestmentBox extends Component{
     ? <div><h3>EXPANSION</h3><div>
     <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button" cost={this.props.factoryCost} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/></div></div>
     : null}
+    </div>
         </div>}
+     
 
         {this.props.cloudConnectionEstablished && <div className={className}>
             <h2>EXECUTION</h2>
+            <div className="padding-div">
 
             <div className={weightEarth}>
                 <p className="data-title">Earth to Harvest : <span className="data">{this.props.checkNumber(this.props.weightOfTheEarth)} kg</span></p>
@@ -391,7 +395,9 @@ class InvestmentBox extends Component{
         <div>
             <Button onClickProp={this.props.investInAI} name="Create more drones." picture="./pictures/swarm.png" classNameButton={classCreatedSwarmButton} cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild="The swarm will open new horizons." money={this.props.money} machineType="swarm-of-drones" currency='computational'/>
         </div>
+        </div>
             </div>}
+            
         </div>
         );
     }
