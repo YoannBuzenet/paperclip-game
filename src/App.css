@@ -411,10 +411,13 @@ p.temporary-class-to-adjust-display {
   height: 50px;
   background-repeat:no-repeat;
   background-position :50%,50%;
-  border-radius :15%;
+  border-radius :10%;
   outline:none;
   animation-duration: .2s;
   animation-name: buttonAppears;
+  border: 1px solid black;
+  background-color: white;
+  box-shadow : inset 0 1px 0 #f8fdf2;
 }
 
 .investment-button {
@@ -423,6 +426,12 @@ p.temporary-class-to-adjust-display {
 
 .disabled{
   background-color : lightgrey;
+  box-shadow : none;
+}
+
+button.disabled:hover{
+  background-color : lightgrey;
+  box-shadow : none;
 }
 
 .cantAfford{
@@ -431,11 +440,11 @@ p.temporary-class-to-adjust-display {
 }
 
 .menu-button:hover{
-  background-color : #a8a8a8;
+  box-shadow : 1px 1px 1px black;
 }
 
 .menu-button:active{
-  background-color: #616161;
+  background-color: #b8b8b8;
 }
 
 .disabled:hover {
