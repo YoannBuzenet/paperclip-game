@@ -302,7 +302,11 @@ h2.AI-context{
 .data-software {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+.data-software p {
+  width : 45%;
 }
 
 /***************************

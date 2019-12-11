@@ -234,7 +234,7 @@ class App extends Component{
                   },  
               afterWeakAIisAvailable: {
                 fr: "Chef, on a trouvé quelque chose d'intéressant. Je pense que ça va vous intéresser.",
-                en: "Boss, we found something interisting. I think you may want to have a look." 
+                en: "Boss, we found something interesting. I think you may want to have a look." 
                   },  
               after5datacenters: {
                 fr: "Avec une telle puissance de calcul, on va développer des outils incroyables ! Il NOUS FAUT plus de production !!",
@@ -269,8 +269,8 @@ class App extends Component{
                 en: "This paperclip company, famous for taking the whole market in a few years, is functionning with 98% of its staff layed out. Witnesses are talking about a very powerful software. Some are even speaking of an Artificial Intelligence. Several investigations have been launched."
                   },
               afterFirstDroneImprovment: {
-                fr: "Extension des capacités computationelles des drones. Ajout de nouvelles caractéristiques comportementales. Augmentation de la production de trombones. Besoin de plus d'usines.",
-                en: "Increasing computational power on drones. Updating behaviour capabilities. Increasing paperclips production. Need more factories." 
+                fr: "Les drones produisent désormais de la puissance computationelle. Ajout de nouvelles caractéristiques comportementales. Augmentation de la production de trombones. Besoin de plus d'usines.",
+                en: "Drone can now produce computational power. Updating behaviour capabilities. Increasing paperclips production. Need more factories." 
                   },
               afterSecondImprovmentAvailable: {
                 fr: "Les politiciens sont en charge de l'affaire et veulent faire interdire ce logiciel d'intelligence artificielle.",
@@ -457,7 +457,7 @@ class App extends Component{
 }
 
 automaticProduceComputationalOperations(){
-  if(this.state.droneLevelOfInvestment >=1){
+  if(this.state.droneLevelOfInvestment ==1){
 
     this.setState((state => { 
       return ({
@@ -465,6 +465,13 @@ automaticProduceComputationalOperations(){
       })
     }), this.updateTextBox)
 
+  }
+  else if(this.state.droneLevelOfInvestment >1){
+    this.setState((state => { 
+      return ({
+        totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated + state.computationalPowerPerSecond + state.numberOfDrone*5,
+      })
+    }), this.updateTextBox)
   }
   else{
     this.setState((state => { 
@@ -1560,7 +1567,7 @@ typeWriter(txt, author, currentLanguage, speed=10) {
       </div>
 
       <div className="right-div">
-          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deepLearningHasBeenBought={this.state.deepLearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice} weakAiIsActivated={this.state.weakAiIsActivated} newAiIsActivated={this.state.newAiIsActivated} quantumComputerHasBeenBought={this.state.quantumComputerHasBeenBought} cloudConnectionEstablished={this.state.cloudConnectionEstablished} totalComputationalPowerAccumulated={this.state.totalComputationalPowerAccumulated} computationalPowerPerSecond={this.state.computationalPowerPerSecond} hasBoughtSoftwareSelling={this.state.hasBoughtSoftwareSelling} increaseProductionLevel={this.state.increaseProductionLevel} buyingCompetitorsCost={this.state.buyingCompetitorsCost} hasBoughtCompetitors={this.state.hasBoughtCompetitors} automaticProductionImprovment={this.state.automaticProductionImprovment} dataCenterLevelOfInvestment={this.state.dataCenterLevelOfInvestment} dataCenterCost={this.state.dataCenterCost} hasBoughtAutomatedSellingSoftware={this.state.hasBoughtAutomatedSellingSoftware} automatedSellingSoftwarePrice={this.state.automatedSellingSoftwarePrice} terraformingIslandIntoServers={this.state.terraformingIslandIntoServers} terraformingIslandIntoServersCost={this.state.terraformingIslandIntoServersCost} droneLevelOfInvestment={this.state.droneLevelOfInvestment} formateNumber={this.formateNumber} checkNumber={this.checkNumber}/>
+          <Software money={this.state.money} computerComputationalCost={this.state.computerComputationalCost} softwareLevelOfInvestment={this.state.softwareLevelOfInvestment} websiteIsOnline={this.state.websiteIsOnline} websitePrice={this.state.websitePrice} websiteSellingPower={this.state.websiteSellingPower} buytheWebsite={this.buytheWebsite} deeplearningCost={this.state.deeplearningCost} weakAICost={this.state.weakAICost} AIlevelOfInvestment={this.state.AIlevelOfInvestment} newAICost={this.state.newAICost} investInAI={this.investInAI} increaseProductionCost={this.state.increaseProductionCost} cloudConnectionCost={this.state.cloudConnectionCost} improveAutomaticMachines={this.improveAutomaticMachines} deepLearningHasBeenBought={this.state.deepLearningHasBeenBought} quantumComputerCost={this.state.quantumComputerCost} automaticProductionCost={this.state.automaticProductionCost} automaticProductionImprovment={this.state.automaticProductionImprovment} softwareMarketplacePrice={this.state.softwareMarketplacePrice} weakAiIsActivated={this.state.weakAiIsActivated} newAiIsActivated={this.state.newAiIsActivated} quantumComputerHasBeenBought={this.state.quantumComputerHasBeenBought} cloudConnectionEstablished={this.state.cloudConnectionEstablished} totalComputationalPowerAccumulated={this.state.totalComputationalPowerAccumulated} computationalPowerPerSecond={this.state.computationalPowerPerSecond} hasBoughtSoftwareSelling={this.state.hasBoughtSoftwareSelling} increaseProductionLevel={this.state.increaseProductionLevel} buyingCompetitorsCost={this.state.buyingCompetitorsCost} hasBoughtCompetitors={this.state.hasBoughtCompetitors} automaticProductionImprovment={this.state.automaticProductionImprovment} dataCenterLevelOfInvestment={this.state.dataCenterLevelOfInvestment} dataCenterCost={this.state.dataCenterCost} hasBoughtAutomatedSellingSoftware={this.state.hasBoughtAutomatedSellingSoftware} automatedSellingSoftwarePrice={this.state.automatedSellingSoftwarePrice} terraformingIslandIntoServers={this.state.terraformingIslandIntoServers} terraformingIslandIntoServersCost={this.state.terraformingIslandIntoServersCost} droneLevelOfInvestment={this.state.droneLevelOfInvestment} formateNumber={this.formateNumber} checkNumber={this.checkNumber} numberOfDrone={this.state.numberOfDrone}/>
       </div>
       
     </div>

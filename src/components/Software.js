@@ -165,7 +165,17 @@ class Software extends Component{
             var classh3datacenter = "doNOTdisplay";
         }
 
-
+        //Computational Power update 
+        var data;
+        if(this.props.droneLevelOfInvestment == 1){
+            data = this.props.computationalPowerPerSecond + this.props.numberOfDrone;
+        }
+        else if(this.props.droneLevelOfInvestment > 1){
+            data = this.props.computationalPowerPerSecond + this.props.numberOfDrone *5;
+        }
+        else{
+            data =this.props.computationalPowerPerSecond;
+        }
 
 
     return (
@@ -176,7 +186,7 @@ class Software extends Component{
         <div className={className}>
             <h2>Power & Memory</h2>
             <div className="data-software">
-                <p className="data-title">Computational power <span className="data">{this.props.checkNumber(this.props.computationalPowerPerSecond)}</span></p>
+                <p className="data-title">Computational power <span className="data">{this.props.checkNumber(data)}</span></p>
                 <p className="data-title">Memory <span className="data">{this.props.checkNumber(this.props.totalComputationalPowerAccumulated)}</span></p>
             </div>
         </div>}
