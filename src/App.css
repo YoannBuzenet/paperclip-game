@@ -257,6 +257,7 @@ h2.AI-context{
   display : flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 45%;
 }
 
 .hint {
@@ -269,7 +270,7 @@ h2.AI-context{
 
 .pie-Chart {
   height : 180px;
-  width: 180px;
+  width: 45%;
 }
 
 /***************************

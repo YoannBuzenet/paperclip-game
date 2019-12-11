@@ -142,9 +142,9 @@ class DashboardActivity extends Component{
             <h2>MARKET ACTIVITY</h2>
             <div className="activity-content">
                 <div className="activity-kpi">
-                    <p className="containsHint" >Market Share: {Math.round(this.state.newMarketShare*100)}%<span className="hint">(based on sales)</span></p>
-                  <p>Number of competitors: {this.state.numberOfCompetitor}</p>
-                    <p>Marketshare Growth: {(this.state.newMarketShare > 0 && this.state.formerMarketShare > 0)  ? <span>{Math.round(((this.state.newMarketShare-this.state.formerMarketShare)/this.state.formerMarketShare)*100)} %</span> : <span>Calculating...</span> }</p>
+                    <p className="containsHint" className="data-title">Market Share<span className="data">{Math.round(this.state.newMarketShare*100)}%</span><span className="hint">(based on sales)</span></p>
+                  <p className="data-title">Number of competitors<span className="data">{this.state.numberOfCompetitor}</span></p>
+                    <p className="data-title">Marketshare Growth{(this.state.newMarketShare > 0 && this.state.formerMarketShare > 0)  ? <span className="data">{Math.round(((this.state.newMarketShare-this.state.formerMarketShare)/this.state.formerMarketShare)*100)} %</span> : <span> Calculating...</span> }</p>
                 </div>
 
                 <div className="pie-Chart">
