@@ -18,7 +18,7 @@ class Dashboard extends Component{
         <h2>DASHBOARD</h2>
             <div className="dashboard-datas">
                 <StockOfPaperclips stockOfPaperclips={this.props.stockOfPaperclips} checkNumber={this.props.checkNumber} />
-                {this.props.soldAtLeastOnePaperclip > 0 ? <DisplayMoney money = {this.props.money} checkNumber={this.props.checkNumber} /> : null}
+                <DisplayMoney money = {this.props.money} checkNumber={this.props.checkNumber} />
                 {this.props.boughtAnAutomaticMachine && <p className="data-title">Production <span className="data">{automaticProduction}</span></p>}
                  {this.props.hasHiredaSalesman && <p className="data-title">Sales <span className="data">{automaticSales}</span></p>}
             </div>

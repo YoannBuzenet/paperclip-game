@@ -28,7 +28,6 @@ h2,h3 {
 }
 
 h2 {
-  background-color: hsl(210,38%,97%);
   padding : 1rem;
   border-top-left-radius : 5px;
   border-top-right-radius : 5px;
@@ -172,7 +171,12 @@ div > h3 {
 .investment-box {
   opacity : 0;
   margin-right : 50%;
-  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
+  background-color: hsl(135,90%,85%);
+}
+
+.investment-box h2{
+  background-color: hsl(135,78%,57%);
 }
 
 .visible-left-div {
@@ -198,11 +202,15 @@ div > h3 {
 ***************************/
 
 .dashboard{
-  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
 }
 
 .dashboard > div {
   border-radius : 5px;
+}
+
+.dashboard h2 {
+  background-color: hsl(210,78%,97%);
 }
 
 .dashboard-datas {
@@ -213,7 +221,7 @@ div > h3 {
 }
 
 .dashboard-datas p {
-  width : 250px;
+  width : 45%;
 }
 
 /***************************
@@ -222,16 +230,22 @@ div > h3 {
 
 .activity-dashboard {
   background-color : #E5E9EC;
-  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
   overflow : hidden;
   animation-duration: .2s;
   animation-name: divAppears;
+  background-color: rgb(255, 255, 255);
+}
+
+.activity-dashboard h2 {
+  background-color: hsl(210,78%,97%);
 }
 
 .activity-content{
   display : flex;
   justify-content: space-around;
   padding-bottom : 3rem;
+  padding-top:3rem;
 }
 
 .activity-kpi {
@@ -260,12 +274,15 @@ div > h3 {
 .software-div{
   opacity : 0;
   margin-left : 50%;
-  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
 
+}
+.software-div h2 {
+  background-color: hsl(135,78%,57%);
 }
 
 .visible-right-div{
-  background-color : #E5E9EC;
+  background-color : white;
   opacity : 1;
   margin-left : 0%;
   transition-property: opacity, margin-left;
@@ -279,9 +296,8 @@ div > h3 {
 .data-software {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
-
 
 /***************************
 ******DIALOG INTERFACE******
@@ -291,12 +307,15 @@ div > h3 {
   padding : 1rem;
   animation-duration: .2s;
   animation-name: divAppears;
-  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
+}
+
+.Dialog-interface p:first-child{
+  font-weight: bold;
 }
 
 .author-dialog {
   margin-top : 0;
-  
 }
 
 
@@ -359,8 +378,14 @@ div > h3 {
   flex-wrap: wrap;
    animation-duration: .2s;
   animation-name: divAppears;
-  box-shadow: 1px 3px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
+  background-color: hsl(135,90%,95%);
 }
+
+.work-box h2 {
+  background-color: hsl(135,78%,57%);
+}
+
 
 .work-box > div {
   display : flex;
