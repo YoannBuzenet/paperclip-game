@@ -223,11 +223,16 @@ h2.AI-context{
   display : flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 1rem;
+  padding: 1rem ;
 }
 
-.dashboard-datas p {
+.dashboard-datas p{
   width : 45%;
+}
+
+p.temporary-class-to-adjust-display {
+  width : 100%;
+  margin-left : 20px;
 }
 
 /***************************

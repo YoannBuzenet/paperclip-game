@@ -181,8 +181,8 @@ class App extends Component{
                 en : "Hello Sir. We found a way to automate paperclip creation. You should try it."
                   },
               afterFirstAutomaticMachine: {
-                fr: "Ah ! Ca marche bien mieux !",
-                en: "Yeah ! This works much better !"
+                fr: "Ah ! Ca marche bien mieux ! Achetons en plus !",
+                en: "Yeah ! This works much better ! Let's get some more !"
                 },
               afterThreeAutomaticMachine: {
                 fr: "Ok, notre production augmente ! Il nous faut des vendeurs.",
@@ -1215,8 +1215,10 @@ formateNumber(number, divider, unit){
 
   hireASalesman(){
     if(this.state.money >= this.state.salesmanCost){
-
+      let dashboardParagraphToUpdate = document.getElementById('paragraphToUpdate');
+      dashboardParagraphToUpdate.className="data-title";
       if(this.state.salesman >= this.state.maximumSalesHirable){
+
         this.setState((state => { return ({
           maximumSalesReached : true
             });

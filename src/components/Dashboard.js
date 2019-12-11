@@ -18,8 +18,8 @@ class Dashboard extends Component{
         <h2>DASHBOARD</h2>
             <div className="dashboard-datas">
                 <StockOfPaperclips stockOfPaperclips={this.props.stockOfPaperclips} checkNumber={this.props.checkNumber} />
-                <DisplayMoney money = {this.props.money} checkNumber={this.props.checkNumber} />
-                {this.props.boughtAnAutomaticMachine && <p className="data-title">Production <span className="data">{automaticProduction}</span></p>}
+                <DisplayMoney money = {this.props.money} checkNumber={this.props.checkNumber} /> 
+                {this.props.boughtAnAutomaticMachine && <p className="data-title temporary-class-to-adjust-display" id="paragraphToUpdate">Production <span className="data">{automaticProduction}</span></p>}
                  {this.props.hasHiredaSalesman && <p className="data-title">Sales <span className="data">{automaticSales}</span></p>}
             </div>
         </div>
