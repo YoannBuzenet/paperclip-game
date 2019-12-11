@@ -104,6 +104,21 @@ class DashboardActivity extends Component{
         newMarketShare : 1,
         numberOfCompetitor : 0
       })})); 
+      
+      setInterval(()=>
+      {this.setState((state => { return ({
+        data : [
+          {
+            "id": state.data[0].id,
+            "label": state.data[0].label,
+            "value": this.props.totalPaperclipssold,
+            "color": "hsl(151, 70%, 50%)"
+          }
+        ],
+        newMarketShare : 1,
+        numberOfCompetitor : 0
+      })}));
+    }, 1000)
 
     }
 

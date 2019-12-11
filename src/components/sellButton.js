@@ -37,7 +37,7 @@ class SellButton extends Component{
         }
     return (
     <button onClick={this.props.sell} className="main-button" id="sell-button-id">
-        Sell <ul className="main-button-number" id="sell-area"><li>{numberOfPaperclipToSell}</li></ul> paperclips ({this.props.unitsSold * .25}€)
+        <p className="main-button-firstline">Sell</p><ul className="main-button-number" id="sell-area"><li>{numberOfPaperclipToSell}</li></ul><p className="main-button-secondline">{this.props.unitsSold>2 ? 'paperclips' : 'paperclip'}</p>
     </button>);
     }
 }

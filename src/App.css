@@ -484,11 +484,27 @@ h2.AI-context{
   padding : 1rem;
   border-radius: 10px;
   outline: none;
+  background-color : white;
+  border : 3px solid hsl(210,78%,90%);
 }
 
 .main-button:hover, .sell-button:hover {
-  background-color : black;
-  color: white;
+  background-color : hsl(210,78%,90%);
+  color: black;
+}
+
+.main-button:active, .sell-button:active {
+  background-color : hsl(210,78%,80%);
+  color: black;
+}
+
+.main-button-firstline {
+  margin : 0 0 .5rem 0;
+}
+
+.main-button-secondline {
+  margin : 0;
+  margin : 0 0.5rem 0 0;
 }
 
 .main-button-number {

@@ -15,7 +15,7 @@ class App extends Component{
       this.state = {
           count : 500000000,
           money : 500000000,
-          totalComputationalPowerAccumulated : 5000000,
+          totalComputationalPowerAccumulated : 500000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -699,7 +699,6 @@ formateNumber(number, divider, unit){
         }              
         
         else if(machineType == "factory"){
-          console.log(cost, productivity, isManual, machineType, quantity, currency)
 
           if(currency === undefined) {
             if(this.state.numberOfFactory >= 20){
@@ -1556,7 +1555,7 @@ typeWriter(txt, author, currentLanguage, speed=10) {
 
         <p className="app-main-buttons">{
           <MainButton count={this.state.count} increase={this.handleClickIncrease} firstMachine={this.state.firstMachine} productivity={this.state.productivity} createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect}/>}
-          {this.state.count > 0 || soldAtLeastOnePaperclip ? <SellButton createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} sell={this.handleClickDecrease} unitsSold={this.state.unitsSold } count={this.state.count}/>:null}
+          {this.state.count > 0 || soldAtLeastOnePaperclip ? <SellButton createAndRemoveGraphicEffect={this.createAndRemoveGraphicEffect} sell={this.handleClickDecrease} unitsSold={this.state.unitsSold } count={this.state.count} unitsSold={this.state.unitsSold}/>:null}
         </p>
       </div>
 
