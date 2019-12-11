@@ -176,8 +176,8 @@ class Software extends Component{
         <div className={className}>
             <h2>Power & Memory</h2>
             <div className="data-software">
-                <p className="data-title">Computational power <span className="data">{this.props.computationalPowerPerSecond}</span></p>
-                <p className="data-title">Memory <span className="data">{this.props.totalComputationalPowerAccumulated}</span></p>
+                <p className="data-title">Computational power <span className="data">{this.props.checkNumber(this.props.computationalPowerPerSecond)}</span></p>
+                <p className="data-title">Memory <span className="data">{this.props.checkNumber(this.props.totalComputationalPowerAccumulated)}</span></p>
             </div>
         </div>}
         <div className={className}>
