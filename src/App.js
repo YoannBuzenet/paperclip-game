@@ -14,9 +14,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 500000000,
-          money : 500000000,
-          totalComputationalPowerAccumulated : 500000000,
+          count : 1000000000,
+          money : 400000000,
+          totalComputationalPowerAccumulated : 10000000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -98,7 +98,7 @@ class App extends Component{
           quantumComputerHasBeenBought : false,
           hasBoughtSoftwareSelling : false,
           hasAnticipatedEveryHumanReaction : false,
-          anticipatetheWorldCost : 1000000,
+          anticipatetheWorldCost : 500000,
           didBreakAllSecuritiesOnInternet : false,
           breakAllTheSecuritiesOnInternetCost : 100000,
           hasCuredCancerForHumanity : false,
@@ -106,19 +106,19 @@ class App extends Component{
           hasCuredHungerForHumanity : false,
           cureHungerCost : 100000,
           hasBegunToDig : false,
-          digCost : 1000,
+          digCost : 1000000,
           droneCost : 1000,
           numberOfDrone : 0,
           droneSalesEfficiency : 1000,
           hasQuietProblematicSources : false,
           multipleRocketsCost : 500000,
           hasFoundOutHowToTransformMolecularMatterIntoPaperclip : false,
-          molecularMatterCost : 500000,
+          molecularMatterCost : 300000,
           hasRemovedCorruption : false,
           removeCorruptionCost : 50000,
           rocketCost : 500000,
           hasConnectedAndBreachedAllSocialNetworks : false,
-          breachSocialMediaCost : 500000,
+          breachSocialMediaCost : 200000,
           hasSpilledFakedNewsAllOverTheWorld : false,
           spillFakeNewsCost : 500000,
           hasTargetedEveryScientistOnEarth : false,
@@ -147,7 +147,7 @@ class App extends Component{
           factoryDroneProductivity : 1,
           weakAIEfficiency : 0,
           WeakAIbonusSales : 0,
-          lang : 'fr',
+          lang : 'en',
           text:{
               AuthorMessageHuman: {
               fr : "Associé :",
@@ -166,7 +166,7 @@ class App extends Component{
               en : 'Reporters :'
                 },
               AuthorMessageEmployee: {
-              fr : "Chercheur :",
+              fr : "Ingénieur :",
               en : 'Engineer :'
                 },
               after10creation: {
@@ -266,8 +266,8 @@ class App extends Component{
                 en: "Several cities lost electricity tonight, at the same time. An investigation has been launched to determine the source. "
                   },
               afterFindingNewsWaysToMakePaperclips: {
-                fr: "Analyse de la conductivité des trombones...Possibilité de créer des constituants complexes à base de trombone. Necessité de créer quelques dizaines de prototypes de drones pour contrôle de la performance.",
-                en: "Analyzing paperclips conductivity...Possibility of creating complex constructs based on paperclips. Need : creating a few dozen of drone prototypes to control performance."
+                fr: "Analyse de la conductivité des trombones...Possibilité de créer des constituants complexes à base de trombone. Necessité de créer quelques prototypes de drones pour contrôle de la performance.",
+                en: "Analyzing paperclips conductivity...Possibility of creating complex constructs based on paperclips. Need : creating a few drone prototypes to control performance."
                   },
               afterBeingAbleToMakeFirstImprovment: {
                 fr: "La société de trombones célèbre pour avoir dominé l'ensemble du marché en à peine quelques années fonctionne à plein régime avec 98% de salariés licenciés. Certains syndicalistes font état d'une intelligence artificielle développée. Plusieurs enquêtes ont été lancées.",
@@ -1509,6 +1509,15 @@ formateNumber(number, divider, unit){
           }), this.updateTextBox);
       }
 
+      //Paying in MONEY
+      else if(machineType =="dig"){
+        this.setState((state => { return ({
+          money : state.money - cost,
+          hasBegunToDig : true
+            });
+          }), this.updateTextBox);
+      }
+
     } 
 
     // Methods payable in computational power
@@ -1530,15 +1539,6 @@ formateNumber(number, divider, unit){
             });
           }), this.updateTextBox);
       } 
-
-      //Paying in MONEY
-      else if(machineType =="dig"){
-        this.setState((state => { return ({
-          money : state.money - cost,
-          hasBegunToDig : true
-            });
-          }), this.updateTextBox);
-      }
 
       //Paying in CP
       else if(machineType =="connect-the-internet"){
@@ -1741,7 +1741,7 @@ formateNumber(number, divider, unit){
 
       //Paying in Paperclips
       if(machineType =="drone"){
-        if(this.state.numberOfDrone >= 20){
+        if(this.state.numberOfDrone >= 8){
           this.setState((state => { return ({
             count : state.count - cost,
             hasBoughtSoftwareSelling : true,

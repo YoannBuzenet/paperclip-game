@@ -11,7 +11,7 @@ body, html {
 }
 
 body {
-  background-color:hsla(210, 32%, 98%, 1);
+  background-color:hsla(210, 32%, 94%, 1);
 }
 
 html {
@@ -74,6 +74,7 @@ header{
   display : flex;
   align-items: first baseline;
   justify-content: space-between;
+  margin-bottom : 4px;
   }
 
 .choose-language {
@@ -496,7 +497,7 @@ p.temporary-class-to-adjust-display {
   height: 50px;
   background-repeat:no-repeat;
   background-position :50%,50%;
-  border-radius :10%;
+  border-radius :20%;
   outline:none;
   animation-duration: .2s;
   animation-name: buttonAppears;

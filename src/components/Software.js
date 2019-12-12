@@ -176,6 +176,23 @@ class Software extends Component{
         else{
             data =this.props.computationalPowerPerSecond;
         }
+        //Software Div update 
+        var classSoftwareGlobal;
+        if(this.props.terraformingIslandIntoServers){
+            classSoftwareGlobal = "doNOTdisplay"
+        }
+        else if(this.props.droneLevelOfInvestment ==2){
+            classSoftwareGlobal = ""
+        }
+        else if(this.props.cloudConnectionEstablished && !this.props.terraformingIslandIntoServers){
+            classSoftwareGlobal = "doNOTdisplay"
+        }
+        else if(this.props.softwareLevelOfInvestment >=1){
+            classSoftwareGlobal = ""
+        }
+        else{
+            classSoftwareGlobal = "doNOTdisplay"
+        }
 
 
     return (
@@ -191,6 +208,7 @@ class Software extends Component{
             </div>
         </div>}
         <div className={className}>
+        <div className={classSoftwareGlobal}>
             <h2>{this.props.text.gameTitles.softwareTitle[this.props.lang]}</h2>
             <div className="padding-div">
                 <Button onClickProp={this.props.buytheWebsite} name={this.props.text.gameButtons.developEcommerceWebsiteName} picture="./pictures/website.png" classNameButton={classNameWebsiteButton} cost={this.props.websitePrice} classNameChild="info-website-button" contentChild={this.props.text.gameButtons.developEcommerceWebsiteContent} money={this.props.money} lang={this.props.lang}/>
@@ -216,7 +234,8 @@ class Software extends Component{
                 {(this.props.weakAiIsActivated && !this.props.quantumComputerHasBeenBought)? <h3>{this.props.text.gameTitles.softwareLaboratory[this.props.lang]}</h3> : null}
                 <Button onClickProp={this.props.investInAI} name={this.props.text.gameButtons.masterQuantumComputerName} picture="./pictures/quantum_computer.png" classNameButton={classNameQuantumComputerButton} cost={this.props.quantumComputerCost} classNameChild="info-quantum-computer-button" contentChild={this.props.text.gameButtons.masterQuantumComputerContent} money={this.props.money} machineType="quantum-computer" currency='computational' lang={this.props.lang}/>
             </div>
-        </div>    
+        </div>  
+        </div> 
   </div>)
 
     ;}
