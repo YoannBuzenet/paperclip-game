@@ -278,7 +278,7 @@ class App extends Component{
                 en: "Drone can now produce computational power. Updating behaviour capabilities. Increasing paperclips production. Need more factories." 
                   },
               afterSecondImprovmentAvailable: {
-                fr: "Les politiciens sont en charge de l'affaire et veulent faire interdire ce logiciel d'intelligence artificielle.",
+                fr: "Le premier ministre a déclaré publiquement qu'un tel logiciel pouvait être dangeureux. Les autorités sont maintenant en charge de l'affaire et veulent réguler ce logiciel d'intelligence artificielle.",
                 en: "Politicians are now talking publicly against this Artificial Intelligence software that worries population." 
                   },
               afterSecondDroneImprovment: {
@@ -903,6 +903,10 @@ class App extends Component{
               textCurrentlyDisplayedInDialogBox :'',
               indexTextWriter : 0,
               divAllLangageHidden : false,
+              languagePictureUrl : {
+                fr : "./pictures/frenchflagsmall.png",
+                en : "./pictures/ukflagsmall.png"
+              }
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
   this.handleClickDecrease = this.handleClickDecrease.bind(this);    
@@ -935,6 +939,7 @@ class App extends Component{
   this.automaticProduceDrones = this.automaticProduceDrones.bind(this);
   this.automaticProducingFactoriesByDrone = this.automaticProducingFactoriesByDrone.bind(this);
   this.displayflags = this.displayflags.bind(this);
+  this.changeLangage = this.changeLangage.bind(this);
   }
 
   componentDidMount(){
@@ -2103,7 +2108,16 @@ displayflags(){
     divAllLangageHidden : !state.divAllLangageHidden
     });
   });
-  document.getElementById('all-languages-div').className = this.state.divAllLangageHidden ? 'display-all-langues-available' : 'display-all-langues-available display';
+  document.getElementById('all-languages-div').className = this.state.divAllLangageHidden ? 'display-all-langues-available' : 'display-all-langues-available display noselect';
+}
+
+changeLangage(language){
+
+  this.setState(state => { return ({
+    lang : language
+    });
+  });
+
 }
 
 
@@ -2114,11 +2128,11 @@ displayflags(){
     <header>
       <p className="pageTitle">{this.state.text.gameTitles.mainTitle[this.state.lang]}</p>
       <div className="choose-language" onClick={this.displayflags}>
-        <img src="./pictures/ukflagsmall.png"></img>
+        <img src={this.state.languagePictureUrl[this.state.lang]}></img>
         <span className="img-decoration"></span>
         <div className="display-all-langues-available" id="all-languages-div">
-          <LanguageAvailable img="./pictures/ukflagsmall.png" lang='en'/>
-          <LanguageAvailable img="./pictures/frenchflagsmall.png" lang="fr"/>
+          <LanguageAvailable img="./pictures/ukflagsmall.png" lang='en' changeLangage={this.changeLangage}/>
+          <LanguageAvailable img="./pictures/frenchflagsmall.png" lang="fr" changeLangage={this.changeLangage}/>
         </div>
       </div>
     </header>

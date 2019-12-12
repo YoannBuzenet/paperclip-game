@@ -57,6 +57,16 @@ header p.pageTitle {
   animation: 0.5s fadeIn;
 }
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
 /***************************
 **********HEADER**********
 ***************************/
@@ -74,6 +84,7 @@ header{
   cursor : pointer;
   height : 18px;
   width : 35px;
+  outline : none;
 }
 
 .choose-language:hover {
@@ -97,6 +108,7 @@ header{
   position : absolute;
   top : -3px;
   left : 8px;
+  outline : none;
 }
 
 .display {
