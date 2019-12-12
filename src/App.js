@@ -102,7 +102,7 @@ class App extends Component{
           didBreakAllSecuritiesOnInternet : false,
           breakAllTheSecuritiesOnInternetCost : 100000,
           hasCuredCancerForHumanity : false,
-          cureCancerCost : 50000,
+          cureCancerCost : 150000,
           hasCuredHungerForHumanity : false,
           cureHungerCost : 100000,
           hasBegunToDig : false,
@@ -111,18 +111,18 @@ class App extends Component{
           numberOfDrone : 0,
           droneSalesEfficiency : 1000,
           hasQuietProblematicSources : false,
-          multipleRocketsCost : 500000,
+          multipleRocketsCost : 500000000,
           hasFoundOutHowToTransformMolecularMatterIntoPaperclip : false,
           molecularMatterCost : 300000,
           hasRemovedCorruption : false,
           removeCorruptionCost : 50000,
-          rocketCost : 100000000,
+          rocketCost : 5000000000,
           hasConnectedAndBreachedAllSocialNetworks : false,
           breachSocialMediaCost : 200000,
           hasSpilledFakedNewsAllOverTheWorld : false,
-          spillFakeNewsCost : 5000000,
+          spillFakeNewsCost : 10000000,
           hasTargetedEveryScientistOnEarth : false,
-          targetingEveryScientistCost : 5000000,
+          targetingEveryScientistCost : 10000000,
           canCreate50drones : false,
           canCreate500drones : false,
           hasCreatedTheSwarm : false,
@@ -795,8 +795,8 @@ class App extends Component{
                   en : "Display any information on them everywhere : every screen available. We need maximum efficiency. This will give us a few more days."
                 },
                 createTheSwarmName : {
-                  fr : "Créer une nuée de drones.",
-                  en : "Create more drones."
+                  fr : "Libérer la nuée de drones.",
+                  en : "Unleash the drone swarm."
                 },
                 createTheSwarmContent : {
                   fr : "Les drones ont été suffisamment testés. La nuée sera le point de non retour.",
@@ -831,8 +831,8 @@ class App extends Component{
                   en : "Develop Weak Artificial Intelligence"
                 },
                 weakAIContent : {
-                  fr :"C'est un programme ultra-spécialisé, imbattable dans son domaine de compétence. Double la production et les ventes.",
-                  en :"Double production and sales. Centralize all algorithms in one."
+                  fr :"C'est un programme ultra-spécialisé, imbattable dans son domaine de compétence. Production et ventes X2",
+                  en :"Centralize all algorithms in one. Production and sales X2"
                 },
                 automatedSellingSoftwareName : {
                   fr : "Développer un système de vente automatisé",
@@ -879,12 +879,12 @@ class App extends Component{
                   en : "Connect AI to the Cloud"
                 },
                 connectAIToTheCloudContent : {
-                  fr : "Permettre au logiciel de digérer davantage de données.",
-                  en :"Give more knowledge to the computer"
+                  fr : "Il faut donner plus de ressources pour entrainer notre algorithme.",
+                  en :"We need to train the algorithm - let's connect it to Internet."
                 },
                 terraformIslandIntoDataCentersName : {
-                  fr : "Terraformer des iles et archipels en Centre de Serveurs.",
-                  en : "Terraform islands into Data Centers"
+                  fr : "Terraformer des iles et archipels en Centre de Serveurs. +150 Puissance Computationelle",
+                  en : "Terraform islands into Data Centers. +150 Computational Power"
                 },
                 terraformIslandIntoDataCentersContent : {
                   fr : "Acquérir davantage de capacité de calcul.",
@@ -1654,7 +1654,7 @@ formateNumber(number, divider, unit){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasCreatedTheSwarm : true,
-          numberOfDrone : state.numberOfDrone + 100000000000
+          numberOfDrone : state.numberOfDrone + 1000000000000
             });
           }), this.updateTextBox);
       }
@@ -1859,15 +1859,15 @@ formateNumber(number, divider, unit){
 
     var currentLanguage = this.state.lang;
 
-      if(this.state.numberOfClicksIncrease >= 10 && this.state.salesLevelOfInvestment <= 4){
+      if(this.state.numberOfClicksIncrease >= 10 && this.state.salesLevelOfInvestment <= 3){
         var textToDisplay = this.state.text.after10creation;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.salesLevelOfInvestment > 4 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 3){
+      else if(this.state.salesLevelOfInvestment >= 3 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 3){
         var textToDisplay = this.state.text.after5sales;
         var author = this.state.text.AuthorMessageHuman;
       }
-      else if(this.state.salesLevelOfInvestment > 4 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 4){
+      else if(this.state.salesLevelOfInvestment >= 3 && this.state.numberOfSmallAutomaticMachines == 0 && this.state.rdLevelOfInvestment < 4){
         var textToDisplay = this.state.text.afterFirstRD;
         var author = this.state.text.AuthorMessageEmployee;
       }
