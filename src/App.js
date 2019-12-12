@@ -906,7 +906,8 @@ class App extends Component{
               languagePictureUrl : {
                 fr : "./pictures/frenchflagsmall.png",
                 en : "./pictures/ukflagsmall.png"
-              }
+              },
+              mustUpdateTextbox : false
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
   this.handleClickDecrease = this.handleClickDecrease.bind(this);    
@@ -2045,14 +2046,15 @@ formateNumber(number, divider, unit){
     //Checking if the Dialog Box was mounted
     if(document.getElementById('author-box')){
 
-      if(textToDisplay != textCurrentlyDisplayedInDialogBox && this.state.indexTextWriter == 0){
+      if(textToDisplay != textCurrentlyDisplayedInDialogBox && this.state.indexTextWriter == 0 || this.state.mustUpdateTextbox){
 
         document.getElementById("dialog-text").innerHTML = '';
 
         this.typeWriter(textToDisplay, author, currentLanguage);
 
         this.setState(state => { return ({
-          textCurrentlyDisplayedInDialogBox : textToDisplay
+          textCurrentlyDisplayedInDialogBox : textToDisplay,
+          mustUpdateTextbox : false,
           });
         });
       }  
@@ -2113,10 +2115,11 @@ displayflags(){
 
 changeLangage(language){
 
-  this.setState(state => { return ({
-    lang : language
+  this.setState((state => { return ({
+    lang : language,
+    mustUpdateTextbox : true
     });
-  });
+  }), this.updateTextBox);
 
 }
 
@@ -2154,7 +2157,7 @@ changeLangage(language){
           <Dashboard stockOfPaperclips={this.state.count} soldAtLeastOnePaperclip={soldAtLeastOnePaperclip} money = {this.state.money} boughtAnAutomaticMachine={this.state.boughtAnAutomaticMachine} automaticProduction={this.state.automaticProduction} productivyPerAutomaticMachine={this.state.productivyPerAutomaticMachine} hasHiredaSalesman={this.state.hasHiredaSalesman} salesman={this.state.salesman} salesmanEfficiency={this.state.salesmanEfficiency} websiteSellingPower={this.state.websiteSellingPower} softwareBonusSales={this.state.softwareBonusSales} numberOfdrones={this.state.numberOfDrone} droneSalesEfficiency={this.state.droneSalesEfficiency} checkNumber={this.checkNumber} formateNumber={this.formateNumber} WeakAIbonusSales={this.state.WeakAIbonusSales} text={this.state.text} lang={this.state.lang}/>
         </div>
 
-        {this.state.numberOfClicksIncrease > 10 && <DialogInterface salesLevelOfInvestment={this.state.salesLevelOfInvestment} lang={this.state.lang} text={this.state.text} updateTextBox={this.updateTextBox} />}
+        {this.state.numberOfClicksIncrease > 10 && <DialogInterface  />}
 
         {this.state.hasBoughtAFactory && <DashboardActivity totalPaperclipssold={this.state.totalPaperclipssold} hasBoughtCompetitors={this.state.hasBoughtCompetitors} ref="dashboardActivity" text={this.state.text} lang={this.state.lang}/>}
 
