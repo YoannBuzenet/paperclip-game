@@ -19,7 +19,7 @@ class Dashboard extends Component{
                 <StockOfPaperclips stockOfPaperclips={this.props.stockOfPaperclips} checkNumber={this.props.checkNumber} />
                 <DisplayMoney money = {this.props.money} checkNumber={this.props.checkNumber} /> 
                 {this.props.boughtAnAutomaticMachine && <p className="data-title temporary-class-to-adjust-display" id="paragraphToUpdate">Production <span className="data">{automaticProduction}</span></p>}
-                 {this.props.hasHiredaSalesman && <p className="data-title">Sales <span className="data">{automaticSales}</span></p>}
+                 {this.props.hasHiredaSalesman && <p className="data-title">{this.props.text.gameTitles.sales[this.props.lang]}<span className="data">{automaticSales}</span></p>}
             </div>
         </div>
         );

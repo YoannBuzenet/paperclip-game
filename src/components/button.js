@@ -66,7 +66,7 @@ class Button extends Component{
         onClick={this.handleClick}
         id={this.props.id ? this.props.id : null}
         className={className}>
-            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} name={this.props.name} money={this.props.money} salesman={this.props.salesman} maximumSalesHirable={this.props.maximumSalesHirable} currency={this.props.currency}/>
+            <ButtonSubContent classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} name={this.props.name} money={this.props.money} salesman={this.props.salesman} maximumSalesHirable={this.props.maximumSalesHirable} currency={this.props.currency} lang={this.props.lang} text={this.props.text}/>
         </button>);
     }
 }

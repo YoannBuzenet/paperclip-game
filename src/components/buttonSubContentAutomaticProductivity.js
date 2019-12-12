@@ -38,24 +38,37 @@ class ButtonSubContentAutomaticProductivity extends Component{
         var contentCantBuy = "Maximum Machine reached.";
     }
 
+    //Displaying the right currency (euros or computationnal power)
     var currency;
     if(this.props.currency===undefined){
         currency ="€";
     }
     else if(this.props.currency == 'computational'){
-        currency =" Memory";
+        if(this.props.lang == 'en'){
+            currency =" Memory";
+        }
+        else if(this.props.lang == 'fr'){
+            currency = " Mémoire"
+        }
+        
     }
     else if(this.props.currency == 'paperclips'){
-        currency =" Paperclips";
+        if(this.props.lang == 'en'){
+            currency =" Paperclips";
+        }
+        else if(this.props.lang == 'fr'){
+            currency =" Trombones";
+        }
     }
+    var freePrice = this.props.lang == "en" ? "Free" : "Gratuit";
 
     return (
         <div 
         className={this.props.classNameChild}
         onMouseEnter={this.toggleHover} 
         onMouseLeave={this.toggleHover}
-        style={styleButton}><span className="hover-name">{this.props.name}</span><br />
-    {this.props.cost >0 ? this.props.cost + currency : <strong>Free</strong>}<br/>+ {this.props.machineProductivity * this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild}
+        style={styleButton}><span className="hover-name">{this.props.name[this.props.lang]}</span><br />
+    {this.props.cost >0 ? this.props.cost + currency : <strong>{freePrice}</strong>}<br/>+ {this.props.machineProductivity * this.props.automaticProductivityPerMachine * this.props.machineQuantity}<br />{this.props.contentChild[this.props.lang]}
     {(this.props.money < this.props.cost || this.props.numberOfSmallAutomaticMachines >= this.props.maximumSmallAutomaticMachine) ? <p className="cantAfford">{contentCantBuy}</p> : null}
         </div>
     )}

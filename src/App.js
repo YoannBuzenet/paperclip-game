@@ -506,6 +506,96 @@ class App extends Component{
                   en:"Laboratory"
                 }
               },
+              gameButtons : {
+                developEcommerceWebsiteName : {
+                  fr:"Développer un site e-commerce",
+                  en:"Devellop Ecommerce Website"
+                },
+                developEcommerceWebsiteContent: {
+                  fr:"Augmentez les ventes - Vendez en ligne ! (+20 000 ventes)",
+                  en:"Increase the sales - Sell online ! (+20 000 sales)"
+                },
+                investmentSmallMachine : {
+                  fr:"Machine Mécanique",
+                  en: "Small Machine"
+                },
+                investmentSmallMachineText:{
+                  fr:"Créer davantage (+3 trombones par clic)",
+                  en:"Make some more (+ 3 paperclips per click)"
+                },
+                salesCallACustomerName:{
+                  fr:"Démarchez un nouveau client",
+                  en:"Call a new customer"
+                },
+                salesCallACustomerContent:{
+                  fr:"5 ventes en plus à chaque clic !",
+                  en:"+5 future sales. Take your phone and call !"
+                },
+                investmentAutomaticMachineName: {
+                  fr: "Machine Automatique",
+                  en: "Automatic Machine"
+                },
+                investmentAutomaticMachineContent: {
+                  fr: " trombones par seconde",
+                  en: " paperclips per second)"
+                },
+                investment5AutomaticMachineName: {
+                  fr: "5 Machines automatiques",
+                  en: "5 Automatic Machine"
+                },
+                salesHireSalesman : {
+                  fr:"Embaucher un vendeur",
+                  en:"Hire a salesman"
+                },
+                salesHireSalesmanContent : {
+                  fr:"Développez vos ventes (+10 ventes)",
+                  en:"Develop your sales (+10 sales)"
+                },
+                salesHire5SalesmenName : {
+                  fr:"Embaucher 5 vendeurs",
+                  en:"Hire 5 salesmen"
+                },
+                salesHire5SalesmenContent : {
+                  fr:"Embauchez 5 vendeurs d'un coup.",
+                  en:"Hire 5 salesman in a row."
+                },
+                salesHireAManagerName : {
+                  fr:"Embauchez un manager",
+                  en:"Hire a Manager"
+                },
+                salesHireAManagerContent : {
+                  fr:"Embaucher un manager (embauche un vendeur par seconde)",
+                  en:"Hire a Manager (hires 1 sales every second)"
+                },
+                investInRD : {
+                  fr:"Investir dans la recherche",
+                  en:"Invest in Research"
+                },
+                investInRDContent : {
+                  fr:"Pensez hors du cadre - trouvez d'autres moyens.",
+                  en:"Unlock new possibilities."
+                },
+                buyNewOfficesName : {
+                  fr:"Achetez de nouveaux locaux",
+                  en:"Buy new offices"
+                },
+                buyNewOfficesContent : {
+                  fr:"Plus de place pour plus de vendeurs !",
+                  en:"Hire more sales"
+                },
+                installSoftwareName : {
+                  fr:"Installer un puissant logiciel de gestion.",
+                  en:"Install Management Software"
+                },
+                installSoftwareContent : {
+                  fr:"Avec ce logiciel, nous pourrons mieux gérer notre production (+2000 ventes)",
+                  en:"With software, we will be able to manage all this production. (+2000 sales)"
+                },
+                factoryName : {
+                  fr:"Usine de production",
+                  en:"Factory"
+                }
+              }
               },
               textCurrentlyDisplayedInDialogBox :'',
               indexTextWriter : 0

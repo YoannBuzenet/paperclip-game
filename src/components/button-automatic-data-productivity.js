@@ -40,7 +40,7 @@ class ButtonAutomaticData extends Component{
         onMouseLeave={this.toggleHover}
         onClick={this.handleClick} 
         className={className}>
-            <ButtonSubContentAutomaticProductivity classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} automaticProductivityPerMachine={this.props.automaticProductivityPerMachine} machineQuantity={this.props.machineQuantity} name={this.props.name} machineProductivity={this.props.machineProductivity} money={this.props.money} numberOfSmallAutomaticMachines={this.props.numberOfSmallAutomaticMachines} maximumSmallAutomaticMachine={this.props.maximumSmallAutomaticMachine} currency={this.props.currency}/>
+            <ButtonSubContentAutomaticProductivity classNameChild={this.props.classNameChild} contentChild={this.props.contentChild} onHover={this.state.hover} cost={this.props.cost} automaticProductivityPerMachine={this.props.automaticProductivityPerMachine} machineQuantity={this.props.machineQuantity} name={this.props.name} machineProductivity={this.props.machineProductivity} money={this.props.money} numberOfSmallAutomaticMachines={this.props.numberOfSmallAutomaticMachines} maximumSmallAutomaticMachine={this.props.maximumSmallAutomaticMachine} currency={this.props.currency} lang={this.props.lang}/>
         </button>);
     }
 }
