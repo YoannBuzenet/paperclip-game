@@ -8,6 +8,7 @@ import WorkBox from './components/workBox.js';
 import DashboardActivity from './components/DashboardActivity.js';
 import DialogInterface from './components/DialogInterface.js';
 import Software from './components/Software.js';
+import LanguageAvailable from './components/LanguageAvailable.js';
 
 class App extends Component{
   constructor(props){
@@ -900,7 +901,8 @@ class App extends Component{
               }
               },
               textCurrentlyDisplayedInDialogBox :'',
-              indexTextWriter : 0
+              indexTextWriter : 0,
+              divAllLangageHidden : false,
       }
   this.handleClickIncrease = this.handleClickIncrease.bind(this);      
   this.handleClickDecrease = this.handleClickDecrease.bind(this);    
@@ -932,6 +934,7 @@ class App extends Component{
   this.automaticDiggingDrone = this.automaticDiggingDrone.bind(this);
   this.automaticProduceDrones = this.automaticProduceDrones.bind(this);
   this.automaticProducingFactoriesByDrone = this.automaticProducingFactoriesByDrone.bind(this);
+  this.displayflags = this.displayflags.bind(this);
   }
 
   componentDidMount(){
@@ -2094,13 +2097,30 @@ typeWriter(txt, author, currentLanguage, speed=10) {
   }
 }
 
+displayflags(){
+  console.log(this.state.divAllLangageHidden)
+  this.setState(state => { return ({
+    divAllLangageHidden : !state.divAllLangageHidden
+    });
+  });
+  document.getElementById('all-languages-div').className = this.state.divAllLangageHidden ? 'display-all-langues-available' : 'display-all-langues-available display';
+}
+
 
   render(){
     const {soldAtLeastOnePaperclip} = this.state
     return (<div className="App">
 
     <header>
-  <p className="pageTitle">{this.state.text.gameTitles.mainTitle[this.state.lang]}</p><p className="choose-language"><img src="./pictures/ukflagsmall.png"></img><span className="img-decoration"></span></p>
+      <p className="pageTitle">{this.state.text.gameTitles.mainTitle[this.state.lang]}</p>
+      <div className="choose-language" onClick={this.displayflags}>
+        <img src="./pictures/ukflagsmall.png"></img>
+        <span className="img-decoration"></span>
+        <div className="display-all-langues-available" id="all-languages-div">
+          <LanguageAvailable img="./pictures/ukflagsmall.png" lang='en'/>
+          <LanguageAvailable img="./pictures/frenchflagsmall.png" lang="fr"/>
+        </div>
+      </div>
     </header>
 
     <div className="main-content">
