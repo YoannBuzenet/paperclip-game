@@ -794,7 +794,7 @@ class App extends Component{
                   en : "Display any information on them everywhere : every screen available. We need maximum efficiency. This will give us a few more days."
                 },
                 createTheSwarmName : {
-                  fr : "Créer une nuée de drones..",
+                  fr : "Créer une nuée de drones.",
                   en : "Create more drones."
                 },
                 createTheSwarmContent : {
@@ -1645,7 +1645,7 @@ formateNumber(number, divider, unit){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasCreatedTheSwarm : true,
-          numberOfDrone : state.numberOfDrone + 100000000
+          numberOfDrone : state.numberOfDrone + 1000000000
             });
           }), this.updateTextBox);
       }

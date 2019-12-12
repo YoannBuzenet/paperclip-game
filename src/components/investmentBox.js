@@ -393,7 +393,7 @@ class InvestmentBox extends Component{
             <Button onClickProp={this.props.investInAI} name={this.props.text.gameButtons.targetEveryScientistName} picture="./pictures/target.png" classNameButton={classTargetScientistsButton} cost={this.props.targetingEveryScientistCost} classNameChild="info-target-scientists-button" contentChild={this.props.text.gameButtons.targetEveryScientistContent} money={this.props.money} machineType="target-scientists" currency='computational' lang={this.props.lang}/>
         </div>
         <div>
-            <Button onClickProp={this.props.investInAI} name={this.props.text.gameButtons.createTheSwarmName} picture="./pictures/swarm.png" classNameButton={classCreatedSwarmButton} cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild={this.props.text.gameButtons.createTheSwarmContent} money={this.props.money} machineType="swarm-of-drones" currency='computational'/>
+            <Button onClickProp={this.props.investInAI} name={this.props.text.gameButtons.createTheSwarmName} picture="./pictures/swarm.png" classNameButton={classCreatedSwarmButton} cost={this.props.swarmCost} classNameChild="info-swarm-button" contentChild={this.props.text.gameButtons.createTheSwarmContent} money={this.props.money} machineType="swarm-of-drones" lang={this.props.lang} currency='computational'/>
         </div>
         </div>
             </div>}
