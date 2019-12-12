@@ -2100,7 +2100,7 @@ typeWriter(txt, author, currentLanguage, speed=10) {
     return (<div className="App">
 
     <header>
-  <p className="pageTitle">{this.state.text.gameTitles.mainTitle[this.state.lang]}</p>
+  <p className="pageTitle">{this.state.text.gameTitles.mainTitle[this.state.lang]}</p><div className="right-div-header"><p className="choose-language">Choose your language</p><div className="img-decoration"><img src="./pictures/arrow-down.png" id="img-arrow-menu"></img></div></div>
     </header>
 
     <div className="main-content">

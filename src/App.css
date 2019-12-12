@@ -58,8 +58,51 @@ header p.pageTitle {
 }
 
 /***************************
+**********HEADER**********
+***************************/
+header{
+  display : flex;
+  align-items: first baseline;
+  justify-content: space-between;
+  }
+
+.choose-language {
+  margin-right : 100px;
+}
+
+.right-div-header {
+  position :relative;
+}
+
+.img-decoration {
+  position : absolute;
+  margin-left : 5px;
+  height : 25px;
+  width : 25px;
+  top : 18px;
+  left : 170px;
+  background-color: grey;
+  border-radius: 100%;
+  display: inline-block;
+  cursor : pointer;
+}
+
+#img-arrow-menu {
+  height : 20px;
+  position : absolute;
+  top : 3px;
+  left : 2px;
+  cursor : pointer;
+}
+
+.img-decoration:hover {
+  background-color: black;
+}
+
+/***************************
 *******GLOBAL LAYOUT*******
 ***************************/
+
 .main-content {
   display: flex;
   flex-wrap: wrap;
