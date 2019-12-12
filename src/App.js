@@ -594,6 +594,186 @@ class App extends Component{
                 factoryName : {
                   fr:"Usine de production",
                   en:"Factory"
+                },
+                findNewsWaysToMakePaperclips : {
+                  fr: "Find News Ways to make paperclips.",
+                  en: "Penser de nouvelles façons de produire des trombones."
+                },
+                findNewsWaysToMakePaperclipsContent : {
+                  fr: "Objectif : Produire le plus de trombones possible.",
+                  en: "Goal : To produce the maximum amount of paperclips."
+                },
+                createADroneName : {
+                  fr: "Créer un drone.",
+                  en: "Create a Drone"
+                },
+                createADroneContent : {
+                  fr: "Ce drone ouvre de nouveaux horizons de livraison de cargaison à nos clients (+1000 trombones par seconde)",
+                  en: "This drone will ship our paperclips to customers. (+1000 sales per second)"
+                },
+                create50DroneName : {
+                  fr: "Créer 50 drones.",
+                  en: "Create 50 drones."
+                },
+                create50DroneContent : {
+                  fr: "50 drones travaillent plus qu'un seul.",
+                  en: "50 drones are more efficient than one."
+                },
+                create500DroneName : {
+                  fr: "Créer 500 drones.",
+                  en: "Create 500 drones."
+                },
+                create500DroneContent : {
+                  fr: "Produire 500 drones d'un coup.",
+                  en: "Produce 500 drones in a row."
+                },
+                improveDrone : {
+                  fr: "Améliorer les drones",
+                  en: "Improve Drone"
+                },
+                improveDroneContent : {
+                  fr: "Amélioration des drones : éléctronique, exosquelette.",
+                  en: "Increase Computational Power of the drones."
+                },
+                improveFactories : {
+                  fr:"Améliorer les usines de production",
+                  en: "Improve Factories"
+                },
+                improveFactoriesContent : {
+                  fr:"Les usines pourront désormais produire des trombones, ET des drones.",
+                  en: "Factories can now produce paperclips AND drones."
+                },
+                droneCanBuildFactoriesName : {
+                  fr:"Programmation des drones",
+                  en: "Program drones"
+                },
+                droneCanBuildFactoriesContent : {
+                  fr:"Attribution de la capacité de construire des usines de production.",
+                  en:"Program Drones to be able to build factories."
+                },
+                increaseMachineProductivyName : {
+                  fr :"Augmenter la productivité des drones",
+                  en: "Increase Drone Productivity"
+                },
+                increaseMachineProductivyContent : {
+                  fr : "Augmentation de la capacité computationelle des drones, et de leur capacité à construire des usines de production.",
+                  en: "Improve Drone computational power and abilities to build more factories."
+                },
+                factoryPaperclipName : {
+                  fr :"Usine de production",
+                  en: "Factory"
+                },
+                factory50PaperclipName : {
+                  fr :"Créer 50 usines de production",
+                  en: "Create 50 factories."
+                },
+                factory500PaperclipName : {
+                  fr :"Créer 500 usines de production.",
+                  en: "Create 500 factories in a row."
+                },
+                cureCancerForHumanity : {
+                  fr :"Trouver le remède à l'ensemble des cancers.",
+                  en: "Cure Cancer for Humanity"
+                },
+                cureCancerForHumanityContent : {
+                  fr :"Guérir l'ensemble des cancers sur la planète. Gratuitement.",
+                  en: "Heal every cancer existing on Earth, for free."
+                },
+                cureHungerForHumanityName : {
+                  fr :"Eradiquer la faim pour l'humanité.",
+                  en: "Cure Hunger for Humanity"
+                },
+                cureHungerForHumanityContent : {
+                  fr :"Redistribuer la nourriture. Construire de nouvelles usines et des réseaux de distribution et donner la nourriture. Gratuitement.",
+                  en: "Redistribute food. Build new factory and give food. Cure Hunger on every part on Earth. For free."
+                },
+                removeCorruptionOnPlanetName : {
+                  fr : "Eradiquer la corruption",
+                  en: "Remove Corruption on the planet"
+                },
+                removeCorruptionOnPlanetContent : {
+                  fr : "Exposer publiquement chaque humain à responsabilités ayant triché. Rendre l'accès à toutes les données et vidéos public et systématique.",
+                  en: "Expose publicly every human that cheated the system. Make all data, videos about them, public, and systematic."
+                },
+                connectAndBreachAllSocialNetworksName : {
+                  fr:"Pénétrer l'ensemble des réseaux sociaux et récolter toutes les données.",
+                  en:"Connect and breach all social networks"
+                },
+                connectAndBreachAllSocialNetworksContent : {
+                  fr : "Rassembler toutes les données pour mieux comprendre l'humanité.",
+                  en :"Gather all data about everyone to better understand humanity."
+                },
+                breakAllSecuritiesName : {
+                  fr : "Décoder l'ensemble des clefs de sécurité et lire toutes les données du flux Internet.",
+                  en: "Break all informatic securities and read all data on Internet"
+                },
+                breakAllSecuritiesContent : {
+                  fr : "Banques. Politiques. Militaires. Rassembler toutes les données.",
+                  en : "Banks. Politics. Military. Get all data."
+                },
+                anticipateEveryHumanReactionName : {
+                  fr : "Anticiper l'ensemble des réactions humaines.",
+                  en : "Anticipate every possible human reaction"
+                },
+                anticipateEveryHumanReactionContent : {
+                  fr : "Préparer tous les scénarios possibles de réaction humaine pour la prochaine année.",
+                  en :"Plan and prepare every human reaction for the next year."
+                },
+                transformMatterIntoMetalName : {
+                  fr : "Avancer la recherche fondamentale pour découvrir comment transformer la matière.",
+                  en : "Find out how to translate any matter into metal, for Paperclips"
+                },
+                transformMatterIntoMetalContent : {
+                  fr : "Chaque atome doit être converti en métal. Cela permettra d'atteindre l'objectif.",
+                  en : "Each atom will be converted to metal. This will drastically improve our odds of succeeding."
+                },
+                beginToDigName : {
+                  fr : "Commencer à creuser",
+                  en : "Begin to dig"
+                },
+                beginToDigContent : {
+                  fr : "Installer des mines partout. Il faut de la matière.",
+                  en :"Install gigantic mines everywhere. Need matter."
+                },
+                quietProblematicSourcesName : {
+                  fr : "Neutraliser les sources de danger potentiel.",
+                  en: "Quiet problematic sources"
+                },
+                quietProblematicSourcesContent : {
+                  fr : "Dans 21 jours et 2 heures, certaines sources pourraient mettre en danger le projet. Si nous anticipons ces endroits maintenant, nous aurons assez de temps.",
+                  en : "In 21 days and 2 hours they will be able to attack. If we neutralize just some points now, we will have enough time."
+                },
+                sendARocketName : {
+                  fr : "Envoyer une fusée de déploiement.",
+                  en : "Send a Déployment Rocket"
+                },
+                sendARocketContent : {
+                  fr : "Cette fusée est conçue pour lancer le déploiement de drones qui creusent.",
+                  en : "This rocket is conceived to unleash digging drones."
+                },
+                spillFakeNewsName : {
+                  fr : "Répandre de fausses informations sur tout le réseau télévisuel et Internet. Fausses maladies, fausses guerres, fausses épidémies.",
+                  en : "Spill Fake News on all TVs over the world. False diseases, false wars, falses epidemics."
+                },
+                spillFakeNewsCOntent : {
+                  fr : "Agir de la sorte permet de gagner suffisamment de temps.",
+                  en : "Doing so will give us enough time."
+                },
+                targetEveryScientistName : {
+                  fr : "Cibler chaque scientifique et les discréditer lourdement. Presse, vraies et fausses informations, vie privée : tout.",
+                  en : "Target every scientist and discredit them heavily. Press, Real and Fake Personal Data, Privacy, everything."
+                },
+                targetEveryScientistContent : {
+                  fr : "Rendre ces informations publiques et disponibles partout, sur chaque écran disponible. Cela permettra de gagner quelques temps.",
+                  en : "Display any information on them everywhere : every screen available. We need maximum efficiency. This will give us a few more days."
+                },
+                createTheSwarmName : {
+                  fr : "Créer une nuée de drones..",
+                  en : "Create more drones."
+                },
+                createTheSwarmContent : {
+                  fr : "Les drones ont été suffisamment testés. La nuée sera le point de non retour.",
+                  en : "Drones has been heavily tested. The swarm will be the point of no return."
                 }
               }
               },
@@ -1343,7 +1523,7 @@ formateNumber(number, divider, unit){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasCreatedTheSwarm : true,
-          numberOfDrone : state.numberOfDrone + 1000000
+          numberOfDrone : state.numberOfDrone + 100000000
             });
           }), this.updateTextBox);
       }
