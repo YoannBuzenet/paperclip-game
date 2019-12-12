@@ -14,9 +14,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 1000000000,
-          money : 400000000,
-          totalComputationalPowerAccumulated : 10000000,
+          count : 0,
+          money : 4,
+          totalComputationalPowerAccumulated : 0,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -106,7 +106,7 @@ class App extends Component{
           hasCuredHungerForHumanity : false,
           cureHungerCost : 100000,
           hasBegunToDig : false,
-          digCost : 1000000,
+          digCost : 100000000,
           droneCost : 1000,
           numberOfDrone : 0,
           droneSalesEfficiency : 1000,
@@ -116,20 +116,20 @@ class App extends Component{
           molecularMatterCost : 300000,
           hasRemovedCorruption : false,
           removeCorruptionCost : 50000,
-          rocketCost : 500000,
+          rocketCost : 100000000,
           hasConnectedAndBreachedAllSocialNetworks : false,
           breachSocialMediaCost : 200000,
           hasSpilledFakedNewsAllOverTheWorld : false,
-          spillFakeNewsCost : 500000,
+          spillFakeNewsCost : 5000000,
           hasTargetedEveryScientistOnEarth : false,
-          targetingEveryScientistCost : 500000,
+          targetingEveryScientistCost : 5000000,
           canCreate50drones : false,
           canCreate500drones : false,
           hasCreatedTheSwarm : false,
           hasLaunchedARocket : false,
           hasBoughtAutomatedSellingSoftware : false,
           automatedSellingSoftwarePrice : 150,
-          swarmCost : 5000000,
+          swarmCost : 50000000,
           hasFoundNewsWaysToMakePaperclips : false,
           madeEnoughDrone : false,
           madeEnoughFactories : false,
@@ -1654,7 +1654,7 @@ formateNumber(number, divider, unit){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasCreatedTheSwarm : true,
-          numberOfDrone : state.numberOfDrone + 1000000000
+          numberOfDrone : state.numberOfDrone + 100000000000
             });
           }), this.updateTextBox);
       }
