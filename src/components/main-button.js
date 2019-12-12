@@ -26,9 +26,9 @@ class MainButton extends Component{
 
     return (
     <button onClick={this.props.increase} className="main-button" id="main-button-id">
-        <p className="main-button-firstline">Create</p> <ul className="main-button-number" id="ul-main-number">
+        <p className="main-button-firstline">{this.props.text.mainButtons.mainButtonCreate[this.props.lang]}</p> <ul className="main-button-number" id="ul-main-number">
             <li>{this.props.productivity}</li>
-            </ul><p className="main-button-secondline">{this.props.firstMachine ? 'paperclips' : 'paperclip'}</p>
+            </ul><p className="main-button-secondline">{this.props.firstMachine ? this.props.text.mainButtons.mainButtonPaperclipMultiple[this.props.lang] : this.props.text.mainButtons.mainButtonPaperclipSingle[this.props.lang]}</p>
     </button>);
     }
 }

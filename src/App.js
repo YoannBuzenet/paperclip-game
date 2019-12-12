@@ -15,7 +15,7 @@ class App extends Component{
       this.state = {
           count : 500000000,
           money : 500000000,
-          totalComputationalPowerAccumulated : 500000,
+          totalComputationalPowerAccumulated : 500000000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -114,7 +114,7 @@ class App extends Component{
           hasFoundOutHowToTransformMolecularMatterIntoPaperclip : false,
           molecularMatterCost : 500000,
           hasRemovedCorruption : false,
-          removeCorruptionCost : 500000,
+          removeCorruptionCost : 50000,
           rocketCost : 500000,
           hasConnectedAndBreachedAllSocialNetworks : false,
           breachSocialMediaCost : 500000,
@@ -333,7 +333,7 @@ class App extends Component{
                 en: "Goal nearly achieved." 
               },
               afterTheSwarm: {
-                fr: "Transformation du sol en drone. La planète est terraformée.",
+                fr: "Transformation du sol en drones. La planète est en voie de terraformation.",
                 en: "Ground getting transformed into drones. Planet is nearly terraformed." 
               },
               afterTheRocket: {
@@ -343,6 +343,14 @@ class App extends Component{
               EarthIsMetal: {
                 fr: "La Terre est désormais prête à servir de base de lancement des fusées et sondes dans l'espace.",
                 en: "Earth is now ready to serve as a lauching pad for probes and rockets." 
+              },
+              connectingToCloud : {
+                fr : "Connection...",
+                en : "Connecting..."
+              },
+              connectedToCloud : {
+                fr : "Connecté",
+                en : "Connected"
               },
               gameTitles: {
                 mainTitle : {
@@ -504,6 +512,24 @@ class App extends Component{
                 softwareLaboratory : {
                   fr:"Laboratoire",
                   en:"Laboratory"
+                }
+              },
+              mainButtons : {
+                mainButtonCreate : {
+                  fr : "Créer",
+                  en : "Create"
+                },
+                mainButtonPaperclipSingle : {
+                  fr : "trombone",
+                  en : "paperclip"
+                },
+                mainButtonPaperclipMultiple : {
+                  fr : "trombones",
+                  en :"paperclips"
+                },
+                sellButtonSell : {
+                  fr : "Vendre",
+                  en : "Sell"
                 }
               },
               gameButtons : {
@@ -774,6 +800,102 @@ class App extends Component{
                 createTheSwarmContent : {
                   fr : "Les drones ont été suffisamment testés. La nuée sera le point de non retour.",
                   en : "Drones has been heavily tested. The swarm will be the point of no return."
+                },
+                softwareDeepLearningName : {
+                  fr : "Utiliser le Deep Learning",
+                  en : "Implement Deep Learning in Software"
+                },
+                softwareDeepLearningContent : {
+                  fr : "Le Deep Learning permettra d'améliorer considérablement les analyses du logiciel.",
+                  en : "Increase the power of the software."
+                },
+                connectToEveryMarketPlaceName : {
+                  fr : "Se connecter à toutes les places de marché en ligne",
+                  en : "Connect to every marketplace on the web"
+                },
+                connectToEveryMarketPlaceContent : {
+                  fr : "Créer toutes les connections (+30 000 ventes)",
+                  en : "Create all the connections. (+30 000 sales)"
+                },
+                improveAutomaticMachineName : {
+                  fr : "Améliorer les machines automatiques",
+                  en : "Improve the automatic machines"
+                },
+                improveAutomaticMachineContent : {
+                  fr : "Doublez la productivité des machines par x2",
+                  en : "Increase the productivity of all your automatic machines by x2"
+                },
+                weakAIName : {
+                  fr : "Développer une intelligence artificielle faible.",
+                  en : "Develop Weak Artificial Intelligence"
+                },
+                weakAIContent : {
+                  fr :"C'est un programme ultra-spécialisé, imbattable dans son domaine de compétence. Double la production et les ventes.",
+                  en :"Double production and sales. Centralize all algorithms in one."
+                },
+                automatedSellingSoftwareName : {
+                  fr : "Développer un système de vente automatisé",
+                  en : "Develop an Automated Selling Software"
+                },
+                automatedSellingSoftwareContent : {
+                  fr : "Permet de livrer automatiquement les fournisseurs (+40 000 ventes)",
+                  en : "Setup automatically every sales. (+40 000 sales)"
+                },
+                buyOurCompetitorName : {
+                  fr : "Achetez tous nos concurrents.",
+                  en : "Buy all our competitors"
+                },
+                buyOurCompetitorContent : {
+                  fr : "Après modélisation de leur capacités, nos meilleurs marges nous permettent d'emprunter sur quelques décennies et de payer sans problèmes.",
+                  en : "Our margin are far higher than them. We will easily pay the interests during the next decades."
+                },
+                developGeneralAIName : {
+                  fr : "Développer une Intelligence Artificielle Générale.",
+                  en : "Develop General Artificial Intelligence"
+                },
+                developGeneralAIContent : {
+                  fr : "Avec davantage d'autonomie, le logiciel pourra nous donner plus d'informations sur comment améliorer nos marges.",
+                  en : "With more autonomy, the software will tell us how to make a better business."
+                },
+                increaseComputationnalPowerName : {
+                  fr : "Améliorer les processeurs",
+                  en : "Increase Computational Power"
+                },
+                increaseComputationnalPowerContent : {
+                  fr : "Améliorer le potentiel computationnel de nos ordinateurs (+1 Puissance Computationelle)",
+                  en : "Increase the power of our computers. (+1 Computational power)"
+                },
+                growDataCenterName : {
+                  fr : "Accroitre le Centre des Serveurs",
+                  en : "Grow the data center"
+                },
+                frowDataCenterContent : {
+                  fr : "Améliorer drastiquement nos capacités de calcul (+10 Puissance Computationelle)",
+                  en : "Increase the power of our computers. (+10 Computational power)"
+                },
+                connectAIToTheCloudName : {
+                  fr : "Connecter l'Intelligence Artificielle à Internet",
+                  en : "Connect AI to the Cloud"
+                },
+                connectAIToTheCloudContent : {
+                  fr : "Permettre au logiciel de digérer davantage de données.",
+                  en :"Give more knowledge to the computer"
+                },
+                terraformIslandIntoDataCentersName : {
+                  fr : "Terraformer des iles et archipels en Centre de Serveurs.",
+                  en : "Terraform islands into Data Centers"
+                },
+                terraformIslandIntoDataCentersContent : {
+                  fr : "Acquérir davantage de capacité de calcul.",
+                  en : "Get Enough Computational Power."
+                },
+                masterQuantumComputerName : {
+                  fr : "Dominer l'ordinateur quantique.",
+                  en : "Master Quantum Computer"
+                },
+                masterQuantumComputerContent : {
+                  fr : "Cette découverte exceptionelle nous permettra d'avoir des machines bien plus puissantes. (+1000 de Mémoire)",
+                  en : "This breakthrough computer is going to change our way to work. (+1000 Memory)"
                 }
               }
               },
@@ -1021,14 +1143,14 @@ formateNumber(number, divider, unit){
     let div3 = this.createAnAbsoluteElement('div','black', 'absolute', '50%', '70%', '0%', '0%', '5', 'blinking');
     let div4 = this.createAnAbsoluteElement('div','black', 'absolute', '60%', '0%', '0%', '30%', '5', 'blinking-very-slowly');
   
-    let mainParagraph4 = this.createAnAbsoluteElement('p', '', 'absolute', '60%', '80%', '40%', '20%', '6', 'apocalypse', 'Connecting...', 'white', '1.6rem');
-    let mainParagraph5 = this.createAnAbsoluteElement('p', '', 'absolute', '50%', '50%', '50%', '50%', '6', 'apocalypse', 'Connecting....', 'white', '1.6rem');
-    let mainParagraph8 = this.createAnAbsoluteElement('p', '', 'absolute', '70%', '', '', '30%', '6', 'central', 'Connecting...', 'white', '8rem');
+    let mainParagraph4 = this.createAnAbsoluteElement('p', '', 'absolute', '60%', '80%', '40%', '20%', '6', 'apocalypse', this.state.text.connectingToCloud[this.state.lang], 'white', '1.6rem');
+    let mainParagraph5 = this.createAnAbsoluteElement('p', '', 'absolute', '50%', '50%', '50%', '50%', '6', 'apocalypse', this.state.text.connectingToCloud[this.state.lang], 'white', '1.6rem');
+    let mainParagraph8 = this.createAnAbsoluteElement('p', '', 'absolute', '70%', '', '', '30%', '6', 'central', this.state.text.connectingToCloud[this.state.lang], 'white', '8rem');
 
 
     setTimeout(()=>{
-      let mainParagraph = this.createAnAbsoluteElement('p', '', 'absolute', '50%', '50%', '50%', '50%', '6', 'apocalypse', 'Connecting', 'white', '1.6rem');
-      let mainParagraph3 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '20%', '90%', '60%', '6', 'apocalypse', 'Connecting..', 'white', '8rem');
+      let mainParagraph = this.createAnAbsoluteElement('p', '', 'absolute', '50%', '50%', '50%', '50%', '6', 'apocalypse', this.state.text.connectingToCloud[this.state.lang], 'white', '1.6rem');
+      let mainParagraph3 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '20%', '90%', '60%', '6', 'apocalypse', this.state.text.connectingToCloud[this.state.lang], 'white', '8rem');
       let div5 = this.createAnAbsoluteElement('div','black', 'absolute', '80%', '15%', '15%', '80%', '5', 'blinking-very-slowly');
       
       setTimeout(()=>{
@@ -1039,7 +1161,7 @@ formateNumber(number, divider, unit){
     }, 500)
 
     setTimeout(()=>{
-      let mainParagraph2 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '80%', '80%', '10%', '6', 'apocalypse', 'Connecting.', 'white', '1.6rem');
+      let mainParagraph2 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '80%', '80%', '10%', '6', 'apocalypse', this.state.text.connectingToCloud[this.state.lang], 'white', '1.6rem');
       let div7 = this.createAnAbsoluteElement('div','black', 'absolute', '80%', '20%', '15%', '75%', '5', 'blinking-very-slowly');
       setTimeout(()=>{
         mainParagraph2.remove();
@@ -1048,7 +1170,7 @@ formateNumber(number, divider, unit){
     }, 1000)
 
     setTimeout(()=>{
-      let mainParagraph6 = this.createAnAbsoluteElement('p', '', 'absolute', '30%', '', '', '50%', '6', 'central', 'Connecting', 'white', '10rem');
+      let mainParagraph6 = this.createAnAbsoluteElement('p', '', 'absolute', '30%', '', '', '50%', '6', 'central', this.state.text.connectingToCloud[this.state.lang], 'white', '10rem');
       let div6 = this.createAnAbsoluteElement('div','black', 'absolute', '20%', '15%', '75%', '80%', '5', 'blinking-very-slowly');
       setTimeout(()=>{
         mainParagraph6.remove();
@@ -1057,14 +1179,14 @@ formateNumber(number, divider, unit){
     }, 1000)
 
     setTimeout(()=>{
-      let mainParagraph7 = this.createAnAbsoluteElement('p', '', 'absolute', '40%', '', '', '30%', '6', 'central', 'Connecting...', 'white', '25rem');
+      let mainParagraph7 = this.createAnAbsoluteElement('p', '', 'absolute', '40%', '', '', '30%', '6', 'central', this.state.text.connectingToCloud[this.state.lang], 'white', '25rem');
       setTimeout(()=>{
         mainParagraph7.remove();
       }, 2500)
     }, 1500)
 
     setTimeout(()=>{
-      let mainParagraph8 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '', '', '25%', '7', 'fadein', 'Connected', 'white', '20rem');
+      let mainParagraph8 = this.createAnAbsoluteElement('p', '', 'absolute', '10%', '', '', '25%', '7', 'fadein', this.state.text.connectedToCloud[this.state.lang], 'white', '20rem');
       let bigDiv = this.createAnAbsoluteElement('div','black', 'absolute', '0%', '0%', '0%', '0%', '6', 'undefined');
       setTimeout(()=>{
         mainParagraph8.remove();

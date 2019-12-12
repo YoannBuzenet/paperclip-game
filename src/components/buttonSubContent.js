@@ -63,7 +63,6 @@ class ButtonSubContent extends Component{
     }
     var freePrice = this.props.lang == "en" ? "Free" : "Gratuit";
     
-
     return (
         <div 
         className={this.props.classNameChild+" hover-button"} 
