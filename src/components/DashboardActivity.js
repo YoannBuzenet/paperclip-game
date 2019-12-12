@@ -7,32 +7,32 @@ class DashboardActivity extends Component{
         this.state = {
             data : [
                 {
-                  "id": "Our Company",
-                  "label": "Our Company",
+                  "id": this.props.text.gameTitles.competitor1[this.props.lang],
+                  "label": this.props.text.gameTitles.competitor1[this.props.lang],
                   "value": this.props.totalPaperclipssold,
                   "color": "hsl(151, 70%, 50%)"
                 },
                 {
-                  "id": "The Berlin Company",
-                  "label": "The Berlin Company",
+                  "id": this.props.text.gameTitles.competitor2[this.props.lang],
+                  "label": this.props.text.gameTitles.competitor2[this.props.lang],
                   "value": this.props.totalPaperclipssold*4,
                   "color": "hsl(56, 70%, 50%)"
                 },
                 {
-                  "id": "Paris Paperclips",
-                  "label": "Paris Paperclips",
+                  "id": this.props.text.gameTitles.competitor3[this.props.lang],
+                  "label": this.props.text.gameTitles.competitor3[this.props.lang],
                   "value": this.props.totalPaperclipssold*5,
                   "color": "hsl(288, 70%, 50%)"
                 },
                 {
-                  "id": "Madrid Paperclips",
-                  "label": "Madrid Paperclips",
+                  "id": this.props.text.gameTitles.competitor4[this.props.lang],
+                  "label": this.props.text.gameTitles.competitor4[this.props.lang],
                   "value": this.props.totalPaperclipssold*6,
                   "color": "hsl(299, 70%, 50%)"
                 },
                 {
-                  "id": "London Metal",
-                  "label": "London Metal",
+                  "id": this.props.text.gameTitles.competitor5[this.props.lang],
+                  "label": this.props.text.gameTitles.competitor5[this.props.lang],
                   "value": this.props.totalPaperclipssold*20,
                   "color": "hsl(165, 70%, 50%)"
                 }
@@ -139,12 +139,12 @@ class DashboardActivity extends Component{
 
         return (
         <div className="activity-dashboard interface-div">
-            <h2>MARKET ACTIVITY</h2>
+            <h2>{this.props.text.gameTitles.dashboardActivityTitle[this.props.lang]}</h2>
             <div className="activity-content">
                 <div className="activity-kpi">
-                    <p className="containsHint" className="data-title">Market Share<span className="data">{Math.round(this.state.newMarketShare*100)}%</span><span className="hint">(based on sales)</span></p>
-                  <p className="data-title">Number of competitors<span className="data">{this.state.numberOfCompetitor}</span></p>
-                    <p className="data-title">Marketshare Growth{(this.state.newMarketShare > 0 && this.state.formerMarketShare > 0)  ? <span className="data">{Math.round(((this.state.newMarketShare-this.state.formerMarketShare)/this.state.formerMarketShare)*100)} %</span> : <span> Calculating...</span> }</p>
+                    <p className="containsHint" className="data-title">{this.props.text.gameTitles.marketShare[this.props.lang]}<span className="data">{Math.round(this.state.newMarketShare*100)}%</span><span className="hint">{this.props.text.gameTitles.basedOnSales[this.props.lang]}</span></p>
+                  <p className="data-title">{this.props.text.gameTitles.numberOfCompetitors[this.props.lang]}<span className="data">{this.state.numberOfCompetitor}</span></p>
+                    <p className="data-title">{this.props.text.gameTitles.growth[this.props.lang]}{(this.state.newMarketShare > 0 && this.state.formerMarketShare > 0)  ? <span className="data">{Math.round(((this.state.newMarketShare-this.state.formerMarketShare)/this.state.formerMarketShare)*100)} %</span> : <span> Calculating...</span> }</p>
                 </div>
 
                 <div className="pie-Chart">

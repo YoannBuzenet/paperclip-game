@@ -288,11 +288,11 @@ class InvestmentBox extends Component{
 
     return (
     <div>{!this.props.cloudConnectionEstablished && <div className={className}> 
-        <h2>INVESTMENT</h2>
+    <h2>{this.props.text.gameTitles.investment[this.props.lang]}</h2>
         <div className="padding-div">
 
         <div>
-        <h3>MACHINES</h3>
+    <h3>{this.props.text.gameTitles.machines[this.props.lang]}</h3>
             <div>
                 <Button onClickProp={this.props.buyAMachine} money={this.props.money} machineProductivity={3} picture="./pictures/small-machine.png" classNameButton="small-machines-button menu-button investment-button" cost={5} classNameChild="info-small-machines-button" contentChild="Make some more (+ 3 paperclips per click)" isManual={true} machineQuantity={1} name="Small Machine" machineType="smallMachine" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} containsAnimation={true} id='small-Machine-Button' textAnimation="+3" animationIdTarget='ul-main-number' animationTypeOfElementCreated='li' animationCSSClass='graphInputOrange'/>
             </div>
@@ -312,7 +312,7 @@ class InvestmentBox extends Component{
 
     {this.props.numberOfSmallMachines > 0 ?
         <div>
-            <h3 className="sales-title">SALES</h3>
+    <h3 className="sales-title">{this.props.text.gameTitles.sales[this.props.lang]}</h3>
     <Button onClickProp={this.props.investInSales} name="Call a new customer" picture="./pictures/euros_symbol.png" classNameButton="invest-marketing-button menu-button investment-button" cost={this.props.salesCost} classNameChild="info-invest-marketing-button" contentChild="+5 future sales. Take your phone and call !" createAndRemoveGraphicEffect={this.props.createAndRemoveGraphicEffect} money={this.props.money} containsAnimation={true} id='sales-button' textAnimation="+ 5" animationIdTarget='sell-area' animationTypeOfElementCreated='li' animationCSSClass='graphInputBig'/>
         </div>
     : null}
@@ -328,7 +328,7 @@ class InvestmentBox extends Component{
     : null}
 
     {this.props.salesLevelOfInvestment > 4 &&
-     <div><h3>RESEARCH & DEVELOPMENT</h3>
+     <div><h3>{this.props.text.gameTitles.researchAndDevelopment[this.props.lang]}</h3>
         <div><Button onClickProp={this.props.investRD} name="Invest in Research" picture="./pictures/invest-in-research-and-development.png" classNameButton={classNameRDButton} cost={this.props.rdCost} classNameChild="info-invest-rd-button" contentChild="Unlock new possibilities." money={this.props.money}/>
         {this.props.rdLevelOfInvestment > 4 && <Button onClickProp={this.props.buyOffice} name="Buy new offices" picture="./pictures/new_office.png" classNameButton="office-button menu-button investment-button" cost={this.props.officeCost} classNameChild="info-buy-office-button" contentChild="Hire more sales" money={this.props.money} />}
     
@@ -339,7 +339,7 @@ class InvestmentBox extends Component{
     </div></div>}
 
 {this.props.rdLevelOfInvestment > 4
-    ? <div><h3>EXPANSION</h3><div>
+    ? <div><h3>{this.props.text.gameTitles.expansion[this.props.lang]}</h3><div>
     <ButtonAutomaticData onClickProp={this.props.buyAMachine} money={this.props.money} name="Factory" picture="./pictures/factory.png" classNameButton="factory-button menu-button investment-button" cost={this.props.factoryCost} classNameChild="info-buy-factory-button" contentChild=" paperclips per second)" isManual={false} machineType="factory" machineProductivity={10000} machineQuantity={1} automaticProductivityPerMachine={this.props.productivyPerAutomaticMachine}/></div></div>
     : null}
     </div>
@@ -347,12 +347,12 @@ class InvestmentBox extends Component{
      
 
         {this.props.cloudConnectionEstablished && <div className={className}>
-            <h2 className="AI-context">EXECUTION</h2>
+            <h2 className="AI-context">{this.props.text.gameTitles.aiExecution[this.props.lang]}</h2>
             <div className="padding-div">
 
             <div className={weightEarth}>
-                <p className="data-title">Earth to Harvest : <span className="data">{this.props.checkNumber(this.props.weightOfTheEarth)} kg</span></p>
-                <p className="data-title">Drones currently digging : <span className="data">{this.props.checkNumber(this.props.numberOfDrone)}</span></p>
+                <p className="data-title">{this.props.text.gameTitles.harvestingEarth[this.props.lang]}<span className="data">{this.props.checkNumber(this.props.weightOfTheEarth)} kg</span></p>
+                <p className="data-title">{this.props.text.gameTitles.droneCurrentlyDigging[this.props.lang]}<span className="data">{this.props.checkNumber(this.props.numberOfDrone)}</span></p>
             </div>
 
         <div>

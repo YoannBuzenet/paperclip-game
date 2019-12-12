@@ -25,6 +25,7 @@ p {
 
 h2,h3 {
   font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
 }
 
 h2 {
