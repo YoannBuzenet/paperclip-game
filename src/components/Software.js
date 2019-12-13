@@ -178,13 +178,13 @@ class Software extends Component{
         }
         //Software Div update 
         var classSoftwareGlobal;
-        if(this.props.terraformingIslandIntoServers){
+        if(this.props.terraformingIslandIntoServers && this.props.automaticProductionImprovment >= 4){
             classSoftwareGlobal = "doNOTdisplay"
         }
         else if(this.props.droneLevelOfInvestment ==2){
             classSoftwareGlobal = ""
         }
-        else if(this.props.cloudConnectionEstablished && !this.props.terraformingIslandIntoServers){
+        else if(this.props.cloudConnectionEstablished && this.props.automaticProductionImprovment >= 4 && !this.props.terraformingIslandIntoServers){
             classSoftwareGlobal = "doNOTdisplay"
         }
         else if(this.props.softwareLevelOfInvestment >=1){

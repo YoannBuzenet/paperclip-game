@@ -14,9 +14,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 0,
-          money : 4,
-          totalComputationalPowerAccumulated : 0,
+          count : 1000000000,
+          money : 4000000000,
+          totalComputationalPowerAccumulated : 400000000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
