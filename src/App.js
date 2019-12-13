@@ -14,9 +14,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 1000000000,
-          money : 4000000000,
-          totalComputationalPowerAccumulated : 400000000,
+          count : 0,
+          money : 4,
+          totalComputationalPowerAccumulated : 0,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -106,21 +106,21 @@ class App extends Component{
           hasCuredHungerForHumanity : false,
           cureHungerCost : 100000,
           hasBegunToDig : false,
-          digCost : 100000000,
+          digCost : 100000000000,
           droneCost : 1000,
           numberOfDrone : 0,
           droneSalesEfficiency : 1000,
           hasQuietProblematicSources : false,
-          multipleRocketsCost : 500000000,
+          multipleRocketsCost : 500000000000,
           hasFoundOutHowToTransformMolecularMatterIntoPaperclip : false,
           molecularMatterCost : 300000,
           hasRemovedCorruption : false,
-          removeCorruptionCost : 50000,
-          rocketCost : 5000000000,
+          removeCorruptionCost : 750000,
+          rocketCost : 500000000000,
           hasConnectedAndBreachedAllSocialNetworks : false,
           breachSocialMediaCost : 200000,
           hasSpilledFakedNewsAllOverTheWorld : false,
-          spillFakeNewsCost : 10000000,
+          spillFakeNewsCost : 20000000,
           hasTargetedEveryScientistOnEarth : false,
           targetingEveryScientistCost : 10000000,
           canCreate50drones : false,
@@ -194,12 +194,12 @@ class App extends Component{
                 en: "Wow. I think we're onto something."
                 },
               afterLevel3RD: {
-                  fr: "Pas mal. Comment pourrait-on en produire encore plus ?",
-                  en: "Not bad. How could we produce more ?"
+                  fr: "Ces trombones se vendent comme des petits pains !! Je pense qu'on peut investir.",
+                  en: "These paperclips are selling really well ! I think we may invest more."
                 },  
               afterLevel4RD: {
-                  fr: "La production augmente bien. Je pense qu'on peut investir sérieusement.",
-                  en: "It's big. We should invest more."
+                  fr: "Les machines sont stables. On a trouvé comment en faire marcher par chaines entières.",
+                  en: "Automatic machines are stable. We found how to make them work in a bigger chain."
                 },  
               afterFactory: {
                 fr: "On entre dans la cour des grands. Voilà les données des concurrents dans la région.",
@@ -623,8 +623,8 @@ class App extends Component{
                   en:"Factory"
                 },
                 findNewsWaysToMakePaperclips : {
-                  fr: "Find News Ways to make paperclips.",
-                  en: "Penser de nouvelles façons de produire des trombones."
+                  fr: "Penser de nouvelles façons de produire des trombones.",
+                  en: "Find News Ways to make paperclips."
                 },
                 findNewsWaysToMakePaperclipsContent : {
                   fr: "Objectif : Produire le plus de trombones possible.",
@@ -1889,7 +1889,7 @@ formateNumber(number, divider, unit){
       }
       else if(this.state.rdLevelOfInvestment == 5 && this.state.numberOfFactory == 0 && this.state.numberOfOffices < 1) {
         var textToDisplay = this.state.text.afterLevel4RD;
-        var author = this.state.text.AuthorMessageHuman;
+        var author = this.state.text.AuthorMessageEmployee;
       }
       else if(this.state.numberOfOffices == 1 && this.state.numberOfFactory == 0) {
         var textToDisplay = this.state.text.after1office;
