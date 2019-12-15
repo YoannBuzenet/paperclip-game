@@ -111,11 +111,23 @@ class ButtonSubContentAutomaticProductivity extends Component{
             transform: 'translate(-50%, -50%)'}
     }
 
-    if(this.props.money < this.props.cost){
-        var contentCantBuy = "You can't afford this for now.";
+     //Adding explication to blocked button
+     if(this.props.money < this.props.cost){
+        if(this.props.lang == "en"){
+            var contentCantBuy = "You can't afford this for now.";
+        }
+        else if (this.props.lang == "fr"){
+            var contentCantBuy = "Vous n'avez pas les moyens pour l'instant.";
+        }
+        
     }
-    else if(this.props.numberOfSmallAutomaticMachines >= this.props.maximumSmallAutomaticMachine){
-        var contentCantBuy = "Maximum Machine reached.";
+    else if(this.props.salesman >= this.props.maximumSalesHirable){
+        if(this.props.lang == "en"){
+            var contentCantBuy = "Maximum sales reached.";
+        }
+        else if (this.props.lang == "fr"){
+            var contentCantBuy = "Maximum de vendeurs atteint.";
+        }       
     }
 
     //Displaying the right currency (euros or computationnal power)

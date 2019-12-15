@@ -106,17 +106,17 @@ class App extends Component{
           hasCuredHungerForHumanity : false,
           cureHungerCost : 100000,
           hasBegunToDig : false,
-          digCost : 100000000000,
+          digCost : 500000000,
           droneCost : 1000,
           numberOfDrone : 0,
           droneSalesEfficiency : 1000,
           hasQuietProblematicSources : false,
-          multipleRocketsCost : 500000000000,
+          multipleRocketsCost : 5000000000,
           hasFoundOutHowToTransformMolecularMatterIntoPaperclip : false,
           molecularMatterCost : 300000,
           hasRemovedCorruption : false,
           removeCorruptionCost : 750000,
-          rocketCost : 500000000000,
+          rocketCost : 5000000000,
           hasConnectedAndBreachedAllSocialNetworks : false,
           breachSocialMediaCost : 200000,
           hasSpilledFakedNewsAllOverTheWorld : false,
@@ -129,7 +129,7 @@ class App extends Component{
           hasLaunchedARocket : false,
           hasBoughtAutomatedSellingSoftware : false,
           automatedSellingSoftwarePrice : 150,
-          swarmCost : 50000000,
+          swarmCost : 5000000000,
           hasFoundNewsWaysToMakePaperclips : false,
           madeEnoughDrone : false,
           madeEnoughFactories : false,
@@ -138,11 +138,11 @@ class App extends Component{
           terraformingIslandIntoServersCost : 20000000,
           weightOfTheEarth : 6000000000000000000000000,
           factoryCanProduceDrones : false,
-          improveFactoryToCreateDroneCost : 100000,
-          droneCanCreateFactoryCost : 15000,
+          improveFactoryToCreateDroneCost : 10000000,
+          droneCanCreateFactoryCost : 150000,
           hasAllowedDroneToBuildFactories : false,
           increaseFactoryBuilding : false,
-          increaseFactoryCost : 20000,
+          increaseFactoryCost : 2000000,
           droneDiggingEfficiency : 100,
           factoryDroneProductivity : 1,
           weakAIEfficiency : 0,
@@ -1654,7 +1654,7 @@ formateNumber(number, divider, unit){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasCreatedTheSwarm : true,
-          numberOfDrone : state.numberOfDrone + 1000000000000
+          numberOfDrone : state.numberOfDrone + 10000000000000
             });
           }), this.updateTextBox);
       }

@@ -3,6 +3,13 @@
 ***************************/
 * {
   outline: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Opera and Firefox */
 }
 
 body, html {
@@ -55,16 +62,6 @@ header p.pageTitle {
 
 .fadein {
   animation: 0.5s fadeIn;
-}
-
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
 }
 
 /***************************
@@ -574,6 +571,11 @@ button.disabled:hover{
 
 .work-box p {
   width : 200px;
+}
+
+
+.work-box p.data-title {
+  margin-bottom : 0;
 }
 
 /***************************
