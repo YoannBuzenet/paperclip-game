@@ -54,7 +54,7 @@ class Button extends Component{
 
 
     var className = this.props.classNameButton;
-    if(this.props.money < this.props.cost || this.props.salesman >= this.props.maximumSalesHirable){
+    if(this.props.money < this.props.cost || this.props.salesman >= this.props.maximumSalesHirable || this.props.cost > this.props.totalComputationalPowerAccumulated){
         className += " disabled";
     }   
 
