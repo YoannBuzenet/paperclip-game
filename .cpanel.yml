@@ -1,5 +1,5 @@
 ---
 deployment:
  tasks:
- - export DEPLOYPATH=/home/papevuqg/public_html/
+ - export DEPLOYPATH=/home/papevuqg/public_html/paperclips
  - /bin/cp -a * $DEPLOYPATH
