@@ -415,6 +415,10 @@ p.temporary-class-to-adjust-display {
   margin-top : 0;
 }
 
+.dialog-box {
+  font-size : 1.4rem;
+}
+
 .Dialog-interface p:nth-of-type(2){
 
 }

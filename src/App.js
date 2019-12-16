@@ -16,9 +16,9 @@ class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 10000000000,
-          money : 400000000000,
-          totalComputationalPowerAccumulated : 4000000000,
+          count : 0,
+          money : 4,
+          totalComputationalPowerAccumulated : 0,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -200,8 +200,8 @@ class App extends Component{
                   en: "These paperclips are selling really well ! I think we may invest more."
                 },  
               afterLevel4RD: {
-                  fr: "Les machines sont stables. On a trouvé comment en faire marcher par chaines entières.",
-                  en: "Automatic machines are stable. We found how to make them work in a bigger chain."
+                  fr: "Les machines sont maintenant stables. On a trouvé comment en faire marcher par chaines entières.",
+                  en: "Automatic machines are now stable. We found how to make them work in a bigger chain."
                 },  
               afterFactory: {
                 fr: "On entre dans la cour des grands. Voilà les données des concurrents dans la région.",
