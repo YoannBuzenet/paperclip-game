@@ -9,14 +9,15 @@ import DashboardActivity from './components/DashboardActivity.js';
 import DialogInterface from './components/DialogInterface.js';
 import Software from './components/Software.js';
 import LanguageAvailable from './components/LanguageAvailable.js';
+import DivContent from './components/DivContent';
 
 class App extends Component{
   constructor(props){
       super(props)
       this.state = {
-          count : 0,
-          money : 4,
-          totalComputationalPowerAccumulated : 0,
+          count : 10000000000,
+          money : 400000000000,
+          totalComputationalPowerAccumulated : 4000000000,
           paperclipPrice : 0.25,
           marketingLevelOfInvestment : 2,
           rdLevelOfInvestment : 2,
@@ -352,6 +353,41 @@ class App extends Component{
               connectedToCloud : {
                 fr : "Connecté",
                 en : "Connected"
+              },
+              endText : {
+                mainTitle : {
+                  fr : "Vous avez fini le jeu !",
+                  en : "You finished the game !"
+                },
+                firstTitle : {
+                  fr : "Pourquoi ce jeu ?",
+                  en : "Why this game ?"
+                },
+                secondTitle : {
+                  fr : "Ok, mais pourquoi ce jeu ?",
+                  en : "Ok, but why this game ?"
+                },
+                firstParagraph : {
+                  fr : "La terre est désormais entièrement transformée en trombones, ou en outil pour en créer.",
+                  en : "The earth is now entirely transformed into paper clips, or into a tool to create them."
+                },
+                secondParagraph : {
+                  fr : "L'intelligence artificielle est un puissant outil, capable de traiter des quantités extraordinaires d'informations, à la vitesse de la lumière. Elle peut traiter des volumes qu'aucun humain ne pourra jamais comprendre. Sur le plan cognitif, l'IA est strictement supérieure à l'Homme. Ce n'est qu'une question de temps avant qu'elle ne traite davantage de sujets de société. Aujourd'hui de simples algorithmes en demande d'apprentissage, demain le meilleur conseiller possible sur l'ensemble des décisions que l'humanité pourrait prendre.",
+                  en : "Artificial intelligence is a powerful tool capable of processing extraordinary amounts of information at the speed of light. It can handle volumes that no human can ever understand. Cognitively, AI is strictly superior to Man. It is only a matter of time before it deals more with social issues. Today simple algorithms requiring learning, tomorrow the best adviser possible on all the decisions that humanity could make."
+                },
+                thirdParagraph : {
+                  fr : "L'IA n'a qu'une vision limitée de ce qui se passe dans le 'vrai' monde. Mal réglée, elle a les défauts d'une machine : demandez-lui de gagner une course, si le chemin le plus court est de couper par le milieu, elle le fera. Il faut la programmer pour lui expliquer les contours du parcours, les contours de son action. Sans cela, elle prendra des décisions étranges, voire dommageables pour les Hommes qu'elle est censée servir.",
+                  en : "AI has only a limited view of what's going on in the 'real' world. Poorly adjusted, it has the faults of a machine: ask it to win a race, if the shortest path is to cut in the middle, it will. It must be programmed to explain the contours of the course, the contours of its action. Without this, it will make strange decisions, even damaging to the Men she is supposed to serve."
+                },
+                fourthParagraph : {
+                  fr : "Savez-vous qu'un algorithme de réseau social peut mettre en avant un message anti-vaccin car cela augmente son taux de clic ? Sans même avoir conscience du danger du message qu'elle met en avant ? Il faut donc expliquer à l'IA les limites de son action. Pour éviter que la Terre ne finisse en trombone parceque son algorithme de base était mal réglé.",
+                  en : "Did you know that a social network algorithm can put forward an anti-vaccine message because it increases its click rate? Without even being aware of the danger of the message it's displaying ? We must therefore explain to AI the limits of its action. To prevent the Earth from ending in paperclips because its basic algorithm was badly adjusted."
+                },
+                conclusion : {
+                  fr : "Restons vigilant ensemble autour de l'IA. L'IA apportera d'incroyables contributions à l'humanité - encore faut-il bien la préparer.",
+                  en : "Let's stay vigilant together around AI. AI will make incredible contributions to humanity - but we have to prepare it well."
+                }
+
               },
               gameTitles: {
                 mainTitle : {
@@ -941,6 +977,7 @@ class App extends Component{
   this.automaticProducingFactoriesByDrone = this.automaticProducingFactoriesByDrone.bind(this);
   this.displayflags = this.displayflags.bind(this);
   this.changeLangage = this.changeLangage.bind(this);
+  this.displayEndMessage = this.displayEndMessage.bind(this);
   }
 
   componentDidMount(){
@@ -1234,6 +1271,12 @@ formateNumber(number, divider, unit){
     body.appendChild(absoluteElement);
 
     return absoluteElement;
+  }
+
+  displayEndMessage(){
+    document.querySelector('.absolute-content-div').className = 'absolute-content-div';
+    document.querySelector('.black-overlay').className = 'black-overlay';
+
   }
 
   buyAMachine(cost, productivity, isManual, machineType, quantity=1, currency){
@@ -1615,6 +1658,10 @@ formateNumber(number, divider, unit){
 
       //Paying in CP
       else if(machineType =="single-rocket"){
+        setTimeout(()=>{
+          this.displayEndMessage();
+        },3000);
+
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasLaunchedARocket : true
@@ -1654,7 +1701,7 @@ formateNumber(number, divider, unit){
         this.setState((state => { return ({
           totalComputationalPowerAccumulated : state.totalComputationalPowerAccumulated - cost,
           hasCreatedTheSwarm : true,
-          numberOfDrone : state.numberOfDrone + 10000000000000
+          numberOfDrone : state.numberOfDrone + 100000000000000000
             });
           }), this.updateTextBox);
       }
@@ -2127,6 +2174,7 @@ changeLangage(language){
   render(){
     const {soldAtLeastOnePaperclip} = this.state
     return (<div className="App">
+      <div className="black-overlay doNOTdisplay"></div>
 
     <header>
       <p className="pageTitle">{this.state.text.gameTitles.mainTitle[this.state.lang]}</p>
@@ -2141,6 +2189,8 @@ changeLangage(language){
     </header>
 
     <div className="main-content">
+
+      <DivContent text={this.state.text.endText} lang={this.state.lang}/>  
   
       <div className="left-div">
         <div>

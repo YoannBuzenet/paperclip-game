@@ -148,7 +148,6 @@ header{
   justify-content: space-evenly;
   width: 100%;
   margin : 0 auto;
-  height : 100vh;
 }
 
 .left-div {
@@ -740,4 +739,53 @@ button.disabled:hover{
 @keyframes fadeIn {
   0% {opacity : 0}
   100% {opacity : 1}
+}
+
+/***************************
+**********FINAL DIV**********
+***************************/
+
+.black-overlay {
+  position : absolute;
+  background-color: black;
+  opacity : .2;
+  top : 0;
+  left : 0;
+  right : 0;
+  bottom : 0;
+  z-index : 2;
+}
+
+.absolute-content-div {
+  padding : 2rem;
+  position : absolute;
+  z-index : 3;
+  width : 500px;
+  top : 50%;
+  left : 50%;
+  transform: translate(-50%, -50%);
+  background-color : white;
+  border-radius : 5px;
+  animation: fadeIn;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
+}
+
+.final-title {
+  font-size : 3rem;
+  padding : 1rem 0;
+}
+
+.absolute-content-div h3{
+  padding : 1rem 0;
+  font-size : 2rem;
+}
+
+.closing_cross {
+  position : absolute;
+  right : 5px;
+  top : 5px;
+}
+
+.closing_cross:hover{
+  
 }
