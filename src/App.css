@@ -837,12 +837,43 @@ button.disabled:hover{
   cursor : pointer;
 }
 
+@media only screen and (max-width: 700px){
+ 
+  .absolute-content-div {
+    padding : 2rem;
+    position : absolute;
+    z-index : 3;
+    width : 90%;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+    background-color : white;
+    border-radius : 5px;
+    animation: fadeIn;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
+  }
+  
+  .absolute-content-div-About {
+    padding : 2rem;
+    position : absolute;
+    z-index : 3;
+    width : 90%;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+    background-color : white;
+    border-radius : 5px;
+    animation: fadeIn;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
+  }
+ 
+}
 /***************************
 **********FOOTER**********
 ***************************/
 
 footer p {
-  position : absolute;
+  position : fixed;
   bottom : 20px;
   right : 100px;
   cursor : pointer;
