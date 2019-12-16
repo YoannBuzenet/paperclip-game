@@ -10,6 +10,7 @@ import DialogInterface from './components/DialogInterface.js';
 import Software from './components/Software.js';
 import LanguageAvailable from './components/LanguageAvailable.js';
 import DivContent from './components/DivContent';
+import About from './components/About';
 
 class App extends Component{
   constructor(props){
@@ -105,7 +106,7 @@ class App extends Component{
           hasCuredCancerForHumanity : false,
           cureCancerCost : 150000,
           hasCuredHungerForHumanity : false,
-          cureHungerCost : 100000,
+          cureHungerCost : 150000,
           hasBegunToDig : false,
           digCost : 500000000,
           droneCost : 1000,
@@ -387,7 +388,176 @@ class App extends Component{
                   fr : "Restons vigilant ensemble autour de l'IA. L'IA apportera d'incroyables contributions à l'humanité - encore faut-il bien la préparer.",
                   en : "Let's stay vigilant together around AI. AI will make incredible contributions to humanity - but we have to prepare it well."
                 }
-
+              },
+              aboutTextBox : {
+                logo1 : {
+                  fr : "Abstract pattern par Eliricon du site 'the Noun Project'",
+                  en : "Abstract pattern by Eliricon from the Noun Project"
+                },
+                logo2 : {
+                  fr : "Analysis par Aham Brahma du site 'the Noun Project'",
+                  en : "Analysis by Aham Brahma from the Noun Project"
+                },
+                logo3 : {
+                  fr : "Arrow par Ghiyats Mujtaba du site 'the Noun Project'",
+                  en : "Arrow by Ghiyats Mujtaba from the Noun Project"
+                }, 
+                logo4 : {
+                  fr : "Artificial par twist.glyph du site 'the Noun Project'",
+                  en : "Artificial by twist.glyph from the Noun Project"
+                },
+                logo5 : {
+                  fr : "Close par Omar Safaa du site 'the Noun Project'",
+                  en : "Close by Omar Safaa from the Noun Project"
+                },
+                logo2 : {
+                  fr : "Connections par Chameleon du site 'the Noun Project'",
+                  en : "Connections by Chameleon Design from the Noun Project"
+                },
+                logo6 : {
+                  fr : "Corruption par Eucalyp du site 'the Noun Project'",
+                  en : "Corruption by Eucalyp from the Noun Project"
+                },
+                logo7 : {
+                  fr : "Data Center par Bernar  Novalyi du site 'the Noun Project'",
+                  en : "Data Center by Bernar  Novalyi from the Noun Project"
+                },
+                logo8 : {
+                  fr : "Deep Learning par Becris du site 'the Noun Project'",
+                  en : "Deep Learning by Becris from the Noun Project"
+                },
+                logo9 : {
+                  fr : "Dig par jokokerto du site 'the Noun Project'",
+                  en : "Dig by jokokerto from the Noun Project"
+                },
+                logo10 : {
+                  fr : "Drone par yudi du site 'the Noun Project'",
+                  en : "Drone by yudi from the Noun Project"
+                },
+                logo11: {
+                  fr : "Factory par Ana María Lora Macias du site 'the Noun Project'",
+                  en : "Factory by Ana María Lora Macias from the Noun Project"
+                },
+                logo12 : {
+                  fr : "Flowchart par Berkah Icon du site 'the Noun Project'",
+                  en : "Flowchart by Berkah Icon from the Noun Project"
+                },
+                logo13 : {
+                  fr : "Gears par counloucon du site 'the Noun Project'",
+                  en : "Gears by counloucon from the Noun Project"
+                },
+                logo14 : {
+                  fr : "Global Hunger par HeadsOfBirds du site 'the Noun Project'",
+                  en : "Global Hunger by HeadsOfBirds from the Noun Project"
+                },
+                logo15 : {
+                  fr : "Improve par Nithinan Tatah du site 'the Noun Project'",
+                  en : "Improve by Nithinan Tatah from the Noun Project"
+                },
+                logo16 : {
+                  fr : "Increase par Gregor Cresnar du site 'the Noun Project'",
+                  en : "Increase by Gregor Cresnar from the Noun Project"
+                },
+                logo17 : {
+                  fr : "Light Bulb par Insticon du site 'the Noun Project'",
+                  en : "Light Bulb by Insticon from the Noun Project"
+                },
+                logo18 : {
+                  fr : "Machine par iconsider du site 'the Noun Project'",
+                  en : "Machine by iconsider studio from the Noun Project"
+                },
+                logo19 : {
+                  fr : "Machine par Eucalyp du site 'the Noun Project'",
+                  en : "Machine by Eucalyp from the Noun Project"
+                },
+                logo20 : {
+                  fr : "Machine par Eucalyp du site 'the Noun Project'",
+                  en : "Machine by Eucalyp from the Noun Project"
+                },
+                logo21 : {
+                  fr : "Marketing par Komkrit Noenpoempisut du site 'the Noun Project'",
+                  en : "Marketing by Komkrit Noenpoempisut from the Noun Project"
+                },
+                logo22 : {
+                  fr : "Molecular par Eucalyp du site 'the Noun Project'",
+                  en : "Molecular by Eucalyp from the Noun Project"
+                },
+                logo23 : {
+                  fr : "Money par hasyim du site 'the Noun Project'",
+                  en : "Money by fajar hasyim from the Noun Project"
+                },
+                logo24 : {
+                  fr : "Office par iconesia du site 'the Noun Project'",
+                  en : "Office by iconesia from the Noun Project"
+                },
+                logo25 : {
+                  fr : "Plus par Alfredo @ IconsAlfredo.com du site 'the Noun Project'",
+                  en : "Plus by Alfredo @ IconsAlfredo.com from the Noun Project"
+                },
+                logo26 : {
+                  fr : "Programming par Creative Stall du site 'the Noun Project'",
+                  en : "Programming by Creative Stall from the Noun Project"
+                },
+                logo27 : {
+                  fr : "Refresh par sevgenjory du site 'the Noun Project'",
+                  en : "Refresh by sevgenjory from the Noun Project"
+                },
+                logo28 : {
+                  fr : "Salesman par priyanka du site 'the Noun Project'",
+                  en : "Salesman by priyanka from the Noun Project"
+                },
+                logo29 : {
+                  fr : "Salesman by Koson Rattanaphan from the Noun Project",
+                  en : "Salesman par Koson Rattanaphan du site 'the Noun Project'"
+                },
+                logo30 : {
+                  fr : "Social network by Gregor Cresnar from the Noun Project",
+                  en : "Social network par Gregor Cresnar du site 'the Noun Project'"
+                },
+                logo31 : {
+                  fr : "Support cure par Maxicons du site 'the Noun Project'",
+                  en : "Support cure by Maxicons from the Noun Project"
+                },
+                logo32 : {
+                  fr : "Technology by leo-graph.com from the Noun Project",
+                  en : "Technology par leo-graph.com du site 'the Noun Project'"
+                },
+                logo33 : {
+                  fr : "TV par Yoteyo du site 'the Noun Project'",
+                  en : "TV by Yoteyo from the Noun Project"
+                },
+                logo34 : {
+                  fr : "Website par zidney du site 'the Noun Project'",
+                  en : "Website by zidney from the Noun Project"
+                },
+                aboutTitle : {
+                  fr : "Logos & Credits",
+                  en : "Logos & Credits"
+                },
+                aboutFirstParagraph : {
+                  fr : "Jeu sur l'IA, par Yoann Buzenet",
+                  en : "AI Game, by Yoann Buzenet"
+                },
+                aboutSecondParagraphPart1: {
+                  fr : "Merci aux nombreux auteurs de ",
+                  en : "Thanks to the numerous authors on "
+                },
+                aboutSecondParagraphPart2: {
+                  fr : "The Noun Project :",
+                  en : "The Noun Project : "
+                },
+                aboutFollowMePart1 : {
+                  fr : "Vous avez aimé le jeu ?",
+                  en :"Did you like the game ?"
+                },
+                aboutFollowMePart2 : {
+                  fr : " Retrouvez-moi sur Twitter !",
+                  en :" Follow me !"
+                },
+                menuName : {
+                  fr : "A propos",
+                  en : "About"
+                }
               },
               gameTitles: {
                 mainTitle : {
@@ -978,6 +1148,7 @@ class App extends Component{
   this.displayflags = this.displayflags.bind(this);
   this.changeLangage = this.changeLangage.bind(this);
   this.displayEndMessage = this.displayEndMessage.bind(this);
+  this.displayCredits = this.displayCredits.bind(this);
   }
 
   componentDidMount(){
@@ -1275,6 +1446,12 @@ formateNumber(number, divider, unit){
 
   displayEndMessage(){
     document.querySelector('.absolute-content-div').className = 'absolute-content-div';
+    document.querySelector('.black-overlay').className = 'black-overlay';
+
+  }
+
+  displayCredits(){
+    document.querySelector('.absolute-content-div-About').className = 'absolute-content-div-About';
     document.querySelector('.black-overlay').className = 'black-overlay';
 
   }
@@ -2190,7 +2367,8 @@ changeLangage(language){
 
     <div className="main-content">
 
-      <DivContent text={this.state.text.endText} lang={this.state.lang}/>  
+      <DivContent text={this.state.text.endText} lang={this.state.lang}/> 
+      <About text={this.state.text.aboutTextBox} lang={this.state.lang}/>
   
       <div className="left-div">
         <div>
@@ -2222,6 +2400,9 @@ changeLangage(language){
       </div>
       
     </div>
+    <footer>
+      <p onClick={this.displayCredits}>{this.state.text.aboutTextBox.menuName[this.state.lang]}</p>
+    </footer>
   </div>
   );
 }

@@ -770,6 +770,56 @@ button.disabled:hover{
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
 }
 
+.absolute-content-div-About {
+  padding : 2rem;
+  position : absolute;
+  z-index : 3;
+  width : 500px;
+  top : 50%;
+  left : 50%;
+  transform: translate(-50%, -50%);
+  background-color : white;
+  border-radius : 5px;
+  animation: fadeIn;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.25);
+}
+
+.absolute-content-div-About h2 {
+  margin-bottom : 1rem;
+  padding-left : 0;
+}
+
+.absolute-content-div-About p{
+  font-size : 1.4rem;
+  margin : 0;
+  margin-bottom : .25rem;
+}
+
+.absolute-content-div-About p:nth-of-type(1),p:nth-of-type(2){
+  font-size: 1.6rem;
+}
+
+.absolute-content-div-About p:nth-of-type(2){
+  margin-bottom : 2rem;
+}
+
+.absolute-content-div-About a {
+  color : black;
+  text-decoration: none;
+  font-weight : bold;
+}
+
+.absolute-content-div-About a:hover {
+  color : black;
+  text-decoration: underline;
+}
+
+.absolute-content-div-About p:last-child{
+  margin-top : 2rem;
+  font-size : 1.6rem;
+  text-align : center;
+}
+
 .final-title {
   font-size : 3rem;
   padding : 1rem 0;
@@ -785,4 +835,20 @@ button.disabled:hover{
   right : 5px;
   top : 5px;
   cursor : pointer;
+}
+
+/***************************
+**********FOOTER**********
+***************************/
+
+footer p {
+  position : absolute;
+  bottom : 20px;
+  right : 100px;
+  cursor : pointer;
+  font-size : 1.4rem;
+}
+
+footer p:hover{
+  text-decoration: underline;
 }
