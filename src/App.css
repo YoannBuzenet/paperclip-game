@@ -784,8 +784,5 @@ button.disabled:hover{
   position : absolute;
   right : 5px;
   top : 5px;
-}
-
-.closing_cross:hover{
-  
+  cursor : pointer;
 }

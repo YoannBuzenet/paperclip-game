@@ -10,6 +10,7 @@ class DivContent extends Component{
 
     closeDiv(){
             document.querySelector('.absolute-content-div').className = "doNOTdisplay absolute-content-div"
+            document.querySelector('.black-overlay').className = 'doNOTdisplay black-overlay';
       }
 
     render(){
