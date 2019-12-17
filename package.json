@@ -1,6 +1,7 @@
 {
   "name": "paperclip-game",
   "version": "0.1.0",
+  "homepage": "http://www.paperclips.top",
   "private": true,
   "dependencies": {
     "@nivo/pie": "^0.59.1",
