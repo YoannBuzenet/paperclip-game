@@ -82,7 +82,7 @@ class App extends Component{
           computationalPowerPerSecond : 1,
           computerComputationalCost : 0,
           AIComputationalresearchCost : 0,
-          deeplearningCost : 200000,
+          deeplearningCost : 150000,
           weakAICost : 2000,
           newAICost : 50000,
           increaseProductionCost : 200000,
