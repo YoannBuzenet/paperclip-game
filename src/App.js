@@ -257,7 +257,7 @@ class App extends Component{
                   },
               afterActivatingRealAI: {
                 fr: "Analyse des concurrents. Envoi de messages convaincants pour les aider à vendre leur organisation commerciale.",
-                en: "Analyzing all competitors. Sending clear messages to convince them to sell the their business organization."
+                en: "Analyzing all competitors. Sending clear messages to convince them to sell their business organization."
                   },
               afterBuyingAllCompetitors: {
                 fr: "J'y crois pas !! ON EST LES PREMIERS ! Il nous FAUT plus de production pour être sûrs qu'on reste les premiers !! Je mets toutes nos ressources sur l'IA !",
