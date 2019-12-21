@@ -145,7 +145,7 @@ class App extends Component{
           hasAllowedDroneToBuildFactories : false,
           increaseFactoryBuilding : false,
           increaseFactoryCost : 2000000,
-          droneDiggingEfficiency : 100,
+          droneDiggingEfficiency : 10,
           factoryDroneProductivity : 1,
           weakAIEfficiency : 0,
           WeakAIbonusSales : 0,
