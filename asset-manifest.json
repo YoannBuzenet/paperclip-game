@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/paperclip-game/static/css/main.20d9b8af.chunk.css",
+    "main.js": "/paperclip-game/static/js/main.e10f0d11.chunk.js",
+    "main.js.map": "/paperclip-game/static/js/main.e10f0d11.chunk.js.map",
+    "runtime-main.js": "/paperclip-game/static/js/runtime-main.0c89f5f1.js",
+    "runtime-main.js.map": "/paperclip-game/static/js/runtime-main.0c89f5f1.js.map",
+    "static/js/2.4160fc4d.chunk.js": "/paperclip-game/static/js/2.4160fc4d.chunk.js",
+    "static/js/2.4160fc4d.chunk.js.map": "/paperclip-game/static/js/2.4160fc4d.chunk.js.map",
+    "index.html": "/paperclip-game/index.html",
+    "precache-manifest.c108b1692f92938266305ac14e1262d0.js": "/paperclip-game/precache-manifest.c108b1692f92938266305ac14e1262d0.js",
+    "service-worker.js": "/paperclip-game/service-worker.js",
+    "static/css/main.20d9b8af.chunk.css.map": "/paperclip-game/static/css/main.20d9b8af.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c89f5f1.js",
+    "static/js/2.4160fc4d.chunk.js",
+    "static/css/main.20d9b8af.chunk.css",
+    "static/js/main.e10f0d11.chunk.js"
+  ]
+}
