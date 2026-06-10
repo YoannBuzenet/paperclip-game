@@ -1,3 +1,7 @@
+# Try the game
+
+- https://yoannbuzenet.github.io/paperclip-game/
+
 ### Start the project
 
 - `git clone`
