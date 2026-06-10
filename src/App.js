@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/dashboard';
 import MainButton from './components/main-button';
 import SellButton from './components/sellButton';
 import InvestmentBox from './components/investmentBox.js';
